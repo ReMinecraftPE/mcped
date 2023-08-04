@@ -394,7 +394,7 @@ void RandomLevelSource::postProcess(ChunkSource* src, int x, int z)
 		xo = m_random.nextInt(16);
 		yo = m_random.nextInt(16);
 		zo = m_random.nextInt(16);
-		OreFeature(Tile::redStoneOre->m_ID, 8).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
+		OreFeature(Tile::redStoneOre->m_ID, 7).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
 	}
 
 	xo = m_random.nextInt(16);
@@ -482,6 +482,14 @@ void RandomLevelSource::postProcess(ChunkSource* src, int x, int z)
 		int yo = m_random.nextInt(128);
 		int zo = m_random.nextInt(16);
 		FlowerFeature(Tile::mushroom2->m_ID).place(m_pLevel, &m_random, x16 + 8 + xo, yo, z16 + 8 + zo);
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		int xo = m_random.nextInt(16);
+		int yo = m_random.nextInt(128);
+		int zo = m_random.nextInt(16);
+		ReedsFeature().place(m_pLevel, &m_random, x16 + 8 + xo, yo, z16 + 8 + zo);
 	}
 
 	for (int i = 0; i < 50; i++)

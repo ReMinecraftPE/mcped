@@ -8,7 +8,7 @@
 
 #pragma once
 
-#if defined(_WIN32)
+#if defined(_WIN32) && !defined(ORIGINAL_CODE)
 #define USE_ACCURATE_TIMER
 #endif
 

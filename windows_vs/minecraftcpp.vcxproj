@@ -124,6 +124,8 @@
     <ClInclude Include="..\source\World\Generator\ChunkCache.hpp" />
     <ClInclude Include="..\source\World\Generator\ChunkSource.hpp" />
     <ClInclude Include="..\source\World\Generator\Feature.hpp" />
+    <ClInclude Include="..\source\World\Generator\LargeCaveFeature.hpp" />
+    <ClInclude Include="..\source\World\Generator\LargeFeature.hpp" />
     <ClInclude Include="..\source\World\Generator\PerformanceTestChunkSource.hpp" />
     <ClInclude Include="..\source\World\Generator\RandomLevelSource.hpp" />
     <ClInclude Include="..\source\World\Generator\TestChunkSource.hpp" />
@@ -431,10 +433,13 @@
     <ClCompile Include="..\source\World\Generator\ClayFeature.cpp" />
     <ClCompile Include="..\source\World\Generator\Feature.cpp" />
     <ClCompile Include="..\source\World\Generator\FlowerFeature.cpp" />
+    <ClCompile Include="..\source\World\Generator\LargeCaveFeature.cpp" />
+    <ClCompile Include="..\source\World\Generator\LargeFeature.cpp" />
     <ClCompile Include="..\source\World\Generator\OreFeature.cpp" />
     <ClCompile Include="..\source\World\Generator\PerformanceTestChunkSource.cpp" />
     <ClCompile Include="..\source\World\Generator\PineFeature.cpp" />
     <ClCompile Include="..\source\World\Generator\RandomLevelSource.cpp" />
+    <ClCompile Include="..\source\World\Generator\ReedsFeature.cpp" />
     <ClCompile Include="..\source\World\Generator\SpringFeature.cpp" />
     <ClCompile Include="..\source\World\Generator\SpruceFeature.cpp" />
     <ClCompile Include="..\source\World\Generator\TestChunkSource.cpp" />
