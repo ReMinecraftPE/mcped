@@ -55,22 +55,24 @@ void Options::initDefaultValues()
 	field_1C = "Default";
 	m_playerName = "Steve";
 	m_bServerVisibleDefault = true;
-	m_keyBinds[0] = { "key.forward", 'W' };
-	m_keyBinds[1] = { "key.left", 'A' };
-	m_keyBinds[2] = { "key.back", 'S' };
-	m_keyBinds[3] = { "key.right", 'D' };
-	m_keyBinds[4] = { "key.jump", ' ' };
-	m_keyBinds[5] = { "key.inventory", 'E' };
-	m_keyBinds[6] = { "key.drop", 'Q' };
-	m_keyBinds[7] = { "key.chat", 'T' };
-	m_keyBinds[8] = { "key.fog", 'F' };
-	m_keyBinds[9] = { "key.sneak", '\n' };
-	m_keyBinds[10] = { "key.destroy", 'X' };
-	m_keyBinds[11] = { "key.place", 'C' };
-	m_keyBinds[12] = { "key.menu.next", '(' };
-	m_keyBinds[13] = { "key.menu.previous", '&' };
-	m_keyBinds[14] = { "key.menu.ok", '\r' };
-	m_keyBinds[15] = { "key.menu.cancel", '\b' };
+
+	//! Seems like they are using Win32 key codes here.. Except for key.sneak which I have no idea how that got there
+	m_keyBinds[0]  = { "key.forward",       'W' };
+	m_keyBinds[1]  = { "key.left",          'A' };
+	m_keyBinds[2]  = { "key.back",          'S' };
+	m_keyBinds[3]  = { "key.right",         'D' };
+	m_keyBinds[4]  = { "key.jump",          ' ' }; // VK_SPACE
+	m_keyBinds[5]  = { "key.inventory",     'E' };
+	m_keyBinds[6]  = { "key.drop",          'Q' };
+	m_keyBinds[7]  = { "key.chat",          'T' };
+	m_keyBinds[8]  = { "key.fog",           'F' };
+	m_keyBinds[9]  = { "key.sneak",         10 };  //! Typo? Probably meant to use VK_SHIFT (0x10)
+	m_keyBinds[10] = { "key.destroy",       'X' };
+	m_keyBinds[11] = { "key.place",         'C' };
+	m_keyBinds[12] = { "key.menu.next",     0x28 }; // VK_DOWN
+	m_keyBinds[13] = { "key.menu.previous", 0x26 }; // VK_UP
+	m_keyBinds[14] = { "key.menu.ok",       0x0D }; // VK_RETURN
+	m_keyBinds[15] = { "key.menu.cancel",   0x08 }; // VK_BACK
 
 #ifdef ORIGINAL_CODE
 	field_10 = 2;
@@ -78,13 +80,13 @@ void Options::initDefaultValues()
 	field_19 = 0;
 #endif
 	m_bFancyGraphics = 1;
-	// keybind now reprograms some the keybinds.
-	// For the restoration, we don't actually need them
-	m_keyBinds[0].value = AKEYCODE_DPAD_UP;
-	m_keyBinds[1].value = AKEYCODE_DPAD_LEFT;
-	m_keyBinds[2].value = AKEYCODE_DPAD_DOWN;
-	m_keyBinds[3].value = AKEYCODE_DPAD_RIGHT;
-	m_keyBinds[4].value = AKEYCODE_DPAD_CENTER; // lmao, how stupid.
+	// keybind now reprograms some of the keybinds for Android.
+	// For the restoration, we have overridden these
+	m_keyBinds[0].value  = AKEYCODE_DPAD_UP;
+	m_keyBinds[1].value  = AKEYCODE_DPAD_LEFT;
+	m_keyBinds[2].value  = AKEYCODE_DPAD_DOWN;
+	m_keyBinds[3].value  = AKEYCODE_DPAD_RIGHT;
+	m_keyBinds[4].value  = AKEYCODE_DPAD_CENTER; // lmao, how stupid.
 	m_keyBinds[10].value = AKEYCODE_BUTTON_L1;
 	m_keyBinds[11].value = AKEYCODE_BUTTON_R1;
 	m_keyBinds[12].value = AKEYCODE_DPAD_DOWN;
