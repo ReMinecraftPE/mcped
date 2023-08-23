@@ -61,6 +61,7 @@ void drawArrayVTC(GLuint buffer, int count, int stride);
 #define glTexCoordPointer(a,b,c,d) do { if (Options::debugGl) { LOGI("glTexPtr @ %s:%d : %d\n",       __FILE__, __LINE__, 0);       } glTexCoordPointer(a,b,c,d);       } while (0)
 #define glColorPointer(a,b,c,d)    do { if (Options::debugGl) { LOGI("glColorPtr @ %s:%d : %d\n",     __FILE__, __LINE__, 0);       } glColorPointer(a,b,c,d);          } while (0)
 #define glDrawArrays(a,b,c)        do { if (Options::debugGl) { LOGI("glDrawA @ %s:%d : %d\n",        __FILE__, __LINE__, b);       } glDrawArrays(a,b,c);              } while (0)
+#define glTexImage2D(...)          do { if (Options::debugGl) { LOGI("glTexImage2D @ %s:%d : %d\n",   __FILE__, __LINE__, 0);       } glTexImage2D(__VA_ARGS__);        } while (0)
 #define glTexSubImage2D(a,b,...)   do { if (Options::debugGl) { LOGI("glTexSubImage2D @ %s:%d : %d\n",__FILE__, __LINE__, b);       } glTexSubImage2D(a,b,__VA_ARGS__); } while (0)
 #define glTexParameteri(a,b,c)     do { if (Options::debugGl) { LOGI("glTexParameteri @ %s:%d : %d\n",__FILE__, __LINE__, c);       } glTexParameteri(a,b,c);           } while (0)
 

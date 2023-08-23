@@ -25,59 +25,6 @@ int Textures::loadTexture(const std::string& name, bool b)
 	return result;
 }
 
-int Textures::assignTexture(const std::string& name, Texture& texture)
-{
-	GLuint textureID = 0;
-
-	glGenTextures(1, &textureID);
-	if (textureID != m_currBoundTex)
-	{
-		glBindTexture(GL_TEXTURE_2D, textureID);
-		m_currBoundTex = textureID;
-	}
-
-	if (MIPMAP)
-	{
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	}
-	else
-	{
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	}
-
-	if (field_39)
-	{
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	}
-
-	if (field_38)
-	{
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	}
-	else
-	{
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	}
-
-	GLuint internalFormat = GL_RGB;
-
-	if (texture.field_C)
-		internalFormat = GL_RGBA;
-
-	glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, texture.m_width, texture.m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texture.m_pixels);
-
-	m_textures[name] = textureID;
-
-	m_textureData[textureID] = TextureData(textureID, texture);
-
-	return textureID;
-}
-
 void Textures::clear()
 {
 	// note: Textures::clear() does not touch the dynamic textures vector
@@ -109,33 +56,6 @@ Textures::~Textures()
 	m_dynamicTextures.clear();
 }
 
-void Textures::tick()
-{
-	// tick dynamic textures here
-	for (auto pDynaTex : m_dynamicTextures)
-	{
-		pDynaTex->bindTexture(this);
-		pDynaTex->tick();
-
-		for (int x = 0; x < pDynaTex->m_textureSize; x++)
-		{
-			for (int y = 0; y < pDynaTex->m_textureSize; y++)
-			{
-				// texture is already bound so this is fine:
-				glTexSubImage2D(
-					GL_TEXTURE_2D,
-					0,
-					16 * (x + pDynaTex->m_textureIndex % 16),
-					16 * (y + pDynaTex->m_textureIndex / 16),
-					16, 16,
-					GL_RGBA,
-					GL_UNSIGNED_BYTE,
-					pDynaTex->m_pixels
-				);
-			}
-		}
-	}
-}
 
 int Textures::loadAndBindTexture(const std::string& name)
 {
@@ -150,10 +70,79 @@ int Textures::loadAndBindTexture(const std::string& name)
 	return id;
 }
 
-void Textures::addDynamicTexture(DynamicTexture* pTexture)
+int Textures::assignTexture(const std::string& name, Texture& texture)
 {
+	GLuint textureID = 0;
+
+	glGenTextures(1, &textureID);
+	if (textureID != m_currBoundTex) {
+		glBindTexture(GL_TEXTURE_2D, textureID);
+		m_currBoundTex = textureID;
+	}
+
+	if (MIPMAP) {
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR); // LINE 84
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	} else {
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	}
+	if (field_39) {
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	}
+
+	if (field_38) {
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	} else {
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	}
+
+	GLuint internalFormat = GL_RGB;
+	if (texture.field_C)
+		internalFormat = GL_RGBA;
+	glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, texture.m_width, texture.m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texture.m_pixels);
+
+	m_textures[name] = textureID;
+
+	m_textureData[textureID] = TextureData(textureID, texture);
+
+	return textureID;
+}
+
+void Textures::addDynamicTexture(DynamicTexture* pTexture) {
 	m_dynamicTextures.push_back(pTexture);
 	pTexture->tick();
+}
+
+void Textures::tick()
+{
+	// tick dynamic textures here
+	for (auto pDynaTex : m_dynamicTextures)
+	{
+		pDynaTex->bindTexture(this);
+		pDynaTex->tick();
+
+		for (int x = 0; x < pDynaTex->m_textureSize; x++)
+		{
+			for (int y = 0; y < pDynaTex->m_textureSize; y++)
+			{
+				// texture is already bound so this is fine:
+				glTexSubImage2D(  // line 133
+					GL_TEXTURE_2D,
+					0,
+					16 * (x + pDynaTex->m_textureIndex % 16),
+					16 * (y + pDynaTex->m_textureIndex / 16),
+					16, 16,
+					GL_RGBA,
+					GL_UNSIGNED_BYTE,
+					pDynaTex->m_pixels
+				);
+			}
+		}
+	}
 }
 
 Texture* Textures::getTemporaryTextureData(GLuint id)
