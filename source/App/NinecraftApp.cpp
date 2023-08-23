@@ -42,19 +42,6 @@ bool NinecraftApp::handleBack(bool b)
 	return true;
 }
 
-void NinecraftApp::initGLStates()
-{
-	GL_TEXTURE_2D;
-
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LEQUAL);
-	glEnable(GL_ALPHA_TEST);
-	glAlphaFunc(GL_GREATER, 0.1f);
-	glCullFace(GL_NONE);
-	glEnable(GL_TEXTURE_2D);
-	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
-}
-
 void NinecraftApp::init()
 {
 	Mth::initMth();
@@ -134,4 +121,56 @@ void NinecraftApp::updateStats()
 NinecraftApp::~NinecraftApp()
 {
 	teardown();
+}
+
+// empty space
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void NinecraftApp::initGLStates()
+{
+	glEnable(GL_DEPTH_TEST); // line 168
+	glDepthFunc(GL_LEQUAL);
+	glEnable(GL_ALPHA_TEST);
+	glAlphaFunc(GL_GREATER, 0.1f);
+	glCullFace(GL_BACK);
+
+	glEnable(GL_TEXTURE_2D);
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
 }

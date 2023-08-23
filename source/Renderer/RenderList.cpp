@@ -26,6 +26,70 @@ RenderList::~RenderList()
 		delete[] field_10;
 }
 
+void RenderList::init(float x, float y, float z)
+{
+	m_posX = x;
+	m_posY = y;
+	m_posZ = z;
+	field_14 = 0;
+	field_18 = true;
+}
+
+void RenderList::render()
+{
+	if (!field_18) return;
+
+	if (!field_19)
+	{
+		field_19 = true;
+		field_1C = field_14;
+		field_14 = 0;
+	}
+
+	if (field_14 < field_1C)
+	{
+		glPushMatrix(); // line 51
+		glTranslatef(-m_posX, -m_posY, -m_posZ);
+
+		renderChunks();
+
+
+
+
+		//@HUH: why is this all the way on line 60?
+		glPopMatrix();
+	}
+}
+
+void RenderList::renderChunks()
+{
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+	if (field_1C > 0)
+	{
+		for (int i = 0; i < field_1C; i++)
+		{
+			RenderChunk& chk = field_10[i];
+			glPushMatrix();
+			glTranslatef(chk.field_C, chk.field_10, chk.field_14);
+			xglBindBuffer(GL_ARRAY_BUFFER, chk.field_0);
+
+			glVertexPointer  (3, GL_FLOAT,         sizeof(Tesselator::Vertex), (void*)offsetof(Tesselator::Vertex, m_x));
+			glTexCoordPointer(2, GL_FLOAT,         sizeof(Tesselator::Vertex), (void*)offsetof(Tesselator::Vertex, m_u));
+			glColorPointer   (4, GL_UNSIGNED_BYTE, sizeof(Tesselator::Vertex), (void*)offsetof(Tesselator::Vertex, m_color));
+
+			glDrawArrays(GL_TRIANGLES, 0, chk.field_4);
+
+			glPopMatrix();
+		}
+	}
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_COLOR_ARRAY);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+}
+
 void RenderList::add(int x)
 {
 	// @BUG: If too many chunks are rendered, this has the potential to overflow.
@@ -65,62 +129,4 @@ void RenderList::clear()
 {
 	field_18 = false;
 	field_19 = false;
-}
-
-void RenderList::init(float x, float y, float z)
-{
-	m_posX = x;
-	m_posY = y;
-	m_posZ = z;
-	field_14 = 0;
-	field_18 = true;
-}
-
-void RenderList::render()
-{
-	if (!field_18) return;
-
-	if (!field_19)
-	{
-		field_19 = true;
-		field_1C = field_14;
-		field_14 = 0;
-	}
-
-	if (field_14 < field_1C)
-	{
-		glPushMatrix();
-		glTranslatef(-m_posX, -m_posY, -m_posZ);
-		renderChunks();
-		glPopMatrix();
-	}
-}
-
-void RenderList::renderChunks()
-{
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_COLOR_ARRAY);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-
-	if (field_1C > 0)
-	{
-		for (int i = 0; i < field_1C; i++)
-		{
-			RenderChunk& chk = field_10[i];
-			glPushMatrix();
-
-			glTranslatef(chk.field_C, chk.field_10, chk.field_14);
-			xglBindBuffer(GL_ARRAY_BUFFER, chk.field_0);
-			glVertexPointer  (3, GL_FLOAT,         sizeof(Tesselator::Vertex), (void*)offsetof(Tesselator::Vertex, m_x));
-			glTexCoordPointer(2, GL_FLOAT,         sizeof(Tesselator::Vertex), (void*)offsetof(Tesselator::Vertex, m_u));
-			glColorPointer   (4, GL_UNSIGNED_BYTE, sizeof(Tesselator::Vertex), (void*)offsetof(Tesselator::Vertex, m_color));
-			glDrawArrays(GL_TRIANGLES, 0, chk.field_4);
-
-			glPopMatrix();
-		}
-	}
-
-	glDisableClientState(GL_VERTEX_ARRAY);
-	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 }
