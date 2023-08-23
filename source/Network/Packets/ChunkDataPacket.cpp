@@ -7,7 +7,7 @@
  ********************************************************************/
 
 #include "Packet.hpp"
-#include "LevelChunk.hpp"
+#include "world/level/levelgen/chunk/LevelChunk.hpp"
 
 void ChunkDataPacket::handle(const RakNet::RakNetGUID& guid, NetEventCallback* pCallback)
 {

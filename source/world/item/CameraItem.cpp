@@ -8,7 +8,7 @@
 
 #include "Item.hpp"
 #include "TripodCamera.hpp"
-#include "Level.hpp"
+#include "world/level/Level.hpp"
 #include "Player.hpp"
 
 CameraItem::CameraItem(int id) : Item(id)

@@ -16,7 +16,7 @@
 #include "client/renderer/GameRenderer.hpp"
 #include "client/renderer/LevelRenderer.hpp"
 #include "client/renderer/entity/EntityRenderDispatcher.hpp"
-#include "Level.hpp"
+#include "world/level/Level.hpp"
 #include "CThread.hpp"
 #include "LocalPlayer.hpp"
 #include "SurvivalMode.hpp"

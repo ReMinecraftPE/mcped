@@ -7,7 +7,7 @@
  ********************************************************************/
 
 #include "RandomLevelSource.hpp"
-#include "Level.hpp"
+#include "world/level/Level.hpp"
 
 const float RandomLevelSource::SNOW_CUTOFF = 0.5f;
 const float RandomLevelSource::SNOW_SCALE  = 0.3f;

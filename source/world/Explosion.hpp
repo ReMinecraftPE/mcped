@@ -9,7 +9,7 @@
 #pragma once
 
 #include <set>
-#include "Level.hpp"
+#include "world/level/Level.hpp"
 #include "Entity.hpp"
 
 class Explosion

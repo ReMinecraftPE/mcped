@@ -38,12 +38,9 @@
     <ClInclude Include="..\source\Base\AABB.hpp" />
     <ClInclude Include="..\source\Base\CThread.hpp" />
     <ClInclude Include="..\source\Base\HitResult.hpp" />
-    <ClInclude Include="..\source\Base\ImprovedNoise.hpp" />
     <ClInclude Include="..\source\Base\Matrix.hpp" />
     <ClInclude Include="..\source\Base\Mth.hpp" />
-    <ClInclude Include="..\source\Base\PerlinNoise.hpp" />
     <ClInclude Include="..\source\Base\Random.hpp" />
-    <ClInclude Include="..\source\Base\Synth.hpp" />
     <ClInclude Include="..\source\Base\Timer.hpp" />
     <ClInclude Include="..\source\Base\Util.hpp" />
     <ClInclude Include="..\source\Base\Utils.hpp" />
@@ -123,7 +120,6 @@
     <ClInclude Include="..\source\UserInput\Mouse.hpp" />
     <ClInclude Include="..\source\UserInput\MouseTurnInput.hpp" />
     <ClInclude Include="..\source\UserInput\User.hpp" />
-    <ClInclude Include="..\source\world\Dimension.hpp" />
     <ClInclude Include="..\source\world\entity\Entity.hpp" />
     <ClInclude Include="..\source\world\entity\FallingTile.hpp" />
     <ClInclude Include="..\source\world\entity\ItemEntity.hpp" />
@@ -134,7 +130,6 @@
     <ClInclude Include="..\source\world\entity\Player.hpp" />
     <ClInclude Include="..\source\world\entity\PrimedTnt.hpp" />
     <ClInclude Include="..\source\world\entity\TripodCamera.hpp" />
-    <ClInclude Include="..\source\world\Explosion.hpp" />
     <ClInclude Include="..\source\world\generator\Biome.hpp" />
     <ClInclude Include="..\source\world\generator\BiomeSource.hpp" />
     <ClInclude Include="..\source\world\generator\ChunkCache.hpp" />
@@ -147,17 +142,32 @@
     <ClInclude Include="..\source\world\generator\TestChunkSource.hpp" />
     <ClInclude Include="..\source\world\item\Item.hpp" />
     <ClInclude Include="..\source\world\item\ItemInstance.hpp" />
-    <ClInclude Include="..\source\world\Level.hpp" />
-    <ClInclude Include="..\source\world\LevelChunk.hpp" />
     <ClInclude Include="..\source\world\LevelData.hpp" />
-    <ClInclude Include="..\source\world\LevelListener.hpp" />
+    <ClInclude Include="..\source\world\level\Dimension.hpp" />
+    <ClInclude Include="..\source\world\level\Level.hpp" />
+    <ClInclude Include="..\source\world\level\levelgen\biome\Biome.hpp" />
+    <ClInclude Include="..\source\world\level\levelgen\biome\BiomeSource.hpp" />
+    <ClInclude Include="..\source\world\level\levelgen\chunk\ChunkCache.hpp" />
+    <ClInclude Include="..\source\world\level\levelgen\chunk\ChunkSource.hpp" />
+    <ClInclude Include="..\source\world\level\levelgen\chunk\LevelChunk.hpp" />
+    <ClInclude Include="..\source\world\level\levelgen\chunk\PerformanceTestChunkSource.hpp" />
+    <ClInclude Include="..\source\world\level\levelgen\chunk\RandomLevelSource.hpp" />
+    <ClInclude Include="..\source\world\level\levelgen\chunk\TestChunkSource.hpp" />
+    <ClInclude Include="..\source\world\level\levelgen\feature\Feature.hpp" />
+    <ClInclude Include="..\source\world\level\levelgen\feature\LargeCaveFeature.hpp" />
+    <ClInclude Include="..\source\world\level\levelgen\feature\LargeFeature.hpp" />
+    <ClInclude Include="..\source\world\level\levelgen\synth\ImprovedNoise.hpp" />
+    <ClInclude Include="..\source\world\level\levelgen\synth\PerlinNoise.hpp" />
+    <ClInclude Include="..\source\world\level\levelgen\synth\Synth.hpp" />
+    <ClInclude Include="..\source\world\level\LevelListener.hpp" />
+    <ClInclude Include="..\source\world\level\Region.hpp" />
+    <ClInclude Include="..\source\world\level\RegionFile.hpp" />
+    <ClInclude Include="..\source\world\level\TickNextTickData.hpp" />
     <ClInclude Include="..\source\world\LightLayer.hpp" />
     <ClInclude Include="..\source\world\LightUpdate.hpp" />
     <ClInclude Include="..\source\world\Material.hpp" />
     <ClInclude Include="..\source\world\particle\Particle.hpp" />
     <ClInclude Include="..\source\world\particle\ParticleEngine.hpp" />
-    <ClInclude Include="..\source\world\Region.hpp" />
-    <ClInclude Include="..\source\world\RegionFile.hpp" />
     <ClInclude Include="..\source\world\storage\ChunkStorage.hpp" />
     <ClInclude Include="..\source\world\storage\ExternalFileLevelStorage.hpp" />
     <ClInclude Include="..\source\world\storage\ExternalFileLevelStorageSource.hpp" />
@@ -167,7 +177,6 @@
     <ClInclude Include="..\source\world\storage\MemoryChunkStorage.hpp" />
     <ClInclude Include="..\source\world\storage\MemoryLevelStorage.hpp" />
     <ClInclude Include="..\source\world\storage\MemoryLevelStorageSource.hpp" />
-    <ClInclude Include="..\source\world\TickNextTickData.hpp" />
     <ClInclude Include="..\source\world\tile\Tile.hpp" />
     <ClInclude Include="..\thirdparty\raknet\AutopatcherPatchContext.h" />
     <ClInclude Include="..\thirdparty\raknet\AutopatcherRepositoryInterface.h" />
@@ -336,12 +345,9 @@
     <ClCompile Include="..\source\Base\AABB.cpp" />
     <ClCompile Include="..\source\Base\CThread.cpp" />
     <ClCompile Include="..\source\Base\HitResult.cpp" />
-    <ClCompile Include="..\source\Base\ImprovedNoise.cpp" />
     <ClCompile Include="..\source\Base\Matrix.cpp" />
     <ClCompile Include="..\source\Base\Mth.cpp" />
-    <ClCompile Include="..\source\Base\PerlinNoise.cpp" />
     <ClCompile Include="..\source\Base\Random.cpp" />
-    <ClCompile Include="..\source\Base\Synth.cpp" />
     <ClCompile Include="..\source\Base\Timer.cpp" />
     <ClCompile Include="..\source\Base\Util.cpp" />
     <ClCompile Include="..\source\Base\Utils.cpp" />
@@ -429,7 +435,6 @@
     <ClCompile Include="..\source\UserInput\KeyboardInput.cpp" />
     <ClCompile Include="..\source\UserInput\Mouse.cpp" />
     <ClCompile Include="..\source\UserInput\MouseTurnInput.cpp" />
-    <ClCompile Include="..\source\world\Dimension.cpp" />
     <ClCompile Include="..\source\world\entity\Entity.cpp" />
     <ClCompile Include="..\source\world\entity\FallingTile.cpp" />
     <ClCompile Include="..\source\world\entity\ItemEntity.cpp" />
@@ -441,35 +446,42 @@
     <ClCompile Include="..\source\world\entity\PrimedTnt.cpp" />
     <ClCompile Include="..\source\world\entity\TripodCamera.cpp" />
     <ClCompile Include="..\source\world\Explosion.cpp" />
-    <ClCompile Include="..\source\world\generator\Biome.cpp" />
-    <ClCompile Include="..\source\world\generator\BiomeSource.cpp" />
-    <ClCompile Include="..\source\world\generator\BirchFeature.cpp" />
-    <ClCompile Include="..\source\world\generator\ChunkCache.cpp" />
-    <ClCompile Include="..\source\world\generator\ChunkSource.cpp" />
-    <ClCompile Include="..\source\world\generator\ClayFeature.cpp" />
-    <ClCompile Include="..\source\world\generator\Feature.cpp" />
-    <ClCompile Include="..\source\world\generator\FlowerFeature.cpp" />
-    <ClCompile Include="..\source\world\generator\LargeCaveFeature.cpp" />
-    <ClCompile Include="..\source\world\generator\LargeFeature.cpp" />
-    <ClCompile Include="..\source\world\generator\OreFeature.cpp" />
-    <ClCompile Include="..\source\world\generator\PerformanceTestChunkSource.cpp" />
-    <ClCompile Include="..\source\world\generator\PineFeature.cpp" />
-    <ClCompile Include="..\source\world\generator\RandomLevelSource.cpp" />
-    <ClCompile Include="..\source\world\generator\ReedsFeature.cpp" />
-    <ClCompile Include="..\source\world\generator\SpringFeature.cpp" />
-    <ClCompile Include="..\source\world\generator\SpruceFeature.cpp" />
-    <ClCompile Include="..\source\world\generator\TestChunkSource.cpp" />
-    <ClCompile Include="..\source\world\generator\TreeFeature.cpp" />
     <ClCompile Include="..\source\world\item\CameraItem.cpp" />
     <ClCompile Include="..\source\world\item\DoorItem.cpp" />
     <ClCompile Include="..\source\world\item\Item.cpp" />
     <ClCompile Include="..\source\world\item\ItemInstance.cpp" />
     <ClCompile Include="..\source\world\item\TileItem.cpp" />
     <ClCompile Include="..\source\world\item\TilePlanterItem.cpp" />
-    <ClCompile Include="..\source\world\Level.cpp" />
-    <ClCompile Include="..\source\world\LevelChunk.cpp" />
     <ClCompile Include="..\source\world\LevelData.cpp" />
-    <ClCompile Include="..\source\world\LevelListener.cpp" />
+    <ClCompile Include="..\source\world\level\Dimension.cpp" />
+    <ClCompile Include="..\source\world\level\Level.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\biome\Biome.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\biome\BiomeSource.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\chunk\ChunkCache.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\chunk\ChunkSource.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\chunk\LevelChunk.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\chunk\PerformanceTestChunkSource.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\chunk\RandomLevelSource.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\chunk\TestChunkSource.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\feature\BirchFeature.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\feature\ClayFeature.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\feature\Feature.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\feature\FlowerFeature.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\feature\LargeCaveFeature.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\feature\LargeFeature.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\feature\OreFeature.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\feature\PineFeature.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\feature\ReedsFeature.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\feature\SpringFeature.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\feature\SpruceFeature.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\feature\TreeFeature.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\synth\ImprovedNoise.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\synth\PerlinNoise.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\synth\Synth.cpp" />
+    <ClCompile Include="..\source\world\level\LevelListener.cpp" />
+    <ClCompile Include="..\source\world\level\Region.cpp" />
+    <ClCompile Include="..\source\world\level\RegionFile.cpp" />
+    <ClCompile Include="..\source\world\level\TickNextTickData.cpp" />
     <ClCompile Include="..\source\world\LightLayer.cpp" />
     <ClCompile Include="..\source\world\LightUpdate.cpp" />
     <ClCompile Include="..\source\world\Material.cpp" />
@@ -482,8 +494,6 @@
     <ClCompile Include="..\source\world\particle\RedDustParticle.cpp" />
     <ClCompile Include="..\source\world\particle\SmokeParticle.cpp" />
     <ClCompile Include="..\source\world\particle\TerrainParticle.cpp" />
-    <ClCompile Include="..\source\world\Region.cpp" />
-    <ClCompile Include="..\source\world\RegionFile.cpp" />
     <ClCompile Include="..\source\world\storage\ChunkStorage.cpp" />
     <ClCompile Include="..\source\world\storage\ExternalFileLevelStorage.cpp" />
     <ClCompile Include="..\source\world\storage\ExternalFileLevelStorageSource.cpp" />
@@ -493,7 +503,6 @@
     <ClCompile Include="..\source\world\storage\MemoryChunkStorage.cpp" />
     <ClCompile Include="..\source\world\storage\MemoryLevelStorage.cpp" />
     <ClCompile Include="..\source\world\storage\MemoryLevelStorageSource.cpp" />
-    <ClCompile Include="..\source\world\TickNextTickData.cpp" />
     <ClCompile Include="..\source\world\tile\Bush.cpp" />
     <ClCompile Include="..\source\world\tile\ClayTile.cpp" />
     <ClCompile Include="..\source\world\tile\ClothTile.cpp" />
@@ -757,7 +766,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <FloatingPointModel>Precise</FloatingPointModel>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
@@ -773,7 +782,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <FloatingPointModel>Precise</FloatingPointModel>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
@@ -791,7 +800,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <FloatingPointModel>Precise</FloatingPointModel>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
@@ -809,7 +818,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <FloatingPointModel>Precise</FloatingPointModel>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
@@ -825,7 +834,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <FloatingPointModel>Precise</FloatingPointModel>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
@@ -843,7 +852,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <FloatingPointModel>Precise</FloatingPointModel>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>

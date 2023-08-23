@@ -40,9 +40,6 @@
     <Filter Include="Source Files\World">
       <UniqueIdentifier>{8755149a-86fd-439e-a310-edd8521013c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\World\Generator">
-      <UniqueIdentifier>{c77ef4c0-637a-4b10-9c83-6d8f76fd7c74}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\World\Storage">
       <UniqueIdentifier>{4e39ecb8-310a-4b43-ac3a-aeb593a11678}</UniqueIdentifier>
     </Filter>
@@ -100,9 +97,6 @@
     <Filter Include="Source Files\World\Particle">
       <UniqueIdentifier>{25e70004-24c5-45ab-b162-a66774ab102a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\World\Generator\Features">
-      <UniqueIdentifier>{4df57bad-28a3-4b35-9ba1-b964c0ae9c52}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Sound">
       <UniqueIdentifier>{6c5a6ef7-1c6f-405d-823b-5411ba6d727e}</UniqueIdentifier>
     </Filter>
@@ -133,6 +127,27 @@
     <Filter Include="Source Files\client\renderer\entity">
       <UniqueIdentifier>{95549786-8322-493e-8261-24e926132fa3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\world2">
+      <UniqueIdentifier>{a9ff5ba7-dfe3-4633-9eaa-ddb9b32958cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world2\level">
+      <UniqueIdentifier>{94ee8b42-29fe-4e4a-b051-f0f37c6d0155}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world2\level\levelgen">
+      <UniqueIdentifier>{f861023c-bd5e-4799-8c9f-73693e61a580}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world2\level\levelgen\synth">
+      <UniqueIdentifier>{d9d88cdc-70fb-44ba-8638-5fbe81e46e05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world2\level\levelgen\chunk">
+      <UniqueIdentifier>{2a5a0841-6249-4938-9055-59dbe17acb84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world2\level\levelgen\biome">
+      <UniqueIdentifier>{62073b0e-c513-45c9-9e03-de2c13154581}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world2\level\levelgen\feature">
+      <UniqueIdentifier>{c54de600-9c7e-4566-8484-655c03321d43}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\Options.cpp">
@@ -162,19 +177,10 @@
     <ClCompile Include="..\source\Base\HitResult.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\Base\ImprovedNoise.cpp">
-      <Filter>Source Files\Base</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\Base\Mth.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\Base\PerlinNoise.cpp">
-      <Filter>Source Files\Base</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\Base\Random.cpp">
-      <Filter>Source Files\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Base\Synth.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
     <ClCompile Include="..\source\Base\Timer.cpp">
@@ -213,21 +219,6 @@
     <ClCompile Include="..\source\UserInput\Keyboard.cpp">
       <Filter>Source Files\User Input</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\World\Generator\Biome.cpp">
-      <Filter>Source Files\World\Generator</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Generator\BiomeSource.cpp">
-      <Filter>Source Files\World\Generator</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Generator\ChunkCache.cpp">
-      <Filter>Source Files\World\Generator</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Generator\ChunkSource.cpp">
-      <Filter>Source Files\World\Generator</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Generator\PerformanceTestChunkSource.cpp">
-      <Filter>Source Files\World\Generator</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\World\Storage\ChunkStorage.cpp">
       <Filter>Source Files\World\Storage</Filter>
     </ClCompile>
@@ -258,19 +249,7 @@
     <ClCompile Include="..\source\World\Material.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\World\Dimension.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Level.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\LevelChunk.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\World\LevelData.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\LevelListener.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
     <ClCompile Include="..\source\World\LightLayer.cpp">
@@ -375,9 +354,6 @@
     <ClCompile Include="..\source\World\Item\TileItem.cpp">
       <Filter>Source Files\World\Item</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\World\Generator\TestChunkSource.cpp">
-      <Filter>Source Files\World\Generator</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\UserInput\ITurnInput.cpp">
       <Filter>Source Files\User Input</Filter>
     </ClCompile>
@@ -474,41 +450,11 @@
     <ClCompile Include="..\source\World\Tile\TntTile.cpp">
       <Filter>Source Files\World\Tile</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\World\Generator\RandomLevelSource.cpp">
-      <Filter>Source Files\World\Generator</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Generator\TreeFeature.cpp">
-      <Filter>Source Files\World\Generator\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Generator\Feature.cpp">
-      <Filter>Source Files\World\Generator\Features</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\World\Tile\DoorTile.cpp">
       <Filter>Source Files\World\Tile</Filter>
     </ClCompile>
     <ClCompile Include="..\source\World\Item\DoorItem.cpp">
       <Filter>Source Files\World\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Generator\BirchFeature.cpp">
-      <Filter>Source Files\World\Generator\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Generator\SpruceFeature.cpp">
-      <Filter>Source Files\World\Generator\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Generator\PineFeature.cpp">
-      <Filter>Source Files\World\Generator\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Generator\OreFeature.cpp">
-      <Filter>Source Files\World\Generator</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Generator\ClayFeature.cpp">
-      <Filter>Source Files\World\Generator\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Generator\FlowerFeature.cpp">
-      <Filter>Source Files\World\Generator\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Generator\SpringFeature.cpp">
-      <Filter>Source Files\World\Generator\Features</Filter>
     </ClCompile>
     <ClCompile Include="..\source\GUI\RolledSelectionList.cpp">
       <Filter>Source Files\GUI</Filter>
@@ -957,9 +903,6 @@
     <ClCompile Include="..\source\World\Entity\FallingTile.cpp">
       <Filter>Source Files\World\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\World\TickNextTickData.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
     <ClCompile Include="..\platforms\windows\AppPlatform_windows.cpp">
       <Filter>Source Files\App</Filter>
     </ClCompile>
@@ -968,9 +911,6 @@
     </ClCompile>
     <ClCompile Include="..\platforms\windows\SoundSystem_windows.cpp">
       <Filter>Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\RegionFile.cpp">
-      <Filter>Source Files\World</Filter>
     </ClCompile>
     <ClCompile Include="..\source\World\Storage\ExternalFileLevelStorage.cpp">
       <Filter>Source Files\World\Storage</Filter>
@@ -984,23 +924,11 @@
     <ClCompile Include="..\source\GUI\Screen\CreateWorldScreen.cpp">
       <Filter>Source Files\GUI\Screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\World\Generator\LargeCaveFeature.cpp">
-      <Filter>Source Files\World\Generator\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Generator\LargeFeature.cpp">
-      <Filter>Source Files\World\Generator\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Generator\ReedsFeature.cpp">
-      <Filter>Source Files\World\Generator\Features</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\client\model\Cube.cpp">
       <Filter>Source Files\client\model</Filter>
     </ClCompile>
     <ClCompile Include="..\source\client\model\PolygonQuad.cpp">
       <Filter>Source Files\client\model</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Region.cpp">
-      <Filter>Source Files\World</Filter>
     </ClCompile>
     <ClCompile Include="..\source\client\renderer\LevelRenderer.cpp">
       <Filter>Source Files\client\renderer</Filter>
@@ -1077,6 +1005,93 @@
     <ClCompile Include="..\source\client\renderer\entity\HumanoidMobRenderer.cpp">
       <Filter>Source Files\client\renderer\entity</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\world\level\Level.cpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\synth\ImprovedNoise.cpp">
+      <Filter>Source Files\world2\level\levelgen\synth</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\synth\PerlinNoise.cpp">
+      <Filter>Source Files\world2\level\levelgen\synth</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\synth\Synth.cpp">
+      <Filter>Source Files\world2\level\levelgen\synth</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\chunk\LevelChunk.cpp">
+      <Filter>Source Files\world2\level\levelgen\chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\biome\Biome.cpp">
+      <Filter>Source Files\world2\level\levelgen\biome</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\biome\BiomeSource.cpp">
+      <Filter>Source Files\world2\level\levelgen\biome</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\feature\OreFeature.cpp">
+      <Filter>Source Files\world2\level\levelgen\feature</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\feature\PineFeature.cpp">
+      <Filter>Source Files\world2\level\levelgen\feature</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\feature\ReedsFeature.cpp">
+      <Filter>Source Files\world2\level\levelgen\feature</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\feature\SpringFeature.cpp">
+      <Filter>Source Files\world2\level\levelgen\feature</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\feature\SpruceFeature.cpp">
+      <Filter>Source Files\world2\level\levelgen\feature</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\feature\TreeFeature.cpp">
+      <Filter>Source Files\world2\level\levelgen\feature</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\feature\BirchFeature.cpp">
+      <Filter>Source Files\world2\level\levelgen\feature</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\feature\ClayFeature.cpp">
+      <Filter>Source Files\world2\level\levelgen\feature</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\feature\Feature.cpp">
+      <Filter>Source Files\world2\level\levelgen\feature</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\feature\FlowerFeature.cpp">
+      <Filter>Source Files\world2\level\levelgen\feature</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\feature\LargeCaveFeature.cpp">
+      <Filter>Source Files\world2\level\levelgen\feature</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\feature\LargeFeature.cpp">
+      <Filter>Source Files\world2\level\levelgen\feature</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\chunk\ChunkSource.cpp">
+      <Filter>Source Files\world2\level\levelgen\chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\chunk\PerformanceTestChunkSource.cpp">
+      <Filter>Source Files\world2\level\levelgen\chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\chunk\RandomLevelSource.cpp">
+      <Filter>Source Files\world2\level\levelgen\chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\chunk\TestChunkSource.cpp">
+      <Filter>Source Files\world2\level\levelgen\chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\chunk\ChunkCache.cpp">
+      <Filter>Source Files\world2\level\levelgen\chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\LevelListener.cpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\Region.cpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\RegionFile.cpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\TickNextTickData.cpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\Dimension.cpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\Options.hpp">
@@ -1094,19 +1109,10 @@
     <ClInclude Include="..\source\App\NinecraftApp.hpp">
       <Filter>Header Files\App</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Base\ImprovedNoise.hpp">
-      <Filter>Header Files\Base</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\Base\Mth.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Base\PerlinNoise.hpp">
-      <Filter>Header Files\Base</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\Base\Random.hpp">
-      <Filter>Header Files\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Base\Synth.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
     <ClInclude Include="..\source\Base\Timer.hpp">
@@ -1196,19 +1202,7 @@
     <ClInclude Include="..\source\World\Tile\Tile.hpp">
       <Filter>Header Files\World\Tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\World\Dimension.hpp">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Level.hpp">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\LevelChunk.hpp">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\World\LevelData.hpp">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\LevelListener.hpp">
       <Filter>Header Files\World</Filter>
     </ClInclude>
     <ClInclude Include="..\source\World\LightLayer.hpp">
@@ -1274,9 +1268,6 @@
     <ClInclude Include="..\source\World\Item\ItemInstance.hpp">
       <Filter>Header Files\World\Item</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\World\TickNextTickData.hpp">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\World\Entity\Models\Model.hpp">
       <Filter>Header Files\World\Entity\Model</Filter>
     </ClInclude>
@@ -1294,9 +1285,6 @@
     </ClInclude>
     <ClInclude Include="..\source\World\Entity\PrimedTnt.hpp">
       <Filter>Header Files\World\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Explosion.hpp">
-      <Filter>Header Files\World</Filter>
     </ClInclude>
     <ClInclude Include="..\source\World\Generator\RandomLevelSource.hpp">
       <Filter>Header Files\World\Generator</Filter>
@@ -1862,9 +1850,6 @@
     <ClInclude Include="..\GameMods.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\World\RegionFile.hpp">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\World\Storage\ExternalFileLevelStorage.hpp">
       <Filter>Header Files\World\Storage</Filter>
     </ClInclude>
@@ -1891,9 +1876,6 @@
     </ClInclude>
     <ClInclude Include="..\source\client\model\VertexPT.hpp">
       <Filter>Source Files\client\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Region.hpp">
-      <Filter>Header Files\World</Filter>
     </ClInclude>
     <ClInclude Include="..\source\client\renderer\ItemInHandRenderer.hpp">
       <Filter>Source Files\client\renderer</Filter>
@@ -1966,6 +1948,66 @@
     </ClInclude>
     <ClInclude Include="..\source\client\renderer\entity\FallingTileRenderer.hpp">
       <Filter>Source Files\client\renderer\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\levelgen\synth\ImprovedNoise.hpp">
+      <Filter>Source Files\world2\level\levelgen\synth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\levelgen\synth\PerlinNoise.hpp">
+      <Filter>Source Files\world2\level\levelgen\synth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\levelgen\synth\Synth.hpp">
+      <Filter>Source Files\world2\level\levelgen\synth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\Level.hpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\levelgen\chunk\LevelChunk.hpp">
+      <Filter>Source Files\world2\level\levelgen\chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\levelgen\biome\Biome.hpp">
+      <Filter>Source Files\world2\level\levelgen\biome</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\levelgen\biome\BiomeSource.hpp">
+      <Filter>Source Files\world2\level\levelgen\biome</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\levelgen\feature\LargeFeature.hpp">
+      <Filter>Source Files\world2\level\levelgen\feature</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\levelgen\feature\Feature.hpp">
+      <Filter>Source Files\world2\level\levelgen\feature</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\levelgen\feature\LargeCaveFeature.hpp">
+      <Filter>Source Files\world2\level\levelgen\feature</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\levelgen\chunk\ChunkSource.hpp">
+      <Filter>Source Files\world2\level\levelgen\chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\levelgen\chunk\PerformanceTestChunkSource.hpp">
+      <Filter>Source Files\world2\level\levelgen\chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\levelgen\chunk\RandomLevelSource.hpp">
+      <Filter>Source Files\world2\level\levelgen\chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\levelgen\chunk\TestChunkSource.hpp">
+      <Filter>Source Files\world2\level\levelgen\chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\levelgen\chunk\ChunkCache.hpp">
+      <Filter>Source Files\world2\level\levelgen\chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\Dimension.hpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\LevelListener.hpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\Region.hpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\RegionFile.hpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\TickNextTickData.hpp">
+      <Filter>Source Files\world2\level</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

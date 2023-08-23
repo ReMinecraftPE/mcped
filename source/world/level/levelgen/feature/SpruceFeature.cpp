@@ -7,30 +7,27 @@
  ********************************************************************/
 
 #include "Feature.hpp"
-#include "Level.hpp"
+#include "world/level/Level.hpp"
 
-bool PineFeature::place(Level* level, Random* random, int x, int y, int z)
+bool SpruceFeature::place(Level* level, Random* random, int x, int y, int z)
 {
 	if (y <= C_MIN_Y)
 		return false;
 
-	int height = random->nextInt(5) + 7;
+	int height = random->nextInt(4) + 6;
 	if (height + y >= C_MAX_Y)
 		return false;
 
-	int x1 = height - random->nextInt(2) - 3;
-	int p1 = height - x1;
-	int x2 = 1 + random->nextInt(1 + x1);
+	int x1 = random->nextInt(2) + 1;
+	int x2 = random->nextInt(2) + 2;
 	int upperY = y + 1 + height;
-
+	
 	bool bCanPlace = true;
 	for (int i = 0, cy = y; cy <= upperY && bCanPlace; i++, cy++)
 	{
-		int range = 1;
-		if (cy - y < x1)
+		int range = x2;
+		if (x1 <= i)
 			range = 0;
-		else
-			range = x2;
 
 		for (int cx = x - range; cx <= x + range && bCanPlace; cx++)
 		{
@@ -48,7 +45,7 @@ bool PineFeature::place(Level* level, Random* random, int x, int y, int z)
 			}
 		}
 	}
-
+	
 	if (!bCanPlace)
 		return false;
 
@@ -61,7 +58,8 @@ bool PineFeature::place(Level* level, Random* random, int x, int y, int z)
 
 	level->setTileNoUpdate(x, y - 1, z, Tile::dirt->m_ID);
 
-	int range = 0;
+	int range = random->nextInt(2);
+	int b2 = 1, b3 = 0;
 
 	for (int cy = 0; cy <= height - x1; cy++)
 	{
@@ -77,23 +75,25 @@ bool PineFeature::place(Level* level, Random* random, int x, int y, int z)
 			}
 		}
 
-		if (range >= 1 && cy == y + x1 + 1)
+		if (range >= b2)
 		{
-			range--;
-			continue;
+			b2++;
+			range = b3;
+			if (b2 > x2)
+				b2 = x2;
+			b3 = 1;
 		}
-		if (range < x2)
+		else
 		{
 			range++;
-			continue;
 		}
 	}
 
-	int mheight = height - 1;
+	int mheight = height - random->nextInt(3);
 	for (int yd = 0; yd < mheight; yd++)
 	{
 		int cy = yd + y;
-
+		
 		TileID tile = level->getTile(x, cy, z);
 		if (tile == TILE_AIR || tile == Tile::leaves->m_ID)
 			level->setTileAndDataNoUpdate(x, cy, z, Tile::treeTrunk->m_ID, 1);

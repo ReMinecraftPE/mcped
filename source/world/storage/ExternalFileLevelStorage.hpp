@@ -11,7 +11,7 @@
 #include <list>
 #include "LevelStorage.hpp"
 #include "ChunkStorage.hpp"
-#include "RegionFile.hpp"
+#include "world/level/RegionFile.hpp"
 
 #ifndef DEMO
 

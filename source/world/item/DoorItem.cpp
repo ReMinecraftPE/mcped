@@ -9,7 +9,7 @@
 #include "Item.hpp"
 #include "Tile.hpp"
 #include "Player.hpp"
-#include "Level.hpp"
+#include "world/level/Level.hpp"
 
 DoorItem::DoorItem(int id, Material* pMtl) : Item(id)
 {

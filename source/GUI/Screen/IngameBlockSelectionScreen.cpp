@@ -7,7 +7,7 @@
  ********************************************************************/
 
 #include "IngameBlockSelectionScreen.hpp"
-#include "ItemRenderer.hpp"
+#include "client/renderer/entity/ItemRenderer.hpp"
 
 #define C_SLOTS_HEIGHT ((C_MAX_INVENTORY_ITEMS + 8) / 9)
 
