@@ -8,10 +8,10 @@
 
 #pragma once
 
-#include "EntityRenderer.hpp"
 #include "Tile.hpp"
-#include "TileRenderer.hpp"
 #include "TripodCamera.hpp"
+#include "EntityRenderer.hpp"
+#include "client/renderer/TileRenderer.hpp"
 
 class TripodCameraRenderer : public EntityRenderer
 {

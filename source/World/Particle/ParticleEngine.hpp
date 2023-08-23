@@ -9,7 +9,7 @@
 #pragma once
 
 #include "Level.hpp"
-#include "Textures.hpp"
+#include "client/renderer/Textures.hpp"
 #include "Particle.hpp"
 
 class ParticleEngine

@@ -8,7 +8,7 @@
 
 #include "Minecraft.hpp"
 #include "IngameBlockSelectionScreen.hpp"
-#include "ItemRenderer.hpp"
+#include "client/renderer/entity/ItemRenderer.hpp"
 
 #ifdef _WIN32
 #pragma warning(disable : 4244)

@@ -9,7 +9,7 @@
 #pragma once
 
 #include "Entity.hpp"
-#include "Tesselator.hpp"
+#include "client/renderer/Tesselator.hpp"
 
 enum eParticleTexture
 {

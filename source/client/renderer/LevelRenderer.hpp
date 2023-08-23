@@ -12,9 +12,9 @@
 #include <sstream>
 
 #include "compat/GL.hpp"
+#include "client/renderer/Textures.hpp"
+#include "client/renderer/RenderList.hpp"
 #include "LevelListener.hpp"
-#include "Textures.hpp"
-#include "RenderList.hpp"
 #include "TileRenderer.hpp"
 
 class Minecraft;

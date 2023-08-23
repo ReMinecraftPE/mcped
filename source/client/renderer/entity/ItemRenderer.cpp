@@ -7,9 +7,9 @@
  ********************************************************************/
 
 #include "ItemRenderer.hpp"
-#include "TileRenderer.hpp"
 #include "ItemEntity.hpp"
 #include "EntityRenderDispatcher.hpp"
+#include "client/renderer/TileRenderer.hpp"
 
 // @TODO: ItemSpriteRenderer. Unused relative
 TileRenderer* ItemRenderer::tileRenderer = new TileRenderer;

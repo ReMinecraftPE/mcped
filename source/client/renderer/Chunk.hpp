@@ -10,8 +10,8 @@
 
 #include "Utils.hpp"
 #include "FrustumCuller.hpp"
-#include "RenderList.hpp"
-#include "Tesselator.hpp"
+#include "client/renderer/RenderList.hpp"
+#include "client/renderer/Tesselator.hpp"
 
 class Level;
 class Entity;

@@ -9,16 +9,22 @@
 #pragma once
 
 #include "EntityRenderer.hpp"
-#include "TileRenderer.hpp"
+#include "ItemInstance.hpp"
+#include "client/renderer/TileRenderer.hpp"
 
-class TntRenderer : public EntityRenderer
+class ItemRenderer : public EntityRenderer
 {
 public:
-	TntRenderer();
+	ItemRenderer();
 
 	void render(Entity*, float, float, float, float, float) override;
+	void blitRect(Tesselator&, int, int, int, int, int);
+
+	static void blit(int, int, int, int, int, int);
+	static void renderGuiItem(Font*, Textures*, ItemInstance*, int, int, bool);
 
 public:
-	TileRenderer m_tileRenderer;
+	Random m_random;
+	static TileRenderer* tileRenderer;
 };
 
