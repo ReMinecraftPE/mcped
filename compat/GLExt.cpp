@@ -43,6 +43,14 @@ void xglInit()
 	}
 }
 
+#ifdef xglBindBuffer
+#undef xglBindBuffer
+#endif
+
+#ifdef xglGenBuffers
+#undef xglGenBuffers
+#endif
+
 void xglBindBuffer(GLenum target, GLuint buffer)
 {
 	p_glBindBuffer(target, buffer);

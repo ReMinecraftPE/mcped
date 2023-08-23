@@ -106,5 +106,8 @@ public:
 	int field_24C;
 	std::string m_playerName;
 	bool m_bServerVisibleDefault;
+
+
+	static bool debugGl;
 };
 

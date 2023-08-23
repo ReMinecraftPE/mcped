@@ -11,6 +11,8 @@
 #include "compat/AKeyCodes.hpp"
 #include "Minecraft.hpp"
 
+bool Options::debugGl = false; // for testing
+
 Options::Option
 	Options::Option::MUSIC            (0,  "options.music",          true,  false),
 	Options::Option::SOUND            (1,  "options.sound",          true,  false),
