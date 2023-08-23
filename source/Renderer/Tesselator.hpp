@@ -18,6 +18,7 @@
 #define GET_BLUE(c)  (uint8_t(((c) >> 16) & 0xFF))
 #define GET_ALPHA(c) (uint8_t(((c) >> 24) & 0xFF))
 
+//! @TYPO: The correct spelling is "Tessellator"
 class Tesselator
 {
 public:

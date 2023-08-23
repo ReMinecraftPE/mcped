@@ -14,21 +14,53 @@ int dword_2514A4 = 0;
 
 Tesselator Tesselator::instance;
 
-Tesselator::Tesselator(int allotedSize)
+void Tesselator::clear()
 {
-	m_maxVertices = allotedSize / sizeof(Vertex);
 	m_accessMode = 2;
-
-	m_pVBOs = new GLuint[m_vboCount];
-	m_pVertices = new Vertex[m_maxVertices];
+	field_4 = 0;
+	field_30 = 0;
+	field_2C = 0;
+	field_28 = 0;
 }
 
-Tesselator::~Tesselator()
+int Tesselator::getVboCount()
 {
-	if (m_pVBOs)
-		delete[] m_pVBOs;
-	if (m_pVertices)
-		delete[] m_pVertices;
+	return m_vboCount;
+}
+
+void Tesselator::begin(int drawMode)
+{
+	if (field_34 || field_28) return;
+
+	field_34 = true;
+	clear();
+	m_drawArraysMode = drawMode;
+	field_26 = 0;
+	m_bHaveColor = false;
+	m_bHaveTex = false;
+	m_bBlockColor = false;
+}
+
+void Tesselator::begin()
+{
+	begin(GL_QUADS);
+}
+
+void Tesselator::init()
+{
+	xglGenBuffers(m_vboCount, m_pVBOs); // line 51
+}
+
+void Tesselator::tex(float u, float v)
+{
+	m_nextVtxU = u;
+	m_nextVtxV = v;
+	m_bHaveTex = true;
+}
+
+void Tesselator::color(int r, int g, int b)
+{
+	color(r, g, b, 255);
 }
 
 void Tesselator::addOffset(float x, float y, float z)
@@ -38,13 +70,36 @@ void Tesselator::addOffset(float x, float y, float z)
 	m_offsetZ += z;
 }
 
-void Tesselator::clear()
+RenderChunk Tesselator::end(int vboIdx)
 {
-	m_accessMode = 2;
-	field_4 = 0;
-	field_30 = 0;
-	field_2C = 0;
-	field_28 = 0;
+	if (!field_34 || field_28)
+		return RenderChunk(); // empty render chunk
+
+	int count = field_4;
+
+	field_34 = 0;
+
+	if (count > 0)
+	{
+		field_3C++;
+		if (field_3C >= m_vboCount)
+			field_3C = 0;
+		if (vboIdx < 0)
+			vboIdx = m_pVBOs[field_3C];
+
+		xglBindBuffer(GL_ARRAY_BUFFER, vboIdx); // line 90
+		xglBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * field_2C, m_pVertices, m_accessMode == 1 ? GL_DYNAMIC_DRAW : GL_STATIC_DRAW);
+
+		field_48 += sizeof(Vertex) * field_2C;
+	}
+
+	clear();
+
+	RenderChunk rchk(vboIdx, count);
+
+	m_VboIdxToRenderChunkID[vboIdx] = rchk.m_id;
+
+	return rchk;
 }
 
 void Tesselator::color(int r, int g, int b, int a)
@@ -65,12 +120,6 @@ void Tesselator::color(int r, int g, int b, int a)
 	m_bHaveColor = true;
 	m_nextVtxColor = a << 24 | b << 16 | g << 8 | r;
 }
-
-void Tesselator::color(int r, int g, int b)
-{
-	color(r, g, b, 255);
-}
-
 void Tesselator::color(int c, int a)
 {
 	color((c >> 16) & 0xFF, (c >> 8) & 0xFF, c & 0xFF, a);
@@ -96,115 +145,6 @@ void Tesselator::color(float r, float g, float b, float a)
 	color(int(r * 255), int(g * 255), int(b * 255), int(a * 255));
 }
 
-void Tesselator::begin()
-{
-	begin(GL_QUADS);
-}
-
-void Tesselator::begin(int drawMode)
-{
-	if (field_34 || field_28) return;
-
-	field_34 = true;
-	clear();
-	m_drawArraysMode = drawMode;
-	field_26 = 0;
-	m_bHaveColor  = false;
-	m_bHaveTex    = false;
-	m_bBlockColor = false;
-}
-
-void Tesselator::draw()
-{
-	if (!field_34) return;
-	if (field_28) return;
-
-	field_34 = 0;
-
-	if (field_4 > 0)
-	{
-		field_3C++;
-		if (field_3C >= m_vboCount)
-			field_3C = 0;
-
-		xglBindBuffer(GL_ARRAY_BUFFER, m_pVBOs[field_3C]);
-		xglBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * field_2C, m_pVertices, m_accessMode == 1 ? GL_DYNAMIC_DRAW : GL_STATIC_DRAW);
-
-		if (m_bHaveTex)
-		{
-			// it won't use address 12, because we've bound a buffer object
-			glTexCoordPointer(2, GL_FLOAT, sizeof(Vertex), (void*)offsetof(Vertex, m_u));
-			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-		}
-		if (m_bHaveColor)
-		{
-			// it won't use address 12, because we've bound a buffer object
-			glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(Vertex), (void*)offsetof(Vertex, m_color));
-			glEnableClientState(GL_COLOR_ARRAY);
-		}
-
-		glVertexPointer(3, GL_FLOAT, sizeof(Vertex), (void*)offsetof(Vertex, m_x));
-		glEnableClientState(GL_VERTEX_ARRAY);
-
-		// if we want to draw quads, draw triangles actually
-		// otherwise, just pass the mode, it's fine
-		if (m_drawArraysMode == GL_QUADS)
-			glDrawArrays(GL_TRIANGLES, 0, field_4);
-		else
-			glDrawArrays(m_drawArraysMode, 0, field_4);
-
-		glDisableClientState(GL_VERTEX_ARRAY);
-		if (m_bHaveColor)
-			glDisableClientState(GL_COLOR_ARRAY);
-		if (m_bHaveTex)
-			glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	}
-
-	clear();
-}
-
-RenderChunk Tesselator::end(int vboIdx)
-{
-	if (!field_34 || field_28)
-		return RenderChunk(); // empty render chunk
-
-	int count = field_4;
-
-	field_34 = 0;
-
-	if (count > 0)
-	{
-		field_3C++;
-		if (field_3C >= m_vboCount)
-			field_3C = 0;
-		if (vboIdx < 0)
-			vboIdx = m_pVBOs[field_3C];
-
-		xglBindBuffer(GL_ARRAY_BUFFER, vboIdx);
-		xglBufferData(GL_ARRAY_BUFFER, sizeof (Vertex) * field_2C, m_pVertices, m_accessMode == 1 ? GL_DYNAMIC_DRAW : GL_STATIC_DRAW);
-
-		field_48 += sizeof (Vertex) * field_2C;
-	}
-
-	clear();
-
-	RenderChunk rchk(vboIdx, count);
-
-	m_VboIdxToRenderChunkID[vboIdx] = rchk.m_id;
-
-	return rchk;
-}
-
-int Tesselator::getVboCount()
-{
-	return m_vboCount;
-}
-
-void Tesselator::init()
-{
-	xglGenBuffers(m_vboCount, m_pVBOs);
-}
-
 void Tesselator::noColor()
 {
 	m_bBlockColor = true;
@@ -213,7 +153,12 @@ void Tesselator::noColor()
 void Tesselator::normal(float x, float y, float z)
 {
 	// don't get the point of this
+#ifdef _DEBUG
 	dword_2514A4++;
+#else
+	if ((++dword_2514A4 & 0x7FFF) == 1)
+		LOGI("WARNING: Can't use normals (Tesselator::normal)\n");
+#endif
 }
 
 void Tesselator::offset(float x, float y, float z)
@@ -226,13 +171,6 @@ void Tesselator::offset(float x, float y, float z)
 void Tesselator::setAccessMode(int mode)
 {
 	m_accessMode = mode;
-}
-
-void Tesselator::tex(float u, float v)
-{
-	m_nextVtxU = u;
-	m_nextVtxV = v;
-	m_bHaveTex = true;
 }
 
 void Tesselator::vertexUV(float x, float y, float z, float u, float v)
@@ -292,7 +230,7 @@ void Tesselator::vertex(float x, float y, float z)
 	if (!(field_4 & 3) && field_2C >= m_maxVertices - 1)
 	{
 		for (int i = 0; i < 3; i++)
-			puts("Overwriting the vertex buffer! This chunk/entity won't show up");
+			LOGI("Overwriting the vertex buffer! This chunk/entity won't show up\n");
 
 		clear();
 	}
@@ -301,4 +239,138 @@ void Tesselator::vertex(float x, float y, float z)
 void Tesselator::voidBeginAndEndCalls(bool b)
 {
 	field_28 = b;
+}
+
+Tesselator::~Tesselator()
+{
+	if (m_pVBOs)
+		delete[] m_pVBOs;
+	if (m_pVertices)
+		delete[] m_pVertices;
+}
+
+Tesselator::Tesselator(int allotedSize)
+{
+	m_maxVertices = allotedSize / sizeof(Vertex);
+	m_accessMode = 2;
+
+	m_pVBOs = new GLuint[m_vboCount];
+	m_pVertices = new Vertex[m_maxVertices];
+}
+
+// empty space because the tesselator is at line 340 for some reason
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void Tesselator::draw()
+{
+	if (!field_34) return;
+	if (field_28) return;
+
+	field_34 = 0;
+
+	if (field_4 > 0)
+	{
+		field_3C++;
+		if (field_3C >= m_vboCount)
+			field_3C = 0;
+
+		xglBindBuffer(GL_ARRAY_BUFFER, m_pVBOs[field_3C]); // anchor : line 343
+		xglBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * field_2C, m_pVertices, m_accessMode == 1 ? GL_DYNAMIC_DRAW : GL_STATIC_DRAW);
+
+		if (m_bHaveTex) {
+			glTexCoordPointer(2, GL_FLOAT, sizeof(Vertex), (void*)offsetof(Vertex, m_u));
+
+			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+		}
+		if (m_bHaveColor) {
+			glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(Vertex), (void*)offsetof(Vertex, m_color));
+
+			glEnableClientState(GL_COLOR_ARRAY);
+		}
+
+		// there must have been some kind of comment here
+
+
+
+		glVertexPointer(3, GL_FLOAT, sizeof(Vertex), (void*)offsetof(Vertex, m_x));
+		glEnableClientState(GL_VERTEX_ARRAY);
+		// if we are drawing quads, tell it to draw triangles, since we've already tessellated it
+		if (m_drawArraysMode == GL_QUADS)
+			glDrawArrays(GL_TRIANGLES, 0, field_4);
+		else
+			glDrawArrays(m_drawArraysMode, 0, field_4);
+
+		// disable the states we enabled
+		glDisableClientState(GL_VERTEX_ARRAY);
+		if (m_bHaveColor)   glDisableClientState(GL_COLOR_ARRAY);
+		if (m_bHaveTex)     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	}
+
+	clear();
 }
