@@ -8,6 +8,11 @@
 
 #include "Item.hpp"
 
+#include "TileItem.hpp"
+#include "TilePlanterItem.hpp"
+#include "DoorItem.hpp"
+#include "CameraItem.hpp"
+
 #define ITEM(x) ((x) - 256)
 
 #define NEW_ITEM(id) (new Item(ITEM(id)))

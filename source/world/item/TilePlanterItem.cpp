@@ -6,8 +6,8 @@
 	SPDX-License-Identifier: BSD-1-Clause
  ********************************************************************/
 
-#include "Item.hpp"
-#include "Tile.hpp"
+#include "TilePlanterItem.hpp"
+#include "world/tile/Tile.hpp"
 #include "world/level/Level.hpp"
 
 TilePlanterItem::TilePlanterItem(int id, int place) : Item(id)

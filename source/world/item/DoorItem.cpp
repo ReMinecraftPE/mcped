@@ -6,9 +6,9 @@
 	SPDX-License-Identifier: BSD-1-Clause
  ********************************************************************/
 
-#include "Item.hpp"
-#include "Tile.hpp"
-#include "Player.hpp"
+#include "DoorItem.hpp"
+#include "world/tile/Tile.hpp"
+#include "world/entity/Player.hpp"
 #include "world/level/Level.hpp"
 
 DoorItem::DoorItem(int id, Material* pMtl) : Item(id)

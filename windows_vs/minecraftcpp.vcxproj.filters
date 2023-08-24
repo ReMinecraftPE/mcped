@@ -1961,6 +1961,18 @@
     <ClInclude Include="..\source\client\renderer\WaterTexture.hpp">
       <Filter>Source Files\client\renderer</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\world\item\DoorItem.hpp">
+      <Filter>Source Files\world\item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\item\TileItem.hpp">
+      <Filter>Source Files\world\item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\item\TilePlanterItem.hpp">
+      <Filter>Source Files\world\item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\item\CameraItem.hpp">
+      <Filter>Source Files\world\item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\thirdparty\raknet\CMakeLists.txt">

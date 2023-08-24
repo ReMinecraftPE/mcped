@@ -6,10 +6,10 @@
 	SPDX-License-Identifier: BSD-1-Clause
  ********************************************************************/
 
-#include "Item.hpp"
-#include "TripodCamera.hpp"
+#include "CameraItem.hpp"
 #include "world/level/Level.hpp"
-#include "Player.hpp"
+#include "world/entity/TripodCamera.hpp"
+#include "world/entity/Player.hpp"
 
 CameraItem::CameraItem(int id) : Item(id)
 {
