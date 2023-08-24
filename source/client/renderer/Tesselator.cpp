@@ -6,9 +6,9 @@
 	SPDX-License-Identifier: BSD-1-Clause
  ********************************************************************/
 
-#include "compat/GL.hpp"
 #include "Tesselator.hpp"
-#include "Utils.hpp"
+#include "compat/GL.hpp"
+#include "client/common/Utils.hpp"
 
 int dword_2514A4 = 0;
 

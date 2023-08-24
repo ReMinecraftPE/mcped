@@ -7,9 +7,9 @@
  ********************************************************************/
 
 #include "Options.hpp"
-#include "Util.hpp"
-#include "compat/AKeyCodes.hpp"
 #include "Minecraft.hpp"
+#include "compat/AKeyCodes.hpp"
+#include "client/common/Util.hpp"
 
 bool Options::debugGl = false; // for testing
 

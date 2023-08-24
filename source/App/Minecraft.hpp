@@ -9,9 +9,9 @@
 #pragma once
 
 #include "App.hpp"
-#include "Mth.hpp"
-#include "Timer.hpp"
-#include "CThread.hpp"
+#include "client/math/Mth.hpp"
+#include "client/common/Timer.hpp"
+#include "client/common/CThread.hpp"
 #include "client/gui/Gui.hpp"
 #include "client/gui/Screen.hpp"
 #include "world/level/Level.hpp"

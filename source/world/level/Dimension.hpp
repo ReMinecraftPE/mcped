@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "Vec3.hpp"
+#include "world/phys/Vec3.hpp"
 #include "world/level/Level.hpp"
 #include "world/level/levelgen/biome/BiomeSource.hpp"
 #include "world/level/levelgen/chunk/ChunkSource.hpp"

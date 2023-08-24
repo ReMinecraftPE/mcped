@@ -6,10 +6,10 @@
 	SPDX-License-Identifier: BSD-1-Clause
  ********************************************************************/
 
-#include "world/level/Level.hpp"
-#include "Util.hpp"
+#include "Level.hpp"
 #include "Explosion.hpp"
 #include "Region.hpp"
+#include "client/common/Util.hpp"
 #include "world/level/levelgen/chunk/ChunkCache.hpp"
 
 Level::Level(LevelStorage* pStor, const std::string& str, TLong seed, int x) :

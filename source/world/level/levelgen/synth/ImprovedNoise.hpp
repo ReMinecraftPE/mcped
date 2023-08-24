@@ -8,8 +8,8 @@
 
 #pragma once
 
-#include "Random.hpp"
 #include "Synth.hpp"
+#include "client/math/Random.hpp"
 
 // note: appears to maybe inherit from a class called Synth?
 // the only purpose that it serves I guess is to provide

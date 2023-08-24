@@ -8,8 +8,8 @@
 
 #pragma once
 
-#include "Utils.hpp"
 #include "FrustumCuller.hpp"
+#include "client/common/Utils.hpp"
 #include "client/renderer/RenderList.hpp"
 #include "client/renderer/Tesselator.hpp"
 

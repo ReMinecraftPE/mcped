@@ -8,9 +8,9 @@
 
 #pragma once
 
-#include "Vec3.hpp"
 #include "Culler.hpp"
 #include "Frustum.hpp"
+#include "world/phys/Vec3.hpp"
 
 class FrustumCuller : public Culler
 {

@@ -20,6 +20,7 @@
 #ifdef _WIN32
 
 // @HACK: Include WinSock2.h also
+#define WIN32_LEAN_AND_MEAN
 #include <WinSock2.h>
 #include <Windows.h>
 #include <WS2tcpip.h>

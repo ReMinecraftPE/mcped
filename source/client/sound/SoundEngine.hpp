@@ -11,7 +11,7 @@
 #include "SoundSystem.hpp"
 #include "SoundRepository.hpp"
 #include "Options.hpp"
-#include "Random.hpp"
+#include "client/math/Random.hpp"
 
 // Platform specific type for the sound system.
 

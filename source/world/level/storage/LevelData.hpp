@@ -10,8 +10,8 @@
 
 #include <string>
 
-#include "Utils.hpp"
-#include "Vec3.hpp"
+#include "client/common/Utils.hpp"
+#include "world/phys/Vec3.hpp"
 #include "Inventory.hpp"
 #include "BitStream.h"
 

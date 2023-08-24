@@ -10,7 +10,7 @@
 
 #include <string>
 
-#include "Utils.hpp"
+#include "client/common/Utils.hpp"
 #include "world/level/levelgen/feature/Feature.hpp"
 #include "world/level/levelgen/synth/PerlinNoise.hpp"
 

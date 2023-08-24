@@ -7,6 +7,7 @@
  ********************************************************************/
 
 #pragma once
+#define WIN32_LEAN_AND_MEAN
 #include <string>
 #include <Windows.h>
 #include <uuids.h>

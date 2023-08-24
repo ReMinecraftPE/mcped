@@ -11,8 +11,8 @@
 #include <cstring>
 #include <vector>
 #include <algorithm>
-#include "AABB.hpp"
-#include "Utils.hpp"
+#include "client/common/Utils.hpp"
+#include "world/phys/AABB.hpp"
 #include "world/level/LightLayer.hpp"
 
 class Level;

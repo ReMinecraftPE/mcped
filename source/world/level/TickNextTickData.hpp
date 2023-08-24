@@ -7,7 +7,7 @@
  ********************************************************************/
 
 #pragma once
-#include "LongHack.hpp"
+#include "client/common/LongHack.hpp"
 
 struct TickNextTickData
 {

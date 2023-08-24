@@ -7,7 +7,7 @@
  ********************************************************************/
 
 #include "PerlinNoise.hpp"
-#include "Utils.hpp"
+#include "client/common/Utils.hpp"
 
 PerlinNoise::PerlinNoise(int nOctaves)
 {
@@ -18,12 +18,6 @@ PerlinNoise::PerlinNoise(int nOctaves)
 PerlinNoise::PerlinNoise(Random* pRandom, int nOctaves)
 {
 	m_pRandom = pRandom;
-
-	if (nOctaves == 10)
-	{
-		LogMsg("Ok");
-	}
-
 	init(nOctaves);
 }
 
