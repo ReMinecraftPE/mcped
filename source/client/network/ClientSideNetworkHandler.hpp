@@ -9,8 +9,8 @@
 #pragma once
 
 #include "NetEventCallback.hpp"
-#include "Minecraft.hpp"
 #include "RakNetInstance.hpp"
+#include "client/Minecraft.hpp"
 
 struct SBufferedBlockUpdate
 {

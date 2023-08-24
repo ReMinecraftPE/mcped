@@ -7,7 +7,7 @@
  ********************************************************************/
 
 #include "TileRenderer.hpp"
-#include "Minecraft.hpp"
+#include "client/Minecraft.hpp"
 
 TileRenderer::TileRenderer()
 {

@@ -10,13 +10,13 @@
 
 #include "SoundSystem.hpp"
 #include "SoundRepository.hpp"
-#include "Options.hpp"
+#include "client/common/Options.hpp"
 #include "client/math/Random.hpp"
 
 // Platform specific type for the sound system.
 
 #ifdef _WIN32
-#include "../../platforms/windows/SoundSystem_windows.hpp"
+#include "client/SoundSystemWindows.hpp"
 #define SOUND_SYSTEM_TYPE SoundSystemWindows
 #else
 #define SOUND_SYSTEM_TYPE SoundSystem

@@ -31,12 +31,12 @@
     <ClInclude Include="..\GameMods.hpp" />
     <ClInclude Include="..\platforms\windows\AppPlatform_windows.hpp" />
     <ClInclude Include="..\platforms\windows\SoundSystem_windows.hpp" />
-    <ClInclude Include="..\source\App\App.hpp" />
-    <ClInclude Include="..\source\App\AppPlatform.hpp" />
-    <ClInclude Include="..\source\App\Minecraft.hpp" />
-    <ClInclude Include="..\source\App\NinecraftApp.hpp" />
+    <ClInclude Include="..\source\client\App.hpp" />
+    <ClInclude Include="..\source\client\AppPlatform.hpp" />
+    <ClInclude Include="..\source\client\AppPlatform_windows.hpp" />
     <ClInclude Include="..\source\client\common\CThread.hpp" />
     <ClInclude Include="..\source\client\common\LongHack.hpp" />
+    <ClInclude Include="..\source\client\common\Options.hpp" />
     <ClInclude Include="..\source\client\common\Timer.hpp" />
     <ClInclude Include="..\source\client\common\Util.hpp" />
     <ClInclude Include="..\source\client\common\Utils.hpp" />
@@ -68,11 +68,13 @@
     <ClInclude Include="..\source\client\math\Matrix.hpp" />
     <ClInclude Include="..\source\client\math\Mth.hpp" />
     <ClInclude Include="..\source\client\math\Random.hpp" />
+    <ClInclude Include="..\source\client\Minecraft.hpp" />
     <ClInclude Include="..\source\client\model\Cube.hpp" />
     <ClInclude Include="..\source\client\model\HumanoidModel.hpp" />
     <ClInclude Include="..\source\client\model\Model.hpp" />
     <ClInclude Include="..\source\client\model\PolygonQuad.hpp" />
     <ClInclude Include="..\source\client\model\VertexPT.hpp" />
+    <ClInclude Include="..\source\client\NinecraftApp.hpp" />
     <ClInclude Include="..\source\client\player\input\Controller.hpp" />
     <ClInclude Include="..\source\client\player\input\ControllerTurnInput.hpp" />
     <ClInclude Include="..\source\client\player\input\ITurnInput.hpp" />
@@ -104,12 +106,12 @@
     <ClInclude Include="..\source\client\renderer\Texture.hpp" />
     <ClInclude Include="..\source\client\renderer\Textures.hpp" />
     <ClInclude Include="..\source\client\renderer\TileRenderer.hpp" />
+    <ClInclude Include="..\source\client\SoundSystemWindows.hpp" />
     <ClInclude Include="..\source\client\sound\SoundData.hpp" />
     <ClInclude Include="..\source\client\sound\SoundDefs.hpp" />
     <ClInclude Include="..\source\client\sound\SoundEngine.hpp" />
     <ClInclude Include="..\source\client\sound\SoundRepository.hpp" />
     <ClInclude Include="..\source\client\sound\SoundSystem.hpp" />
-    <ClInclude Include="..\source\Inventory.hpp" />
     <ClInclude Include="..\source\client\network\ClientSideNetworkHandler.hpp" />
     <ClInclude Include="..\source\client\network\MinecraftPackets.hpp" />
     <ClInclude Include="..\source\client\network\NetEventCallback.hpp" />
@@ -117,7 +119,6 @@
     <ClInclude Include="..\source\client\network\PingedCompatibleServer.hpp" />
     <ClInclude Include="..\source\client\network\RakNetInstance.hpp" />
     <ClInclude Include="..\source\client\network\ServerSideNetworkHandler.hpp" />
-    <ClInclude Include="..\source\Options.hpp" />
     <ClInclude Include="..\source\world\entity\Entity.hpp" />
     <ClInclude Include="..\source\world\entity\FallingTile.hpp" />
     <ClInclude Include="..\source\world\entity\ItemEntity.hpp" />
@@ -128,6 +129,7 @@
     <ClInclude Include="..\source\world\entity\TripodCamera.hpp" />
     <ClInclude Include="..\source\world\gamemode\GameMode.hpp" />
     <ClInclude Include="..\source\world\gamemode\SurvivalMode.hpp" />
+    <ClInclude Include="..\source\world\item\Inventory.hpp" />
     <ClInclude Include="..\source\world\item\Item.hpp" />
     <ClInclude Include="..\source\world\item\ItemInstance.hpp" />
     <ClInclude Include="..\source\world\level\Dimension.hpp" />
@@ -327,14 +329,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\compat\GLExt.cpp" />
-    <ClCompile Include="..\platforms\windows\AppPlatform_windows.cpp" />
-    <ClCompile Include="..\platforms\windows\main.cpp" />
-    <ClCompile Include="..\platforms\windows\SoundSystem_windows.cpp" />
-    <ClCompile Include="..\source\App\App.cpp" />
-    <ClCompile Include="..\source\App\AppPlatform.cpp" />
-    <ClCompile Include="..\source\App\Minecraft.cpp" />
-    <ClCompile Include="..\source\App\NinecraftApp.cpp" />
+    <ClCompile Include="..\source\client\App.cpp" />
+    <ClCompile Include="..\source\client\AppPlatform.cpp" />
+    <ClCompile Include="..\source\client\AppPlatform_windows.cpp" />
     <ClCompile Include="..\source\client\common\CThread.cpp" />
+    <ClCompile Include="..\source\client\common\Options.cpp" />
     <ClCompile Include="..\source\client\common\Timer.cpp" />
     <ClCompile Include="..\source\client\common\Util.cpp" />
     <ClCompile Include="..\source\client\common\Utils.cpp" />
@@ -363,13 +362,16 @@
     <ClCompile Include="..\source\client\gui\screens\SavingWorldScreen.cpp" />
     <ClCompile Include="..\source\client\gui\screens\SelectWorldScreen.cpp" />
     <ClCompile Include="..\source\client\gui\screens\StartMenuScreen.cpp" />
+    <ClCompile Include="..\source\client\main_windows.cpp" />
     <ClCompile Include="..\source\client\math\Matrix.cpp" />
     <ClCompile Include="..\source\client\math\Mth.cpp" />
     <ClCompile Include="..\source\client\math\Random.cpp" />
+    <ClCompile Include="..\source\client\Minecraft.cpp" />
     <ClCompile Include="..\source\client\model\Cube.cpp" />
     <ClCompile Include="..\source\client\model\HumanoidModel.cpp" />
     <ClCompile Include="..\source\client\model\Model.cpp" />
     <ClCompile Include="..\source\client\model\PolygonQuad.cpp" />
+    <ClCompile Include="..\source\client\NinecraftApp.cpp" />
     <ClCompile Include="..\source\client\player\input\Controller.cpp" />
     <ClCompile Include="..\source\client\player\input\ControllerTurnInput.cpp" />
     <ClCompile Include="..\source\client\player\input\ITurnInput.cpp" />
@@ -401,11 +403,11 @@
     <ClCompile Include="..\source\client\renderer\TileRenderer.cpp" />
     <ClCompile Include="..\source\client\renderer\WaterSideTexture.cpp" />
     <ClCompile Include="..\source\client\renderer\WaterTexture.cpp" />
+    <ClCompile Include="..\source\client\SoundSystemWindows.cpp" />
     <ClCompile Include="..\source\client\sound\SoundData.cpp" />
     <ClCompile Include="..\source\client\sound\SoundEngine.cpp" />
     <ClCompile Include="..\source\client\sound\SoundRepository.cpp" />
     <ClCompile Include="..\source\client\sound\SoundSystem.cpp" />
-    <ClCompile Include="..\source\Inventory.cpp" />
     <ClCompile Include="..\source\client\network\ClientSideNetworkHandler.cpp" />
     <ClCompile Include="..\source\client\network\MinecraftPackets.cpp" />
     <ClCompile Include="..\source\client\network\NetEventCallback.cpp" />
@@ -423,7 +425,6 @@
     <ClCompile Include="..\source\client\network\packets\UpdateBlockPacket.cpp" />
     <ClCompile Include="..\source\client\network\RakNetInstance.cpp" />
     <ClCompile Include="..\source\client\network\ServerSideNetworkHandler.cpp" />
-    <ClCompile Include="..\source\Options.cpp" />
     <ClCompile Include="..\source\world\entity\Entity.cpp" />
     <ClCompile Include="..\source\world\entity\FallingTile.cpp" />
     <ClCompile Include="..\source\world\entity\ItemEntity.cpp" />
@@ -436,6 +437,7 @@
     <ClCompile Include="..\source\world\gamemode\SurvivalMode.cpp" />
     <ClCompile Include="..\source\world\item\CameraItem.cpp" />
     <ClCompile Include="..\source\world\item\DoorItem.cpp" />
+    <ClCompile Include="..\source\world\item\Inventory.cpp" />
     <ClCompile Include="..\source\world\item\Item.cpp" />
     <ClCompile Include="..\source\world\item\ItemInstance.cpp" />
     <ClCompile Include="..\source\world\item\TileItem.cpp" />

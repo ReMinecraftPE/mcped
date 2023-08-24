@@ -7,7 +7,7 @@
  ********************************************************************/
 
 #include "SurvivalMode.hpp"
-#include "Minecraft.hpp"
+#include "client/Minecraft.hpp"
 
 SurvivalMode::SurvivalMode(Minecraft* pMC) : GameMode(pMC)
 {

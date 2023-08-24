@@ -7,7 +7,7 @@
  ********************************************************************/
 
 #include "LevelRenderer.hpp"
-#include "Minecraft.hpp"
+#include "client/Minecraft.hpp"
 
 LevelRenderer::LevelRenderer(Minecraft* pMC, Textures* pTexs)
 {

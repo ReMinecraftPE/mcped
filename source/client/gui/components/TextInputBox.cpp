@@ -7,7 +7,8 @@
  ********************************************************************/
 
 #include "TextInputBox.hpp"
-#include "Minecraft.hpp"
+#include "client/Minecraft.hpp"
+
 #ifndef ORIGINAL_CODE
 
 TextInputBox::TextInputBox(int id, int x, int y) :

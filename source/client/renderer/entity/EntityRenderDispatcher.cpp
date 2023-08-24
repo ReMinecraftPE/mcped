@@ -7,7 +7,7 @@
  ********************************************************************/
 
 #include "EntityRenderDispatcher.hpp"
-#include "Minecraft.hpp"
+#include "client/Minecraft.hpp"
 #include "client/renderer/ItemInHandRenderer.hpp"
 
 EntityRenderDispatcher* EntityRenderDispatcher::instance;

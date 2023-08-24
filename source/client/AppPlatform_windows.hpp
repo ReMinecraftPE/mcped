@@ -9,8 +9,8 @@
 #pragma once
 
 #include <ctime>
-#include "AppPlatform.hpp"
 #include "compat/GL.hpp"
+#include "client/AppPlatform.hpp"
 #include "client/common/Utils.hpp"
 
 #ifdef ORIGINAL_CODE

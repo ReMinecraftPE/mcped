@@ -7,7 +7,7 @@
  ********************************************************************/
 
 #include "TripodCameraRenderer.hpp"
-#include "Minecraft.hpp"
+#include "client/Minecraft.hpp"
 
 TripodCameraRenderer::TripodCameraRenderer() :
 	m_tile(0, 243, Material::plant),

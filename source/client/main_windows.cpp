@@ -12,11 +12,11 @@
 #include "compat/GL.hpp"
 #include "compat/AKeyCodes.hpp"
 
-#include "App.hpp"
 #include "AppPlatform_windows.hpp"
-#include "NinecraftApp.hpp"
+#include "client/App.hpp"
+#include "client/NinecraftApp.hpp"
 
-LPCTSTR g_GameTitle = TEXT("Minecraft PE");
+LPCTSTR g_GameTitle = TEXT("Minecraft Pocket Edition");
 LPCTSTR g_WindowClassName = TEXT("MinecraftClass");
 
 void LogMsg(const char* fmt, ...)

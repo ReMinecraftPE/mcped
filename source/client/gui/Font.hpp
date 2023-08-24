@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "Options.hpp"
+#include "client/common/Options.hpp"
 #include "client/renderer/Textures.hpp"
 
 class Font

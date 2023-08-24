@@ -7,7 +7,7 @@
  ********************************************************************/
 
 #include "ItemInHandRenderer.hpp"
-#include "Minecraft.hpp"
+#include "client/Minecraft.hpp"
 
 ItemInHandRenderer::ItemInHandRenderer(Minecraft* pMC) : m_ItemInstance(0, 1, 0)
 {

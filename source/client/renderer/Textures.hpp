@@ -9,10 +9,10 @@
 #pragma once
 #include <map>
 
-#include "compat/GL.hpp"
-#include "Options.hpp"
-#include "AppPlatform.hpp"
 #include "DynamicTexture.hpp"
+#include "compat/GL.hpp"
+#include "client/AppPlatform.hpp"
+#include "client/common/Options.hpp"
 
 class DynamicTexture; // in case we are being included from DynamicTexture. We don't store complete references to that
 

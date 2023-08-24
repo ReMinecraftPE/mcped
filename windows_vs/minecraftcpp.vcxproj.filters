@@ -16,9 +16,6 @@
     <Filter Include="Header Files\App">
       <UniqueIdentifier>{280aef41-e70b-4f16-b426-fa6389ad528f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\App">
-      <UniqueIdentifier>{ef764e56-e80f-4ae1-905e-bdaaff97840a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Base">
       <UniqueIdentifier>{f422c9c2-5433-42b9-b712-556338fa1c76}</UniqueIdentifier>
     </Filter>
@@ -112,28 +109,13 @@
     <Filter Include="Source Files\client\math">
       <UniqueIdentifier>{9218c3ca-b357-4d8a-a2fa-40a8f0832784}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\platforms">
+      <UniqueIdentifier>{2cce5db3-70a6-4a82-a92c-1d2fa7e62358}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\source\Options.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\App\NinecraftApp.cpp">
-      <Filter>Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\App\App.cpp">
-      <Filter>Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\App\AppPlatform.cpp">
-      <Filter>Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\App\Minecraft.cpp">
-      <Filter>Source Files\App</Filter>
-    </ClCompile>
     <ClCompile Include="..\compat\GLExt.cpp">
       <Filter>Source Files\Third Party</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Inventory.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="../thirdparty\stb_image_impl.c">
       <Filter>Source Files\Third Party</Filter>
@@ -467,15 +449,6 @@
     </ClCompile>
     <ClCompile Include="..\thirdparty\raknet\UDPProxyCoordinator.cpp">
       <Filter>Source Files\Third Party\RakNet</Filter>
-    </ClCompile>
-    <ClCompile Include="..\platforms\windows\AppPlatform_windows.cpp">
-      <Filter>Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="..\platforms\windows\main.cpp">
-      <Filter>Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="..\platforms\windows\SoundSystem_windows.cpp">
-      <Filter>Source Files\App</Filter>
     </ClCompile>
     <ClCompile Include="..\source\client\model\Cube.cpp">
       <Filter>Source Files\client\model</Filter>
@@ -1056,26 +1029,35 @@
     <ClCompile Include="..\source\client\math\Matrix.cpp">
       <Filter>Source Files\client\math</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\world\item\Inventory.cpp">
+      <Filter>Source Files\world\item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\common\Options.cpp">
+      <Filter>Source Files\client\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\AppPlatform.cpp">
+      <Filter>Source Files\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\Minecraft.cpp">
+      <Filter>Source Files\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\NinecraftApp.cpp">
+      <Filter>Source Files\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\App.cpp">
+      <Filter>Source Files\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\AppPlatform_windows.cpp">
+      <Filter>Source Files\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\main_windows.cpp">
+      <Filter>Source Files\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\SoundSystemWindows.cpp">
+      <Filter>Source Files\client</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\source\Options.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\App\App.hpp">
-      <Filter>Header Files\App</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\App\AppPlatform.hpp">
-      <Filter>Header Files\App</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\App\Minecraft.hpp">
-      <Filter>Header Files\App</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\App\NinecraftApp.hpp">
-      <Filter>Header Files\App</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Inventory.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\compat\AKeyCodes.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
@@ -1948,6 +1930,30 @@
     </ClInclude>
     <ClInclude Include="..\source\client\math\Matrix.hpp">
       <Filter>Source Files\client\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\item\Inventory.hpp">
+      <Filter>Source Files\world\item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\common\Options.hpp">
+      <Filter>Source Files\client\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\AppPlatform.hpp">
+      <Filter>Source Files\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\Minecraft.hpp">
+      <Filter>Source Files\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\NinecraftApp.hpp">
+      <Filter>Source Files\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\App.hpp">
+      <Filter>Source Files\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\AppPlatform_windows.hpp">
+      <Filter>Source Files\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\SoundSystemWindows.hpp">
+      <Filter>Source Files\client</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
