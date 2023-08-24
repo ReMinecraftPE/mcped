@@ -25,18 +25,6 @@
     <Filter Include="Header Files\Base">
       <UniqueIdentifier>{f422c9c2-5433-42b9-b712-556338fa1c76}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\GUI">
-      <UniqueIdentifier>{02250f65-c6df-4172-9520-3988c0cfafb4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GUI">
-      <UniqueIdentifier>{d408f63c-aace-48fa-8266-0b38f6caaa93}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GUI\Screen">
-      <UniqueIdentifier>{1bf686e0-b9fd-495a-b13b-8bddad3b9112}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\GUI\Screen">
-      <UniqueIdentifier>{6290b4cf-b43b-4049-b34b-64b2cd582ec1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\World">
       <UniqueIdentifier>{8755149a-86fd-439e-a310-edd8521013c2}</UniqueIdentifier>
     </Filter>
@@ -45,12 +33,6 @@
     </Filter>
     <Filter Include="Source Files\Third Party">
       <UniqueIdentifier>{33f373a0-16b8-4d6a-b769-8591c613ee62}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\User Input">
-      <UniqueIdentifier>{b6cc53d4-1e1f-4b01-98ff-bf4705df7892}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\User Input">
-      <UniqueIdentifier>{3c986d32-1d4e-4d4c-9799-46b61b5fd5fe}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\World\Entity">
       <UniqueIdentifier>{2022e12c-385a-4be4-b722-56411d25b820}</UniqueIdentifier>
@@ -67,23 +49,8 @@
     <Filter Include="Source Files\World\Particle">
       <UniqueIdentifier>{25e70004-24c5-45ab-b162-a66774ab102a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Sound">
-      <UniqueIdentifier>{6c5a6ef7-1c6f-405d-823b-5411ba6d727e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Sound">
-      <UniqueIdentifier>{9dbf1afd-5110-42a3-a056-24fba838acf4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Third Party\RakNet">
       <UniqueIdentifier>{a3d8ebfe-09f1-407e-bfd3-e0daab9f4bfc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Network">
-      <UniqueIdentifier>{2eac43a3-0aac-4563-9130-b0d326d94251}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Network">
-      <UniqueIdentifier>{c9f299d9-024a-4720-a257-b4dc21e0eda8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Network\Packets">
-      <UniqueIdentifier>{c6b2a319-020f-4079-bef2-db17f90977cf}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\client">
       <UniqueIdentifier>{2806de9a-c9b6-47f7-bb84-d5dacee1a784}</UniqueIdentifier>
@@ -133,6 +100,30 @@
     <Filter Include="Source Files\world2\gamemode">
       <UniqueIdentifier>{90e27b93-3a47-4c02-a218-4a53d9de6284}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\client\sound">
+      <UniqueIdentifier>{b556b6c0-ffdb-4f39-a3e5-94bff3abacaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\client\player">
+      <UniqueIdentifier>{a5c901c8-0a6f-447c-98c5-d58ea91cde36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\client\player\input">
+      <UniqueIdentifier>{0d4375f8-6b23-494c-8244-27dd6fa39d54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\client\network">
+      <UniqueIdentifier>{1658ccea-5234-48ed-8d6b-218caee84df3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\client\network\packets">
+      <UniqueIdentifier>{49133716-becc-4666-9d52-9bb1a0ac4b79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\client\gui">
+      <UniqueIdentifier>{5b3a7c40-cd74-433d-8ff1-bf3ad8c41daa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\client\gui\components">
+      <UniqueIdentifier>{95a09762-b890-4e3d-b70c-c332a70a8d5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\client\gui\screens">
+      <UniqueIdentifier>{04c2e44f-86cd-4a35-b400-89c988e2ab79}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\Options.cpp">
@@ -177,33 +168,6 @@
     <ClCompile Include="..\source\Base\Utils.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\GUI\Screen\StartMenuScreen.cpp">
-      <Filter>Source Files\GUI\Screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\Screen\OptionsScreen.cpp">
-      <Filter>Source Files\GUI\Screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\Screen\ProgressScreen.cpp">
-      <Filter>Source Files\GUI\Screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\Screen\Screen.cpp">
-      <Filter>Source Files\GUI\Screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\GuiComponent.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\Button.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\Gui.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\UserInput\Mouse.cpp">
-      <Filter>Source Files\User Input</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\UserInput\Keyboard.cpp">
-      <Filter>Source Files\User Input</Filter>
-    </ClCompile>
     <ClCompile Include="..\compat\GLExt.cpp">
       <Filter>Source Files\Third Party</Filter>
     </ClCompile>
@@ -213,9 +177,6 @@
     <ClCompile Include="..\source\Inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\UserInput\KeyboardInput.cpp">
-      <Filter>Source Files\User Input</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\World\Item\Item.cpp">
       <Filter>Source Files\World\Item</Filter>
     </ClCompile>
@@ -224,18 +185,6 @@
     </ClCompile>
     <ClCompile Include="..\source\World\Item\TileItem.cpp">
       <Filter>Source Files\World\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\UserInput\ITurnInput.cpp">
-      <Filter>Source Files\User Input</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\UserInput\MouseTurnInput.cpp">
-      <Filter>Source Files\User Input</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\Screen\PauseScreen.cpp">
-      <Filter>Source Files\GUI\Screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\Screen\IngameBlockSelectionScreen.cpp">
-      <Filter>Source Files\GUI\Screen</Filter>
     </ClCompile>
     <ClCompile Include="..\source\World\Item\TilePlanterItem.cpp">
       <Filter>Source Files\World\Item</Filter>
@@ -273,65 +222,8 @@
     <ClCompile Include="..\source\World\Item\DoorItem.cpp">
       <Filter>Source Files\World\Item</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\GUI\RolledSelectionList.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\WorldSelectionList.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\Screen\SelectWorldScreen.cpp">
-      <Filter>Source Files\GUI\Screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\Screen\ChatScreen.cpp">
-      <Filter>Source Files\GUI\Screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\SmallButton.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\Screen\ConfirmScreen.cpp">
-      <Filter>Source Files\GUI\Screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\Screen\DeleteWorldScreen.cpp">
-      <Filter>Source Files\GUI\Screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\Screen\InvalidLicenseScreen.cpp">
-      <Filter>Source Files\GUI\Screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\ScrolledSelectionList.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\AvailableGamesList.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\TextInputBox.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\Screen\RenameMPLevelScreen.cpp">
-      <Filter>Source Files\GUI\Screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\Screen\JoinGameScreen.cpp">
-      <Filter>Source Files\GUI\Screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\UserInput\Controller.cpp">
-      <Filter>Source Files\User Input</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\UserInput\ControllerTurnInput.cpp">
-      <Filter>Source Files\User Input</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Sound\SoundSystem.cpp">
-      <Filter>Source Files\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Sound\SoundData.cpp">
-      <Filter>Source Files\Sound</Filter>
-    </ClCompile>
     <ClCompile Include="../thirdparty\stb_image_impl.c">
       <Filter>Source Files\Third Party</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Sound\SoundEngine.cpp">
-      <Filter>Source Files\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Sound\SoundRepository.cpp">
-      <Filter>Source Files\Sound</Filter>
     </ClCompile>
     <ClCompile Include="..\thirdparty\raknet\UDPProxyServer.cpp">
       <Filter>Source Files\Third Party\RakNet</Filter>
@@ -663,57 +555,6 @@
     <ClCompile Include="..\thirdparty\raknet\UDPProxyCoordinator.cpp">
       <Filter>Source Files\Third Party\RakNet</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\Network\RakNetInstance.cpp">
-      <Filter>Source Files\Network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Network\NetEventCallback.cpp">
-      <Filter>Source Files\Network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Network\MinecraftPackets.cpp">
-      <Filter>Source Files\Network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Network\Packets\MovePlayerPacket.cpp">
-      <Filter>Source Files\Network\Packets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Network\Packets\PlaceBlockPacket.cpp">
-      <Filter>Source Files\Network\Packets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Network\Packets\PlayerEquipmentPacket.cpp">
-      <Filter>Source Files\Network\Packets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Network\Packets\RemoveBlockPacket.cpp">
-      <Filter>Source Files\Network\Packets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Network\Packets\RemoveEntityPacket.cpp">
-      <Filter>Source Files\Network\Packets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Network\Packets\RequestChunkPacket.cpp">
-      <Filter>Source Files\Network\Packets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Network\Packets\StartGamePacket.cpp">
-      <Filter>Source Files\Network\Packets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Network\Packets\UpdateBlockPacket.cpp">
-      <Filter>Source Files\Network\Packets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Network\Packets\AddPlayerPacket.cpp">
-      <Filter>Source Files\Network\Packets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Network\Packets\ChunkDataPacket.cpp">
-      <Filter>Source Files\Network\Packets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Network\Packets\LoginPacket.cpp">
-      <Filter>Source Files\Network\Packets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Network\Packets\MessagePacket.cpp">
-      <Filter>Source Files\Network\Packets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Network\ServerSideNetworkHandler.cpp">
-      <Filter>Source Files\Network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\Network\ClientSideNetworkHandler.cpp">
-      <Filter>Source Files\Network</Filter>
-    </ClCompile>
     <ClCompile Include="..\platforms\windows\AppPlatform_windows.cpp">
       <Filter>Source Files\App</Filter>
     </ClCompile>
@@ -722,12 +563,6 @@
     </ClCompile>
     <ClCompile Include="..\platforms\windows\SoundSystem_windows.cpp">
       <Filter>Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\Screen\SavingWorldScreen.cpp">
-      <Filter>Source Files\GUI\Screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GUI\Screen\CreateWorldScreen.cpp">
-      <Filter>Source Files\GUI\Screen</Filter>
     </ClCompile>
     <ClCompile Include="..\source\client\model\Cube.cpp">
       <Filter>Source Files\client\model</Filter>
@@ -766,9 +601,6 @@
       <Filter>Source Files\client\renderer</Filter>
     </ClCompile>
     <ClCompile Include="..\source\client\renderer\DynamicTexture.cpp">
-      <Filter>Source Files\client\renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\client\renderer\Font.cpp">
       <Filter>Source Files\client\renderer</Filter>
     </ClCompile>
     <ClCompile Include="..\source\client\renderer\Frustum.cpp">
@@ -1077,6 +909,165 @@
     <ClCompile Include="..\source\world\gamemode\GameMode.cpp">
       <Filter>Source Files\world2\gamemode</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\client\sound\SoundEngine.cpp">
+      <Filter>Source Files\client\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\sound\SoundRepository.cpp">
+      <Filter>Source Files\client\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\sound\SoundSystem.cpp">
+      <Filter>Source Files\client\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\sound\SoundData.cpp">
+      <Filter>Source Files\client\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\player\input\Keyboard.cpp">
+      <Filter>Source Files\client\player\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\player\input\KeyboardInput.cpp">
+      <Filter>Source Files\client\player\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\player\input\Mouse.cpp">
+      <Filter>Source Files\client\player\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\player\input\MouseTurnInput.cpp">
+      <Filter>Source Files\client\player\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\player\input\Controller.cpp">
+      <Filter>Source Files\client\player\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\player\input\ControllerTurnInput.cpp">
+      <Filter>Source Files\client\player\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\player\input\ITurnInput.cpp">
+      <Filter>Source Files\client\player\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\ClientSideNetworkHandler.cpp">
+      <Filter>Source Files\client\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\MinecraftPackets.cpp">
+      <Filter>Source Files\client\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\NetEventCallback.cpp">
+      <Filter>Source Files\client\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\RakNetInstance.cpp">
+      <Filter>Source Files\client\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\ServerSideNetworkHandler.cpp">
+      <Filter>Source Files\client\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\packets\PlayerEquipmentPacket.cpp">
+      <Filter>Source Files\client\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\packets\AddPlayerPacket.cpp">
+      <Filter>Source Files\client\network\packets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\packets\LoginPacket.cpp">
+      <Filter>Source Files\client\network\packets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\packets\MessagePacket.cpp">
+      <Filter>Source Files\client\network\packets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\packets\ChunkDataPacket.cpp">
+      <Filter>Source Files\client\network\packets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\packets\MovePlayerPacket.cpp">
+      <Filter>Source Files\client\network\packets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\packets\PlaceBlockPacket.cpp">
+      <Filter>Source Files\client\network\packets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\packets\RemoveBlockPacket.cpp">
+      <Filter>Source Files\client\network\packets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\packets\RemoveEntityPacket.cpp">
+      <Filter>Source Files\client\network\packets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\packets\RequestChunkPacket.cpp">
+      <Filter>Source Files\client\network\packets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\packets\StartGamePacket.cpp">
+      <Filter>Source Files\client\network\packets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\network\packets\UpdateBlockPacket.cpp">
+      <Filter>Source Files\client\network\packets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\Gui.cpp">
+      <Filter>Source Files\client\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\GuiComponent.cpp">
+      <Filter>Source Files\client\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\Screen.cpp">
+      <Filter>Source Files\client\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\Font.cpp">
+      <Filter>Source Files\client\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\components\SmallButton.cpp">
+      <Filter>Source Files\client\gui\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\components\TextInputBox.cpp">
+      <Filter>Source Files\client\gui\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\components\WorldSelectionList.cpp">
+      <Filter>Source Files\client\gui\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\components\AvailableGamesList.cpp">
+      <Filter>Source Files\client\gui\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\components\Button.cpp">
+      <Filter>Source Files\client\gui\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\components\RolledSelectionList.cpp">
+      <Filter>Source Files\client\gui\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\components\ScrolledSelectionList.cpp">
+      <Filter>Source Files\client\gui\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\screens\JoinGameScreen.cpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\screens\OptionsScreen.cpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\screens\PauseScreen.cpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\screens\ProgressScreen.cpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\screens\RenameMPLevelScreen.cpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\screens\SavingWorldScreen.cpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\screens\SelectWorldScreen.cpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\screens\StartMenuScreen.cpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\screens\ChatScreen.cpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\screens\ConfirmScreen.cpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\screens\CreateWorldScreen.cpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\screens\DeleteWorldScreen.cpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\screens\IngameBlockSelectionScreen.cpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\gui\screens\InvalidLicenseScreen.cpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\Options.hpp">
@@ -1121,125 +1112,20 @@
     <ClInclude Include="..\source\Base\HitResult.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\GUI\Screen\OptionsScreen.hpp">
-      <Filter>Header Files\GUI\Screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\Screen\ProgressScreen.hpp">
-      <Filter>Header Files\GUI\Screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\Screen\Screen.hpp">
-      <Filter>Header Files\GUI\Screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\Screen\StartMenuScreen.hpp">
-      <Filter>Header Files\GUI\Screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\Button.hpp">
-      <Filter>Header Files\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\Gui.hpp">
-      <Filter>Header Files\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\GuiComponent.hpp">
-      <Filter>Header Files\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\UserInput\Mouse.hpp">
-      <Filter>Header Files\User Input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\UserInput\Keyboard.hpp">
-      <Filter>Header Files\User Input</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\Base\Matrix.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
     <ClInclude Include="..\source\Inventory.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\UserInput\KeyboardInput.hpp">
-      <Filter>Header Files\User Input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\UserInput\User.hpp">
-      <Filter>Header Files\User Input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\UserInput\ITurnInput.hpp">
-      <Filter>Header Files\User Input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\UserInput\MouseTurnInput.hpp">
-      <Filter>Header Files\User Input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\Screen\PauseScreen.hpp">
-      <Filter>Header Files\GUI\Screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\compat\AKeyCodes.hpp">
       <Filter>Header Files\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\Screen\IngameBlockSelectionScreen.hpp">
-      <Filter>Header Files\GUI\Screen</Filter>
     </ClInclude>
     <ClInclude Include="..\source\World\Particle\ParticleEngine.hpp">
       <Filter>Header Files\World\Particle</Filter>
     </ClInclude>
     <ClInclude Include="..\source\World\Particle\Particle.hpp">
       <Filter>Header Files\World\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\RolledSelectionList.hpp">
-      <Filter>Header Files\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\WorldSelectionList.hpp">
-      <Filter>Header Files\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\Screen\SelectWorldScreen.hpp">
-      <Filter>Header Files\GUI\Screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\Screen\ChatScreen.hpp">
-      <Filter>Header Files\GUI\Screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\SmallButton.hpp">
-      <Filter>Header Files\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\Screen\ConfirmScreen.hpp">
-      <Filter>Header Files\GUI\Screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\Screen\DeleteWorldScreen.hpp">
-      <Filter>Header Files\GUI\Screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\Screen\InvalidLicenseScreen.hpp">
-      <Filter>Header Files\GUI\Screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\ScrolledSelectionList.hpp">
-      <Filter>Header Files\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\AvailableGamesList.hpp">
-      <Filter>Header Files\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\TextInputBox.hpp">
-      <Filter>Header Files\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\Screen\RenameMPLevelScreen.hpp">
-      <Filter>Header Files\GUI\Screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\Screen\JoinGameScreen.hpp">
-      <Filter>Header Files\GUI\Screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\UserInput\ControllerTurnInput.hpp">
-      <Filter>Header Files\User Input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\UserInput\Controller.hpp">
-      <Filter>Header Files\User Input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Sound\SoundSystem.hpp">
-      <Filter>Header Files\Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Sound\SoundData.hpp">
-      <Filter>Header Files\Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Sound\SoundEngine.hpp">
-      <Filter>Header Files\Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Sound\SoundRepository.hpp">
-      <Filter>Header Files\Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Sound\SoundDefs.hpp">
-      <Filter>Header Files\Sound</Filter>
     </ClInclude>
     <ClInclude Include="..\thirdparty\raknet\UDPProxyServer.h">
       <Filter>Source Files\Third Party\RakNet</Filter>
@@ -1703,27 +1589,6 @@
     <ClInclude Include="..\thirdparty\raknet\UDPProxyCoordinator.h">
       <Filter>Source Files\Third Party\RakNet</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\Network\RakNetInstance.hpp">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Network\PingedCompatibleServer.hpp">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Network\Packet.hpp">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Network\NetEventCallback.hpp">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Network\MinecraftPackets.hpp">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Network\ClientSideNetworkHandler.hpp">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\Network\ServerSideNetworkHandler.hpp">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
     <ClInclude Include="..\platforms\windows\AppPlatform_windows.hpp">
       <Filter>Header Files\App</Filter>
     </ClInclude>
@@ -1732,12 +1597,6 @@
     </ClInclude>
     <ClInclude Include="..\GameMods.hpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\Screen\SavingWorldScreen.hpp">
-      <Filter>Header Files\GUI\Screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GUI\Screen\CreateWorldScreen.hpp">
-      <Filter>Header Files\GUI\Screen</Filter>
     </ClInclude>
     <ClInclude Include="..\source\client\model\Cube.hpp">
       <Filter>Source Files\client\model</Filter>
@@ -1779,9 +1638,6 @@
       <Filter>Source Files\client\renderer</Filter>
     </ClInclude>
     <ClInclude Include="..\source\client\renderer\DynamicTexture.hpp">
-      <Filter>Source Files\client\renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\client\renderer\Font.hpp">
       <Filter>Source Files\client\renderer</Filter>
     </ClInclude>
     <ClInclude Include="..\source\client\renderer\Frustum.hpp">
@@ -1966,6 +1822,141 @@
     </ClInclude>
     <ClInclude Include="..\source\world\gamemode\SurvivalMode.hpp">
       <Filter>Source Files\world2\gamemode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\sound\SoundEngine.hpp">
+      <Filter>Source Files\client\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\sound\SoundRepository.hpp">
+      <Filter>Source Files\client\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\sound\SoundSystem.hpp">
+      <Filter>Source Files\client\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\sound\SoundData.hpp">
+      <Filter>Source Files\client\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\sound\SoundDefs.hpp">
+      <Filter>Source Files\client\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\player\input\ITurnInput.hpp">
+      <Filter>Source Files\client\player\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\player\input\Keyboard.hpp">
+      <Filter>Source Files\client\player\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\player\input\KeyboardInput.hpp">
+      <Filter>Source Files\client\player\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\player\input\Mouse.hpp">
+      <Filter>Source Files\client\player\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\player\input\MouseTurnInput.hpp">
+      <Filter>Source Files\client\player\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\player\input\User.hpp">
+      <Filter>Source Files\client\player\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\player\input\Controller.hpp">
+      <Filter>Source Files\client\player\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\player\input\ControllerTurnInput.hpp">
+      <Filter>Source Files\client\player\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\network\ServerSideNetworkHandler.hpp">
+      <Filter>Source Files\client\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\network\ClientSideNetworkHandler.hpp">
+      <Filter>Source Files\client\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\network\MinecraftPackets.hpp">
+      <Filter>Source Files\client\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\network\NetEventCallback.hpp">
+      <Filter>Source Files\client\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\network\Packet.hpp">
+      <Filter>Source Files\client\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\network\PingedCompatibleServer.hpp">
+      <Filter>Source Files\client\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\network\RakNetInstance.hpp">
+      <Filter>Source Files\client\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\Gui.hpp">
+      <Filter>Source Files\client\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\GuiComponent.hpp">
+      <Filter>Source Files\client\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\Screen.hpp">
+      <Filter>Source Files\client\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\Font.hpp">
+      <Filter>Source Files\client\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\components\SmallButton.hpp">
+      <Filter>Source Files\client\gui\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\components\TextInputBox.hpp">
+      <Filter>Source Files\client\gui\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\components\WorldSelectionList.hpp">
+      <Filter>Source Files\client\gui\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\components\AvailableGamesList.hpp">
+      <Filter>Source Files\client\gui\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\components\Button.hpp">
+      <Filter>Source Files\client\gui\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\components\RolledSelectionList.hpp">
+      <Filter>Source Files\client\gui\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\components\ScrolledSelectionList.hpp">
+      <Filter>Source Files\client\gui\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\screens\InvalidLicenseScreen.hpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\screens\JoinGameScreen.hpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\screens\OptionsScreen.hpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\screens\PauseScreen.hpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\screens\ProgressScreen.hpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\screens\RenameMPLevelScreen.hpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\screens\SavingWorldScreen.hpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\screens\SelectWorldScreen.hpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\screens\StartMenuScreen.hpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\screens\ChatScreen.hpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\screens\ConfirmScreen.hpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\screens\CreateWorldScreen.hpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\screens\DeleteWorldScreen.hpp">
+      <Filter>Source Files\client\gui\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\gui\screens\IngameBlockSelectionScreen.hpp">
+      <Filter>Source Files\client\gui\screens</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

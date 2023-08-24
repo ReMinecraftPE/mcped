@@ -7,7 +7,7 @@
  ********************************************************************/
 
 #include "AppPlatform_windows.hpp"
-#include "Mouse.hpp"
+#include "client/player/input/Mouse.hpp"
 
 #include "thirdparty/stb_image.h"
 #include "thirdparty/stb_image_write.h"

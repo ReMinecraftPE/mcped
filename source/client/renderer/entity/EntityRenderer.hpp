@@ -9,7 +9,7 @@
 #pragma once
 
 #include "client/model/HumanoidModel.hpp"
-#include "client/renderer/Font.hpp"
+#include "client/gui/Font.hpp"
 
 class EntityRenderDispatcher;
 

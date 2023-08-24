@@ -9,8 +9,8 @@
 #pragma once
 
 #include "Player.hpp"
-#include "User.hpp"
-#include "KeyboardInput.hpp"
+#include "client/player/input/User.hpp"
+#include "client/player/input/KeyboardInput.hpp"
 
 class Minecraft;
 
