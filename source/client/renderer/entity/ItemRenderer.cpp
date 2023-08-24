@@ -7,8 +7,8 @@
  ********************************************************************/
 
 #include "ItemRenderer.hpp"
-#include "ItemEntity.hpp"
 #include "EntityRenderDispatcher.hpp"
+#include "world/entity/ItemEntity.hpp"
 #include "client/renderer/TileRenderer.hpp"
 
 // @TODO: ItemSpriteRenderer. Unused relative

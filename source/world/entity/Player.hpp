@@ -9,9 +9,9 @@
 #pragma once
 
 #include "Mob.hpp"
-#include "Inventory.hpp"
 #include "ItemEntity.hpp"
 #include "RakNetTypes.h"
+#include "world/item/Inventory.hpp"
 
 class Inventory; // in case we're included from Inventory.hpp
 

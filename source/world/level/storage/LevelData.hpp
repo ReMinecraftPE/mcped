@@ -10,10 +10,10 @@
 
 #include <string>
 
+#include "BitStream.h"
 #include "client/common/Utils.hpp"
 #include "world/phys/Vec3.hpp"
-#include "Inventory.hpp"
-#include "BitStream.h"
+#include "world/item/Inventory.hpp"
 
 struct PlayerData
 {

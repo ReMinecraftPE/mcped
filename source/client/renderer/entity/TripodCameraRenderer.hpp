@@ -8,9 +8,9 @@
 
 #pragma once
 
-#include "Tile.hpp"
-#include "TripodCamera.hpp"
 #include "EntityRenderer.hpp"
+#include "world/tile/Tile.hpp"
+#include "world/entity/TripodCamera.hpp"
 #include "client/renderer/TileRenderer.hpp"
 
 class TripodCameraRenderer : public EntityRenderer

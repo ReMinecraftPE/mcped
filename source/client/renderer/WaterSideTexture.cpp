@@ -7,7 +7,7 @@
  ********************************************************************/
 
 #include "WaterSideTexture.hpp"
-#include "Tile.hpp"
+#include "world/tile/Tile.hpp"
 
 WaterSideTexture::WaterSideTexture() : DynamicTexture(Tile::water->m_TextureFrame + 1)
 {

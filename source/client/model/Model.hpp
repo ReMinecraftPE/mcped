@@ -8,8 +8,8 @@
 
 #pragma once
 
-#include "Mob.hpp"
-#include "client/model/Cube.hpp"
+#include "Cube.hpp"
+#include "world/entity/Mob.hpp"
 
 class Model
 {

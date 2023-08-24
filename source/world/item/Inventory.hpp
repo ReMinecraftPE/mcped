@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Player.hpp"
+#include "world/entity/Player.hpp"
 
 class Player; // in case we're included from Player.hpp
 

@@ -9,7 +9,7 @@
 #pragma once
 
 #include "world/level/Level.hpp"
-#include "ItemInstance.hpp"
+#include "world/item/ItemInstance.hpp"
 
 class Minecraft;
 

@@ -10,9 +10,8 @@
 
 #include <set>
 
-#include "Tile.hpp"
-#include "Entity.hpp"
-#include "LocalPlayer.hpp"
+#include "world/tile/Tile.hpp"
+#include "world/entity/LocalPlayer.hpp"
 #include "Dimension.hpp"
 #include "world/level/levelgen/biome/BiomeSource.hpp"
 #include "world/level/levelgen/chunk/LevelChunk.hpp"

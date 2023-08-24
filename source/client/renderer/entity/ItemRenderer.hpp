@@ -9,7 +9,7 @@
 #pragma once
 
 #include "EntityRenderer.hpp"
-#include "ItemInstance.hpp"
+#include "world/item/ItemInstance.hpp"
 #include "client/renderer/TileRenderer.hpp"
 
 class ItemRenderer : public EntityRenderer

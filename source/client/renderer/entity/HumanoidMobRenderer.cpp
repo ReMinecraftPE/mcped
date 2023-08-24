@@ -8,8 +8,8 @@
 
 #include "HumanoidMobRenderer.hpp"
 #include "EntityRenderDispatcher.hpp"
-#include "ItemInstance.hpp"
-#include "Player.hpp"
+#include "world/item/ItemInstance.hpp"
+#include "world/entity/Player.hpp"
 #include "client/renderer/ItemInHandRenderer.hpp"
 #include "client/renderer/TileRenderer.hpp"
 

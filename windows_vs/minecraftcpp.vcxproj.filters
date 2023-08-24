@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\App">
-      <UniqueIdentifier>{280aef41-e70b-4f16-b426-fa6389ad528f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Base">
-      <UniqueIdentifier>{f422c9c2-5433-42b9-b712-556338fa1c76}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Third Party">
       <UniqueIdentifier>{33f373a0-16b8-4d6a-b769-8591c613ee62}</UniqueIdentifier>
     </Filter>
@@ -1058,9 +1052,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\compat\AKeyCodes.hpp">
-      <Filter>Header Files\Base</Filter>
-    </ClInclude>
     <ClInclude Include="..\thirdparty\raknet\UDPProxyServer.h">
       <Filter>Source Files\Third Party\RakNet</Filter>
     </ClInclude>
@@ -1523,12 +1514,6 @@
     <ClInclude Include="..\thirdparty\raknet\UDPProxyCoordinator.h">
       <Filter>Source Files\Third Party\RakNet</Filter>
     </ClInclude>
-    <ClInclude Include="..\platforms\windows\AppPlatform_windows.hpp">
-      <Filter>Header Files\App</Filter>
-    </ClInclude>
-    <ClInclude Include="..\platforms\windows\SoundSystem_windows.hpp">
-      <Filter>Header Files\App</Filter>
-    </ClInclude>
     <ClInclude Include="..\GameMods.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -1972,6 +1957,15 @@
     </ClInclude>
     <ClInclude Include="..\source\world\item\CameraItem.hpp">
       <Filter>Source Files\world\item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\platforms\windows\AppPlatform_windows.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\platforms\windows\SoundSystem_windows.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\compat\AKeyCodes.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

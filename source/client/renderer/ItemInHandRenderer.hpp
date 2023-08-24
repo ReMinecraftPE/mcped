@@ -8,8 +8,8 @@
 
 #pragma once
 
-#include "ItemInstance.hpp"
 #include "TileRenderer.hpp"
+#include "world/item/ItemInstance.hpp"
 
 class Minecraft;
 
