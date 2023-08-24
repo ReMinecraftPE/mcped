@@ -12,7 +12,7 @@
 #include "Utils.hpp"
 
 #include "ItemInstance.hpp"
-#include "Material.hpp"
+#include "world/level/Material.hpp"
 
 #define C_MAX_ITEMS (C_MAX_TILES * 2)
 

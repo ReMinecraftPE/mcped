@@ -40,23 +40,8 @@
     <Filter Include="Source Files\World">
       <UniqueIdentifier>{8755149a-86fd-439e-a310-edd8521013c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\World\Storage">
-      <UniqueIdentifier>{4e39ecb8-310a-4b43-ac3a-aeb593a11678}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\World\Tile">
-      <UniqueIdentifier>{85b0dbd0-b3a2-4299-8fff-9b6efc52743c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\World">
       <UniqueIdentifier>{c2f8a6ab-337d-401c-a7f0-769eab2883e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\World\Generator">
-      <UniqueIdentifier>{a26d3dd2-0031-4947-a06b-bc2381e302ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\World\Tile">
-      <UniqueIdentifier>{b2a817f9-daaa-4c49-b5c2-e3abd10e80bc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\World\Storage">
-      <UniqueIdentifier>{d75e1aa9-df86-4dbd-967a-2148fdaaeaf0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Third Party">
       <UniqueIdentifier>{33f373a0-16b8-4d6a-b769-8591c613ee62}</UniqueIdentifier>
@@ -70,26 +55,11 @@
     <Filter Include="Header Files\World\Entity">
       <UniqueIdentifier>{2022e12c-385a-4be4-b722-56411d25b820}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\World\Entity">
-      <UniqueIdentifier>{1f39b156-5aae-4cba-be19-a82cdf731559}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Game Modes">
-      <UniqueIdentifier>{ca501627-4e25-4916-a893-742891fb6000}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Game Modes">
-      <UniqueIdentifier>{1353af04-51e5-4cfb-92ba-0711715cdfb4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\World\Item">
       <UniqueIdentifier>{fb7fccf8-15f0-4974-a01d-ab2218fda0ba}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\World\Item">
       <UniqueIdentifier>{ce62e59f-a5e8-4172-b06b-f829f64fe75c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\World\Entity\Model">
-      <UniqueIdentifier>{9b1cacf0-a01a-40e7-8a40-8d7ba8d700f9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\World\Entity\Model">
-      <UniqueIdentifier>{c07b19a6-230d-40ee-b0f4-2ec92529465a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\World\Particle">
       <UniqueIdentifier>{b14be4c2-775c-4df3-8d97-74ce8d17d4a2}</UniqueIdentifier>
@@ -147,6 +117,21 @@
     </Filter>
     <Filter Include="Source Files\world2\level\levelgen\feature">
       <UniqueIdentifier>{c54de600-9c7e-4566-8484-655c03321d43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world2\tile">
+      <UniqueIdentifier>{51403a0a-510a-4246-84c1-376a228d89e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world2\entity">
+      <UniqueIdentifier>{bb245959-2dff-4a57-b05d-04daa222fca8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world2\item">
+      <UniqueIdentifier>{61e0a270-fdde-4551-9309-842aa250e51b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world2\level\storage">
+      <UniqueIdentifier>{cef69b0d-a344-42fe-b9cc-b442065274ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world2\gamemode">
+      <UniqueIdentifier>{90e27b93-3a47-4c02-a218-4a53d9de6284}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -219,131 +204,17 @@
     <ClCompile Include="..\source\UserInput\Keyboard.cpp">
       <Filter>Source Files\User Input</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\World\Storage\ChunkStorage.cpp">
-      <Filter>Source Files\World\Storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Storage\LevelSource.cpp">
-      <Filter>Source Files\World\Storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Storage\LevelStorage.cpp">
-      <Filter>Source Files\World\Storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Storage\LevelStorageSource.cpp">
-      <Filter>Source Files\World\Storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Storage\MemoryChunkStorage.cpp">
-      <Filter>Source Files\World\Storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Storage\MemoryLevelStorage.cpp">
-      <Filter>Source Files\World\Storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Storage\MemoryLevelStorageSource.cpp">
-      <Filter>Source Files\World\Storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\InvisibleTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\Tile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Material.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\LevelData.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\LightLayer.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
     <ClCompile Include="..\compat\GLExt.cpp">
       <Filter>Source Files\Third Party</Filter>
     </ClCompile>
     <ClCompile Include="..\source\Base\Matrix.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\World\Entity\Mob.cpp">
-      <Filter>Source Files\World\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Entity\Entity.cpp">
-      <Filter>Source Files\World\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Entity\Player.cpp">
-      <Filter>Source Files\World\Entity</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\Inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\source\UserInput\KeyboardInput.cpp">
       <Filter>Source Files\User Input</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Entity\LocalPlayer.cpp">
-      <Filter>Source Files\World\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GameMode\GameMode.cpp">
-      <Filter>Source Files\Game Modes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\GlassTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\HalfTransparentTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\SandStoneTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\SandTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GameMode\SurvivalMode.cpp">
-      <Filter>Source Files\Game Modes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\ClayTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\DirtTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\GrassTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\GravelTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\IceTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\StoneTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\FarmTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\StoneSlabTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\TreeTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\Bush.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\ClothTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\TopSnowTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\RedStoneOreTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\LeafTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\OreTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\ReedTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
     </ClCompile>
     <ClCompile Include="..\source\World\Item\Item.cpp">
       <Filter>Source Files\World\Item</Filter>
@@ -360,9 +231,6 @@
     <ClCompile Include="..\source\UserInput\MouseTurnInput.cpp">
       <Filter>Source Files\User Input</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\World\LightUpdate.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\GUI\Screen\PauseScreen.cpp">
       <Filter>Source Files\GUI\Screen</Filter>
     </ClCompile>
@@ -371,42 +239,6 @@
     </ClCompile>
     <ClCompile Include="..\source\World\Item\TilePlanterItem.cpp">
       <Filter>Source Files\World\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\LiquidTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\LiquidTileDynamic.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\LiquidTileStatic.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\ObsidianTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\MetalTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\StairTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\LadderTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\TransparentTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\TorchTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Entity\Models\Model.cpp">
-      <Filter>Source Files\World\Entity\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Entity\Models\HumanoidModel.cpp">
-      <Filter>Source Files\World\Entity\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Entity\TripodCamera.cpp">
-      <Filter>Source Files\World\Entity</Filter>
     </ClCompile>
     <ClCompile Include="..\source\World\Item\CameraItem.cpp">
       <Filter>Source Files\World\Item</Filter>
@@ -437,21 +269,6 @@
     </ClCompile>
     <ClCompile Include="..\source\World\Particle\RedDustParticle.cpp">
       <Filter>Source Files\World\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\FireTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Entity\PrimedTnt.cpp">
-      <Filter>Source Files\World\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Explosion.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\TntTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Tile\DoorTile.cpp">
-      <Filter>Source Files\World\Tile</Filter>
     </ClCompile>
     <ClCompile Include="..\source\World\Item\DoorItem.cpp">
       <Filter>Source Files\World\Item</Filter>
@@ -897,12 +714,6 @@
     <ClCompile Include="..\source\Network\ClientSideNetworkHandler.cpp">
       <Filter>Source Files\Network</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\World\Entity\ItemEntity.cpp">
-      <Filter>Source Files\World\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Entity\FallingTile.cpp">
-      <Filter>Source Files\World\Entity</Filter>
-    </ClCompile>
     <ClCompile Include="..\platforms\windows\AppPlatform_windows.cpp">
       <Filter>Source Files\App</Filter>
     </ClCompile>
@@ -911,12 +722,6 @@
     </ClCompile>
     <ClCompile Include="..\platforms\windows\SoundSystem_windows.cpp">
       <Filter>Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Storage\ExternalFileLevelStorage.cpp">
-      <Filter>Source Files\World\Storage</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\World\Storage\ExternalFileLevelStorageSource.cpp">
-      <Filter>Source Files\World\Storage</Filter>
     </ClCompile>
     <ClCompile Include="..\source\GUI\Screen\SavingWorldScreen.cpp">
       <Filter>Source Files\GUI\Screen</Filter>
@@ -1092,6 +897,186 @@
     <ClCompile Include="..\source\world\level\Dimension.cpp">
       <Filter>Source Files\world2\level</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\client\model\Model.cpp">
+      <Filter>Source Files\client\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\client\model\HumanoidModel.cpp">
+      <Filter>Source Files\client\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\GravelTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\HalfTransparentTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\IceTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\InvisibleTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\LadderTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\LeafTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\LiquidTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\LiquidTileDynamic.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\LiquidTileStatic.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\MetalTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\ObsidianTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\OreTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\RedStoneOreTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\ReedTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\SandStoneTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\SandTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\StairTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\StoneSlabTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\StoneTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\Tile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\TntTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\TopSnowTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\TorchTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\TransparentTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\TreeTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\Bush.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\ClayTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\ClothTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\DirtTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\DoorTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\FarmTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\FireTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\GlassTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\tile\GrassTile.cpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\entity\Entity.cpp">
+      <Filter>Source Files\world2\entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\entity\FallingTile.cpp">
+      <Filter>Source Files\world2\entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\entity\ItemEntity.cpp">
+      <Filter>Source Files\world2\entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\entity\LocalPlayer.cpp">
+      <Filter>Source Files\world2\entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\entity\Mob.cpp">
+      <Filter>Source Files\world2\entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\entity\Player.cpp">
+      <Filter>Source Files\world2\entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\entity\PrimedTnt.cpp">
+      <Filter>Source Files\world2\entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\entity\TripodCamera.cpp">
+      <Filter>Source Files\world2\entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\Material.cpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\Explosion.cpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\LightLayer.cpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\LightUpdate.cpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\storage\LevelSource.cpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\storage\LevelStorage.cpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\storage\LevelStorageSource.cpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\storage\MemoryChunkStorage.cpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\storage\MemoryLevelStorage.cpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\storage\MemoryLevelStorageSource.cpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\storage\ChunkStorage.cpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\storage\ExternalFileLevelStorage.cpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\storage\ExternalFileLevelStorageSource.cpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\storage\LevelData.cpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\gamemode\SurvivalMode.cpp">
+      <Filter>Source Files\world2\gamemode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\gamemode\GameMode.cpp">
+      <Filter>Source Files\world2\gamemode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\Options.hpp">
@@ -1163,65 +1148,8 @@
     <ClInclude Include="..\source\UserInput\Keyboard.hpp">
       <Filter>Header Files\User Input</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\World\Generator\Biome.hpp">
-      <Filter>Header Files\World\Generator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Generator\BiomeSource.hpp">
-      <Filter>Header Files\World\Generator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Generator\ChunkCache.hpp">
-      <Filter>Header Files\World\Generator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Generator\ChunkSource.hpp">
-      <Filter>Header Files\World\Generator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Generator\PerformanceTestChunkSource.hpp">
-      <Filter>Header Files\World\Generator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Storage\ChunkStorage.hpp">
-      <Filter>Header Files\World\Storage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Storage\LevelSource.hpp">
-      <Filter>Header Files\World\Storage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Storage\LevelStorage.hpp">
-      <Filter>Header Files\World\Storage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Storage\LevelStorageSource.hpp">
-      <Filter>Header Files\World\Storage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Storage\MemoryChunkStorage.hpp">
-      <Filter>Header Files\World\Storage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Storage\MemoryLevelStorage.hpp">
-      <Filter>Header Files\World\Storage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Storage\MemoryLevelStorageSource.hpp">
-      <Filter>Header Files\World\Storage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Tile\Tile.hpp">
-      <Filter>Header Files\World\Tile</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\LevelData.hpp">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\LightLayer.hpp">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Material.hpp">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\Base\Matrix.hpp">
       <Filter>Header Files\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Entity\Mob.hpp">
-      <Filter>Header Files\World\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Entity\Entity.hpp">
-      <Filter>Header Files\World\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Entity\Player.hpp">
-      <Filter>Header Files\World\Entity</Filter>
     </ClInclude>
     <ClInclude Include="..\source\Inventory.hpp">
       <Filter>Header Files</Filter>
@@ -1232,26 +1160,11 @@
     <ClInclude Include="..\source\UserInput\User.hpp">
       <Filter>Header Files\User Input</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\GameMode\GameMode.hpp">
-      <Filter>Header Files\Game Modes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GameMode\SurvivalMode.hpp">
-      <Filter>Header Files\Game Modes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Generator\TestChunkSource.hpp">
-      <Filter>Header Files\World\Generator</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\UserInput\ITurnInput.hpp">
       <Filter>Header Files\User Input</Filter>
     </ClInclude>
     <ClInclude Include="..\source\UserInput\MouseTurnInput.hpp">
       <Filter>Header Files\User Input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Entity\LocalPlayer.hpp">
-      <Filter>Header Files\World\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\LightUpdate.hpp">
-      <Filter>Header Files\World</Filter>
     </ClInclude>
     <ClInclude Include="..\source\GUI\Screen\PauseScreen.hpp">
       <Filter>Header Files\GUI\Screen</Filter>
@@ -1262,35 +1175,11 @@
     <ClInclude Include="..\source\GUI\Screen\IngameBlockSelectionScreen.hpp">
       <Filter>Header Files\GUI\Screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\World\Item\Item.hpp">
-      <Filter>Header Files\World\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Item\ItemInstance.hpp">
-      <Filter>Header Files\World\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Entity\Models\Model.hpp">
-      <Filter>Header Files\World\Entity\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Entity\Models\HumanoidModel.hpp">
-      <Filter>Header Files\World\Entity\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Entity\TripodCamera.hpp">
-      <Filter>Header Files\World\Entity</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\World\Particle\ParticleEngine.hpp">
       <Filter>Header Files\World\Particle</Filter>
     </ClInclude>
     <ClInclude Include="..\source\World\Particle\Particle.hpp">
       <Filter>Header Files\World\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Entity\PrimedTnt.hpp">
-      <Filter>Header Files\World\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Generator\RandomLevelSource.hpp">
-      <Filter>Header Files\World\Generator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Generator\Feature.hpp">
-      <Filter>Header Files\World\Generator</Filter>
     </ClInclude>
     <ClInclude Include="..\source\GUI\RolledSelectionList.hpp">
       <Filter>Header Files\GUI</Filter>
@@ -1835,12 +1724,6 @@
     <ClInclude Include="..\source\Network\ServerSideNetworkHandler.hpp">
       <Filter>Header Files\Network</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\World\Entity\ItemEntity.hpp">
-      <Filter>Header Files\World\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Entity\FallingTile.hpp">
-      <Filter>Header Files\World\Entity</Filter>
-    </ClInclude>
     <ClInclude Include="..\platforms\windows\AppPlatform_windows.hpp">
       <Filter>Header Files\App</Filter>
     </ClInclude>
@@ -1850,23 +1733,11 @@
     <ClInclude Include="..\GameMods.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\World\Storage\ExternalFileLevelStorage.hpp">
-      <Filter>Header Files\World\Storage</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Storage\ExternalFileLevelStorageSource.hpp">
-      <Filter>Header Files\World\Storage</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\GUI\Screen\SavingWorldScreen.hpp">
       <Filter>Header Files\GUI\Screen</Filter>
     </ClInclude>
     <ClInclude Include="..\source\GUI\Screen\CreateWorldScreen.hpp">
       <Filter>Header Files\GUI\Screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Generator\LargeFeature.hpp">
-      <Filter>Header Files\World\Generator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\World\Generator\LargeCaveFeature.hpp">
-      <Filter>Header Files\World\Generator</Filter>
     </ClInclude>
     <ClInclude Include="..\source\client\model\Cube.hpp">
       <Filter>Source Files\client\model</Filter>
@@ -2008,6 +1879,93 @@
     </ClInclude>
     <ClInclude Include="..\source\world\level\TickNextTickData.hpp">
       <Filter>Source Files\world2\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\model\HumanoidModel.hpp">
+      <Filter>Source Files\client\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\model\Model.hpp">
+      <Filter>Source Files\client\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\Tile.hpp">
+      <Filter>Source Files\world2\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\entity\Entity.hpp">
+      <Filter>Source Files\world2\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\entity\FallingTile.hpp">
+      <Filter>Source Files\world2\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\entity\ItemEntity.hpp">
+      <Filter>Source Files\world2\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\entity\LocalPlayer.hpp">
+      <Filter>Source Files\world2\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\entity\Mob.hpp">
+      <Filter>Source Files\world2\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\entity\Player.hpp">
+      <Filter>Source Files\world2\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\entity\PrimedTnt.hpp">
+      <Filter>Source Files\world2\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\entity\TripodCamera.hpp">
+      <Filter>Source Files\world2\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\item\Item.hpp">
+      <Filter>Source Files\world2\item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\item\ItemInstance.hpp">
+      <Filter>Source Files\world2\item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\Material.hpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\Explosion.hpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\LightLayer.hpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\LightUpdate.hpp">
+      <Filter>Source Files\world2\level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\storage\LevelSource.hpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\storage\LevelStorage.hpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\storage\LevelStorageSource.hpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\storage\MemoryChunkStorage.hpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\storage\MemoryLevelStorage.hpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\storage\MemoryLevelStorageSource.hpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\storage\ChunkStorage.hpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\storage\ExternalFileLevelStorage.hpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\storage\ExternalFileLevelStorageSource.hpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\storage\LevelData.hpp">
+      <Filter>Source Files\world2\level\storage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\gamemode\GameMode.hpp">
+      <Filter>Source Files\world2\gamemode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\gamemode\SurvivalMode.hpp">
+      <Filter>Source Files\world2\gamemode</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

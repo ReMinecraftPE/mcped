@@ -19,7 +19,7 @@
 #include "world/level/Level.hpp"
 #include "CThread.hpp"
 #include "LocalPlayer.hpp"
-#include "SurvivalMode.hpp"
+#include "world/gamemode/SurvivalMode.hpp"
 #include "ITurnInput.hpp"
 #include "ParticleEngine.hpp"
 #include "SoundEngine.hpp"

@@ -11,9 +11,9 @@
 #include "Item.hpp"
 
 #ifdef DEMO
-#include "MemoryLevelStorageSource.hpp"
+#include "world/level/storage/MemoryLevelStorageSource.hpp"
 #else
-#include "ExternalFileLevelStorageSource.hpp"
+#include "world/level/storage/ExternalFileLevelStorageSource.hpp"
 #endif
 
 bool NinecraftApp::_hasInitedStatics;

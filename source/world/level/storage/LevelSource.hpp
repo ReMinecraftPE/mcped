@@ -9,7 +9,7 @@
 #pragma once
 
 #include "Utils.hpp"
-#include "Material.hpp"
+#include "world/level/Material.hpp"
 
 class LevelSource
 {

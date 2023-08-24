@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "HumanoidModel.hpp"
+#include "client/model/HumanoidModel.hpp"
 #include "client/renderer/Font.hpp"
 
 class EntityRenderDispatcher;

@@ -13,7 +13,7 @@
 #include <algorithm>
 #include "AABB.hpp"
 #include "Utils.hpp"
-#include "LightLayer.hpp"
+#include "world/level/LightLayer.hpp"
 
 class Level;
 class Entity;

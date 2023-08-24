@@ -46,6 +46,8 @@
     <ClInclude Include="..\source\Base\Utils.hpp" />
     <ClInclude Include="..\source\Base\Vec3.hpp" />
     <ClInclude Include="..\source\client\model\Cube.hpp" />
+    <ClInclude Include="..\source\client\model\HumanoidModel.hpp" />
+    <ClInclude Include="..\source\client\model\Model.hpp" />
     <ClInclude Include="..\source\client\model\PolygonQuad.hpp" />
     <ClInclude Include="..\source\client\model\VertexPT.hpp" />
     <ClInclude Include="..\source\client\renderer\Chunk.hpp" />
@@ -72,8 +74,6 @@
     <ClInclude Include="..\source\client\renderer\Texture.hpp" />
     <ClInclude Include="..\source\client\renderer\Textures.hpp" />
     <ClInclude Include="..\source\client\renderer\TileRenderer.hpp" />
-    <ClInclude Include="..\source\GameMode\GameMode.hpp" />
-    <ClInclude Include="..\source\GameMode\SurvivalMode.hpp" />
     <ClInclude Include="..\source\GUI\AvailableGamesList.hpp" />
     <ClInclude Include="..\source\GUI\Button.hpp" />
     <ClInclude Include="..\source\GUI\Gui.hpp" />
@@ -125,25 +125,15 @@
     <ClInclude Include="..\source\world\entity\ItemEntity.hpp" />
     <ClInclude Include="..\source\world\entity\LocalPlayer.hpp" />
     <ClInclude Include="..\source\world\entity\Mob.hpp" />
-    <ClInclude Include="..\source\world\entity\Models\HumanoidModel.hpp" />
-    <ClInclude Include="..\source\world\entity\Models\Model.hpp" />
     <ClInclude Include="..\source\world\entity\Player.hpp" />
     <ClInclude Include="..\source\world\entity\PrimedTnt.hpp" />
     <ClInclude Include="..\source\world\entity\TripodCamera.hpp" />
-    <ClInclude Include="..\source\world\generator\Biome.hpp" />
-    <ClInclude Include="..\source\world\generator\BiomeSource.hpp" />
-    <ClInclude Include="..\source\world\generator\ChunkCache.hpp" />
-    <ClInclude Include="..\source\world\generator\ChunkSource.hpp" />
-    <ClInclude Include="..\source\world\generator\Feature.hpp" />
-    <ClInclude Include="..\source\world\generator\LargeCaveFeature.hpp" />
-    <ClInclude Include="..\source\world\generator\LargeFeature.hpp" />
-    <ClInclude Include="..\source\world\generator\PerformanceTestChunkSource.hpp" />
-    <ClInclude Include="..\source\world\generator\RandomLevelSource.hpp" />
-    <ClInclude Include="..\source\world\generator\TestChunkSource.hpp" />
+    <ClInclude Include="..\source\world\gamemode\GameMode.hpp" />
+    <ClInclude Include="..\source\world\gamemode\SurvivalMode.hpp" />
     <ClInclude Include="..\source\world\item\Item.hpp" />
     <ClInclude Include="..\source\world\item\ItemInstance.hpp" />
-    <ClInclude Include="..\source\world\LevelData.hpp" />
     <ClInclude Include="..\source\world\level\Dimension.hpp" />
+    <ClInclude Include="..\source\world\level\Explosion.hpp" />
     <ClInclude Include="..\source\world\level\Level.hpp" />
     <ClInclude Include="..\source\world\level\levelgen\biome\Biome.hpp" />
     <ClInclude Include="..\source\world\level\levelgen\biome\BiomeSource.hpp" />
@@ -160,23 +150,24 @@
     <ClInclude Include="..\source\world\level\levelgen\synth\PerlinNoise.hpp" />
     <ClInclude Include="..\source\world\level\levelgen\synth\Synth.hpp" />
     <ClInclude Include="..\source\world\level\LevelListener.hpp" />
+    <ClInclude Include="..\source\world\level\LightLayer.hpp" />
+    <ClInclude Include="..\source\world\level\LightUpdate.hpp" />
+    <ClInclude Include="..\source\world\level\Material.hpp" />
     <ClInclude Include="..\source\world\level\Region.hpp" />
     <ClInclude Include="..\source\world\level\RegionFile.hpp" />
+    <ClInclude Include="..\source\world\level\storage\ChunkStorage.hpp" />
+    <ClInclude Include="..\source\world\level\storage\ExternalFileLevelStorage.hpp" />
+    <ClInclude Include="..\source\world\level\storage\ExternalFileLevelStorageSource.hpp" />
+    <ClInclude Include="..\source\world\level\storage\LevelData.hpp" />
+    <ClInclude Include="..\source\world\level\storage\LevelSource.hpp" />
+    <ClInclude Include="..\source\world\level\storage\LevelStorage.hpp" />
+    <ClInclude Include="..\source\world\level\storage\LevelStorageSource.hpp" />
+    <ClInclude Include="..\source\world\level\storage\MemoryChunkStorage.hpp" />
+    <ClInclude Include="..\source\world\level\storage\MemoryLevelStorage.hpp" />
+    <ClInclude Include="..\source\world\level\storage\MemoryLevelStorageSource.hpp" />
     <ClInclude Include="..\source\world\level\TickNextTickData.hpp" />
-    <ClInclude Include="..\source\world\LightLayer.hpp" />
-    <ClInclude Include="..\source\world\LightUpdate.hpp" />
-    <ClInclude Include="..\source\world\Material.hpp" />
     <ClInclude Include="..\source\world\particle\Particle.hpp" />
     <ClInclude Include="..\source\world\particle\ParticleEngine.hpp" />
-    <ClInclude Include="..\source\world\storage\ChunkStorage.hpp" />
-    <ClInclude Include="..\source\world\storage\ExternalFileLevelStorage.hpp" />
-    <ClInclude Include="..\source\world\storage\ExternalFileLevelStorageSource.hpp" />
-    <ClInclude Include="..\source\world\storage\LevelSource.hpp" />
-    <ClInclude Include="..\source\world\storage\LevelStorage.hpp" />
-    <ClInclude Include="..\source\world\storage\LevelStorageSource.hpp" />
-    <ClInclude Include="..\source\world\storage\MemoryChunkStorage.hpp" />
-    <ClInclude Include="..\source\world\storage\MemoryLevelStorage.hpp" />
-    <ClInclude Include="..\source\world\storage\MemoryLevelStorageSource.hpp" />
     <ClInclude Include="..\source\world\tile\Tile.hpp" />
     <ClInclude Include="..\thirdparty\raknet\AutopatcherPatchContext.h" />
     <ClInclude Include="..\thirdparty\raknet\AutopatcherRepositoryInterface.h" />
@@ -353,6 +344,8 @@
     <ClCompile Include="..\source\Base\Utils.cpp" />
     <ClCompile Include="..\source\Base\Vec3.cpp" />
     <ClCompile Include="..\source\client\model\Cube.cpp" />
+    <ClCompile Include="..\source\client\model\HumanoidModel.cpp" />
+    <ClCompile Include="..\source\client\model\Model.cpp" />
     <ClCompile Include="..\source\client\model\PolygonQuad.cpp" />
     <ClCompile Include="..\source\client\renderer\Chunk.cpp" />
     <ClCompile Include="..\source\client\renderer\Culler.cpp" />
@@ -379,8 +372,6 @@
     <ClCompile Include="..\source\client\renderer\TileRenderer.cpp" />
     <ClCompile Include="..\source\client\renderer\WaterSideTexture.cpp" />
     <ClCompile Include="..\source\client\renderer\WaterTexture.cpp" />
-    <ClCompile Include="..\source\GameMode\GameMode.cpp" />
-    <ClCompile Include="..\source\GameMode\SurvivalMode.cpp" />
     <ClCompile Include="..\source\GUI\AvailableGamesList.cpp" />
     <ClCompile Include="..\source\GUI\Button.cpp" />
     <ClCompile Include="..\source\GUI\Gui.cpp" />
@@ -440,20 +431,19 @@
     <ClCompile Include="..\source\world\entity\ItemEntity.cpp" />
     <ClCompile Include="..\source\world\entity\LocalPlayer.cpp" />
     <ClCompile Include="..\source\world\entity\Mob.cpp" />
-    <ClCompile Include="..\source\world\entity\Models\HumanoidModel.cpp" />
-    <ClCompile Include="..\source\world\entity\Models\Model.cpp" />
     <ClCompile Include="..\source\world\entity\Player.cpp" />
     <ClCompile Include="..\source\world\entity\PrimedTnt.cpp" />
     <ClCompile Include="..\source\world\entity\TripodCamera.cpp" />
-    <ClCompile Include="..\source\world\Explosion.cpp" />
+    <ClCompile Include="..\source\world\gamemode\GameMode.cpp" />
+    <ClCompile Include="..\source\world\gamemode\SurvivalMode.cpp" />
     <ClCompile Include="..\source\world\item\CameraItem.cpp" />
     <ClCompile Include="..\source\world\item\DoorItem.cpp" />
     <ClCompile Include="..\source\world\item\Item.cpp" />
     <ClCompile Include="..\source\world\item\ItemInstance.cpp" />
     <ClCompile Include="..\source\world\item\TileItem.cpp" />
     <ClCompile Include="..\source\world\item\TilePlanterItem.cpp" />
-    <ClCompile Include="..\source\world\LevelData.cpp" />
     <ClCompile Include="..\source\world\level\Dimension.cpp" />
+    <ClCompile Include="..\source\world\level\Explosion.cpp" />
     <ClCompile Include="..\source\world\level\Level.cpp" />
     <ClCompile Include="..\source\world\level\levelgen\biome\Biome.cpp" />
     <ClCompile Include="..\source\world\level\levelgen\biome\BiomeSource.cpp" />
@@ -479,12 +469,22 @@
     <ClCompile Include="..\source\world\level\levelgen\synth\PerlinNoise.cpp" />
     <ClCompile Include="..\source\world\level\levelgen\synth\Synth.cpp" />
     <ClCompile Include="..\source\world\level\LevelListener.cpp" />
+    <ClCompile Include="..\source\world\level\LightLayer.cpp" />
+    <ClCompile Include="..\source\world\level\LightUpdate.cpp" />
+    <ClCompile Include="..\source\world\level\Material.cpp" />
     <ClCompile Include="..\source\world\level\Region.cpp" />
     <ClCompile Include="..\source\world\level\RegionFile.cpp" />
+    <ClCompile Include="..\source\world\level\storage\ChunkStorage.cpp" />
+    <ClCompile Include="..\source\world\level\storage\ExternalFileLevelStorage.cpp" />
+    <ClCompile Include="..\source\world\level\storage\ExternalFileLevelStorageSource.cpp" />
+    <ClCompile Include="..\source\world\level\storage\LevelData.cpp" />
+    <ClCompile Include="..\source\world\level\storage\LevelSource.cpp" />
+    <ClCompile Include="..\source\world\level\storage\LevelStorage.cpp" />
+    <ClCompile Include="..\source\world\level\storage\LevelStorageSource.cpp" />
+    <ClCompile Include="..\source\world\level\storage\MemoryChunkStorage.cpp" />
+    <ClCompile Include="..\source\world\level\storage\MemoryLevelStorage.cpp" />
+    <ClCompile Include="..\source\world\level\storage\MemoryLevelStorageSource.cpp" />
     <ClCompile Include="..\source\world\level\TickNextTickData.cpp" />
-    <ClCompile Include="..\source\world\LightLayer.cpp" />
-    <ClCompile Include="..\source\world\LightUpdate.cpp" />
-    <ClCompile Include="..\source\world\Material.cpp" />
     <ClCompile Include="..\source\world\particle\BubbleParticle.cpp" />
     <ClCompile Include="..\source\world\particle\ExplodeParticle.cpp" />
     <ClCompile Include="..\source\world\particle\FlameParticle.cpp" />
@@ -494,15 +494,7 @@
     <ClCompile Include="..\source\world\particle\RedDustParticle.cpp" />
     <ClCompile Include="..\source\world\particle\SmokeParticle.cpp" />
     <ClCompile Include="..\source\world\particle\TerrainParticle.cpp" />
-    <ClCompile Include="..\source\world\storage\ChunkStorage.cpp" />
-    <ClCompile Include="..\source\world\storage\ExternalFileLevelStorage.cpp" />
-    <ClCompile Include="..\source\world\storage\ExternalFileLevelStorageSource.cpp" />
-    <ClCompile Include="..\source\world\storage\LevelSource.cpp" />
-    <ClCompile Include="..\source\world\storage\LevelStorage.cpp" />
-    <ClCompile Include="..\source\world\storage\LevelStorageSource.cpp" />
-    <ClCompile Include="..\source\world\storage\MemoryChunkStorage.cpp" />
-    <ClCompile Include="..\source\world\storage\MemoryLevelStorage.cpp" />
-    <ClCompile Include="..\source\world\storage\MemoryLevelStorageSource.cpp" />
+    <ClCompile Include="../thirdparty\stb_image_impl.c" />
     <ClCompile Include="..\source\world\tile\Bush.cpp" />
     <ClCompile Include="..\source\world\tile\ClayTile.cpp" />
     <ClCompile Include="..\source\world\tile\ClothTile.cpp" />
@@ -537,7 +529,6 @@
     <ClCompile Include="..\source\world\tile\TorchTile.cpp" />
     <ClCompile Include="..\source\world\tile\TransparentTile.cpp" />
     <ClCompile Include="..\source\world\tile\TreeTile.cpp" />
-    <ClCompile Include="../thirdparty\stb_image_impl.c" />
     <ClCompile Include="..\thirdparty\raknet\Base64Encoder.cpp" />
     <ClCompile Include="..\thirdparty\raknet\BitStream.cpp" />
     <ClCompile Include="..\thirdparty\raknet\CCRakNetSlidingWindow.cpp" />
@@ -766,7 +757,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FloatingPointModel>Precise</FloatingPointModel>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
@@ -782,7 +773,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FloatingPointModel>Precise</FloatingPointModel>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
@@ -800,7 +791,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FloatingPointModel>Precise</FloatingPointModel>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
@@ -818,7 +809,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FloatingPointModel>Precise</FloatingPointModel>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
@@ -834,7 +825,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FloatingPointModel>Precise</FloatingPointModel>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
@@ -852,7 +843,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <FloatingPointModel>Precise</FloatingPointModel>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>

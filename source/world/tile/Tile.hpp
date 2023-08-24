@@ -11,11 +11,11 @@
 #include <string>
 #include <vector>
 
-#include "Material.hpp"
 #include "Random.hpp"
 #include "AABB.hpp"
-#include "LevelSource.hpp"
-#include "Entity.hpp"
+#include "world/level/Material.hpp"
+#include "world/level/storage/LevelSource.hpp"
+#include "world/entity/Entity.hpp"
 
 class Level;
 class Entity;

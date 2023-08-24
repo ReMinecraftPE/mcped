@@ -10,9 +10,9 @@
 
 #include "AABB.hpp"
 #include "Vec3.hpp"
-#include "Material.hpp"
-#include "Tile.hpp"
-#include "ItemInstance.hpp"
+#include "world/level/Material.hpp"
+#include "world/tile/Tile.hpp"
+#include "world/item/ItemInstance.hpp"
 
 class Level;
 class Player;
