@@ -158,6 +158,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 
 			g_AppPlatform.setScreenSize(width, height);
 
+			// not our job to intervene in the app's business, but...
+			// we don't want to interfere in the actual game code now do we?!
+			if (!g_pApp)
+				break;
+
+			if (g_pApp->field_D14)
+			{
+				Screen* pScreen = g_pApp->field_D14;
+				pScreen->m_buttons.clear();
+				pScreen->m_buttonTabList.clear();
+				pScreen->setSize(int(width * Gui::InvGuiScale), int(height * Gui::InvGuiScale));
+				pScreen->init();
+			}
+
 			break;
 		}
 		case WM_KEYDOWN:

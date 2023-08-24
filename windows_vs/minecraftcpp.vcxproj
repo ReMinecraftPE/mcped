@@ -108,7 +108,6 @@
     <ClInclude Include="..\source\client\renderer\TileRenderer.hpp" />
     <ClInclude Include="..\source\client\renderer\WaterSideTexture.hpp" />
     <ClInclude Include="..\source\client\renderer\WaterTexture.hpp" />
-    <ClInclude Include="..\source\client\SoundSystemWindows.hpp" />
     <ClInclude Include="..\source\client\sound\SoundData.hpp" />
     <ClInclude Include="..\source\client\sound\SoundDefs.hpp" />
     <ClInclude Include="..\source\client\sound\SoundEngine.hpp" />
@@ -121,6 +120,7 @@
     <ClInclude Include="..\source\client\network\PingedCompatibleServer.hpp" />
     <ClInclude Include="..\source\client\network\RakNetInstance.hpp" />
     <ClInclude Include="..\source\client\network\ServerSideNetworkHandler.hpp" />
+    <ClInclude Include="..\source\client\sound\SoundSystemWindows.hpp" />
     <ClInclude Include="..\source\world\entity\Entity.hpp" />
     <ClInclude Include="..\source\world\entity\FallingTile.hpp" />
     <ClInclude Include="..\source\world\entity\ItemEntity.hpp" />
@@ -409,7 +409,6 @@
     <ClCompile Include="..\source\client\renderer\TileRenderer.cpp" />
     <ClCompile Include="..\source\client\renderer\WaterSideTexture.cpp" />
     <ClCompile Include="..\source\client\renderer\WaterTexture.cpp" />
-    <ClCompile Include="..\source\client\SoundSystemWindows.cpp" />
     <ClCompile Include="..\source\client\sound\SoundData.cpp" />
     <ClCompile Include="..\source\client\sound\SoundEngine.cpp" />
     <ClCompile Include="..\source\client\sound\SoundRepository.cpp" />
@@ -431,6 +430,7 @@
     <ClCompile Include="..\source\client\network\packets\UpdateBlockPacket.cpp" />
     <ClCompile Include="..\source\client\network\RakNetInstance.cpp" />
     <ClCompile Include="..\source\client\network\ServerSideNetworkHandler.cpp" />
+    <ClCompile Include="..\source\client\sound\SoundSystemWindows.cpp" />
     <ClCompile Include="..\source\world\entity\Entity.cpp" />
     <ClCompile Include="..\source\world\entity\FallingTile.cpp" />
     <ClCompile Include="..\source\world\entity\ItemEntity.cpp" />

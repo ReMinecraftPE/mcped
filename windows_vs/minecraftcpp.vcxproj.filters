@@ -1047,8 +1047,8 @@
     <ClCompile Include="..\source\client\main_windows.cpp">
       <Filter>Source Files\client</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\client\SoundSystemWindows.cpp">
-      <Filter>Source Files\client</Filter>
+    <ClCompile Include="..\source\client\sound\SoundSystemWindows.cpp">
+      <Filter>Source Files\client\sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1937,9 +1937,6 @@
     <ClInclude Include="..\source\client\AppPlatform_windows.hpp">
       <Filter>Source Files\client</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\client\SoundSystemWindows.hpp">
-      <Filter>Source Files\client</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\client\renderer\WaterSideTexture.hpp">
       <Filter>Source Files\client\renderer</Filter>
     </ClInclude>
@@ -1966,6 +1963,9 @@
     </ClInclude>
     <ClInclude Include="..\compat\AKeyCodes.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\sound\SoundSystemWindows.hpp">
+      <Filter>Source Files\client\sound</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

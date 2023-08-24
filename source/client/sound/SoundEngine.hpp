@@ -16,7 +16,7 @@
 // Platform specific type for the sound system.
 
 #ifdef _WIN32
-#include "client/SoundSystemWindows.hpp"
+#include "SoundSystemWindows.hpp"
 #define SOUND_SYSTEM_TYPE SoundSystemWindows
 #else
 #define SOUND_SYSTEM_TYPE SoundSystem
