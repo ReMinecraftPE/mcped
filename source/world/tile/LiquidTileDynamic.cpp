@@ -6,7 +6,7 @@
 	SPDX-License-Identifier: BSD-1-Clause
  ********************************************************************/
 
-#include "Tile.hpp"
+#include "LiquidTileDynamic.hpp"
 #include "world/level/Level.hpp"
 
 LiquidTileDynamic::LiquidTileDynamic(int id, Material* pMtl) : LiquidTile(id, pMtl)

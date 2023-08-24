@@ -8,6 +8,8 @@
 
 #include "TileRenderer.hpp"
 #include "client/Minecraft.hpp"
+#include "world/tile/FireTile.hpp"
+#include "world/tile/LiquidTile.hpp"
 
 TileRenderer::TileRenderer()
 {

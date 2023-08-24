@@ -6,7 +6,7 @@
 	SPDX-License-Identifier: BSD-1-Clause
  ********************************************************************/
 
-#include "Tile.hpp"
+#include "GrassTile.hpp"
 #include "world/level/Level.hpp"
 
 GrassTile::GrassTile(int id, Material* c) : Tile(id, c)

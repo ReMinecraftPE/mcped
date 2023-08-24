@@ -6,7 +6,7 @@
 	SPDX-License-Identifier: BSD-1-Clause
  ********************************************************************/
 
-#include "Tile.hpp"
+#include "LeafTile.hpp"
 #include "world/level/Level.hpp"
 
 LeafTile::LeafTile(int id) : TransparentTile(id, TEXTURE_LEAVES_TRANSPARENT, Material::leaves, false)

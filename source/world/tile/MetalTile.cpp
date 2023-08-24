@@ -6,7 +6,7 @@
 	SPDX-License-Identifier: BSD-1-Clause
  ********************************************************************/
 
-#include "Tile.hpp"
+#include "MetalTile.hpp"
 #include "world/level/Level.hpp"
 
 MetalTile::MetalTile(int ID, int texture, Material* pMtl) : Tile(ID, pMtl)

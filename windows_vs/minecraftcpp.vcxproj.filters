@@ -1967,6 +1967,105 @@
     <ClInclude Include="..\source\client\sound\SoundSystemWindows.hpp">
       <Filter>Source Files\client\sound</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\world\tile\DirtTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\StoneTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\TntTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\TopSnowTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\TorchTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\TransparentTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\TreeTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\Bush.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\ClayTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\ClothTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\DoorTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\FarmTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\FireTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\GlassTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\GrassTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\GravelTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\HalfTransparentTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\IceTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\InvisibleTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\LadderTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\LeafTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\LiquidTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\LiquidTileDynamic.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\LiquidTileStatic.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\MetalTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\ObsidianTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\OreTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\RedStoneOreTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\ReedTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\SandStoneTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\SandTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\StairTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\tile\StoneSlabTile.hpp">
+      <Filter>Source Files\world\tile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\thirdparty\raknet\CMakeLists.txt">
