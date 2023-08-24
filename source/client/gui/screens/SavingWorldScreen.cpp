@@ -56,7 +56,7 @@ void SavingWorldScreen::tick()
 
 		m_pMinecraft->field_DB0 = false;
 
-		m_pMinecraft->field_288 = false;
+		m_pMinecraft->m_bDontTickLevel = false;
 	}
 }
 

@@ -99,7 +99,7 @@ void NinecraftApp::update()
 void NinecraftApp::updateStats()
 {
 	int timeMs = getTimeMs();
-	if (timeMs > field_2B0 + 999)
+	if (timeMs > m_lastFpsUpdate + 999)
 	{
 		if (m_pLocalPlayer)
 		{
@@ -113,7 +113,7 @@ void NinecraftApp::updateStats()
 			printf("%d fps\n", m_fps);
 		}
 
-		field_2B0 = timeMs;
+		m_lastFpsUpdate = timeMs;
 		m_fps = 0;
 	}
 }

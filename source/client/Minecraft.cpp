@@ -509,7 +509,7 @@ void Minecraft::tick()
 			_levelGenerated();
 		}
 
-		if (m_pLevel && !field_288)
+		if (m_pLevel && !m_bDontTickLevel)
 		{
 			m_pGameRenderer->tick();
 			m_pLevelRenderer->tick();
@@ -527,7 +527,7 @@ void Minecraft::tick()
 
 		m_pTextures->loadAndBindTexture(C_TERRAIN_NAME);
 
-		if (!field_288)
+		if (!m_bDontTickLevel)
 		{
 			m_pTextures->tick();
 			m_pParticleEngine->tick();
@@ -549,7 +549,7 @@ void Minecraft::tick()
 
 void Minecraft::update()
 {
-	if (field_288 && m_pLevel)
+	if (m_bDontTickLevel && m_pLevel)
 	{
 		float x = m_timer.field_18;
 		m_timer.advanceTime();
@@ -856,7 +856,7 @@ void Minecraft::leaveGame(bool bCopyMap)
 #endif
 
 #ifdef ENH_IMPROVED_SAVING
-	field_288 = true;
+	m_bDontTickLevel = true;
 	setScreen(new SavingWorldScreen(bCopyMap));
 #else
 	if (m_pLevel)
@@ -892,16 +892,16 @@ void Minecraft::hostMultiplayer()
 
 void Minecraft::joinMultiplayer(const PingedCompatibleServer& serverInfo)
 {
-	if (field_18 && m_pNetEventCallback)
+	if (m_bLocatingMultiplayer && m_pNetEventCallback)
 	{
-		field_18 = false;
+		m_bLocatingMultiplayer = false;
 		m_pRakNetInstance->connect(serverInfo.m_address.ToString(), serverInfo.m_address.GetPort());
 	}
 }
 
 void Minecraft::cancelLocateMultiplayer()
 {
-	field_18 = false;
+	m_bLocatingMultiplayer = false;
 	m_pRakNetInstance->stopPingForHosts();
 	delete m_pNetEventCallback;
 	m_pNetEventCallback = nullptr;
@@ -909,7 +909,7 @@ void Minecraft::cancelLocateMultiplayer()
 
 void Minecraft::locateMultiplayer()
 {
-	field_18 = true;
+	m_bLocatingMultiplayer = true;
 	m_pRakNetInstance->pingForHosts(C_DEFAULT_PORT);
 	m_pNetEventCallback = new ClientSideNetworkHandler(this, m_pRakNetInstance);
 }

@@ -79,9 +79,9 @@ public:
 	static int customDebugId;
 
 public:
-	bool field_18 = false;
+	bool m_bLocatingMultiplayer = false;
 	Options m_options;
-	bool field_288 = false;
+	bool m_bDontTickLevel = false;
 	LevelRenderer* m_pLevelRenderer = nullptr;
 	GameRenderer* m_pGameRenderer = nullptr;
 	ParticleEngine* m_pParticleEngine = nullptr;
@@ -91,7 +91,7 @@ public:
 	Font* m_pFont = nullptr;
 	RakNetInstance* m_pRakNetInstance = nullptr;
 	NetEventCallback* m_pNetEventCallback = nullptr;
-	int field_2B0 = 0;
+	int m_lastFpsUpdate = 0;
 	int field_2B4;
 	int field_2B8;
 	User* m_pUser = nullptr;
