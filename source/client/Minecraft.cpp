@@ -13,6 +13,8 @@
 #include "client/gui/screens/SavingWorldScreen.hpp"
 #include "client/network/ServerSideNetworkHandler.hpp"
 #include "client/network/ClientSideNetworkHandler.hpp"
+#include "client/renderer/WaterTexture.hpp"
+#include "client/renderer/WaterSideTexture.hpp"
 
 #ifndef ORIGINAL_CODE
 #include "client/player/input/MouseTurnInput.hpp"

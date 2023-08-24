@@ -1955,6 +1955,12 @@
     <ClInclude Include="..\source\client\SoundSystemWindows.hpp">
       <Filter>Source Files\client</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\client\renderer\WaterSideTexture.hpp">
+      <Filter>Source Files\client\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\client\renderer\WaterTexture.hpp">
+      <Filter>Source Files\client\renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\thirdparty\raknet\CMakeLists.txt">

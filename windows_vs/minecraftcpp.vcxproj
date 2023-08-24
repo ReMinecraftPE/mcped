@@ -106,6 +106,8 @@
     <ClInclude Include="..\source\client\renderer\Texture.hpp" />
     <ClInclude Include="..\source\client\renderer\Textures.hpp" />
     <ClInclude Include="..\source\client\renderer\TileRenderer.hpp" />
+    <ClInclude Include="..\source\client\renderer\WaterSideTexture.hpp" />
+    <ClInclude Include="..\source\client\renderer\WaterTexture.hpp" />
     <ClInclude Include="..\source\client\SoundSystemWindows.hpp" />
     <ClInclude Include="..\source\client\sound\SoundData.hpp" />
     <ClInclude Include="..\source\client\sound\SoundDefs.hpp" />

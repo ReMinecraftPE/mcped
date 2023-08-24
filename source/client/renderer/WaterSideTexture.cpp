@@ -6,7 +6,7 @@
 	SPDX-License-Identifier: BSD-1-Clause
  ********************************************************************/
 
-#include "DynamicTexture.hpp"
+#include "WaterSideTexture.hpp"
 #include "Tile.hpp"
 
 WaterSideTexture::WaterSideTexture() : DynamicTexture(Tile::water->m_TextureFrame + 1)
