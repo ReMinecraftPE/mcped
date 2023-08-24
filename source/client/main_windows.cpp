@@ -163,9 +163,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 			if (!g_pApp)
 				break;
 
-			if (g_pApp->field_D14)
+			if (g_pApp->m_pScreen)
 			{
-				Screen* pScreen = g_pApp->field_D14;
+				Screen* pScreen = g_pApp->m_pScreen;
 				pScreen->m_buttons.clear();
 				pScreen->m_buttonTabList.clear();
 				pScreen->setSize(int(width * Gui::InvGuiScale), int(height * Gui::InvGuiScale));
