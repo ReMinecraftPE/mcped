@@ -23,7 +23,7 @@ float Controller::linearTransform(float a1, float a2, float a3, bool b)
 {
 	float x1 = fabsf(a2);
 	float x2 = a1;
-	float x3 = fabsf(x1);
+	float x3 = fabsf(a1);
 	if (x3 >= x2)
 		return 0.0f;
 
