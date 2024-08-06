@@ -67,12 +67,6 @@
     <Filter Include="Source Files\world\level\levelgen\synth">
       <UniqueIdentifier>{d9d88cdc-70fb-44ba-8638-5fbe81e46e05}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\world\level\levelgen\chunk">
-      <UniqueIdentifier>{2a5a0841-6249-4938-9055-59dbe17acb84}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\world\level\levelgen\biome">
-      <UniqueIdentifier>{62073b0e-c513-45c9-9e03-de2c13154581}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\world\level\levelgen\feature">
       <UniqueIdentifier>{c54de600-9c7e-4566-8484-655c03321d43}</UniqueIdentifier>
     </Filter>
@@ -105,6 +99,12 @@
     </Filter>
     <Filter Include="Source Files\world\level\tile">
       <UniqueIdentifier>{51403a0a-510a-4246-84c1-376a228d89e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\level\biome">
+      <UniqueIdentifier>{2618cf60-e7c0-4053-bfb0-032f97869f7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\level\chunk">
+      <UniqueIdentifier>{78e81f8f-57e8-4d1c-91c7-7ec5be5c319a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -534,15 +534,6 @@
     <ClCompile Include="..\source\world\level\levelgen\synth\Synth.cpp">
       <Filter>Source Files\world\level\levelgen\synth</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\world\level\levelgen\chunk\LevelChunk.cpp">
-      <Filter>Source Files\world\level\levelgen\chunk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\level\levelgen\biome\Biome.cpp">
-      <Filter>Source Files\world\level\levelgen\biome</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\level\levelgen\biome\BiomeSource.cpp">
-      <Filter>Source Files\world\level\levelgen\biome</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\world\level\levelgen\feature\OreFeature.cpp">
       <Filter>Source Files\world\level\levelgen\feature</Filter>
     </ClCompile>
@@ -578,21 +569,6 @@
     </ClCompile>
     <ClCompile Include="..\source\world\level\levelgen\feature\LargeFeature.cpp">
       <Filter>Source Files\world\level\levelgen\feature</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\level\levelgen\chunk\ChunkSource.cpp">
-      <Filter>Source Files\world\level\levelgen\chunk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\level\levelgen\chunk\PerformanceTestChunkSource.cpp">
-      <Filter>Source Files\world\level\levelgen\chunk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\level\levelgen\chunk\RandomLevelSource.cpp">
-      <Filter>Source Files\world\level\levelgen\chunk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\level\levelgen\chunk\TestChunkSource.cpp">
-      <Filter>Source Files\world\level\levelgen\chunk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\level\levelgen\chunk\ChunkCache.cpp">
-      <Filter>Source Files\world\level\levelgen\chunk</Filter>
     </ClCompile>
     <ClCompile Include="..\source\world\level\LevelListener.cpp">
       <Filter>Source Files\world\level</Filter>
@@ -1049,6 +1025,30 @@
     </ClCompile>
     <ClCompile Include="..\source\world\level\tile\ClothTile.cpp">
       <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\biome\Biome.cpp">
+      <Filter>Source Files\world\level\biome</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\biome\BiomeSource.cpp">
+      <Filter>Source Files\world\level\biome</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\chunk\LevelChunk.cpp">
+      <Filter>Source Files\world\level\chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\chunk\PerformanceTestChunkSource.cpp">
+      <Filter>Source Files\world\level\chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\chunk\RandomLevelSource.cpp">
+      <Filter>Source Files\world\level\chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\chunk\TestChunkSource.cpp">
+      <Filter>Source Files\world\level\chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\chunk\ChunkCache.cpp">
+      <Filter>Source Files\world\level\chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\chunk\ChunkSource.cpp">
+      <Filter>Source Files\world\level\chunk</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1607,15 +1607,6 @@
     <ClInclude Include="..\source\world\level\Level.hpp">
       <Filter>Source Files\world\level</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\level\levelgen\chunk\LevelChunk.hpp">
-      <Filter>Source Files\world\level\levelgen\chunk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\world\level\levelgen\biome\Biome.hpp">
-      <Filter>Source Files\world\level\levelgen\biome</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\world\level\levelgen\biome\BiomeSource.hpp">
-      <Filter>Source Files\world\level\levelgen\biome</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\world\level\levelgen\feature\LargeFeature.hpp">
       <Filter>Source Files\world\level\levelgen\feature</Filter>
     </ClInclude>
@@ -1624,21 +1615,6 @@
     </ClInclude>
     <ClInclude Include="..\source\world\level\levelgen\feature\LargeCaveFeature.hpp">
       <Filter>Source Files\world\level\levelgen\feature</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\world\level\levelgen\chunk\ChunkSource.hpp">
-      <Filter>Source Files\world\level\levelgen\chunk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\world\level\levelgen\chunk\PerformanceTestChunkSource.hpp">
-      <Filter>Source Files\world\level\levelgen\chunk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\world\level\levelgen\chunk\RandomLevelSource.hpp">
-      <Filter>Source Files\world\level\levelgen\chunk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\world\level\levelgen\chunk\TestChunkSource.hpp">
-      <Filter>Source Files\world\level\levelgen\chunk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\world\level\levelgen\chunk\ChunkCache.hpp">
-      <Filter>Source Files\world\level\levelgen\chunk</Filter>
     </ClInclude>
     <ClInclude Include="..\source\world\level\Dimension.hpp">
       <Filter>Source Files\world\level</Filter>
@@ -2065,6 +2041,30 @@
     </ClInclude>
     <ClInclude Include="..\source\world\level\tile\ClothTile.hpp">
       <Filter>Source Files\world\level\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\biome\BiomeSource.hpp">
+      <Filter>Source Files\world\level\biome</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\biome\Biome.hpp">
+      <Filter>Source Files\world\level\biome</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\chunk\LevelChunk.hpp">
+      <Filter>Source Files\world\level\chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\chunk\PerformanceTestChunkSource.hpp">
+      <Filter>Source Files\world\level\chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\chunk\RandomLevelSource.hpp">
+      <Filter>Source Files\world\level\chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\chunk\TestChunkSource.hpp">
+      <Filter>Source Files\world\level\chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\chunk\ChunkCache.hpp">
+      <Filter>Source Files\world\level\chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\chunk\ChunkSource.hpp">
+      <Filter>Source Files\world\level\chunk</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

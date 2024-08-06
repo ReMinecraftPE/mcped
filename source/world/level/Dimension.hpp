@@ -10,8 +10,8 @@
 
 #include "world/phys/Vec3.hpp"
 #include "world/level/Level.hpp"
-#include "world/level/levelgen/biome/BiomeSource.hpp"
-#include "world/level/levelgen/chunk/ChunkSource.hpp"
+#include "world/level/biome/BiomeSource.hpp"
+#include "world/level/chunk/ChunkSource.hpp"
 
 class Level; // if included from Level.hpp
 

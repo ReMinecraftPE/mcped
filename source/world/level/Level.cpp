@@ -10,7 +10,7 @@
 #include "Explosion.hpp"
 #include "Region.hpp"
 #include "client/common/Util.hpp"
-#include "world/level/levelgen/chunk/ChunkCache.hpp"
+#include "world/level/chunk/ChunkCache.hpp"
 
 Level::Level(LevelStorage* pStor, const std::string& str, TLong seed, int x) :
 	field_38(1), // initialize with a seed of 1
