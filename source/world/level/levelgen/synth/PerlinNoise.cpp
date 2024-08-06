@@ -9,46 +9,46 @@
 #include "PerlinNoise.hpp"
 #include "client/common/Utils.hpp"
 
-PerlinNoise::PerlinNoise(int nOctaves)
+PerlinNoise::PerlinNoise(int levels)
 {
-	m_pRandom = &m_random;
-	init(nOctaves);
+	_seedRandom = &_defaultRandom;
+	init(levels);
 }
 
-PerlinNoise::PerlinNoise(Random* pRandom, int nOctaves)
+PerlinNoise::PerlinNoise(Random* random, int levels)
 {
-	m_pRandom = pRandom;
-	init(nOctaves);
+	_seedRandom = random;
+	init(levels);
 }
 
-void PerlinNoise::init(int nOctaves)
+void PerlinNoise::init(int levels)
 {
-	m_nOctaves = nOctaves;
-	m_pImprovedNoise = new ImprovedNoise * [nOctaves];
+	this->levels = levels;
+	noiseLevels = new ImprovedNoise* [levels];
 
-	for (int i = 0; i < nOctaves; i++)
+	for (int i = 0; i < levels; i++)
 	{
-		m_pImprovedNoise[i] = new ImprovedNoise(m_pRandom);
+		noiseLevels[i] = new ImprovedNoise(_seedRandom);
 	}
 }
 
 PerlinNoise::~PerlinNoise()
 {
-	for (int i = 0; i < m_nOctaves; i++)
-		delete[] m_pImprovedNoise[i];
+	for (int i = 0; i < levels; i++)
+		delete[] noiseLevels[i];
 
-	delete[] m_pImprovedNoise;
+	delete[] noiseLevels;
 }
 
 float PerlinNoise::getValue(float x, float y)
 {
-	if (m_nOctaves <= 0) return 0.0f;
+	if (levels <= 0) return 0.0f;
 
 	float result = 0.0f, x1 = 1.0f;
 
-	for (int i = 0; i < m_nOctaves; i++)
+	for (int i = 0; i < levels; i++)
 	{
-		result += m_pImprovedNoise[i]->getValue(x * x1, y * x1) / x1;
+		result += noiseLevels[i]->getValue(x * x1, y * x1) / x1;
 		x1 /= 2.f;
 	}
 
@@ -57,13 +57,13 @@ float PerlinNoise::getValue(float x, float y)
 
 float PerlinNoise::getValue(float x, float y, float z)
 {
-	if (m_nOctaves <= 0) return 0.0f;
+	if (levels <= 0) return 0.0f;
 
 	float result = 0.0f, x1 = 1.0f;
 
-	for (int i = 0; i < m_nOctaves; i++)
+	for (int i = 0; i < levels; i++)
 	{
-		result += m_pImprovedNoise[i]->getValue(x * x1, y * x1, z * x1) / x1;
+		result += noiseLevels[i]->getValue(x * x1, y * x1, z * x1) / x1;
 		x1 /= 2.f;
 	}
 
@@ -85,9 +85,9 @@ float* PerlinNoise::getRegion(float* pMem, float a3, float a4, float a5, int a6,
 		pMem[i] = 0;
 
 	float x = 1.0f;
-	for (int i = 0; i < m_nOctaves; i++)
+	for (int i = 0; i < levels; i++)
 	{
-		m_pImprovedNoise[i]->add(pMem, a3, a4, a5, a6, a7, a8, a9 * x, a10 * x, a11 * x, x);
+		noiseLevels[i]->add(pMem, a3, a4, a5, a6, a7, a8, a9 * x, a10 * x, a11 * x, x);
 		x /= 2;
 	}
 

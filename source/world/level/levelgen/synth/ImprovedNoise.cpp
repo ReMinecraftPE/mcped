@@ -22,20 +22,20 @@ ImprovedNoise::ImprovedNoise(Random* pRandom)
 
 void ImprovedNoise::init(Random* pRandom)
 {
-	m_offsetX = pRandom->nextFloat() * 256.0f;
-	m_offsetY = pRandom->nextFloat() * 256.0f;
-	m_offsetZ = pRandom->nextFloat() * 256.0f;
+	xo = pRandom->nextFloat() * 256.0f;
+	yo = pRandom->nextFloat() * 256.0f;
+	zo = pRandom->nextFloat() * 256.0f;
 	
 	for (int i = 0; i < 256; i++)
-		m_permutation[i] = i;
+		p[i] = i;
 
 	for (int i = 0; i < 256; i++)
 	{
 		int x = pRandom->nextInt(256 - i) + i;
-		int t = m_permutation[i];
-		m_permutation[i] = m_permutation[x];
-		m_permutation[x] = t;
-		m_permutation[256 + i] = m_permutation[i];
+		int t = p[i];
+		p[i] = p[x];
+		p[x] = t;
+		p[256 + i] = p[i];
 	}
 }
 
@@ -74,11 +74,10 @@ float ImprovedNoise::fade(float x)
 
 float ImprovedNoise::noise(float x, float y, float z)
 {
-	// couldn't figure out how to get it to work well enough so I just decided to port the original implementation from:
-	// https://cs.nyu.edu/~perlin/noise/
-	x += m_offsetX;
-	y += m_offsetY;
-	z += m_offsetZ;
+	// original implementation from: https://cs.nyu.edu/~perlin/noise/
+	x += xo;
+	y += yo;
+	z += zo;
 
 	int X = Mth::floor(x) & 255,
 		Y = Mth::floor(y) & 255,
@@ -92,7 +91,7 @@ float ImprovedNoise::noise(float x, float y, float z)
 		  v = fade(y),
 		  w = fade(z);
 
-	int* p = m_permutation;
+	int* p = p;
 	int A = p[X    ] + Y, AA = p[A] + Z, AB = p[A + 1] + Z,
 		B = p[X + 1] + Y, BA = p[B] + Z, BB = p[B + 1] + Z;
 
@@ -113,24 +112,24 @@ void ImprovedNoise::add(float* a2, float a3, float a4, float a5, int a6, int a7,
 	{
 		for (int i = 0; i < a6; i++)
 		{
-			float x2 = m_offsetX + a9 * (i + a3);
+			float x2 = xo + a9 * (i + a3);
 			int   x3 = Mth::floor(x2);
 			float x4 = float(x3);
 			float x5 = x2 - x4;
 
-			int* x6 = &m_permutation[uint8_t(x3)];
-			int* x8 = &m_permutation[uint8_t(x3 + 1)];
+			int* x6 = &p[uint8_t(x3)];
+			int* x8 = &p[uint8_t(x3 + 1)];
 			float* x7 = &a2[a8 * i];
 
 			for (int j = 0; j < a8; j++)
 			{
-				float x9 = m_offsetZ + a11 * (j + a5);
+				float x9 = zo + a11 * (j + a5);
 				int   x10 = Mth::floor(x9);
 				float x11 = float(x10);
 				float x12 = x9 - x11;
 
-				int* x13 = &m_permutation[uint8_t(x10) + m_permutation[*x6]];
-				int* x15 = &m_permutation[uint8_t(x10) + m_permutation[*x8]];
+				int* x13 = &p[uint8_t(x10) + p[*x6]];
+				int* x15 = &p[uint8_t(x10) + p[*x8]];
 				int* x14 = x8;
 
 				float x16 = grad2(*x13, x5, x12);
@@ -153,18 +152,18 @@ void ImprovedNoise::add(float* a2, float a3, float a4, float a5, int a6, int a7,
 
 	for (int i = 0; i < a6; i++)
 	{
-		float x36 = m_offsetX + a9 * (i + a3);
+		float x36 = xo + a9 * (i + a3);
 		int   x37 = Mth::floor(x36);
 		float x38 = float(x37);
 		float x39 = x36 - x38;
 		float x40 = fade(x39);
 		if (a8 <= 0) continue;
 
-		int* x42 = &m_permutation[uint8_t(x37)];
-		int* x43 = &m_permutation[uint8_t(x37) + 1];
+		int* x42 = &p[uint8_t(x37)];
+		int* x43 = &p[uint8_t(x37) + 1];
 		for (int j = 0; j < a8; j++)
 		{
-			float x44 = m_offsetZ + a11 * (j + a5);
+			float x44 = zo + a11 * (j + a5);
 			int   x45 = Mth::floor(x44);
 			float x46 = float(x45);
 			float x47 = x44 - x46;
@@ -174,7 +173,7 @@ void ImprovedNoise::add(float* a2, float a3, float a4, float a5, int a6, int a7,
 			float* x49 = &a2[x35];
 			for (int k = 0; k < a7; k++)
 			{
-				float x50 = m_offsetY + a10 * (k + a4);
+				float x50 = yo + a10 * (k + a4);
 				int   x51 = Mth::floor(x50);
 				float x52 = float(x51);
 				float x53 = x50 - x52;
@@ -182,23 +181,23 @@ void ImprovedNoise::add(float* a2, float a3, float a4, float a5, int a6, int a7,
 
 				if (k == 0 || bx51 != x34)
 				{
-					int* x54 = &m_permutation[bx51 + *x42];
+					int* x54 = &p[bx51 + *x42];
 					int  x55 = x54[0] + x48;
 					int  x56 = x54[1] + x48;
-					int* x57 = &m_permutation[bx51 + *x43];
+					int* x57 = &p[bx51 + *x43];
 					int  x58 = x57[1] + x48;
-					int* x59 = &m_permutation[*x57 + x48];
-					float x60 = grad(m_permutation[x55], x39, x53, x47);
+					int* x59 = &p[*x57 + x48];
+					float x60 = grad(p[x55], x39, x53, x47);
 					float x61 = grad(*x59, x39 - 1, x53, x47);
 					x33 = lerp(x40, x60, x61);
-					float x62 = grad(m_permutation[x56], x39, x53 - 1, x47);
-					float x63 = grad(m_permutation[x58], x39 - 1, x53 - 1, x47);
+					float x62 = grad(p[x56], x39, x53 - 1, x47);
+					float x63 = grad(p[x58], x39 - 1, x53 - 1, x47);
 					x32 = lerp(x40, x62, x63);
-					float x64 = grad(m_permutation[x55 + 1], x39, x53, x47 - 1);
+					float x64 = grad(p[x55 + 1], x39, x53, x47 - 1);
 					float x65 = grad(x59[1], x39 - 1, x53, x47 - 1);
 					x31 = lerp(x40, x64, x65);
-					float x66 = grad(m_permutation[x56 + 1], x39, x53 - 1, x47 - 1);
-					float x67 = grad(m_permutation[x58 + 1], x39 - 1, x53 - 1, x47 - 1);
+					float x66 = grad(p[x56 + 1], x39, x53 - 1, x47 - 1);
+					float x67 = grad(p[x58 + 1], x39 - 1, x53 - 1, x47 - 1);
 					x34 = bx51;
 					x30 = lerp(x40, x66, x67);
 				}

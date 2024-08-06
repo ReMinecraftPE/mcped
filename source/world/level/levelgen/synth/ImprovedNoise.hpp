@@ -32,9 +32,9 @@ public:
 	void add(float* a2, float a3, float a4, float a5, int a6, int a7, int a8, float a9, float a10, float a11, float a12);
 
 public:
-	float m_offsetX;
-	float m_offsetY;
-	float m_offsetZ;
-	int m_permutation[512];
+	float xo;
+	float yo;
+	float zo;
+	int p[512];
 };
 

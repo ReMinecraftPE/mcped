@@ -25,9 +25,11 @@ public:
 	float* getRegion(float*, float, float , float, int, int, int, float, float, float);
 
 private:
-	ImprovedNoise** m_pImprovedNoise;
-	int m_nOctaves;
-	Random m_random;
-	Random* m_pRandom; // random for seeding, I assume
+	ImprovedNoise** noiseLevels;
+	int levels;
+
+private:
+	Random _defaultRandom;
+	Random* _seedRandom;
 };
 
