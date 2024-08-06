@@ -38,31 +38,31 @@ public:
 	
 
 public:
-	bool field_4 = false;
-	LargeCaveFeature m_largeCaveFeature;
-	int field_9D8[1024];
-	std::unordered_map<int, LevelChunk*> m_chunks;
-	float field_19F0 = 1.0f;
-	Random m_random;
-	PerlinNoise m_perlinNoise1;
-	PerlinNoise m_perlinNoise2;
-	PerlinNoise m_perlinNoise3;
-	PerlinNoise m_perlinNoise4;
-	PerlinNoise m_perlinNoise5;
-	PerlinNoise m_perlinNoise6;
-	PerlinNoise m_perlinNoise7;
-	PerlinNoise m_perlinNoise8;
-	Level* m_pLevel = nullptr;
-	float* field_7280 = nullptr;
-	float field_7284[256];
-	float field_7684[256];
-	float field_7A84[256];
+	bool unused_field_4 = false;
+	LargeCaveFeature caveFeature;
+	int waterDepths[1024];
+	std::unordered_map<int, LevelChunk*> chunks;
+	float unused_field_19F0 = 1.0f;
+	Random random;
+	PerlinNoise lperlinNoise1;
+	PerlinNoise lperlinNoise2;
+	PerlinNoise perlinNoise1;
+	PerlinNoise perlinNoise2;
+	PerlinNoise perlinNoise3;
+	PerlinNoise scaleNoise;
+	PerlinNoise depthNoise;
+	PerlinNoise forestNoise;
+	Level* level = nullptr;
+	float* buffer = nullptr;
+	float sandBuffer[256];
+	float gravelBuffer[256];
+	float depthBuffer[256];
 	// @TODO
-	float* field_7E84 = nullptr;
-	float* field_7E88 = nullptr;
-	float* field_7E8C = nullptr;
-	float* field_7E90 = nullptr;
-	float* field_7E94 = nullptr;
+	float* pnr = nullptr;
+	float* ar = nullptr;
+	float* br = nullptr;
+	float* sr = nullptr;
+	float* dr = nullptr;
 	// @TODO
 
 

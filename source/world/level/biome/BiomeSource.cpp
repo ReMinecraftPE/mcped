@@ -11,19 +11,21 @@
 
 BiomeSource::BiomeSource()
 {
-	field_20 = new Biome*[256];
+	biomes = new Biome*[256];
 }
 
 BiomeSource::BiomeSource(Level* pLevel) :
-	m_Random1(pLevel->getSeed() * 9871),
-	m_Random2(pLevel->getSeed() * 39811),
-	m_Random3(pLevel->getSeed() * 543321)
+	random1(pLevel->getSeed() * 9871),
+	random2(pLevel->getSeed() * 39811),
+	random3(pLevel->getSeed() * 543321)
 {
-	m_pPerlinNoise[0] = new PerlinNoise(&m_Random1, 4);
-	m_pPerlinNoise[1] = new PerlinNoise(&m_Random2, 4);
-	m_pPerlinNoise[2] = new PerlinNoise(&m_Random3, 2);
-	field_20 = new Biome*[256];
-	field_4 = new float[256];
+	// @NOTE: Minecraft Java would use PerlinSimplexNoise here
+	temperatureMap = new PerlinNoise(&random1, 4);
+	downfallMap = new PerlinNoise(&random2, 4);
+	noiseMap = new PerlinNoise(&random3, 2);
+
+	biomes = new Biome*[256];
+	temperatures = new float[256];
 }
 
 Biome* BiomeSource::getBiome(ChunkPos& pos)
@@ -39,14 +41,14 @@ Biome* BiomeSource::getBiome(int a, int b)
 
 Biome** BiomeSource::getBiomeBlock(int a, int b, int c, int d)
 {
-	return getBiomeBlock(field_20, a, b, c, d);
+	return getBiomeBlock(biomes, a, b, c, d);
 }
 
-Biome** BiomeSource::getBiomeBlock(Biome** pBiomes, int a, int b, int c, int d)
+Biome** BiomeSource::getBiomeBlock(Biome** pUnusedBiomes, int a, int b, int c, int d)
 {
-	field_4 = m_pPerlinNoise[0]->getRegion(field_4, a, b, c, c, 0.025f, 0.025f, 0.25f);
-	field_8 = m_pPerlinNoise[1]->getRegion(field_8, a, b, c, c, 0.05f, 0.05f, 0.3333f);
-	field_C = m_pPerlinNoise[2]->getRegion(field_C, a, b, c, c, 0.25f, 0.25f, 0.588f);
+	temperatures = temperatureMap->getRegion(temperatures, a, b, c, c, 0.025f, 0.025f, 0.25f);
+	downfalls = downfallMap->getRegion(downfalls, a, b, c, c, 0.05f, 0.05f, 0.3333f);
+	noises = noiseMap->getRegion(noises, a, b, c, c, 0.25f, 0.25f, 0.588f);
 
 	int index = 0;
 
@@ -54,13 +56,13 @@ Biome** BiomeSource::getBiomeBlock(Biome** pBiomes, int a, int b, int c, int d)
 	{
 		for (int j = 0; j < d; j++)
 		{
-			float d = field_C[index] * 1.1f + 0.5f;
+			float d = noises[index] * 1.1f + 0.5f;
 			float d1 = 0.01f;
 			float d2 = 1.0f - d1;
-			float d3 = (field_4[index] * 0.15f + 0.7f) * d2 + d * d1;
+			float d3 = (temperatures[index] * 0.15f + 0.7f) * d2 + d * d1;
 			d1 = 0.002f;
 			d2 = 1.0f - d1;
-			float d4 = (field_8[index] * 0.15f + 0.5f) * d2 + d * d1;
+			float d4 = (downfalls[index] * 0.15f + 0.5f) * d2 + d * d1;
 			d3 = 1.0f - (1.0f - d3) * (1.0f - d3);
 
 			if (d3 < 0.0f) d3 = 0.0f;
@@ -68,19 +70,19 @@ Biome** BiomeSource::getBiomeBlock(Biome** pBiomes, int a, int b, int c, int d)
 			if (d3 > 1.0f) d3 = 1.0f;
 			if (d4 > 1.0f) d4 = 1.0f;
 			
-			field_4[index] = d3;
-			field_8[index] = d4;
-			field_20[index++] = Biome::getBiome(d3, d4);
+			temperatures[index] = d3;
+			downfalls[index] = d4;
+			biomes[index++] = Biome::getBiome(d3, d4);
 		}
 	}
 
-	return field_20;
+	return biomes;
 }
 
 float* BiomeSource::getTemperatureBlock(int a, int b, int c, int d)
 {
-	field_4 = m_pPerlinNoise[0]->getRegion(field_4, a, b, c, d, 0.025f, 0.025f, 0.25f);
-	field_C = m_pPerlinNoise[2]->getRegion(field_C, a, b, c, d, 0.25f, 0.25f, 0.588f);
+	temperatures = temperatureMap->getRegion(temperatures, a, b, c, d, 0.025f, 0.025f, 0.25f);
+	noises = noiseMap->getRegion(noises, a, b, c, d, 0.25f, 0.25f, 0.588f);
 
 	int index = 0;
 
@@ -88,38 +90,43 @@ float* BiomeSource::getTemperatureBlock(int a, int b, int c, int d)
 	{
 		for (int j = 0; j < d; j++)
 		{
-			float d = field_C[index] * 1.1f + 0.5f;
+			float d = noises[index] * 1.1f + 0.5f;
 			float d1 = 0.01f;
 			float d2 = 1.0f - d1;
-			float d3 = (field_4[index] * 0.15f + 0.7f) * d2 + d * d1;
+			float d3 = (temperatures[index] * 0.15f + 0.7f) * d2 + d * d1;
 			d3 = 1.0f - (1.0f - d3) * (1.0f - d3);
 			if (d3 < 0.0f)
 				d3 = 0.0f;
 			if (d3 > 1.0f)
 				d3 = 1.0f;
 
-			field_4[index++] = d3;
+			temperatures[index++] = d3;
 		}
 	}
 
-	return field_4;
+	return temperatures;
 }
 
 BiomeSource::~BiomeSource()
 {
-	for (int i = 0; i < 3; i++)
-		if (m_pPerlinNoise[i])
-			delete m_pPerlinNoise[i];
+	if (temperatureMap)
+		delete temperatureMap;
 
-	if (field_4)
-		delete[] field_4;
+	if (downfallMap)
+		delete downfallMap;
 
-	if (field_8)
-		delete[] field_8;
+	if (noiseMap)
+		delete noiseMap;
 
-	if (field_C)
-		delete[] field_C;
+	if (temperatures)
+		delete[] temperatures;
 
-	if (field_20)
-		delete[] field_20;
+	if (downfalls)
+		delete[] downfalls;
+
+	if (noises)
+		delete[] noises;
+
+	if (biomes)
+		delete[] biomes;
 }

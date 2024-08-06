@@ -25,17 +25,19 @@ public:
 	virtual float* getTemperatureBlock(int, int, int, int);
 
 public:
-	float* field_4 = nullptr;
-	float* field_8 = nullptr;
-	float* field_C = nullptr;
-	int field_10 = 0;
-	int field_14 = 0;
-	int field_18 = 0;
-	int field_1C = 0;
-	Biome** field_20 = nullptr;
-	PerlinNoise* m_pPerlinNoise[3] = { nullptr };
-	Random m_Random1;
-	Random m_Random2;
-	Random m_Random3;
+	float* temperatures = nullptr;
+	float* downfalls = nullptr;
+	float* noises = nullptr;
+	int unused_field_10 = 0;
+	int unused_field_14 = 0;
+	int unused_field_18 = 0;
+	int unused_field_1C = 0;
+	Biome** biomes = nullptr;
+	PerlinNoise* temperatureMap = nullptr;
+	PerlinNoise* downfallMap = nullptr;
+	PerlinNoise* noiseMap = nullptr;
+	Random random1;
+	Random random2;
+	Random random3;
 };
 
