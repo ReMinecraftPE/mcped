@@ -146,7 +146,7 @@ void ServerSideNetworkHandler::handle(const RakNet::RakNetGUID& guid, PlaceBlock
 		Tile::tiles[tile]->setPlacedBy(m_pLevel, x, y, z, pMob);
 
 		const Tile::SoundType* pSound = Tile::tiles[tile]->soundType;
-		m_pLevel->playSound(float(x) + 0.5f, float(y) + 0.5f, float(z) + 0.5f, "step." + pSound->name, 0.5f * (pSound->volume + 1.0f), pSound->pitch * 0.8f);
+		m_pLevel->playSound(float(x) + 0.5f, float(y) + 0.5f, float(z) + 0.5f, pSound->getStepSound(), 0.5f * (pSound->volume + 1.0f), pSound->pitch * 0.8f);
 	}
 
 	redistributePacket(packet, guid);
@@ -170,7 +170,7 @@ void ServerSideNetworkHandler::handle(const RakNet::RakNetGUID& guid, RemoveBloc
 	if (pTile && setTileResult)
 	{
 		const Tile::SoundType* pSound = pTile->soundType;
-		m_pMinecraft->m_pSoundEngine->play("step." + pSound->name, float(x) + 0.5f, float(y) + 0.5f, float(z) + 0.5f, 0.5f * (pSound->volume + 1.0f), pSound->pitch * 0.8f);
+		m_pMinecraft->m_pSoundEngine->play(pSound->getStepSound(), float(x) + 0.5f, float(y) + 0.5f, float(z) + 0.5f, 0.5f * (pSound->volume + 1.0f), pSound->pitch * 0.8f);
 
 		// redistribute the packet only if needed
 		redistributePacket(packet, guid);

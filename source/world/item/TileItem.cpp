@@ -61,7 +61,7 @@ bool TileItem::useOn(ItemInstance* instance, Player* player, Level* level, int x
 		float(x) + 0.5f,
 		float(y) + 0.5f,
 		float(z) + 0.5f,
-		"step." + pTile->soundType->name,
+		pTile->soundType->getStepSound(),
 		(pTile->soundType->volume + 1.0f) * 0.5f,
 		pTile->soundType->pitch * 0.8f
 	);

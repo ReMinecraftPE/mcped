@@ -37,7 +37,7 @@ bool GameMode::destroyBlock(int x, int y, int z, int i)
 
 	if (pTile && bChanged)
 	{
-		m_pMinecraft->m_pSoundEngine->play("step." + pTile->soundType->name,
+		m_pMinecraft->m_pSoundEngine->play(pTile->soundType->getBreakSound(),
 			float(x) + 0.5f, float(y) + 0.5f, float(z) + 0.5f,
 			0.5f * (1.0f + pTile->soundType->volume), 0.8f * pTile->soundType->pitch);
 

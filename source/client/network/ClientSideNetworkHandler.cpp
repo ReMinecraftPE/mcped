@@ -184,7 +184,7 @@ void ClientSideNetworkHandler::handle(const RakNet::RakNetGUID& rakGuid, PlaceBl
 	Tile::tiles[tile]->setPlacedBy(m_pLevel, x, y, z, pPlayer);
 
 	const Tile::SoundType* pSound = pTile->soundType;
-	m_pLevel->playSound(float(x) + 0.5f, float(y) + 0.5f, float(z) + 0.5f, "step." + pSound->name, 0.5f * (1.0f + pSound->volume), 0.8f * pSound->pitch);
+	m_pLevel->playSound(float(x) + 0.5f, float(y) + 0.5f, float(z) + 0.5f, pSound->getStepSound(), 0.5f * (1.0f + pSound->volume), 0.8f * pSound->pitch);
 }
 
 void ClientSideNetworkHandler::handle(const RakNet::RakNetGUID& rakGuid, RemoveBlockPacket* pRemoveBlockPkt)
@@ -215,7 +215,7 @@ void ClientSideNetworkHandler::handle(const RakNet::RakNetGUID& rakGuid, RemoveB
 	if (pTile && setTileResult)
 	{
 		const Tile::SoundType* pSound = pTile->soundType;
-		m_pLevel->playSound(float(x) + 0.5f, float(y) + 0.5f, float(z) + 0.5f, "step." + pSound->name, 0.5f * (1.0f + pSound->volume), 0.8f * pSound->pitch);
+		m_pLevel->playSound(float(x) + 0.5f, float(y) + 0.5f, float(z) + 0.5f, pSound->getStepSound(), 0.5f * (1.0f + pSound->volume), 0.8f * pSound->pitch);
 
 		pTile->destroy(m_pLevel, x, y, z, data);
 	}

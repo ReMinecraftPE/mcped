@@ -32,6 +32,13 @@ public: // structs
 		float volume, pitch;
 
 		SoundType(const std::string& _name, float _volume, float _pitch) : name(_name), volume(_volume), pitch(_pitch) {}
+
+		std::string getBreakSound() const {
+			return "step." + name;
+		}
+		std::string getStepSound() const {
+			return "step." + name;
+		}
 	};
 
 public: // virtual functions
