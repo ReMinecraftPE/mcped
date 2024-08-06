@@ -1,6 +1,35 @@
 # The Minecraft PE Reverse Engineering Project
+**This project is NOT affiliated with Minecraft, Mojang AB, or Microsoft Corporation, and will never claim to be.**
 
-**This project is NOT affiliated with Minecraft, Mojang AB, or Microsoft Corporation, and never claims to be such.**
+#### A decompilation of _Minecraft: Pocket Edition_ v0.1.0 demo (Android)
+
+## What _is_ this?
+
+This is a reverse engineering project to analyze and decompile/reimplement `libminecraftpe.so` from _Minecraft: Pocket Edition_
+for the Xperia Play running Android. 
+
+**This is not a matching decomp, however, if you would like to try actually matching it, feel free to fork it and try!**
+
+### Decompilation
+
+Decompilation is the opposite process of compilation. It's like deriving and then anti-deriving a function - you lose some
+information with it. This includes whitespace, comments, variable names, type information, and function names. Namely,
+it turns a compiled binary into human-readable source code.
+
+In the case of _Minecraft: Pocket Edition_, this involves reading the compiled code, trying to understand what it does, and
+reimplementing it in original C++ code. This is more straightforward than other games, since `libminecraftpe.so` exports
+most of the game's functions, because the linker thinks they'll be imported by an executable and run. (This can be, and is,
+turned off in modern Minecraft.)
+
+## What this is not
+
+* _Matching_ decompilation goes one step further and produces source code that actually compiles to the exact same machine
+  code, byte for byte. **Although it would be nice, this is not one of those.**
+
+* A reimplementation of the Java side of the MCPE APK.
+
+
+
 
 This project is an attempt to recreate one of the first released builds of Minecraft: Pocket Edition -- mcpe01_canada.apk
 -- and port it to other platforms, via binary reverse engineering. This project is similar in terms of goals to

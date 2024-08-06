@@ -7,7 +7,7 @@
  ********************************************************************/
 
 #include "DoorItem.hpp"
-#include "world/tile/Tile.hpp"
+#include "world/level/tile/Tile.hpp"
 #include "world/entity/Player.hpp"
 #include "world/level/Level.hpp"
 

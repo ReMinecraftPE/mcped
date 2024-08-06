@@ -10,7 +10,7 @@
 
 #include <set>
 
-#include "world/tile/Tile.hpp"
+#include "world/level/tile/Tile.hpp"
 #include "world/entity/LocalPlayer.hpp"
 #include "Dimension.hpp"
 #include "world/level/levelgen/biome/BiomeSource.hpp"

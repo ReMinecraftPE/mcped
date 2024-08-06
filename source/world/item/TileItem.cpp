@@ -7,7 +7,7 @@
  ********************************************************************/
 
 #include "TileItem.hpp"
-#include "world/tile/Tile.hpp"
+#include "world/level/tile/Tile.hpp"
 #include "world/level/Level.hpp"
 
 TileItem::TileItem(int id) : Item(id)

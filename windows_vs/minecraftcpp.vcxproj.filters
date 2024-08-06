@@ -79,9 +79,6 @@
     <Filter Include="Source Files\world\level\storage">
       <UniqueIdentifier>{cef69b0d-a344-42fe-b9cc-b442065274ed}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\world\tile">
-      <UniqueIdentifier>{51403a0a-510a-4246-84c1-376a228d89e7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\world\entity">
       <UniqueIdentifier>{bb245959-2dff-4a57-b05d-04daa222fca8}</UniqueIdentifier>
     </Filter>
@@ -105,6 +102,9 @@
     </Filter>
     <Filter Include="Source Files\platforms">
       <UniqueIdentifier>{2cce5db3-70a6-4a82-a92c-1d2fa7e62358}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\level\tile">
+      <UniqueIdentifier>{51403a0a-510a-4246-84c1-376a228d89e7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -615,108 +615,6 @@
     <ClCompile Include="..\source\client\model\HumanoidModel.cpp">
       <Filter>Source Files\client\model</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\world\tile\GravelTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\HalfTransparentTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\IceTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\InvisibleTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\LadderTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\LeafTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\LiquidTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\LiquidTileDynamic.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\LiquidTileStatic.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\MetalTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\ObsidianTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\OreTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\RedStoneOreTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\ReedTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\SandStoneTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\SandTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\StairTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\StoneSlabTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\StoneTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\Tile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\TntTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\TopSnowTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\TorchTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\TransparentTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\TreeTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\Bush.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\ClayTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\ClothTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\DirtTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\DoorTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\FarmTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\FireTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\GlassTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\tile\GrassTile.cpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\world\entity\Entity.cpp">
       <Filter>Source Files\world\entity</Filter>
     </ClCompile>
@@ -1049,6 +947,108 @@
     </ClCompile>
     <ClCompile Include="..\source\client\sound\SoundSystemWindows.cpp">
       <Filter>Source Files\client\sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\DirtTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\DoorTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\FarmTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\FireTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\GlassTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\GrassTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\GravelTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\HalfTransparentTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\IceTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\InvisibleTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\LadderTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\LeafTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\LiquidTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\LiquidTileDynamic.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\LiquidTileStatic.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\MetalTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\ObsidianTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\OreTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\RedStoneOreTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\ReedTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\SandStoneTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\SandTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\StairTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\StoneSlabTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\StoneTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\Tile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\TntTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\TopSnowTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\TorchTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\TransparentTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\TreeTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\Bush.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\ClayTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\tile\ClothTile.cpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1661,9 +1661,6 @@
     <ClInclude Include="..\source\client\model\Model.hpp">
       <Filter>Source Files\client\model</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\Tile.hpp">
-      <Filter>Source Files\world\tile</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\world\entity\Entity.hpp">
       <Filter>Source Files\world\entity</Filter>
     </ClInclude>
@@ -1967,104 +1964,107 @@
     <ClInclude Include="..\source\client\sound\SoundSystemWindows.hpp">
       <Filter>Source Files\client\sound</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\DirtTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\DirtTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\StoneTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\DoorTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\TntTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\FarmTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\TopSnowTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\FireTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\TorchTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\GlassTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\TransparentTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\GrassTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\TreeTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\GravelTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\Bush.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\HalfTransparentTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\ClayTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\IceTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\ClothTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\InvisibleTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\DoorTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\LadderTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\FarmTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\LeafTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\FireTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\LiquidTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\GlassTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\LiquidTileDynamic.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\GrassTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\LiquidTileStatic.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\GravelTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\MetalTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\HalfTransparentTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\ObsidianTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\IceTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\OreTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\InvisibleTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\RedStoneOreTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\LadderTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\ReedTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\LeafTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\SandStoneTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\LiquidTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\SandTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\LiquidTileDynamic.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\StairTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\LiquidTileStatic.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\StoneSlabTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\MetalTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\StoneTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\ObsidianTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\Tile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\OreTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\TntTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\RedStoneOreTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\TopSnowTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\ReedTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\TorchTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\SandStoneTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\TransparentTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\SandTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\TreeTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\StairTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\Bush.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\tile\StoneSlabTile.hpp">
-      <Filter>Source Files\world\tile</Filter>
+    <ClInclude Include="..\source\world\level\tile\ClayTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\tile\ClothTile.hpp">
+      <Filter>Source Files\world\level\tile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

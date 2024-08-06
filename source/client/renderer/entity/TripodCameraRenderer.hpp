@@ -9,7 +9,7 @@
 #pragma once
 
 #include "EntityRenderer.hpp"
-#include "world/tile/Tile.hpp"
+#include "world/level/tile/Tile.hpp"
 #include "world/entity/TripodCamera.hpp"
 #include "client/renderer/TileRenderer.hpp"
 
