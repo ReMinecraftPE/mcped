@@ -18,8 +18,8 @@ TerrainParticle::TerrainParticle(Level* level, float x, float y, float z, float 
 	Particle(level, x, y, z, vx, vy, vz)
 {
 	m_pTile = tile;
-	field_DC = tile->m_TextureFrame;
-	field_F4 = tile->field_28;
+	field_DC = tile->tex;
+	field_F4 = tile->gravity;
 	field_100 = 0.6f;
 	field_FC = 0.6f;
 	field_F8 = 0.6f;

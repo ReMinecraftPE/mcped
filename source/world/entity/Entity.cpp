@@ -374,10 +374,10 @@ label_45:
 			++field_D8;
 			bool bPlaySound = true;
 
-			auto sound = Tile::tiles[tileID]->m_pSound;
-			if (m_pLevel->getTile(tileX, tileY + 1, tileZ) == Tile::topSnow->m_ID)
-				sound = Tile::topSnow->m_pSound;
-			else if (Tile::tiles[tileID]->m_pMaterial->isLiquid())
+			auto sound = Tile::tiles[tileID]->soundType;
+			if (m_pLevel->getTile(tileX, tileY + 1, tileZ) == Tile::topSnow->id)
+				sound = Tile::topSnow->soundType;
+			else if (Tile::tiles[tileID]->material->isLiquid())
 				bPlaySound = false;
 
 			if (bPlaySound)
@@ -709,7 +709,7 @@ bool Entity::isUnderLiquid(Material* pMtl)
 	int tileZ = Mth::floor(m_pos.z);
 
 	Tile* pTile = Tile::tiles[m_pLevel->getTile(tileX, tileY, tileZ)];
-	if (!pTile || pTile->m_pMaterial != pMtl)
+	if (!pTile || pTile->material != pMtl)
 		return false;
 
 	int data = m_pLevel->getData(tileX, tileY, tileZ);

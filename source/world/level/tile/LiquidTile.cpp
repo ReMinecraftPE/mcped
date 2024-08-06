@@ -16,7 +16,7 @@ LiquidTile::LiquidTile(int id, Material* pMtl) : Tile(id, pMtl == Material::lava
 
 void LiquidTile::animateTick(Level* level, int x, int y, int z, Random* random)
 {
-	if (m_pMaterial == Material::water)
+	if (material == Material::water)
 	{
 		if (!random->nextInt(64))
 			// @BUG: Return value unused.
@@ -24,9 +24,9 @@ void LiquidTile::animateTick(Level* level, int x, int y, int z, Random* random)
 	}
 
 	// @BUG: Redundant check for isSolidTile?
-	if (m_pMaterial == Material::lava && level->getMaterial(x, y + 1, z) == Material::air && !level->isSolidTile(x, y + 1, z) && !random->nextInt(3))
+	if (material == Material::lava && level->getMaterial(x, y + 1, z) == Material::air && !level->isSolidTile(x, y + 1, z) && !random->nextInt(3))
 	{
-		level->addParticle("lava", x + random->nextFloat(), y + m_aabb.max.y, z + random->nextFloat(), 0.0f, 0.0f, 0.0f);
+		level->addParticle("lava", x + random->nextFloat(), y + aabb.max.y, z + random->nextFloat(), 0.0f, 0.0f, 0.0f);
 	}
 }
 
@@ -59,7 +59,7 @@ int LiquidTile::getColor(LevelSource* level, int x, int y, int z)
 
 int LiquidTile::getDepth(Level* level, int x, int y, int z)
 {
-	if (level->getMaterial(x, y, z) != m_pMaterial)
+	if (level->getMaterial(x, y, z) != material)
 		return -1;
 
 	return level->getData(x, y, z);
@@ -67,7 +67,7 @@ int LiquidTile::getDepth(Level* level, int x, int y, int z)
 
 int LiquidTile::getRenderedDepth(LevelSource* level, int x, int y, int z)
 {
-	if (level->getMaterial(x, y, z) != m_pMaterial)
+	if (level->getMaterial(x, y, z) != material)
 		return -1;
 
 	int res = level->getData(x, y, z);
@@ -133,7 +133,7 @@ Vec3 LiquidTile::getFlow(LevelSource* level, int x, int y, int z)
 
 int LiquidTile::getRenderLayer()
 {
-	return m_pMaterial == Material::water ? LAYER_ALPHA : LAYER_OPAQUE;
+	return material == Material::water ? LAYER_ALPHA : LAYER_OPAQUE;
 }
 
 int LiquidTile::getRenderShape()
@@ -168,9 +168,9 @@ float LiquidTile::getSlopeAngle(LevelSource* level, int x, int y, int z, Materia
 int LiquidTile::getTexture(int dir)
 {
 	if (dir > 1)
-		return m_TextureFrame + 1;
+		return tex + 1;
 
-	return m_TextureFrame;
+	return tex;
 }
 
 int LiquidTile::getTexture(int dir, int data)
@@ -181,9 +181,9 @@ int LiquidTile::getTexture(int dir, int data)
 
 int LiquidTile::getTickDelay()
 {
-	if (m_pMaterial == Material::water)
+	if (material == Material::water)
 		return 5;
-	if (m_pMaterial == Material::lava)
+	if (material == Material::lava)
 		return 30;
 
 	return 0;
@@ -225,7 +225,7 @@ void LiquidTile::onPlace(Level* level, int x, int y, int z)
 bool LiquidTile::shouldRenderFace(LevelSource* level, int x, int y, int z, int dir)
 {
 	Material* pMtl = level->getMaterial(x, y, z);
-	if (pMtl == m_pMaterial || pMtl == Material::ice)
+	if (pMtl == material || pMtl == Material::ice)
 		return false;
 
 	if (dir == DIR_YPOS)
@@ -240,10 +240,10 @@ void LiquidTile::tick(Level*, int x, int y, int z, Random* random)
 
 void LiquidTile::updateLiquid(Level* level, int x, int y, int z)
 {
-	if (level->getTile(x, y, z) != m_ID)
+	if (level->getTile(x, y, z) != id)
 		return;
 
-	if (m_pMaterial != Material::lava)
+	if (material != Material::lava)
 		// such interactions do not apply to water
 		return;
 
@@ -271,7 +271,7 @@ void LiquidTile::updateLiquid(Level* level, int x, int y, int z)
 			newTile = Tile::stoneBrick;
 		}
 
-		level->setTile(x, y, z, newTile->m_ID);
+		level->setTile(x, y, z, newTile->id);
 
 		fizz(level, x, y, z);
 	}

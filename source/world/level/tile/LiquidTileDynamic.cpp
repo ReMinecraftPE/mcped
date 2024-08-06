@@ -16,19 +16,19 @@ LiquidTileDynamic::LiquidTileDynamic(int id, Material* pMtl) : LiquidTile(id, pM
 bool LiquidTileDynamic::isWaterBlocking(Level* level, int x, int y, int z)
 {
 	TileID tile = level->getTile(x, y, z);
-	if (tile == Tile::reeds->m_ID)
+	if (tile == Tile::reeds->id)
 		return true;
 
 	if (!tile)
 		return false;
 
-	return Tile::tiles[tile]->m_pMaterial->isSolid();
+	return Tile::tiles[tile]->material->isSolid();
 }
 
 bool LiquidTileDynamic::canSpreadTo(Level* level, int x, int y, int z)
 {
 	Material* pMtl = level->getMaterial(x, y, z);
-	if (pMtl == m_pMaterial || pMtl == Material::lava)
+	if (pMtl == material || pMtl == Material::lava)
 		return false;
 
 	return !isWaterBlocking(level, x, y, z);
@@ -55,7 +55,7 @@ int LiquidTileDynamic::getSlopeDistance(Level* level, int x, int y, int z, int d
 		if (isWaterBlocking(level, checkX, checkY, checkZ))
 			continue;
 
-		if (level->getMaterial(checkX, checkY, checkZ) == m_pMaterial &&
+		if (level->getMaterial(checkX, checkY, checkZ) == material &&
 			level->getData(checkX,checkY,checkZ) == 0)
 			continue;
 
@@ -100,7 +100,7 @@ bool* LiquidTileDynamic::getSpread(Level* level, int x, int y, int z)
 		if (isWaterBlocking(level, xChk, y, zChk))
 			continue;
 
-		if (level->getMaterial(xChk, y, zChk) == m_pMaterial ||
+		if (level->getMaterial(xChk, y, zChk) == material ||
 			level->getData(xChk, y, zChk) == 0)
 			continue;
 
@@ -129,16 +129,16 @@ void LiquidTileDynamic::onPlace(Level* level, int x, int y, int z)
 {
 	updateLiquid(level, x, y, z);
 
-	if (level->getTile(x, y, z) == m_ID)
+	if (level->getTile(x, y, z) == id)
 	{
-		level->addToTickNextTick(x, y, z, m_ID, getTickDelay());
+		level->addToTickNextTick(x, y, z, id, getTickDelay());
 	}
 }
 
 void LiquidTileDynamic::setStatic(Level* level, int x, int y, int z)
 {
 	int data = level->getData(x, y, z);
-	level->setTileAndDataNoUpdate(x, y, z, m_ID + 1, data);
+	level->setTileAndDataNoUpdate(x, y, z, id + 1, data);
 	level->setTilesDirty(x, y, z, x, y, z);
 	level->sendTileUpdated(x, y, z);
 }
@@ -151,7 +151,7 @@ void LiquidTileDynamic::trySpreadTo(Level* level, int x, int y, int z, int data)
 	TileID tile = level->getTile(x, y, z);
 	if (tile > 0)
 	{
-		if (m_pMaterial == Material::lava)
+		if (material == Material::lava)
 		{
 			fizz(level, x, y, z);
 		}
@@ -161,7 +161,7 @@ void LiquidTileDynamic::trySpreadTo(Level* level, int x, int y, int z, int data)
 		}
 	}
 
-	level->setTileAndData(x, y, z, m_ID, data);
+	level->setTileAndData(x, y, z, id, data);
 }
 
 // @NOTE: This is inlined in PE.
@@ -184,7 +184,7 @@ void LiquidTileDynamic::tick(Level* level, int x, int y, int z, Random* random)
 {
 	int depth = getDepth(level, x, y, z);
 	int speed;
-	if (m_pMaterial != Material::lava || level->m_pDimension->field_D)
+	if (material != Material::lava || level->m_pDimension->field_D)
 		speed = 1;
 	else
 		speed = 2;
@@ -215,20 +215,20 @@ void LiquidTileDynamic::tick(Level* level, int x, int y, int z, Random* random)
 				newData = depthUp + 8;
 		}
 
-		if (field_6C >= 2 && m_pMaterial == Material::water)
+		if (field_6C >= 2 && material == Material::water)
 		{
 			if (level->isSolidTile(x, y - 1, z))
 			{
 				newData = 0;
 			}
-			else if (m_pMaterial == level->getMaterial(x, y - 1, z))
+			else if (material == level->getMaterial(x, y - 1, z))
 			{
 				if (!level->getData(x, y - 1, z))
 					newData = 0;
 			}
 		}
 
-		if (m_pMaterial == Material::lava && newData < 8 && depth < 8 && newData > depth && random->nextInt(4))
+		if (material == Material::lava && newData < 8 && depth < 8 && newData > depth && random->nextInt(4))
 		{
 			flag = false;
 			newData = depth;
@@ -244,7 +244,7 @@ void LiquidTileDynamic::tick(Level* level, int x, int y, int z, Random* random)
 			else
 			{
 				level->setData(x, y, z, depth);
-				level->addToTickNextTick(x, y, z, m_ID, getTickDelay());
+				level->addToTickNextTick(x, y, z, id, getTickDelay());
 			}
 		}
 		else if (flag)
@@ -262,7 +262,7 @@ void LiquidTileDynamic::tick(Level* level, int x, int y, int z, Random* random)
 		if (depth < 8)
 			depth += 8;
 
-		level->setTileAndData(x, y - 1, z, m_ID, depth);
+		level->setTileAndData(x, y - 1, z, id, depth);
 		return;
 	}
 

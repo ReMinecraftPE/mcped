@@ -210,12 +210,12 @@ void RandomLevelSource::prepareHeights(int x, int z, TileID* tiles, void* huh, f
 							if (8 * k + l < 64)
 							{
 								if (fptr[64 * i + 16 * m + 4 * j + n] < 0.5f && 8 * k + l == 63)
-									tile = Tile::ice->m_ID;
+									tile = Tile::ice->id;
 								else
-									tile = Tile::calmWater->m_ID;
+									tile = Tile::calmWater->id;
 							}
 							if (v11 > 0.0f)
-								tile = Tile::rock->m_ID;
+								tile = Tile::rock->id;
 							
 							tiles[v12] = tile;
 							v12 += 128;
@@ -262,7 +262,7 @@ void RandomLevelSource::buildSurfaces(int x, int z, TileID* tiles, Biome** biome
 				int l1 = (l * 16 + k) * 128 + k1;
 				if (k1 <= int(0 + m_random.nextInt(5)))
 				{
-					tiles[l1] = Tile::unbreakable->m_ID;
+					tiles[l1] = Tile::unbreakable->id;
 					continue;
 				}
 
@@ -273,7 +273,7 @@ void RandomLevelSource::buildSurfaces(int x, int z, TileID* tiles, Biome** biome
 					continue;
 				}
 
-				if (byte3 != Tile::rock->m_ID)
+				if (byte3 != Tile::rock->id)
 					continue;
 
 				if (j1 == -1)
@@ -281,7 +281,7 @@ void RandomLevelSource::buildSurfaces(int x, int z, TileID* tiles, Biome** biome
 					if (i1 <= 0)
 					{
 						topMaterial = 0;
-						material = Tile::rock->m_ID;
+						material = Tile::rock->id;
 					}
 					else if (k1 >= byte0 - 4 && k1 <= byte0 + 1)
 					{
@@ -289,16 +289,16 @@ void RandomLevelSource::buildSurfaces(int x, int z, TileID* tiles, Biome** biome
 						material = pBiome->material;
 						if (flag1) {
 							topMaterial = 0;
-							material = Tile::gravel->m_ID;
+							material = Tile::gravel->id;
 						}
 						if (flag) {
-							topMaterial = Tile::sand->m_ID;
-							material = Tile::sand->m_ID;
+							topMaterial = Tile::sand->id;
+							material = Tile::sand->id;
 						}
 					}
 
 					if (k1 < byte0 && topMaterial == 0)
-						topMaterial = Tile::calmWater->m_ID;
+						topMaterial = Tile::calmWater->id;
 
 					j1 = i1;
 
@@ -316,10 +316,10 @@ void RandomLevelSource::buildSurfaces(int x, int z, TileID* tiles, Biome** biome
 				j1--;
 				tiles[l1] = material;
 
-				if (j1 == 0 && material == Tile::sand->m_ID)
+				if (j1 == 0 && material == Tile::sand->id)
 				{
 					j1 = m_random.nextInt(4);
-					material = Tile::sandStone->m_ID;
+					material = Tile::sandStone->id;
 				}
 			}
 		}
@@ -350,7 +350,7 @@ void RandomLevelSource::postProcess(ChunkSource* src, int x, int z)
 		xo = m_random.nextInt(16);
 		yo = m_random.nextInt(128);
 		zo = m_random.nextInt(16);
-		ClayFeature(Tile::clay->m_ID, 32).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
+		ClayFeature(Tile::clay->id, 32).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
 	}
 	
 	// Start of ore generation
@@ -360,53 +360,53 @@ void RandomLevelSource::postProcess(ChunkSource* src, int x, int z)
 		xo = m_random.nextInt(16);
 		yo = m_random.nextInt(128);
 		zo = m_random.nextInt(16);
-		OreFeature(Tile::dirt->m_ID, 32).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
+		OreFeature(Tile::dirt->id, 32).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
 	}
 	for (int i = 0; i < 10; i++)
 	{
 		xo = m_random.nextInt(16);
 		yo = m_random.nextInt(128);
 		zo = m_random.nextInt(16);
-		OreFeature(Tile::gravel->m_ID, 32).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
+		OreFeature(Tile::gravel->id, 32).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
 	}
 	for (int i = 0; i < 20; i++)
 	{
 		xo = m_random.nextInt(16);
 		yo = m_random.nextInt(128);
 		zo = m_random.nextInt(16);
-		OreFeature(Tile::coalOre->m_ID, 16).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
+		OreFeature(Tile::coalOre->id, 16).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
 	}
 	for (int i = 0; i < 20; i++)
 	{
 		xo = m_random.nextInt(16);
 		yo = m_random.nextInt(64);
 		zo = m_random.nextInt(16);
-		OreFeature(Tile::ironOre->m_ID, 8).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
+		OreFeature(Tile::ironOre->id, 8).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
 	}
 	for (int i = 0; i < 2; i++)
 	{
 		xo = m_random.nextInt(16);
 		yo = m_random.nextInt(32);
 		zo = m_random.nextInt(16);
-		OreFeature(Tile::goldOre->m_ID, 8).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
+		OreFeature(Tile::goldOre->id, 8).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
 	}
 	for (int i = 0; i < 8; i++)
 	{
 		xo = m_random.nextInt(16);
 		yo = m_random.nextInt(16);
 		zo = m_random.nextInt(16);
-		OreFeature(Tile::redStoneOre->m_ID, 7).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
+		OreFeature(Tile::redStoneOre->id, 7).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
 	}
 
 	xo = m_random.nextInt(16);
 	yo = m_random.nextInt(16);
 	zo = m_random.nextInt(16);
-	OreFeature(Tile::emeraldOre->m_ID, 7).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
+	OreFeature(Tile::emeraldOre->id, 7).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
 
 	xo = m_random.nextInt(16);
 	yo = m_random.nextInt(16) + m_random.nextInt(16);
 	zo = m_random.nextInt(16);
-	OreFeature(Tile::lapisOre->m_ID,   6).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
+	OreFeature(Tile::lapisOre->id,   6).place(m_pLevel, &m_random, x16 + xo, yo, z16 + zo);
 
 	// End of ore generation
 	// Start of tree generation
@@ -460,7 +460,7 @@ void RandomLevelSource::postProcess(ChunkSource* src, int x, int z)
 		int xo = m_random.nextInt(16);
 		int yo = m_random.nextInt(128);
 		int zo = m_random.nextInt(16);
-		FlowerFeature(Tile::flower->m_ID).place(m_pLevel, &m_random, x16 + 8 + xo, yo, z16 + 8 + zo);
+		FlowerFeature(Tile::flower->id).place(m_pLevel, &m_random, x16 + 8 + xo, yo, z16 + 8 + zo);
 	}
 
 	if (m_random.nextInt(2) == 0)
@@ -468,21 +468,21 @@ void RandomLevelSource::postProcess(ChunkSource* src, int x, int z)
 		int xo = m_random.nextInt(16);
 		int yo = m_random.nextInt(128);
 		int zo = m_random.nextInt(16);
-		FlowerFeature(Tile::rose->m_ID).place(m_pLevel, &m_random, x16 + 8 + xo, yo, z16 + 8 + zo);
+		FlowerFeature(Tile::rose->id).place(m_pLevel, &m_random, x16 + 8 + xo, yo, z16 + 8 + zo);
 	}
 	if (m_random.nextInt(4) == 0)
 	{
 		int xo = m_random.nextInt(16);
 		int yo = m_random.nextInt(128);
 		int zo = m_random.nextInt(16);
-		FlowerFeature(Tile::mushroom1->m_ID).place(m_pLevel, &m_random, x16 + 8 + xo, yo, z16 + 8 + zo);
+		FlowerFeature(Tile::mushroom1->id).place(m_pLevel, &m_random, x16 + 8 + xo, yo, z16 + 8 + zo);
 	}
 	if (m_random.nextInt(8) == 0)
 	{
 		int xo = m_random.nextInt(16);
 		int yo = m_random.nextInt(128);
 		int zo = m_random.nextInt(16);
-		FlowerFeature(Tile::mushroom2->m_ID).place(m_pLevel, &m_random, x16 + 8 + xo, yo, z16 + 8 + zo);
+		FlowerFeature(Tile::mushroom2->id).place(m_pLevel, &m_random, x16 + 8 + xo, yo, z16 + 8 + zo);
 	}
 
 	for (int i = 0; i < 10; i++)
@@ -498,7 +498,7 @@ void RandomLevelSource::postProcess(ChunkSource* src, int x, int z)
 		int xo = m_random.nextInt(16);
 		int yo = m_random.nextInt(m_random.nextInt(120) + 8);
 		int zo = m_random.nextInt(16);
-		SpringFeature(Tile::water->m_ID).place(m_pLevel, &m_random, x16 + 8 + xo, yo, z16 + 8 + zo);
+		SpringFeature(Tile::water->id).place(m_pLevel, &m_random, x16 + 8 + xo, yo, z16 + 8 + zo);
 	}
 
 	for (int i = 0; i < 20; i++)
@@ -506,7 +506,7 @@ void RandomLevelSource::postProcess(ChunkSource* src, int x, int z)
 		int xo = m_random.nextInt(16);
 		int yo = m_random.nextInt(m_random.nextInt(m_random.nextInt(112) + 8) + 8);
 		int zo = m_random.nextInt(16);
-		SpringFeature(Tile::lava->m_ID).place(m_pLevel, &m_random, x16 + 8 + xo, yo, z16 + 8 + zo);
+		SpringFeature(Tile::lava->id).place(m_pLevel, &m_random, x16 + 8 + xo, yo, z16 + 8 + zo);
 	}
 
 	float* tempBlock = m_pLevel->getBiomeSource()->getTemperatureBlock(x16 + 8, z16 + 8, 16, 16);
@@ -526,7 +526,7 @@ void RandomLevelSource::postProcess(ChunkSource* src, int x, int z)
 					if (m_pLevel->getMaterial(j19, tsb - 1, j22)->blocksMotion() &&
 						m_pLevel->getMaterial(j19, tsb - 1, j22) != Material::ice)
 					{
-						m_pLevel->setTile(j19, tsb, j22, Tile::topSnow->m_ID);
+						m_pLevel->setTile(j19, tsb, j22, Tile::topSnow->id);
 					}
 				}
 			}

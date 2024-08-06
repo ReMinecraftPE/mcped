@@ -36,16 +36,16 @@ static void MoveItemToSlot(int* pItems, int item, int index)
 
 static void ShuffleInventoryForDemo(int* pHotbar, int* pItems)
 {
-	pHotbar[0] = Tile::wood->m_ID;
-	pHotbar[1] = Tile::stoneBrick->m_ID;
-	pHotbar[2] = Tile::sandStone->m_ID;
-	pHotbar[3] = Tile::dirt->m_ID;
-	pHotbar[4] = Tile::redBrick->m_ID;
-	pHotbar[5] = Tile::rock->m_ID;
-	pHotbar[6] = Tile::torch->m_ID;
-	pHotbar[7] = Tile::ladder->m_ID;
+	pHotbar[0] = Tile::wood->id;
+	pHotbar[1] = Tile::stoneBrick->id;
+	pHotbar[2] = Tile::sandStone->id;
+	pHotbar[3] = Tile::dirt->id;
+	pHotbar[4] = Tile::redBrick->id;
+	pHotbar[5] = Tile::rock->id;
+	pHotbar[6] = Tile::torch->id;
+	pHotbar[7] = Tile::ladder->id;
 #ifdef ENH_ENABLE_9TH_SLOT
-	pHotbar[8] = Tile::rose->m_ID;
+	pHotbar[8] = Tile::rose->id;
 #endif
 
 	MoveItemToSlot(pItems, pHotbar[0], 27);
@@ -56,25 +56,25 @@ static void ShuffleInventoryForDemo(int* pHotbar, int* pItems)
 	MoveItemToSlot(pItems, pHotbar[5], 32);
 	MoveItemToSlot(pItems, pHotbar[6], 33);
 	MoveItemToSlot(pItems, pHotbar[7], 34);
-	MoveItemToSlot(pItems, Tile::flower->m_ID, 35);
-	MoveItemToSlot(pItems, Tile::cloth_10->m_ID, 18);
-	MoveItemToSlot(pItems, Tile::cloth_20->m_ID, 19);
-	MoveItemToSlot(pItems, Tile::cloth_30->m_ID, 20);
-	MoveItemToSlot(pItems, Tile::cloth_40->m_ID, 21);
-	MoveItemToSlot(pItems, Tile::cloth_50->m_ID, 22);
-	MoveItemToSlot(pItems, Tile::cloth_60->m_ID, 23);
-	MoveItemToSlot(pItems, Tile::cloth_70->m_ID, 24);
-	MoveItemToSlot(pItems, Tile::sand->m_ID, 25);
-	MoveItemToSlot(pItems, Tile::glass->m_ID, 26);
-	MoveItemToSlot(pItems, Tile::mushroom1->m_ID, 1);
-	MoveItemToSlot(pItems, Tile::obsidian->m_ID, 8);
+	MoveItemToSlot(pItems, Tile::flower->id, 35);
+	MoveItemToSlot(pItems, Tile::cloth_10->id, 18);
+	MoveItemToSlot(pItems, Tile::cloth_20->id, 19);
+	MoveItemToSlot(pItems, Tile::cloth_30->id, 20);
+	MoveItemToSlot(pItems, Tile::cloth_40->id, 21);
+	MoveItemToSlot(pItems, Tile::cloth_50->id, 22);
+	MoveItemToSlot(pItems, Tile::cloth_60->id, 23);
+	MoveItemToSlot(pItems, Tile::cloth_70->id, 24);
+	MoveItemToSlot(pItems, Tile::sand->id, 25);
+	MoveItemToSlot(pItems, Tile::glass->id, 26);
+	MoveItemToSlot(pItems, Tile::mushroom1->id, 1);
+	MoveItemToSlot(pItems, Tile::obsidian->id, 8);
 
 #ifndef ORIGINAL_CODE
 	// @NOTE: For Testing
 	//pHotbar[1] = Item::camera->m_itemID;
-	//pHotbar[2] = Tile::tnt->m_ID;
-	//pHotbar[3] = Tile::water->m_ID;
-	//pHotbar[4] = Tile::lava->m_ID;
+	//pHotbar[2] = Tile::tnt->id;
+	//pHotbar[3] = Tile::water->id;
+	//pHotbar[4] = Tile::lava->id;
 #endif
 }
 
@@ -94,53 +94,53 @@ Inventory::Inventory(Player* pPlayer)
 	// titled "Minecraft - Pocket Edition on Xperia Play".
 	// https://www.youtube.com/watch?v=jO-y5wzmK4E
 
-	m_hotbar[0]  = Tile::wood->m_ID;
-	m_hotbar[1]  = Tile::cloth_10->m_ID;
-	m_hotbar[2]  = Tile::cloth_20->m_ID;
-	m_hotbar[3]  = Tile::cloth_30->m_ID;
-	m_hotbar[4]  = Tile::cloth_40->m_ID;
-	m_hotbar[5]  = Tile::cloth_50->m_ID;
-	m_hotbar[6]  = Tile::cloth_60->m_ID;
-	m_hotbar[7]  = Tile::ladder->m_ID;
+	m_hotbar[0]  = Tile::wood->id;
+	m_hotbar[1]  = Tile::cloth_10->id;
+	m_hotbar[2]  = Tile::cloth_20->id;
+	m_hotbar[3]  = Tile::cloth_30->id;
+	m_hotbar[4]  = Tile::cloth_40->id;
+	m_hotbar[5]  = Tile::cloth_50->id;
+	m_hotbar[6]  = Tile::cloth_60->id;
+	m_hotbar[7]  = Tile::ladder->id;
 
 	// slot 8 missing. I assume that's the "..." button
 
-	m_items[0] = Tile::rock->m_ID;
-	m_items[1] = Tile::stoneBrick->m_ID;
-	m_items[2] = Tile::sandStone->m_ID;
-	m_items[3] = Tile::wood->m_ID;
-	m_items[4] = Tile::treeTrunk->m_ID;
-	m_items[5] = Tile::goldBlock->m_ID;
-	m_items[6] = Tile::ironBlock->m_ID;
-	m_items[7] = Tile::emeraldBlock->m_ID;
-	m_items[8] = Tile::redBrick->m_ID;
-	m_items[9] = Tile::leaves->m_ID;
-	m_items[10] = Tile::cloth_10->m_ID;
-	m_items[11] = Tile::cloth_20->m_ID;
-	m_items[12] = Tile::cloth_30->m_ID;
-	m_items[13] = Tile::cloth_40->m_ID;
-	m_items[14] = Tile::cloth_50->m_ID;
-	m_items[15] = Tile::cloth_60->m_ID;
-	m_items[16] = Tile::cloth_70->m_ID;
-	m_items[17] = Tile::glass->m_ID;
-	m_items[18] = Tile::cloth_01->m_ID;
-	m_items[19] = Tile::cloth_11->m_ID;
-	m_items[20] = Tile::cloth_21->m_ID;
-	m_items[21] = Tile::cloth_31->m_ID;
-	m_items[22] = Tile::cloth_41->m_ID;
-	m_items[23] = Tile::stairs_wood->m_ID;
-	m_items[24] = Tile::stairs_stone->m_ID;
-	m_items[25] = Tile::stoneSlabHalf->m_ID;
-	m_items[26] = Tile::sand->m_ID;
-	m_items[27] = Tile::ladder->m_ID;
-	m_items[28] = Tile::torch->m_ID;
-	m_items[29] = Tile::flower->m_ID;
-	m_items[30] = Tile::rose->m_ID;
-	m_items[31] = Tile::mushroom1->m_ID;
-	m_items[32] = Tile::mushroom2->m_ID;
-	m_items[33] = Tile::reeds->m_ID;
-	m_items[34] = Tile::obsidian->m_ID;
-	m_items[35] = Tile::dirt->m_ID;
+	m_items[0] = Tile::rock->id;
+	m_items[1] = Tile::stoneBrick->id;
+	m_items[2] = Tile::sandStone->id;
+	m_items[3] = Tile::wood->id;
+	m_items[4] = Tile::treeTrunk->id;
+	m_items[5] = Tile::goldBlock->id;
+	m_items[6] = Tile::ironBlock->id;
+	m_items[7] = Tile::emeraldBlock->id;
+	m_items[8] = Tile::redBrick->id;
+	m_items[9] = Tile::leaves->id;
+	m_items[10] = Tile::cloth_10->id;
+	m_items[11] = Tile::cloth_20->id;
+	m_items[12] = Tile::cloth_30->id;
+	m_items[13] = Tile::cloth_40->id;
+	m_items[14] = Tile::cloth_50->id;
+	m_items[15] = Tile::cloth_60->id;
+	m_items[16] = Tile::cloth_70->id;
+	m_items[17] = Tile::glass->id;
+	m_items[18] = Tile::cloth_01->id;
+	m_items[19] = Tile::cloth_11->id;
+	m_items[20] = Tile::cloth_21->id;
+	m_items[21] = Tile::cloth_31->id;
+	m_items[22] = Tile::cloth_41->id;
+	m_items[23] = Tile::stairs_wood->id;
+	m_items[24] = Tile::stairs_stone->id;
+	m_items[25] = Tile::stoneSlabHalf->id;
+	m_items[26] = Tile::sand->id;
+	m_items[27] = Tile::ladder->id;
+	m_items[28] = Tile::torch->id;
+	m_items[29] = Tile::flower->id;
+	m_items[30] = Tile::rose->id;
+	m_items[31] = Tile::mushroom1->id;
+	m_items[32] = Tile::mushroom2->id;
+	m_items[33] = Tile::reeds->id;
+	m_items[34] = Tile::obsidian->id;
+	m_items[35] = Tile::dirt->id;
 
 #ifdef DEMO
 	ShuffleInventoryForDemo(m_hotbar, m_items);
@@ -148,14 +148,14 @@ Inventory::Inventory(Player* pPlayer)
 
 #ifdef ENH_EXTRA_ITEMS_IN_INV
 	// populate the 5th row now with items that might be of interest
-	m_items[36] = Tile::tnt->m_ID;
+	m_items[36] = Tile::tnt->id;
 	m_items[37] = Item::camera->m_itemID;
 	m_items[38] = Item::door_wood->m_itemID;
-	m_items[39] = Tile::gravel->m_ID;
-	m_items[40] = Tile::cloth->m_ID;
-	m_items[41] = Tile::clay->m_ID;
-	m_items[42] = Tile::farmland->m_ID;
-	m_items[43] = Tile::lapisOre->m_ID;
+	m_items[39] = Tile::gravel->id;
+	m_items[40] = Tile::cloth->id;
+	m_items[41] = Tile::clay->id;
+	m_items[42] = Tile::farmland->id;
+	m_items[43] = Tile::lapisOre->id;
 	m_items[44] = Item::door_iron->m_itemID;
 #endif
 }

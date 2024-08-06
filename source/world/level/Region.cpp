@@ -29,7 +29,7 @@ int Region::getRawBrightness(int x, int y, int z, bool b)
 	if (b)
 	{
 		TileID tile = getTile(x, y, z);
-		if (tile == Tile::stoneSlabHalf->m_ID || tile == Tile::farmland->m_ID)
+		if (tile == Tile::stoneSlabHalf->id || tile == Tile::farmland->id)
 		{
 			int result;
 
@@ -89,7 +89,7 @@ Material* Region::getMaterial(int x, int y, int z)
 	if (tile == TILE_AIR)
 		return Material::air;
 
-	return Tile::tiles[tile]->m_pMaterial;
+	return Tile::tiles[tile]->material;
 }
 
 bool Region::isSolidTile(int x, int y, int z)

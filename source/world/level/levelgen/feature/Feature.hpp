@@ -51,7 +51,7 @@ public:
 	bool place(Level*, Random*, int x, int y, int z) override;
 
 private:
-	int m_ID;
+	int id;
 };
 
 class SpringFeature : public Feature
@@ -61,7 +61,7 @@ public:
 	bool place(Level*, Random*, int x, int y, int z) override;
 
 private:
-	int m_ID;
+	int id;
 };
 
 class ClayFeature : public Feature
@@ -71,7 +71,7 @@ public:
 	bool place(Level*, Random*, int x, int y, int z) override;
 
 private:
-	int m_ID;
+	int id;
 	int m_count;
 };
 
@@ -82,7 +82,7 @@ public:
 	bool place(Level*, Random*, int x, int y, int z) override;
 
 private:
-	int m_ID;
+	int id;
 	int m_count;
 };
 

@@ -42,7 +42,7 @@ bool TreeFeature::place(Level* level, Random* random, int x, int y, int z)
 				TileID tile = level->getTile(ax, ay, az);
 
 				// other trees can overlap with this one, apparently
-				if (tile != TILE_AIR && tile != Tile::leaves->m_ID)
+				if (tile != TILE_AIR && tile != Tile::leaves->id)
 				{
 					bCanPlace = false;
 					break;
@@ -58,14 +58,14 @@ bool TreeFeature::place(Level* level, Random* random, int x, int y, int z)
 	TileID tileBelow = level->getTile(x, y - 1, z);
 
 	// If grass or dirt aren't below us, we can't possibly grow!
-	if (tileBelow != Tile::grass->m_ID && tileBelow != Tile::dirt->m_ID)
+	if (tileBelow != Tile::grass->id && tileBelow != Tile::dirt->id)
 		return false;
 
 	// @NOTE: Redundant check
 	if (y >= C_MAX_Y - treeHeight)
 		return false;
 
-	level->setTileNoUpdate(x, y - 1, z, Tile::dirt->m_ID);
+	level->setTileNoUpdate(x, y - 1, z, Tile::dirt->id);
 
 	int upperY = y + treeHeight;
 	int lowerY = y + treeHeight - 3;
@@ -88,7 +88,7 @@ bool TreeFeature::place(Level* level, Random* random, int x, int y, int z)
 			{
 				if ((abs(ax - x) != c1 || abs(az - z) != c1 || random->nextInt(2) != 0 && diff != 0) && !Tile::solid[level->getTile(ax, i, az)])
 				{
-					level->setTileNoUpdate(ax, i, az, Tile::leaves->m_ID);
+					level->setTileNoUpdate(ax, i, az, Tile::leaves->id);
 				}
 			}
 		}
@@ -98,10 +98,10 @@ bool TreeFeature::place(Level* level, Random* random, int x, int y, int z)
 	{
 		int y1 = i + y;
 		TileID tile = level->getTile(x, y + i, z);
-		if (tile && tile != Tile::leaves->m_ID)
+		if (tile && tile != Tile::leaves->id)
 			continue;
 
-		level->setTileNoUpdate(x, y + i, z, Tile::treeTrunk->m_ID);
+		level->setTileNoUpdate(x, y + i, z, Tile::treeTrunk->id);
 	}
 
 	return true;

@@ -80,7 +80,7 @@ void TileRenderer::renderEast(Tile* tile, float x, float y, float z, int texture
 
 	float texU_l, texU_r, texV_u, texV_d;
 
-	AABB& aabb = tile->m_aabb;
+	AABB& aabb = tile->aabb;
 
 	if (aabb.min.z < 0.0f || aabb.max.z > 1.0f)
 	{
@@ -143,7 +143,7 @@ void TileRenderer::renderWest(Tile* tile, float x, float y, float z, int texture
 
 	float texU_l, texU_r, texV_u, texV_d;
 
-	AABB& aabb = tile->m_aabb;
+	AABB& aabb = tile->aabb;
 
 	if (aabb.min.z < 0.0f || aabb.max.z > 1.0f)
 	{
@@ -206,7 +206,7 @@ void TileRenderer::renderSouth(Tile* tile, float x, float y, float z, int textur
 
 	float texU_l, texU_r, texV_u, texV_d;
 
-	AABB& aabb = tile->m_aabb;
+	AABB& aabb = tile->aabb;
 
 	if (aabb.min.x < 0.0f || aabb.max.x > 1.0f)
 	{
@@ -269,7 +269,7 @@ void TileRenderer::renderNorth(Tile* tile, float x, float y, float z, int textur
 
 	float texU_l, texU_r, texV_u, texV_d;
 
-	AABB& aabb = tile->m_aabb;
+	AABB& aabb = tile->aabb;
 
 	if (aabb.min.x < 0.0f || aabb.max.x > 1.0f)
 	{
@@ -332,7 +332,7 @@ void TileRenderer::renderFaceDown(Tile* tile, float x, float y, float z, int tex
 
 	float texU_1, texU_2, texV_1, texV_2;
 
-	AABB& aabb = tile->m_aabb;
+	AABB& aabb = tile->aabb;
 
 	if (aabb.min.x >= 0.0f && aabb.max.x <= 1.0f)
 	{
@@ -389,7 +389,7 @@ void TileRenderer::renderFaceUp(Tile* tile, float x, float y, float z, int textu
 
 	float texU_1, texU_2, texV_1, texV_2;
 
-	AABB& aabb = tile->m_aabb;
+	AABB& aabb = tile->aabb;
 
 	if (aabb.min.x >= 0.0f && aabb.max.x <= 1.0f)
 	{
@@ -507,7 +507,7 @@ bool TileRenderer::tesselateBlockInWorld(Tile* tile, int x, int y, int z, float 
 		bDrewAnything = true;
 
 		float fLight = tile->getBrightness(m_pLevelSource, x, y + 1, z);
-		if (tile->m_aabb.max.y != 1.0f && !tile->m_pMaterial->isLiquid())
+		if (tile->aabb.max.y != 1.0f && !tile->material->isLiquid())
 			fLight = fLightHere;
 
 		t.color(topR * fLight, topG * fLight, topB * fLight);
@@ -520,7 +520,7 @@ bool TileRenderer::tesselateBlockInWorld(Tile* tile, int x, int y, int z, float 
 		bDrewAnything = true;
 
 		float fLight = tile->getBrightness(m_pLevelSource, x, y, z - 1);
-		if (tile->m_aabb.min.z > 0.0f)
+		if (tile->aabb.min.z > 0.0f)
 			fLight = fLightHere;
 
 		t.color(r * 0.8f * fLight, g * 0.8f * fLight, b * 0.8f * fLight);
@@ -533,7 +533,7 @@ bool TileRenderer::tesselateBlockInWorld(Tile* tile, int x, int y, int z, float 
 		bDrewAnything = true;
 
 		float fLight = tile->getBrightness(m_pLevelSource, x, y, z + 1);
-		if (tile->m_aabb.max.z < 1.0f)
+		if (tile->aabb.max.z < 1.0f)
 			fLight = fLightHere;
 
 		t.color(r * 0.8f * fLight, g * 0.8f * fLight, b * 0.8f * fLight);
@@ -546,7 +546,7 @@ bool TileRenderer::tesselateBlockInWorld(Tile* tile, int x, int y, int z, float 
 		bDrewAnything = true;
 
 		float fLight = tile->getBrightness(m_pLevelSource, x - 1, y, z);
-		if (tile->m_aabb.min.x > 0.0f)
+		if (tile->aabb.min.x > 0.0f)
 			fLight = fLightHere;
 
 		t.color(r * 0.6f * fLight, g * 0.6f * fLight, b * 0.6f * fLight);
@@ -559,7 +559,7 @@ bool TileRenderer::tesselateBlockInWorld(Tile* tile, int x, int y, int z, float 
 		bDrewAnything = true;
 
 		float fLight = tile->getBrightness(m_pLevelSource, x + 1, y, z);
-		if (tile->m_aabb.max.x < 1.0f)
+		if (tile->aabb.max.x < 1.0f)
 			fLight = fLightHere;
 
 		t.color(r * 0.6f * fLight, g * 0.6f * fLight, b * 0.6f * fLight);
@@ -630,10 +630,10 @@ bool TileRenderer::tesselateWaterInWorld(Tile* tile1, int x, int y, int z)
 
 	int tileData = m_pLevelSource->getData(x, y, z);
 	float
-		fHeight1 = getWaterHeight(x,     y, z,     tile->m_pMaterial),
-		fHeight2 = getWaterHeight(x,     y, z + 1, tile->m_pMaterial),
-		fHeight3 = getWaterHeight(x + 1, y, z + 1, tile->m_pMaterial),
-		fHeight4 = getWaterHeight(x + 1, y, z,     tile->m_pMaterial);
+		fHeight1 = getWaterHeight(x,     y, z,     tile->material),
+		fHeight2 = getWaterHeight(x,     y, z + 1, tile->material),
+		fHeight3 = getWaterHeight(x + 1, y, z + 1, tile->material),
+		fHeight4 = getWaterHeight(x + 1, y, z,     tile->material);
 
 	// @TODO: fix gotos
 	bool bFlag1, bFlag2;
@@ -653,7 +653,7 @@ bool TileRenderer::tesselateWaterInWorld(Tile* tile1, int x, int y, int z)
 		// @NOTE: Have to use tile1 because for whatever reason MSVC doesn't think an overload
 		// for `tile` exists that takes 2 int arguments
 		int texFaceDown = tile->getTexture(DIR_YPOS, tileData);
-		float slopeAngle = tile->getSlopeAngle(m_pLevelSource, x, y, z, tile->m_pMaterial);
+		float slopeAngle = tile->getSlopeAngle(m_pLevelSource, x, y, z, tile->material);
 
 		int texX, texY;
 
@@ -799,8 +799,8 @@ label_8:
 		t.vertexUV(vtxX1, float(y) + 0.0f, vtxZ1, texU_1, texV_3);
 	}
 
-	tile->m_aabb.min.y = 0.0f;
-	tile->m_aabb.max.y = 1.0f;
+	tile->aabb.min.y = 0.0f;
+	tile->aabb.max.y = 1.0f;
 
 	return bFlag2;
 }
@@ -865,20 +865,20 @@ bool TileRenderer::tesselateDoorInWorld(Tile* tile, int x, int y, int z)
 	int texture;
 
 	fBright = tile->getBrightness(m_pLevelSource, x, y - 1, z);
-	if (tile->m_aabb.min.y > 0.0f)       fBright = fBrightHere;
-	if (Tile::lightEmission[tile->m_ID]) fBright = 1.0f;
+	if (tile->aabb.min.y > 0.0f)     fBright = fBrightHere;
+	if (Tile::lightEmission[tile->id]) fBright = 1.0f;
 	t.color(fBright * 0.5f, fBright * 0.5f, fBright * 0.5f);
 	renderFaceUp(tile, float(x), float(y), float(z), tile->getTexture(m_pLevelSource, x, y, z, DIR_YNEG));
 
 	fBright = tile->getBrightness(m_pLevelSource, x, y + 1, z);
-	if (tile->m_aabb.max.y < 1.0f)       fBright = fBrightHere;
-	if (Tile::lightEmission[tile->m_ID]) fBright = 1.0f;
+	if (tile->aabb.max.y < 1.0f)     fBright = fBrightHere;
+	if (Tile::lightEmission[tile->id]) fBright = 1.0f;
 	t.color(fBright, fBright, fBright);
 	renderFaceDown(tile, float(x), float(y), float(z), tile->getTexture(m_pLevelSource, x, y, z, DIR_YPOS));
 
 	fBright = tile->getBrightness(m_pLevelSource, x, y, z - 1);
-	if (tile->m_aabb.min.z > 0.0f)       fBright = fBrightHere;
-	if (Tile::lightEmission[tile->m_ID]) fBright = 1.0f;
+	if (tile->aabb.min.z > 0.0f)     fBright = fBrightHere;
+	if (Tile::lightEmission[tile->id]) fBright = 1.0f;
 	t.color(fBright * 0.8f, fBright * 0.8f, fBright * 0.8f);
 	texture = tile->getTexture(m_pLevelSource, x, y, z, DIR_ZNEG);
 	if (texture < 0) texture = -texture, field_8 = true;
@@ -886,8 +886,8 @@ bool TileRenderer::tesselateDoorInWorld(Tile* tile, int x, int y, int z)
 	field_8 = false;
 
 	fBright = tile->getBrightness(m_pLevelSource, x, y, z + 1);
-	if (tile->m_aabb.max.z < 1.0f)       fBright = fBrightHere;
-	if (Tile::lightEmission[tile->m_ID]) fBright = 1.0f;
+	if (tile->aabb.max.z < 1.0f)     fBright = fBrightHere;
+	if (Tile::lightEmission[tile->id]) fBright = 1.0f;
 	t.color(fBright * 0.8f, fBright * 0.8f, fBright * 0.8f);
 	texture = tile->getTexture(m_pLevelSource, x, y, z, DIR_ZPOS);
 	if (texture < 0) texture = -texture, field_8 = true;
@@ -895,8 +895,8 @@ bool TileRenderer::tesselateDoorInWorld(Tile* tile, int x, int y, int z)
 	field_8 = false;
 
 	fBright = tile->getBrightness(m_pLevelSource, x - 1, y, z);
-	if (tile->m_aabb.min.x > 0.0f)       fBright = fBrightHere;
-	if (Tile::lightEmission[tile->m_ID]) fBright = 1.0f;
+	if (tile->aabb.min.x > 0.0f)     fBright = fBrightHere;
+	if (Tile::lightEmission[tile->id]) fBright = 1.0f;
 	t.color(fBright * 0.6f, fBright * 0.6f, fBright * 0.6f);
 	texture = tile->getTexture(m_pLevelSource, x, y, z, DIR_XNEG);
 	if (texture < 0) texture = -texture, field_8 = true;
@@ -904,8 +904,8 @@ bool TileRenderer::tesselateDoorInWorld(Tile* tile, int x, int y, int z)
 	field_8 = false;
 
 	fBright = tile->getBrightness(m_pLevelSource, x + 1, y, z);
-	if (tile->m_aabb.max.x < 1.0f)       fBright = fBrightHere;
-	if (Tile::lightEmission[tile->m_ID]) fBright = 1.0f;
+	if (tile->aabb.max.x < 1.0f)     fBright = fBrightHere;
+	if (Tile::lightEmission[tile->id]) fBright = 1.0f;
 	t.color(fBright * 0.6f, fBright * 0.6f, fBright * 0.6f);
 	texture = tile->getTexture(m_pLevelSource, x, y, z, DIR_XPOS);
 	if (texture < 0) texture = -texture, field_8 = true;
@@ -1000,7 +1000,7 @@ bool TileRenderer::tesselateTorchInWorld(Tile* tile, int x, int y, int z)
 	int data = m_pLevelSource->getData(x, y, z);
 	float bright = tile->getBrightness(m_pLevelSource, x, y, z);
 
-	if (Tile::lightEmission[tile->m_ID] > 0)
+	if (Tile::lightEmission[tile->id] > 0)
 		bright = 1.0f;
 
 	Tesselator& t = Tesselator::instance;
@@ -1556,7 +1556,7 @@ bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusion(Tile* a2, int a3, 
 	v45 = this->m_pLevelSource;
 	this->field_B7 = v44;
 	this->field_B4 = Tile::translucent[v45->getTile(a3, a4 - 1, a5 - 1)];
-	if (a2->m_TextureFrame == 3)
+	if (a2->tex == 3)
 	{
 		v219 = 0;
 		v220 = 0;
@@ -2278,7 +2278,7 @@ LABEL_102:
 
 #define SHADE_PREPARE \
 	float red = bright, grn = bright, blu = bright; \
-	if (tile->m_ID == Tile::leaves->m_ID)           \
+	if (tile->id == Tile::leaves->id)               \
 		red *= 0.35f, grn *= 0.65f, blu *= 0.25f;
 
 #define SHADE_IF_NEEDED(col) t.color(col*red,col*grn,col*blu,1.0f)

@@ -19,7 +19,7 @@ struct TickNextTickData
 	bool operator==(const TickNextTickData& other) const;
 	void setDelay(TLong);
 
-	int m_ID;
+	int id;
 	int field_4;
 	int field_8;
 	int field_C;

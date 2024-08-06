@@ -9,7 +9,7 @@
 #include "WaterTexture.hpp"
 #include "world/level/tile/Tile.hpp"
 
-WaterTexture::WaterTexture() : DynamicTexture(Tile::water->m_TextureFrame)
+WaterTexture::WaterTexture() : DynamicTexture(Tile::water->tex)
 {
 	m_data1 = new float[0x400];
 	m_data2 = new float[0x400];

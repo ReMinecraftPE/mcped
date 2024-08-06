@@ -46,7 +46,7 @@ void ItemInHandRenderer::renderItem(ItemInstance* inst)
 	{
 		float red, grn, blu, alp = 1.0f;
 
-		if (inst->m_itemID == Tile::leaves->m_ID)
+		if (inst->m_itemID == Tile::leaves->id)
 		{
 			red = 0.35f;
 			grn = 0.65f;
@@ -233,7 +233,7 @@ void ItemInHandRenderer::renderFire(float f)
 	for (int i = 1, offset = 0; i != -3; i -= 2, offset += 16)
 	{
 		glPushMatrix();
-		int texture = offset + Tile::fire->m_TextureFrame;
+		int texture = offset + Tile::fire->tex;
 
 		float texX = 16.0f * float(texture % 16), texY = 16.0f * float(texture / 16);
 		float texU_1 =  texX           / 256.0f;

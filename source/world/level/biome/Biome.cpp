@@ -97,15 +97,15 @@ void Biome::recalc()
 		}
 	}
 
-	desert->topMaterial = desert->material = Tile::sand->m_ID;
-	iceDesert->topMaterial = iceDesert->material = Tile::sand->m_ID;
+	desert->topMaterial = desert->material = Tile::sand->id;
+	iceDesert->topMaterial = iceDesert->material = Tile::sand->id;
 }
 
 Biome::Biome()
 {
 	name = "";
-	topMaterial = Tile::grass->m_ID;
-	material = Tile::dirt->m_ID;
+	topMaterial = Tile::grass->id;
+	material = Tile::dirt->id;
 }
 
 Biome::~Biome()

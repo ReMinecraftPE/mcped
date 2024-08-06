@@ -11,7 +11,7 @@
 
 Bush::Bush(int id, int texture) : Tile(id, Material::plant)
 {
-	m_TextureFrame = texture;
+	tex = texture;
 	setTicking(true);
 	setShape(0.3f, 0.0f, 0.3f, 0.7f, 0.6f, 0.7f);
 }
@@ -35,7 +35,7 @@ bool Bush::mayPlace(Level* level, int x, int y, int z)
 {
 	TileID tile = level->getTile(x, y - 1, z);
 
-	return tile == Tile::grass->m_ID || tile == Tile::dirt->m_ID || tile == Tile::farmland->m_ID;
+	return tile == Tile::grass->id || tile == Tile::dirt->id || tile == Tile::farmland->id;
 }
 
 bool Bush::canSurvive(Level* level, int x, int y, int z)

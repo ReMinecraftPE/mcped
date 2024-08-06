@@ -43,7 +43,7 @@ bool PineFeature::place(Level* level, Random* random, int x, int y, int z)
 				}
 
 				TileID tile = level->getTile(cx, cy, cz);
-				if (tile != TILE_AIR && tile != Tile::leaves->m_ID)
+				if (tile != TILE_AIR && tile != Tile::leaves->id)
 					bCanPlace = false;
 			}
 		}
@@ -53,13 +53,13 @@ bool PineFeature::place(Level* level, Random* random, int x, int y, int z)
 		return false;
 
 	TileID tileBelow = level->getTile(x, y - 1, z);
-	if (tileBelow != Tile::grass->m_ID && tileBelow != Tile::dirt->m_ID)
+	if (tileBelow != Tile::grass->id && tileBelow != Tile::dirt->id)
 		return false;
 
 	if (y >= C_MAX_Y - 1 - height)
 		return false;
 
-	level->setTileNoUpdate(x, y - 1, z, Tile::dirt->m_ID);
+	level->setTileNoUpdate(x, y - 1, z, Tile::dirt->id);
 
 	int range = 0;
 
@@ -73,7 +73,7 @@ bool PineFeature::place(Level* level, Random* random, int x, int y, int z)
 			{
 				int dz = cz - z;
 				if ((abs(dx) != range || abs(dz) != range || range <= 0) && !Tile::solid[level->getTile(cx, b1, cz)])
-					level->setTileAndDataNoUpdate(cx, b1, cz, Tile::leaves->m_ID, 1);
+					level->setTileAndDataNoUpdate(cx, b1, cz, Tile::leaves->id, 1);
 			}
 		}
 
@@ -95,8 +95,8 @@ bool PineFeature::place(Level* level, Random* random, int x, int y, int z)
 		int cy = yd + y;
 
 		TileID tile = level->getTile(x, cy, z);
-		if (tile == TILE_AIR || tile == Tile::leaves->m_ID)
-			level->setTileAndDataNoUpdate(x, cy, z, Tile::treeTrunk->m_ID, 1);
+		if (tile == TILE_AIR || tile == Tile::leaves->id)
+			level->setTileAndDataNoUpdate(x, cy, z, Tile::treeTrunk->id, 1);
 	}
 
 	return true;

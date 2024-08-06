@@ -35,17 +35,17 @@ ItemInstance::ItemInstance(Item* pItem, int amount, int auxValue)
 
 ItemInstance::ItemInstance(Tile* pTile)
 {
-	init(pTile->m_ID, 1, 0);
+	init(pTile->id, 1, 0);
 }
 
 ItemInstance::ItemInstance(Tile* pTile, int amount)
 {
-	init(pTile->m_ID, amount, 0);
+	init(pTile->id, amount, 0);
 }
 
 ItemInstance::ItemInstance(Tile* pTile, int amount, int auxValue)
 {
-	init(pTile->m_ID, amount, auxValue);
+	init(pTile->id, amount, auxValue);
 }
 
 ItemInstance::ItemInstance(int itemID, int amount, int auxValue)

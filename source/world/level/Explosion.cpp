@@ -123,7 +123,7 @@ void Explosion::explode()
 
 		TileID tile = m_pLevel->getTile(tp.x, tp.y, tp.z), tileBelow = m_pLevel->getTile(tp.x, tp.y - 1, tp.z);
 		if (tile == TILE_AIR && Tile::solid[tileBelow] && m_random.nextInt(3) == 0)
-			m_pLevel->setTile(tp.x, tp.y, tp.z, Tile::fire->m_ID);
+			m_pLevel->setTile(tp.x, tp.y, tp.z, Tile::fire->id);
 	}
 }
 

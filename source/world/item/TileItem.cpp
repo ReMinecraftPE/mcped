@@ -29,7 +29,7 @@ std::string TileItem::getDescriptionId(ItemInstance* instance)
 
 bool TileItem::useOn(ItemInstance* instance, Player* player, Level* level, int x, int y, int z, int dir)
 {
-	if (level->getTile(x, y, z) == Tile::topSnow->m_ID)
+	if (level->getTile(x, y, z) == Tile::topSnow->id)
 	{
 		dir = DIR_YNEG;
 	}
@@ -61,9 +61,9 @@ bool TileItem::useOn(ItemInstance* instance, Player* player, Level* level, int x
 		float(x) + 0.5f,
 		float(y) + 0.5f,
 		float(z) + 0.5f,
-		"step." + pTile->m_pSound->m_name,
-		(pTile->m_pSound->field_18 + 1.0f) * 0.5f,
-		pTile->m_pSound->field_1C * 0.8f
+		"step." + pTile->soundType->m_name,
+		(pTile->soundType->field_18 + 1.0f) * 0.5f,
+		pTile->soundType->field_1C * 0.8f
 	);
 
 	instance->m_amount--;

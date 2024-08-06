@@ -49,14 +49,14 @@ void SandTile::checkSlide(Level* level, int x, int y, int z)
 		}
 
 		if (y2 > -1)
-			level->setTile(x, y2 + 1, z, m_ID);
+			level->setTile(x, y2 + 1, z, id);
 	}
 	else
 	{
 		// The original code attempts to spawn a falling tile entity, but it fails since it's not a player.
 		// The falling sand tile
 #if defined(ORIGINAL_CODE) || defined(ENH_ALLOW_SAND_GRAVITY)
-		level->addEntity(new FallingTile(level, float(x) + 0.5f, float(y) + 0.5f, float(z) + 0.5f, m_ID));
+		level->addEntity(new FallingTile(level, float(x) + 0.5f, float(y) + 0.5f, float(z) + 0.5f, id));
 #endif
 	}
 }
@@ -67,13 +67,13 @@ bool SandTile::isFree(Level* level, int x, int y, int z)
 	if (!tile)
 		return true;
 
-	if (tile == Tile::fire->m_ID)
+	if (tile == Tile::fire->id)
 		return true;
 
-	if (Tile::tiles[tile]->m_pMaterial == Material::water)
+	if (Tile::tiles[tile]->material == Material::water)
 		return true;
 
-	if (Tile::tiles[tile]->m_pMaterial == Material::lava)
+	if (Tile::tiles[tile]->material == Material::lava)
 		return true;
 
 	return false;
@@ -87,14 +87,14 @@ void SandTile::tick(Level* level, int x, int y, int z, Random* random)
 void SandTile::neighborChanged(Level* level, int x, int y, int z, int dir)
 {
 #ifdef ENH_ALLOW_SAND_GRAVITY
-	level->addToTickNextTick(x, y, z, m_ID, getTickDelay());
+	level->addToTickNextTick(x, y, z, id, getTickDelay());
 #endif
 }
 
 void SandTile::onPlace(Level* level, int x, int y, int z)
 {
 #ifdef ENH_ALLOW_SAND_GRAVITY
-	level->addToTickNextTick(x, y, z, m_ID, getTickDelay());
+	level->addToTickNextTick(x, y, z, id, getTickDelay());
 #endif
 }
 

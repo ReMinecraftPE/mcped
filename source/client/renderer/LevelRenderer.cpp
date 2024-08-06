@@ -98,7 +98,7 @@ void LevelRenderer::allChanged()
 	LeafTile* pLeaves = (LeafTile*)Tile::leaves;
 
 	pLeaves->m_bTransparent = m_pMinecraft->m_options.m_bFancyGraphics;
-	pLeaves->m_TextureFrame = !pLeaves->m_bTransparent + pLeaves->field_74;
+	pLeaves->tex = !pLeaves->m_bTransparent + pLeaves->field_74;
 
 	field_BC = m_pMinecraft->m_options.field_10;
 

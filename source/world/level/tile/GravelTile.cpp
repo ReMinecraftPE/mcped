@@ -15,5 +15,6 @@ GravelTile::GravelTile(int a, int b, Material* c) : SandTile(a, b, c)
 
 int GravelTile::getResource(int a, Random* b)
 {
-	return m_ID;
+	// @NOTE: Here would drop flint if it were added
+	return id;
 }

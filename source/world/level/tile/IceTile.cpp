@@ -29,7 +29,7 @@ void IceTile::onRemove(Level* level, int x, int y, int z)
 	Material* pMtlBelow = level->getMaterial(x, y - 1, z);
 	if (pMtlBelow->blocksMotion() || pMtlBelow->isLiquid())
 	{
-		level->setTile(x, y, z, Tile::water->m_ID);
+		level->setTile(x, y, z, Tile::water->id);
 	}
 }
 
@@ -41,10 +41,10 @@ bool IceTile::shouldRenderFace(LevelSource* level, int x, int y, int z, int dir)
 
 void IceTile::tick(Level* level, int x, int y, int z, Random* random)
 {
-	if (level->getBrightness(LightLayer::Block, x, y, z) <= 11 - Tile::lightBlock[m_ID])
+	if (level->getBrightness(LightLayer::Block, x, y, z) <= 11 - Tile::lightBlock[id])
 		return;
 
 	spawnResources(level, x, y, z, level->getData(x, y, z));
 
-	level->setTile(x, y, z, Tile::calmWater->m_ID);
+	level->setTile(x, y, z, Tile::calmWater->id);
 }

@@ -12,10 +12,10 @@
 
 DoorTile::DoorTile(int ID, Material* pMtl) : Tile(ID, pMtl)
 {
-	m_TextureFrame = TEXTURE_DOOR_BOTTOM;
+	tex = TEXTURE_DOOR_BOTTOM;
 
 	if (pMtl == Material::metal)
-		m_TextureFrame = TEXTURE_DOOR_IRON_BOTTOM;
+		tex = TEXTURE_DOOR_IRON_BOTTOM;
 
 	Tile::setShape(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
 }
@@ -23,7 +23,7 @@ DoorTile::DoorTile(int ID, Material* pMtl) : Tile(ID, pMtl)
 int DoorTile::use(Level* level, int x, int y, int z, Player* player)
 {
 	// well, you know, iron doors can't be opened by right clicking
-	if (m_pMaterial == Material::metal)
+	if (material == Material::metal)
 		return 1;
 
 	int data = level->getData(x, y, z);
@@ -31,13 +31,13 @@ int DoorTile::use(Level* level, int x, int y, int z, Player* player)
 	// if we're the top tile
 	if (data & 8)
 	{
-		if (level->getTile(x, y - 1, z) == m_ID)
+		if (level->getTile(x, y - 1, z) == id)
 			use(level, x, y - 1, z, player);
 	}
 	else
 	{
 		data ^= 4;
-		if (level->getTile(x, y + 1, z) == m_ID)
+		if (level->getTile(x, y + 1, z) == id)
 			level->setData(x, y + 1, z, data + 8);
 
 		level->setData(x, y, z, data);
@@ -103,7 +103,7 @@ int DoorTile::getResource(int data, Random* random)
 	if (isTop(data))
 		return 0;
 
-	if (m_pMaterial == Material::metal)
+	if (material == Material::metal)
 		return Item::door_iron->m_itemID;
 
 	return Item::door_wood->m_itemID;
@@ -112,17 +112,17 @@ int DoorTile::getResource(int data, Random* random)
 int DoorTile::getTexture(int dir, int data)
 {
 	if (dir == 0 || dir == 1)
-		return m_TextureFrame;
+		return tex;
 
 	int doorDir = getDir(data);
 	
 	if ((doorDir == 0 || doorDir == 2) != (dir <= 3))
-		return m_TextureFrame;
+		return tex;
 
 	int l = doorDir / 2 + ((dir & 1) ^ doorDir);
 	l += (data & 4) / 4;
 
-	int idx = m_TextureFrame - (data & 8) * 2;
+	int idx = tex - (data & 8) * 2;
 	if ((l & 1) != 0)
 		idx = -idx;
 
@@ -181,14 +181,14 @@ void DoorTile::setOpen(Level* level, int x, int y, int z, bool bOpen)
 	int data = level->getData(x, y, z);
 	if (isTop(data))
 	{
-		if (level->getTile(x, y - 1, z) == m_ID)
+		if (level->getTile(x, y - 1, z) == id)
 			setOpen(level, x, y - 1, z, bOpen);
 		return;
 	}
 
 	if (isOpen(level->getData(x, y, z)) != bOpen)
 	{
-		if (level->getTile(x, y + 1, z) == m_ID)
+		if (level->getTile(x, y + 1, z) == id)
 			level->setData(x, y + 1, z, (data ^ 4) + 8);
 
 		level->setData(x, y, z, data ^ 4);
@@ -209,7 +209,7 @@ void DoorTile::neighborChanged(Level* level, int x, int y, int z, int newTile)
 	int isTop = level->getData(x, y, z) & 8;
 	if (isTop)
 	{
-		if (level->getTile(x, y - 1, z) != m_ID)
+		if (level->getTile(x, y - 1, z) != id)
 			level->setTile(x, y, z, TILE_AIR);
 
 		if (newTile > 0)
@@ -221,7 +221,7 @@ void DoorTile::neighborChanged(Level* level, int x, int y, int z, int newTile)
 		return;
 	}
 
-	if (level->getTile(x, y + 1, z) != m_ID)
+	if (level->getTile(x, y + 1, z) != id)
 	{
 		level->setTile(x, y, z, TILE_AIR);
 		isTop = 1;
@@ -230,7 +230,7 @@ void DoorTile::neighborChanged(Level* level, int x, int y, int z, int newTile)
 	if (!level->isSolidTile(x, y - 1, z))
 	{
 		level->setTile(x, y, z, TILE_AIR);
-		if (level->getTile(x, y + 1, z) == m_ID)
+		if (level->getTile(x, y + 1, z) == id)
 			level->setTile(x, y + 1, z, TILE_AIR);
 	}
 

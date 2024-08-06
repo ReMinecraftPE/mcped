@@ -29,7 +29,7 @@ bool ReedsFeature::place(Level* level, Random* random, int x, int y, int z)
 			{
 				if (Tile::reeds->canSurvive(level, newX, y + y1, newZ))
 				{
-					level->setTileNoUpdate(newX, y + y1, newZ, Tile::reeds->m_ID);
+					level->setTileNoUpdate(newX, y + y1, newZ, Tile::reeds->id);
 				}
 			}
 		}

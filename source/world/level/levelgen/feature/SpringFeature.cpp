@@ -11,27 +11,27 @@
 
 SpringFeature::SpringFeature(int id)
 {
-	m_ID = id;
+	this->id = id;
 }
 
 bool SpringFeature::place(Level* level, Random* random, int x, int y, int z)
 {
-    if (level->getTile(x, y + 1, z) != Tile::rock->m_ID)
+    if (level->getTile(x, y + 1, z) != Tile::rock->id)
         return false;
 
-    if (level->getTile(x, y - 1, z) != Tile::rock->m_ID)
+    if (level->getTile(x, y - 1, z) != Tile::rock->id)
         return false;
 
-    if (level->getTile(x, y, z) && level->getTile(x, y, z) != Tile::rock->m_ID)
+    if (level->getTile(x, y, z) && level->getTile(x, y, z) != Tile::rock->id)
         return false;
 
     int nRockTiles = 0;
     int nEmptyTiles = 0;
 
-    if (level->getTile(x - 1, y, z) == Tile::rock->m_ID) nRockTiles++;
-    if (level->getTile(x + 1, y, z) == Tile::rock->m_ID) nRockTiles++;
-    if (level->getTile(x, y, z - 1) == Tile::rock->m_ID) nRockTiles++;
-    if (level->getTile(x, y, z + 1) == Tile::rock->m_ID) nRockTiles++;
+    if (level->getTile(x - 1, y, z) == Tile::rock->id) nRockTiles++;
+    if (level->getTile(x + 1, y, z) == Tile::rock->id) nRockTiles++;
+    if (level->getTile(x, y, z - 1) == Tile::rock->id) nRockTiles++;
+    if (level->getTile(x, y, z + 1) == Tile::rock->id) nRockTiles++;
 
     if (level->isEmptyTile(x - 1, y, z)) nEmptyTiles++;
     if (level->isEmptyTile(x + 1, y, z)) nEmptyTiles++;
@@ -41,10 +41,10 @@ bool SpringFeature::place(Level* level, Random* random, int x, int y, int z)
     if (nEmptyTiles != 1) return true;
     if (nRockTiles  != 3) return true;
 
-    level->setTile(x, y, z, m_ID);
+    level->setTile(x, y, z, id);
 
     level->field_10 = true;
-    Tile::tiles[m_ID]->tick(level, x, y, z, random);
+    Tile::tiles[id]->tick(level, x, y, z, random);
     level->field_10 = false;
     return true;
 }

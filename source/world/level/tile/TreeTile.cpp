@@ -11,12 +11,12 @@
 
 TreeTile::TreeTile(int id) : Tile(id, Material::wood)
 {
-	m_TextureFrame = TEXTURE_LOG_SIDE;
+	tex = TEXTURE_LOG_SIDE;
 }
 
 int TreeTile::getResource(int x, Random* random)
 {
-	return Tile::treeTrunk->m_ID;
+	return Tile::treeTrunk->id;
 }
 
 int TreeTile::getResourceCount(Random* random)
@@ -56,7 +56,7 @@ void TreeTile::onRemove(Level* level, int x, int y, int z)
 			for (int k = -4; k <= 5; k++)
 			{
 				TileID tid = level->getTile(x + i, y + j, z + k);
-				if (tid != Tile::leaves->m_ID) continue;
+				if (tid != Tile::leaves->id) continue;
 
 				int data = level->getData(x + i, y + j, z + k);
 				if (data & 4)

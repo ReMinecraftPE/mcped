@@ -62,7 +62,7 @@ void ItemRenderer::render(Entity* pEntity, float x, float y, float z, float a, f
 
 		// @BUG: If cacti existed and were able to be dropped, they would be 2x the size of a regular tile.
 		// This bug has been in the main game until Java Edition Beta 1.8.
-		if (Tile::tiles[itemID]->isCubeShaped() || pItemInstance->m_itemID == Tile::stoneSlabHalf->m_ID)
+		if (Tile::tiles[itemID]->isCubeShaped() || pItemInstance->m_itemID == Tile::stoneSlabHalf->id)
 			scale = 0.25f;
 
 		glScalef(scale, scale, scale);

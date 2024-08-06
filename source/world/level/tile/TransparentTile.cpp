@@ -21,7 +21,7 @@ bool TransparentTile::isSolidRender()
 
 bool TransparentTile::shouldRenderFace(LevelSource* level, int x, int y, int z, int dir)
 {
-	if (!m_bTransparent && level->getTile(x, y, z) == m_ID)
+	if (!m_bTransparent && level->getTile(x, y, z) == id)
 		return false;
 
 	return Tile::shouldRenderFace(level, x, y, z, dir);

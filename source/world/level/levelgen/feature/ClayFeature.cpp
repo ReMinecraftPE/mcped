@@ -11,7 +11,7 @@
 
 ClayFeature::ClayFeature(int id, int count)
 {
-    m_ID = id;
+    this->id = id;
     m_count = count;
 }
 
@@ -64,8 +64,8 @@ bool ClayFeature::place(Level* level, Random* random, int x, int y, int z)
                     if (d12 * d12 + d13 * d13 + d14 * d14 >= 1.0f)
                         continue;
 
-                    if (level->getTile(cx, cy, cz) == Tile::sand->m_ID)
-                        level->setTileNoUpdate(cx, cy, cz, m_ID);
+                    if (level->getTile(cx, cy, cz) == Tile::sand->id)
+                        level->setTileNoUpdate(cx, cy, cz, id);
                 }
             }
         }

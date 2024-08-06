@@ -54,30 +54,30 @@ bool  Tile::isEntityTile [C_MAX_TILES];
 
 
 Tile::Tile(int ID, Material* pMaterial) :
-	m_aabb(0, 0, 0, 1, 1, 1),
-	m_aabbReturned(0, 0, 0, 1, 1, 1)
+	aabb(0, 0, 0, 1, 1, 1),
+	aabbReturned(0, 0, 0, 1, 1, 1)
 {
-	m_ID = ID;
-	m_pMaterial = pMaterial;
-	m_pSound = &SOUND_NORMAL;
+	id = ID;
+	material = pMaterial;
+	soundType = &SOUND_NORMAL;
 
-	if (tiles[m_ID])
-		// @BUG: Printing &tiles[m_ID], but probably supposed to print tiles[m_ID]
-		printf("Slot %d is already occupied by %p when adding %p\n", m_ID, &tiles[m_ID], this);
+	if (tiles[id])
+		// @BUG: Printing &tiles[id], but probably supposed to print tiles[id]
+		printf("Slot %d is already occupied by %p when adding %p\n", id, &tiles[id], this);
 }
 
 Tile::Tile(int ID, int texture, Material* pMaterial) :
-	m_aabb(0, 0, 0, 1, 1, 1),
-	m_aabbReturned(0, 0, 0, 1, 1, 1)
+	aabb(0, 0, 0, 1, 1, 1),
+	aabbReturned(0, 0, 0, 1, 1, 1)
 {
-	m_TextureFrame = texture;
-	m_ID = ID;
-	m_pMaterial = pMaterial;
-	m_pSound = &SOUND_NORMAL;
+	tex = texture;
+	id = ID;
+	material = pMaterial;
+	soundType = &SOUND_NORMAL;
 
-	if (tiles[m_ID])
-		// @BUG: Printing &tiles[m_ID], but probably supposed to print tiles[m_ID]
-		printf("Slot %d is already occupied by %p when adding %p\n", m_ID, &tiles[m_ID], this);
+	if (tiles[id])
+		// @BUG: Printing &tiles[id], but probably supposed to print tiles[id]
+		printf("Slot %d is already occupied by %p when adding %p\n", id, &tiles[id], this);
 }
 
 Tile::~Tile()
@@ -91,7 +91,7 @@ bool Tile::isCubeShaped()
 
 std::string Tile::getDescriptionId()
 {
-	return m_descriptionID;
+	return descriptionId;
 }
 
 std::string Tile::getName()
@@ -101,67 +101,67 @@ std::string Tile::getName()
 
 Tile* Tile::setSoundType(const Tile::SoundType& st)
 {
-	m_pSound = &st;
+	soundType = &st;
 	return this;
 }
 
 Tile* Tile::setDescriptionId(const std::string& x)
 {
-	m_descriptionID = TILE_DESCRIPTION_PREFIX + x;
+	descriptionId = TILE_DESCRIPTION_PREFIX + x;
 	return this;
 }
 
 Tile* Tile::setDestroyTime(float time)
 {
-	m_hardness = time;
+	destroySpeed = time;
 
-	if (m_blastResistance < 5 * time)
-		m_blastResistance = 5 * time;
+	if (explosionResistance < 5 * time)
+		explosionResistance = 5 * time;
 
 	return this;
 }
 
 Tile* Tile::setExplodeable(float power)
 {
-	m_blastResistance = power;
+	explosionResistance = power;
 	return this;
 }
 
 Tile* Tile::setLightBlock(int x)
 {
-	lightBlock[m_ID] = x;
+	lightBlock[id] = x;
 	return this;
 }
 
 Tile* Tile::setLightEmission(float x)
 {
-	lightEmission[m_ID] = int(15 * x);
+	lightEmission[id] = int(15 * x);
 	return this;
 }
 
 Tile* Tile::setTicking(bool bTick)
 {
-	shouldTick[m_ID] = bTick;
+	shouldTick[id] = bTick;
 	return this;
 }
 
 Tile* Tile::setShape(float a, float b, float c, float d, float e, float f)
 {
-	m_aabb = AABB(a, b, c, d, e, f);
+	aabb = AABB(a, b, c, d, e, f);
 
 	return this;
 }
 
 Tile* Tile::init()
 {
-	setShape(m_aabb.min.x, m_aabb.min.y, m_aabb.min.z, m_aabb.max.x, m_aabb.max.y, m_aabb.max.z);
+	setShape(aabb.min.x, aabb.min.y, aabb.min.z, aabb.max.x, aabb.max.y, aabb.max.z);
 
-	tiles[m_ID] = this;
+	tiles[id] = this;
 
-	solid[m_ID] = isSolidRender();
-	lightBlock[m_ID] = isSolidRender() ? 255 : 0;
-	translucent[m_ID] = m_pMaterial->blocksLight();
-	isEntityTile[m_ID] = 0;
+	solid[id] = isSolidRender();
+	lightBlock[id] = isSolidRender() ? 255 : 0;
+	translucent[id] = material->blocksLight();
+	isEntityTile[id] = 0;
 
 	return this;
 }
@@ -178,7 +178,7 @@ void Tile::updateDefaultShape()
 
 int Tile::getTexture(int x)
 {
-	return m_TextureFrame;
+	return tex;
 }
 
 int Tile::getTexture(int x, int y)
@@ -218,7 +218,7 @@ bool Tile::mayPick(int x, bool y)
 
 int Tile::getResource(int x, Random* pRandom)
 {
-	return m_ID;
+	return id;
 }
 
 int Tile::getResourceCount(Random* pRandom)
@@ -673,14 +673,14 @@ AABB* Tile::getAABB(Level* pLevel, int x, int y, int z)
 {
 	Vec3 offset((float)x, (float)y, (float)z);
 
-	m_aabbReturned = AABB(offset + m_aabb.min, offset + m_aabb.max);
-	return &m_aabbReturned;
+	aabbReturned = AABB(offset + aabb.min, offset + aabb.max);
+	return &aabbReturned;
 }
 
 AABB Tile::getTileAABB(Level* pLevel, int x, int y, int z)
 {
 	Vec3 offset((float)x, (float)y, (float)z);
-	return AABB(offset + m_aabb.min, offset + m_aabb.max);
+	return AABB(offset + aabb.min, offset + aabb.max);
 }
 
 void Tile::addAABBs(Level* pLevel, int x, int y, int z, const AABB* aabb, std::vector<AABB>& out)
@@ -701,18 +701,18 @@ bool Tile::shouldRenderFace(LevelSource* pSrc, int x, int y, int z, int dir)
 	if (x == C_MAX_CHUNKS_X * 16 && dir == DIR_XPOS) return false;
 	if (y == -1                  && dir == DIR_YNEG) return false;
 
-	if (dir == DIR_YNEG && m_aabb.min.y > 0.0f) return true;
-	if (dir == DIR_YPOS && m_aabb.max.y < 1.0f) return true;
-	if (dir == DIR_ZNEG && m_aabb.min.z > 0.0f) return true;
-	if (dir == DIR_ZPOS && m_aabb.max.z < 1.0f) return true;
-	if (dir == DIR_XNEG && m_aabb.min.x > 0.0f) return true;
-	if (dir == DIR_XPOS && m_aabb.max.x < 1.0f) return true;
+	if (dir == DIR_YNEG && aabb.min.y > 0.0f) return true;
+	if (dir == DIR_YPOS && aabb.max.y < 1.0f) return true;
+	if (dir == DIR_ZNEG && aabb.min.z > 0.0f) return true;
+	if (dir == DIR_ZPOS && aabb.max.z < 1.0f) return true;
+	if (dir == DIR_XNEG && aabb.min.x > 0.0f) return true;
+	if (dir == DIR_XPOS && aabb.max.x < 1.0f) return true;
 
 	Tile* pTile = Tile::tiles[pSrc->getTile(x, y, z)];
 	if (!pTile)
 		return true;
 
-	if (dir == DIR_YPOS && pTile->m_ID == Tile::topSnow->m_ID)
+	if (dir == DIR_YPOS && pTile->id == Tile::topSnow->id)
 		return false;
 
 	return !pTile->isSolidRender();
@@ -735,7 +735,7 @@ bool Tile::mayPlace(Level* pLevel, int x, int y, int z)
 	if (!tile)
 		return true; // we can definitely place something over air
 	
-	return Tile::tiles[tile]->m_pMaterial->isLiquid();
+	return Tile::tiles[tile]->material->isLiquid();
 }
 
 void Tile::tick(Level* pLevel, int x, int y, int z, Random* pRandom)
@@ -770,26 +770,26 @@ void Tile::onRemove(Level* pLevel, int x, int y, int z)
 
 bool Tile::containsX(const Vec3& v)
 {
-	return v.y >= m_aabb.min.y
-		&& v.y <= m_aabb.max.y
-		&& v.z >= m_aabb.min.z
-		&& v.z <= m_aabb.max.z;
+	return v.y >= aabb.min.y
+		&& v.y <= aabb.max.y
+		&& v.z >= aabb.min.z
+		&& v.z <= aabb.max.z;
 }
 
 bool Tile::containsY(const Vec3& v)
 {
-	return v.x >= m_aabb.min.x
-		&& v.x <= m_aabb.max.x
-		&& v.z >= m_aabb.min.z
-		&& v.z <= m_aabb.max.z;
+	return v.x >= aabb.min.x
+		&& v.x <= aabb.max.x
+		&& v.z >= aabb.min.z
+		&& v.z <= aabb.max.z;
 }
 
 bool Tile::containsZ(const Vec3& v)
 {
-	return v.x >= m_aabb.min.x
-		&& v.x <= m_aabb.max.x
-		&& v.y >= m_aabb.min.y
-		&& v.y <= m_aabb.max.y;
+	return v.x >= aabb.min.x
+		&& v.x <= aabb.max.x
+		&& v.y >= aabb.min.y
+		&& v.y <= aabb.max.y;
 }
 
 HitResult Tile::clip(Level* level, int x, int y, int z, Vec3 vec1, Vec3 vec2)
@@ -804,12 +804,12 @@ HitResult Tile::clip(Level* level, int x, int y, int z, Vec3 vec1, Vec3 vec2)
 	vec1 += Vec3(-float(x), -float(y), -float(z));
 	vec2 += Vec3(-float(x), -float(y), -float(z));
 
-	bClipMinX = vec1.clipX(vec2, m_aabb.min.x, clipMinX) && containsX(clipMinX);
-	bClipMaxX = vec1.clipX(vec2, m_aabb.max.x, clipMaxX) && containsX(clipMaxX);
-	bClipMinY = vec1.clipY(vec2, m_aabb.min.y, clipMinY) && containsY(clipMinY);
-	bClipMaxY = vec1.clipY(vec2, m_aabb.max.y, clipMaxY) && containsY(clipMaxY);
-	bClipMinZ = vec1.clipZ(vec2, m_aabb.min.z, clipMinZ) && containsZ(clipMinZ);
-	bClipMaxZ = vec1.clipZ(vec2, m_aabb.max.z, clipMaxZ) && containsZ(clipMaxZ);
+	bClipMinX = vec1.clipX(vec2, aabb.min.x, clipMinX) && containsX(clipMinX);
+	bClipMaxX = vec1.clipX(vec2, aabb.max.x, clipMaxX) && containsX(clipMaxX);
+	bClipMinY = vec1.clipY(vec2, aabb.min.y, clipMinY) && containsY(clipMinY);
+	bClipMaxY = vec1.clipY(vec2, aabb.max.y, clipMaxY) && containsY(clipMaxY);
+	bClipMinZ = vec1.clipZ(vec2, aabb.min.z, clipMinZ) && containsZ(clipMinZ);
+	bClipMaxZ = vec1.clipZ(vec2, aabb.max.z, clipMaxZ) && containsZ(clipMaxZ);
 
 	// the collided side of our AABB
 	HitResult::eHitSide collType = HitResult::NOHIT;
@@ -890,13 +890,13 @@ void Tile::handleEntityInside(Level* pLevel, int x, int y, int z, Entity* pEnt, 
 
 float Tile::getDestroyProgress(Player* player)
 {
-	if (m_hardness < 0.0f)
+	if (destroySpeed < 0.0f)
 		return 0.0f;
 
 	if (!player->canDestroy(this))
-		return (1.0f - m_hardness) / 100.0f;
+		return (1.0f - destroySpeed) / 100.0f;
 
-	return player->getDestroySpeed() / m_hardness / 30.0f;
+	return player->getDestroySpeed() / destroySpeed / 30.0f;
 }
 
 void Tile::spawnResources(Level* pLevel, int x, int y, int z, int i)
@@ -940,7 +940,7 @@ int Tile::spawnBurnResources(Level*, float, float, float)
 
 float Tile::getExplosionResistance(Entity* entity)
 {
-	return m_blastResistance / 5.0f;
+	return explosionResistance / 5.0f;
 }
 
 void Tile::wasExploded(Level* pLevel, int x, int y, int z)

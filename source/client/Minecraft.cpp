@@ -248,7 +248,7 @@ label_3:
 				int dx = hr.m_tileX, dz = hr.m_tileZ;
 				uint8_t dy = uint8_t(hr.m_tileY);
 
-				if (m_pLevel->getTile(hr.m_tileX, hr.m_tileY, hr.m_tileZ) != Tile::topSnow->m_ID)
+				if (m_pLevel->getTile(hr.m_tileX, hr.m_tileY, hr.m_tileZ) != Tile::topSnow->id)
 				{
 					switch (hr.m_hitSide)
 					{

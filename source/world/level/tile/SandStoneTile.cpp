@@ -21,5 +21,5 @@ int SandStoneTile::getTexture(int side)
 	if (side == DIR_YPOS)
 		return TEXTURE_SANDSTONE_TOP;
 
-	return m_TextureFrame;
+	return tex;
 }

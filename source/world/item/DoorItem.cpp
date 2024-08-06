@@ -15,7 +15,7 @@ DoorItem::DoorItem(int id, Material* pMtl) : Item(id)
 {
 	m_maxStackSize = 1;
 	m_maxDamage = 64;
-	m_pMaterial = pMtl;
+	material = pMtl;
 }
 
 bool DoorItem::useOn(ItemInstance* inst, Player* player, Level* level, int x, int y, int z, int dir)
@@ -23,7 +23,7 @@ bool DoorItem::useOn(ItemInstance* inst, Player* player, Level* level, int x, in
 	if (dir != DIR_YPOS)
 		return false;
 
-	Tile* pTile = m_pMaterial == Material::wood ? Tile::door_wood : Tile::door_iron;
+	Tile* pTile = material == Material::wood ? Tile::door_wood : Tile::door_iron;
 	if (!pTile->mayPlace(level, x, y + 1, z))
 		return false;
 
@@ -55,18 +55,18 @@ bool DoorItem::useOn(ItemInstance* inst, Player* player, Level* level, int x, in
 	int solid2 = level->isSolidTile(x - offsetX, y + 2, z - offsetZ);
 	int solid3 = level->isSolidTile(x + offsetX, y + 1, z + offsetZ);
 	int solid4 = level->isSolidTile(x + offsetX, y + 2, z + offsetZ);
-	int equal5 = level->getTile(x - offsetX, y + 1, z - offsetZ) == pTile->m_ID ||
-	             level->getTile(x - offsetX, y + 2, z - offsetZ) == pTile->m_ID;
-	int equal6 = level->getTile(x + offsetX, y + 1, z + offsetZ) == pTile->m_ID ||
-	             level->getTile(x + offsetX, y + 2, z + offsetZ) == pTile->m_ID;
+	int equal5 = level->getTile(x - offsetX, y + 1, z - offsetZ) == pTile->id ||
+	             level->getTile(x - offsetX, y + 2, z - offsetZ) == pTile->id;
+	int equal6 = level->getTile(x + offsetX, y + 1, z + offsetZ) == pTile->id ||
+	             level->getTile(x + offsetX, y + 2, z + offsetZ) == pTile->id;
 
 	if (equal5 && !equal6 || solid2 + solid1 < solid4 + solid3)
 		faceDir = 4 + ((faceDir - 1) & 3);
 
 	// congratulations! You can now have a door.
-	level->setTile(x, y + 1, z, pTile->m_ID);
+	level->setTile(x, y + 1, z, pTile->id);
 	level->setData(x, y + 1, z, faceDir);
-	level->setTile(x, y + 2, z, pTile->m_ID);
+	level->setTile(x, y + 2, z, pTile->id);
 	level->setData(x, y + 2, z, faceDir + 8);
 	inst->m_amount--;
 	return true;

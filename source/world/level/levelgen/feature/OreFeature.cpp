@@ -11,7 +11,7 @@
 
 OreFeature::OreFeature(int id, int count)
 {
-	m_ID = id;
+	this->id = id;
 	m_count = count;
 }
 
@@ -64,8 +64,8 @@ bool OreFeature::place(Level* level, Random* random, int x, int y, int z)
 					if (distX * distX + distY * distY + distZ * distZ >= 1.0f)
 						continue;
 
-					if (level->getTile(cx, cy, cz) == Tile::rock->m_ID)
-						level->setTileNoUpdate(cx, cy, cz, m_ID);
+					if (level->getTile(cx, cy, cz) == Tile::rock->id)
+						level->setTileNoUpdate(cx, cy, cz, id);
 				}
 			}
 		}

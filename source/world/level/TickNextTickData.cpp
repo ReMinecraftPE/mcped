@@ -12,7 +12,7 @@ int TickNextTickData::C;
 
 TickNextTickData::TickNextTickData(int a, int b, int c, int d)
 {
-	m_ID = ++C; //@NOTE: not C++
+	id = ++C; //@NOTE: not C++
 	field_4 = a;
 	field_8 = b;
 	field_C = c;
@@ -35,7 +35,7 @@ bool TickNextTickData::operator<(const TickNextTickData& other) const
 	if (m_delay > other.m_delay)
 		return false;
 
-	return m_ID < other.m_ID;
+	return id < other.id;
 }
 
 bool TickNextTickData::operator==(const TickNextTickData& other) const

@@ -11,7 +11,7 @@
 
 LeafTile::LeafTile(int id) : TransparentTile(id, TEXTURE_LEAVES_TRANSPARENT, Material::leaves, false)
 {
-	m_TextureFrame = TEXTURE_LEAVES_TRANSPARENT;
+	tex = TEXTURE_LEAVES_TRANSPARENT;
 	field_74 = TEXTURE_LEAVES_TRANSPARENT;
 
 	setTicking(true);
@@ -40,9 +40,9 @@ int LeafTile::getColor(LevelSource* level, int x, int y, int z)
 int LeafTile::getTexture(int dir, int data)
 {
 	if ((data & 3) == 1)
-		return m_TextureFrame + 80;
+		return tex + 80;
 
-	return m_TextureFrame;
+	return tex;
 }
 
 bool LeafTile::isSolidRender()
@@ -66,7 +66,7 @@ void LeafTile::onRemove(Level* level, int x, int y, int z)
 			for (int oz = -1; oz < 2; oz++)
 			{
 				TileID tile = level->getTile(x + ox, y + oy, z + oz);
-				if (tile != Tile::leaves->m_ID) continue;
+				if (tile != Tile::leaves->id) continue;
 
 				level->setDataNoUpdate(x + ox, y + oy, z + oz, level->getData(x + ox, y + oy, z + oz) | 4);
 			}
@@ -99,9 +99,9 @@ void LeafTile::tick(Level* level, int x, int y, int z, Random* random)
 				for (int currZ = z - C_RANGE_SMALL, k = 0; k != 9; k++, currZ++)
 				{
 					TileID tile = level->getTile(currX, currY, currZ);
-					if (tile == Tile::treeTrunk->m_ID)
+					if (tile == Tile::treeTrunk->id)
 						field_70[0x18C + i + j + k] = 0;
-					else if (tile == Tile::leaves->m_ID)
+					else if (tile == Tile::leaves->id)
 						field_70[0x18C + i + j + k] = -2;
 					else
 						field_70[0x18C + i + j + k] = -1;

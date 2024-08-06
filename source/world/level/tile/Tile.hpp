@@ -134,17 +134,24 @@ public: // static variables
 	static bool  isEntityTile [C_MAX_TILES];
 
 public:
-	int m_TextureFrame = 1;
-	int m_ID;
-	AABB m_aabb;
-	const SoundType* m_pSound = nullptr;
-	float field_28 = 1.0f;
-	Material* m_pMaterial;
-	float field_30 = 0.6f;
-	float m_hardness = 0.0f;
-	float m_blastResistance = 0.0f;
-	AABB m_aabbReturned;
-	std::string m_descriptionID = "";
+	int tex = 1;
+	int id;
+	AABB aabb;
+	const SoundType* soundType = nullptr;
+	float gravity = 1.0f;
+	Material* material;
+	float friction = 0.6f;
+
+protected:
+	float destroySpeed = 0.0f;
+	float explosionResistance = 0.0f;
+	AABB aabbReturned;
+
+	friend class StairTile;
+	friend class FarmTile;
+
+private:
+	std::string descriptionId = "";
 
 public:
 	static Tile

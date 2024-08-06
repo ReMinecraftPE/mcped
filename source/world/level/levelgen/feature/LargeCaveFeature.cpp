@@ -150,7 +150,7 @@ void LargeCaveFeature::addTunnel(int x, int z, TileID* tiles, float rx, float ry
                             int v42 = k + ((j + 16 * i) << 7);
                             if (k >= 0 && k <= 127)
                             {
-                                if (tiles[v42] == Tile::water->m_ID || tiles[v42] == Tile::calmWater->m_ID)
+                                if (tiles[v42] == Tile::water->id || tiles[v42] == Tile::calmWater->id)
                                     v67 = 1;
                                 if (v49 - 1 != k && i != v51 && v50 - 1 != i && j != v47 && v46 - 1 != j)
                                     k = v49;
@@ -177,24 +177,24 @@ void LargeCaveFeature::addTunnel(int x, int z, TileID* tiles, float rx, float ry
                                         && v40 * v40 + v35 * v35 + v38 * v38 < 1.0f)
                                     {
                                         TileID v34 = tiles[v37];
-                                        if (Tile::grass->m_ID == v34)
+                                        if (Tile::grass->id == v34)
                                             v66 = 1;
-                                        if (Tile::rock->m_ID == v34 ||
-                                            Tile::dirt->m_ID == v34 ||
-                                            Tile::grass->m_ID == v34)
+                                        if (Tile::rock->id == v34 ||
+                                            Tile::dirt->id == v34 ||
+                                            Tile::grass->id == v34)
                                         {
                                             if (n > 9)
                                             {
                                                 tiles[v37] = 0;
                                                 if (v66)
                                                 {
-                                                    if (tiles[v37 - 1] == Tile::dirt->m_ID)
-                                                        tiles[v37 - 1] = Tile::grass->m_ID;
+                                                    if (tiles[v37 - 1] == Tile::dirt->id)
+                                                        tiles[v37 - 1] = Tile::grass->id;
                                                 }
                                             }
                                             else
                                             {
-                                                tiles[v37] = Tile::lava->m_ID;
+                                                tiles[v37] = Tile::lava->id;
                                             }
                                         }
                                     }

@@ -23,11 +23,11 @@ int TntTile::getResourceCount(Random* random)
 int TntTile::getTexture(int dir)
 {
 	if (dir == DIR_YNEG)
-		return m_TextureFrame + 2;
+		return tex + 2;
 	if (dir == DIR_YPOS)
-		return m_TextureFrame + 1;
+		return tex + 1;
 	
-	return m_TextureFrame;
+	return tex;
 }
 
 void TntTile::destroy(Level* level, int x, int y, int z, int data)

@@ -11,14 +11,14 @@
 
 // @NOTE: All this work for some stairs; damn
 
-StairTile::StairTile(int id, Tile* pTile) : Tile(id, pTile->m_TextureFrame, pTile->m_pMaterial)
+StairTile::StairTile(int id, Tile* pTile) : Tile(id, pTile->tex, pTile->material)
 {
 	m_pParent = pTile;
 
 	// inherit these properties from the parent tile
-	setDestroyTime(pTile->m_hardness);
-	setExplodeable(pTile->m_blastResistance / 3.0f);
-	setSoundType(*pTile->m_pSound);
+	setDestroyTime(pTile->destroySpeed);
+	setExplodeable(pTile->explosionResistance / 3.0f);
+	setSoundType(*pTile->soundType);
 }
 
 void StairTile::addAABBs(Level* level, int x, int y, int z, const AABB* aabb, std::vector<AABB>& out)

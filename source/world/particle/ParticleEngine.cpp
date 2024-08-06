@@ -62,34 +62,34 @@ void ParticleEngine::crack(int x, int y, int z, int dir)
 	switch (dir)
 	{
 		case DIR_YNEG:
-			posX = float(x) + Lerp(pTile->m_aabb.min.x, pTile->m_aabb.max.x - 0.2f, m_random.nextFloat()) + 0.1f;
-			posZ = float(z) + Lerp(pTile->m_aabb.min.z, pTile->m_aabb.max.z - 0.2f, m_random.nextFloat()) + 0.1f;
-			posY = float(y) + pTile->m_aabb.min.y - 0.1f;
+			posX = float(x) + Lerp(pTile->aabb.min.x, pTile->aabb.max.x - 0.2f, m_random.nextFloat()) + 0.1f;
+			posZ = float(z) + Lerp(pTile->aabb.min.z, pTile->aabb.max.z - 0.2f, m_random.nextFloat()) + 0.1f;
+			posY = float(y) + pTile->aabb.min.y - 0.1f;
 			break;
 		case DIR_YPOS:
-			posX = float(x) + Lerp(pTile->m_aabb.min.x, pTile->m_aabb.max.x - 0.2f, m_random.nextFloat()) + 0.1f;
-			posZ = float(z) + Lerp(pTile->m_aabb.min.z, pTile->m_aabb.max.z - 0.2f, m_random.nextFloat()) + 0.1f;
-			posY = float(y) + pTile->m_aabb.max.y + 0.1f;
+			posX = float(x) + Lerp(pTile->aabb.min.x, pTile->aabb.max.x - 0.2f, m_random.nextFloat()) + 0.1f;
+			posZ = float(z) + Lerp(pTile->aabb.min.z, pTile->aabb.max.z - 0.2f, m_random.nextFloat()) + 0.1f;
+			posY = float(y) + pTile->aabb.max.y + 0.1f;
 			break;
 		case DIR_ZNEG:
-			posX = float(x) + Lerp(pTile->m_aabb.min.x, pTile->m_aabb.max.x - 0.2f, m_random.nextFloat()) + 0.1f;
-			posY = float(y) + Lerp(pTile->m_aabb.min.y, pTile->m_aabb.max.y - 0.2f, m_random.nextFloat()) + 0.1f;
-			posZ = float(z) + pTile->m_aabb.min.z - 0.1f;
+			posX = float(x) + Lerp(pTile->aabb.min.x, pTile->aabb.max.x - 0.2f, m_random.nextFloat()) + 0.1f;
+			posY = float(y) + Lerp(pTile->aabb.min.y, pTile->aabb.max.y - 0.2f, m_random.nextFloat()) + 0.1f;
+			posZ = float(z) + pTile->aabb.min.z - 0.1f;
 			break;
 		case DIR_ZPOS:
-			posX = float(x) + Lerp(pTile->m_aabb.min.x, pTile->m_aabb.max.x - 0.2f, m_random.nextFloat()) + 0.1f;
-			posY = float(y) + Lerp(pTile->m_aabb.min.y, pTile->m_aabb.max.y - 0.2f, m_random.nextFloat()) + 0.1f;
-			posZ = float(z) + pTile->m_aabb.max.z + 0.1f;
+			posX = float(x) + Lerp(pTile->aabb.min.x, pTile->aabb.max.x - 0.2f, m_random.nextFloat()) + 0.1f;
+			posY = float(y) + Lerp(pTile->aabb.min.y, pTile->aabb.max.y - 0.2f, m_random.nextFloat()) + 0.1f;
+			posZ = float(z) + pTile->aabb.max.z + 0.1f;
 			break;
 		case DIR_XNEG:
-			posY = float(y) + Lerp(pTile->m_aabb.min.y, pTile->m_aabb.max.y - 0.2f, m_random.nextFloat()) + 0.1f;
-			posZ = float(z) + Lerp(pTile->m_aabb.min.z, pTile->m_aabb.max.z - 0.2f, m_random.nextFloat()) + 0.1f;
-			posX = float(x) + pTile->m_aabb.min.x - 0.1f;
+			posY = float(y) + Lerp(pTile->aabb.min.y, pTile->aabb.max.y - 0.2f, m_random.nextFloat()) + 0.1f;
+			posZ = float(z) + Lerp(pTile->aabb.min.z, pTile->aabb.max.z - 0.2f, m_random.nextFloat()) + 0.1f;
+			posX = float(x) + pTile->aabb.min.x - 0.1f;
 			break;
 		case DIR_XPOS:
-			posY = float(y) + Lerp(pTile->m_aabb.min.y, pTile->m_aabb.max.y - 0.2f, m_random.nextFloat()) + 0.1f;
-			posZ = float(z) + Lerp(pTile->m_aabb.min.z, pTile->m_aabb.max.z - 0.2f, m_random.nextFloat()) + 0.1f;
-			posX = float(x) + pTile->m_aabb.max.x + 0.1f;
+			posY = float(y) + Lerp(pTile->aabb.min.y, pTile->aabb.max.y - 0.2f, m_random.nextFloat()) + 0.1f;
+			posZ = float(z) + Lerp(pTile->aabb.min.z, pTile->aabb.max.z - 0.2f, m_random.nextFloat()) + 0.1f;
+			posX = float(x) + pTile->aabb.max.x + 0.1f;
 			break;
 		default:
 			// @TODO: dont know what they do for the undefined case

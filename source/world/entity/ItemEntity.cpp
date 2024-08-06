@@ -113,7 +113,7 @@ void ItemEntity::tick()
 		dragFactor = 0.588f;
 		TileID tile = m_pLevel->getTile(Mth::floor(m_pos.x), Mth::floor(m_hitbox.min.y) - 1, Mth::floor(m_pos.z));
 		if (tile > 0)
-			dragFactor = Tile::tiles[tile]->field_30 * 0.98f;
+			dragFactor = Tile::tiles[tile]->friction * 0.98f;
 	}
 
 	m_vel.x *= dragFactor;

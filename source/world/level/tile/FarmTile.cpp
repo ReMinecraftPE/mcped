@@ -11,7 +11,7 @@
 
 FarmTile::FarmTile(int a, Material* c) : Tile(a, c)
 {
-	m_TextureFrame = TEXTURE_FARMLAND_DRY;
+	tex = TEXTURE_FARMLAND_DRY;
 
 	setTicking(true);
 	setShape(0, 0, 0, 1, 15.0f / 16.0f, 1.0f);
@@ -21,7 +21,7 @@ FarmTile::FarmTile(int a, Material* c) : Tile(a, c)
 AABB* FarmTile::getAABB(Level*, int x, int y, int z)
 {
 	// a full block
-	m_aabbReturned = AABB(
+	aabbReturned = AABB(
 		float(x),
 		float(y),
 		float(z),
@@ -30,7 +30,7 @@ AABB* FarmTile::getAABB(Level*, int x, int y, int z)
 		float(z + 1)
 	);
 
-	return &m_aabbReturned;
+	return &aabbReturned;
 }
 
 int FarmTile::getResource(int x, Random* random)
@@ -43,9 +43,9 @@ int FarmTile::getTexture(int dir, int data)
 	if (dir == DIR_YPOS)
 	{
 		if (data > 0)
-			return m_TextureFrame - 1;
+			return tex - 1;
 
-		return m_TextureFrame;
+		return tex;
 	}
 
 	return TEXTURE_DIRT;
@@ -81,13 +81,13 @@ bool FarmTile::isNearWater(Level* level, int x, int y, int z)
 void FarmTile::neighborChanged(Level* level, int x, int y, int z, int a)
 {
 	if (level->getMaterial(x, y + 1, z)->isSolid())
-		level->setTile(x, y, z, Tile::dirt->m_ID);
+		level->setTile(x, y, z, Tile::dirt->id);
 }
 
 void FarmTile::stepOn(Level* level, int x, int y, int z, Entity* pEnt)
 {
 	if (level->field_38.genrand_int32() % 4 == 0)
-		level->setTile(x, y, z, Tile::dirt->m_ID);
+		level->setTile(x, y, z, Tile::dirt->id);
 }
 
 void FarmTile::tick(Level* level, int x, int y, int z, Random* random)
@@ -107,7 +107,7 @@ void FarmTile::tick(Level* level, int x, int y, int z, Random* random)
 		int data = level->getData(x, y, z);
 
 		if (data <= 0)
-			level->setTile(x, y, z, Tile::dirt->m_ID);
+			level->setTile(x, y, z, Tile::dirt->id);
 		else
 			level->setData(x, y, z, data - 1);
 	}

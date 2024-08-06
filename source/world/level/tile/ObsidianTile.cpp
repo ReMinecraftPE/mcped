@@ -15,7 +15,7 @@ ObsidianTile::ObsidianTile(int a, int b, Material* c) : Tile(a, b, c)
 
 int ObsidianTile::getResource(int data, Random* random)
 {
-	return Tile::obsidian->m_ID;
+	return Tile::obsidian->id;
 }
 
 int ObsidianTile::getResourceCount(Random* random)

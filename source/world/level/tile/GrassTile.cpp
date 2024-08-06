@@ -11,7 +11,7 @@
 
 GrassTile::GrassTile(int id, Material* c) : Tile(id, c)
 {
-	m_TextureFrame = TEXTURE_GRASS_SIDE;
+	tex = TEXTURE_GRASS_SIDE;
 	setTicking(true);
 }
 
@@ -55,7 +55,7 @@ void GrassTile::tick(Level* level, int x, int y, int z, Random* random)
 	{
 		// grass death
 		if (random->genrand_int32() % 4 == 0)
-			level->setTile(x, y, z, Tile::dirt->m_ID);
+			level->setTile(x, y, z, Tile::dirt->id);
 	}
 	else if (level->getRawBrightness(x, y + 1, z) > 8)
 	{
@@ -63,12 +63,12 @@ void GrassTile::tick(Level* level, int x, int y, int z, Random* random)
 		int newY = y - 3 + random->nextInt(5);
 		int newZ = z - 1 + random->nextInt(3);
 
-		if (level->getTile(newX, newY, newZ) == Tile::dirt->m_ID &&
+		if (level->getTile(newX, newY, newZ) == Tile::dirt->id &&
 			level->getRawBrightness(newX, newY + 1, newZ) > 3 &&
 			!level->getMaterial(newX, newY + 1, newZ)->blocksLight())
 		{
-			//@NOTE: not this->m_ID
-			level->setTile(newX, newY, newZ, Tile::grass->m_ID);
+			//@NOTE: not this->id
+			level->setTile(newX, newY, newZ, Tile::grass->id);
 		}
 	}
 }

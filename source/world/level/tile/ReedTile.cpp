@@ -11,7 +11,7 @@
 
 ReedTile::ReedTile(int id) : Tile(id, Material::plant)
 {
-	m_TextureFrame = TEXTURE_REEDS;
+	tex = TEXTURE_REEDS;
 	setShape(0.125f, 0.0f, 0.125f, 0.875f, 1.0f, 0.875f);
 	setTicking(true);
 }
@@ -35,11 +35,11 @@ bool ReedTile::mayPlace(Level* level, int x, int y, int z)
 {
 	TileID tileBelow = level->getTile(x, y - 1, z);
 
-	if (tileBelow == m_ID)
+	if (tileBelow == id)
 		return true;
 
 	//@NOTE: No sand
-	if (tileBelow != Tile::grass->m_ID && tileBelow != Tile::dirt->m_ID)
+	if (tileBelow != Tile::grass->id && tileBelow != Tile::dirt->id)
 		return false;
 
 	return
@@ -74,7 +74,7 @@ void ReedTile::tick(Level* level, int x, int y, int z, Random* random)
 		return;
 
 	int height;
-	for (height = 1; level->getTile(x, y - height, z) == m_ID; height++);
+	for (height = 1; level->getTile(x, y - height, z) == id; height++);
 
 	if (height <= 2)
 	{
@@ -82,7 +82,7 @@ void ReedTile::tick(Level* level, int x, int y, int z, Random* random)
 
 		if (data == 15)
 		{
-			level->setTile(x, y + 1, z, m_ID);
+			level->setTile(x, y + 1, z, id);
 			level->setData(x, y, z, 0);
 		}
 		else

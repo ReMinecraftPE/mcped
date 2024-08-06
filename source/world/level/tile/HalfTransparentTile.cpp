@@ -20,7 +20,7 @@ bool HalfTransparentTile::isSolidRender()
 
 bool HalfTransparentTile::shouldRenderFace(LevelSource* level, int x, int y, int z, int dir)
 {
-	if (field_6C || level->getTile(x, y, z) != m_ID)
+	if (field_6C || level->getTile(x, y, z) != id)
 		return Tile::shouldRenderFace(level, x, y, z, dir);
 	
 	return field_6C;

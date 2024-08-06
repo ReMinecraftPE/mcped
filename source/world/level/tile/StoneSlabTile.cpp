@@ -31,7 +31,7 @@ bool StoneSlabTile::isCubeShaped()
 
 int StoneSlabTile::getResource(int data, Random* random)
 {
-	return Tile::stoneSlabHalf->m_ID;
+	return Tile::stoneSlabHalf->id;
 }
 
 int StoneSlabTile::getResourceCount(Random* random)
@@ -91,10 +91,10 @@ void StoneSlabTile::onPlace(Level* level, int x, int y, int z)
 
 	// If there's a stone slab below us, set us to air and combine us into the lower slab block
 
-	if (tileHereData == level->getData(x, y - 1, z) && tileBelow == Tile::stoneSlabHalf->m_ID)
+	if (tileHereData == level->getData(x, y - 1, z) && tileBelow == Tile::stoneSlabHalf->id)
 	{
 		level->setTile(x, y, z, TILE_AIR);
-		level->setTileAndData(x, y - 1, z, Tile::stoneSlab->m_ID, tileHereData);
+		level->setTileAndData(x, y - 1, z, Tile::stoneSlab->id, tileHereData);
 	}
 }
 
@@ -113,5 +113,5 @@ bool StoneSlabTile::shouldRenderFace(LevelSource* level, int x, int y, int z, in
 	if (dir == DIR_YNEG)
 		return true;
 
-	return level->getTile(x, y, z) != m_ID;
+	return level->getTile(x, y, z) != id;
 }

@@ -180,7 +180,7 @@ int Level::getRawBrightness(int x, int y, int z, bool b)
 		return 15;
 
 	// this looks like some kind of hack.
-	if (b && (getTile(x, y, z) == Tile::stoneSlabHalf->m_ID || getTile(x, y, z) == Tile::farmland->m_ID))
+	if (b && (getTile(x, y, z) == Tile::stoneSlabHalf->id || getTile(x, y, z) == Tile::farmland->id))
 	{
 		int b1 = getRawBrightness(x, y + 1, z, false);
 		int b2 = getRawBrightness(x + 1, y, z, false);
@@ -269,7 +269,7 @@ Material* Level::getMaterial(int x, int y, int z)
 	Tile* pTile = Tile::tiles[getTile(x, y, z)];
 	if (!pTile) return Material::air;
 
-	return pTile->m_pMaterial;
+	return pTile->material;
 }
 
 Entity* Level::getEntity(int id)
@@ -751,7 +751,7 @@ bool Level::containsFireTile(AABB aabb)
 			{
 				TileID tileID = getTile(x, y, z);
 				
-				if (tileID == Tile::fire->m_ID || tileID == Tile::lava->m_ID || tileID == Tile::calmLava->m_ID)
+				if (tileID == Tile::fire->id || tileID == Tile::lava->id || tileID == Tile::calmLava->id)
 					return true;
 			}
 
@@ -774,7 +774,7 @@ bool Level::containsAnyLiquid(AABB aabb)
 				
 				if (Tile::tiles[tileID])
 				{
-					if (Tile::tiles[tileID]->m_pMaterial->isLiquid())
+					if (Tile::tiles[tileID]->material->isLiquid())
 						return true;
 				}
 			}
@@ -796,7 +796,7 @@ bool Level::containsLiquid(const AABB& aabb, const Material* pMtl)
 			{
 				TileID tileID = getTile(x, y, z);
 
-				if (!Tile::tiles[tileID] || Tile::tiles[tileID]->m_pMaterial != pMtl)
+				if (!Tile::tiles[tileID] || Tile::tiles[tileID]->material != pMtl)
 					continue;
 
 				int data = getData(x, y, z);
@@ -828,7 +828,7 @@ bool Level::containsMaterial(const AABB& aabb, const Material* pMtl)
 			{
 				TileID tileID = getTile(x, y, z);
 				
-				if (Tile::tiles[tileID] && Tile::tiles[tileID]->m_pMaterial == pMtl)
+				if (Tile::tiles[tileID] && Tile::tiles[tileID]->material == pMtl)
 					return true;
 			}
 
@@ -854,7 +854,7 @@ bool Level::checkAndHandleWater(const AABB& aabb, const Material* pMtl, Entity* 
 			for (int z = minZ; z < maxZ; z++)
 			{
 				Tile* pTile = Tile::tiles[getTile(x, y2, z)];
-				if (!pTile || pTile->m_pMaterial != pMtl)
+				if (!pTile || pTile->material != pMtl)
 					continue;
 
 				int data = getData(x, y2, z);
@@ -920,10 +920,10 @@ int Level::getTopSolidBlock(int x, int z)
 		TileID tile = pChunk->getTile(cx, y, cz);
 		if (tile)
 		{
-			if (Tile::tiles[tile]->m_pMaterial->blocksMotion())
+			if (Tile::tiles[tile]->material->blocksMotion())
 				return y + 1;
 			
-			if (Tile::tiles[tile]->m_pMaterial->isLiquid())
+			if (Tile::tiles[tile]->material->isLiquid())
 				break;
 		}
 		if (!--y)
@@ -975,7 +975,7 @@ void Level::validateSpawn()
 	label_10:
 		tile = getTopTile(spawnX, spawnZ);
 	}
-	while (tile == Tile::invisible_bedrock->m_ID);
+	while (tile == Tile::invisible_bedrock->id);
 
 	m_levelData.m_spawnPos.x = spawnX;
 	m_levelData.m_spawnPos.z = spawnZ;
@@ -1944,7 +1944,7 @@ void Level::extinguishFire(int x, int y, int z, int dir)
 		case DIR_XPOS: x++; break;
 	}
 
-	if (getTile(x, y, z) == Tile::fire->m_ID)
+	if (getTile(x, y, z) == Tile::fire->id)
 		setTile(x, y, z, TILE_AIR);
 }
 

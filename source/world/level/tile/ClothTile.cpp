@@ -13,7 +13,7 @@ ClothTile::ClothTile(int id, int type) : Tile(id, TEXTURE_CLOTH_64, Material::cl
 {
 	field_6C = type;
 
-	m_TextureFrame = getTexture(0, type);
+	tex = getTexture(0, type);
 }
 
 int ClothTile::getTexture(int dir)

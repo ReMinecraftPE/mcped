@@ -348,8 +348,8 @@ bool Mob::onLadder()
 
 	//@INFO: Pre Beta 1.5 stair behaviour
 	return
-		m_pLevel->getTile(tileX, tileY + 0, tileZ) == Tile::ladder->m_ID || 
-		m_pLevel->getTile(tileX, tileY + 1, tileZ) == Tile::ladder->m_ID;
+		m_pLevel->getTile(tileX, tileY + 0, tileZ) == Tile::ladder->id || 
+		m_pLevel->getTile(tileX, tileY + 1, tileZ) == Tile::ladder->id;
 }
 
 void Mob::spawnAnim()
@@ -437,7 +437,7 @@ void Mob::travel(float a2, float a3)
 		if (tile <= 0)
 			_x1 = 0.546f;
 		else
-			_x1 = Tile::tiles[tile]->field_30 * 0.91f;
+			_x1 = Tile::tiles[tile]->friction * 0.91f;
 
 		assert(_x1 != 0.0f);
 
@@ -460,7 +460,7 @@ void Mob::travel(float a2, float a3)
 		if (tile <= 0)
 			dragFactor = 0.546f;
 		else
-			dragFactor = Tile::tiles[tile]->field_30 * 0.91f;
+			dragFactor = Tile::tiles[tile]->friction * 0.91f;
 	}
 
 	if (onLadder())

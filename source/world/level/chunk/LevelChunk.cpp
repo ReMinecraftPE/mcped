@@ -997,7 +997,7 @@ void EmptyLevelChunk::markUnsaved()
 
 TileID EmptyLevelChunk::getTile(int x, int y, int z)
 {
-	return Tile::invisible_bedrock->m_ID;
+	return Tile::invisible_bedrock->id;
 }
 
 bool EmptyLevelChunk::setTile(int x, int y, int z, TileID tile)

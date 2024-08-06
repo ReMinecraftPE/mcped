@@ -12,12 +12,12 @@
 
 TilePlanterItem::TilePlanterItem(int id, int place) : Item(id)
 {
-	m_tile = Tile::tiles[place]->m_ID;
+	m_tile = Tile::tiles[place]->id;
 }
 
 bool TilePlanterItem::useOn(ItemInstance* instance, Player* player, Level* level, int x, int y, int z, int dir)
 {
-	if (level->getTile(x, y, z) == Tile::topSnow->m_ID)
+	if (level->getTile(x, y, z) == Tile::topSnow->id)
 	{
 		dir = DIR_YNEG;
 	}

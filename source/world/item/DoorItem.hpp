@@ -18,5 +18,5 @@ public:
 	virtual bool useOn(ItemInstance*, Player*, Level*, int, int, int, int);
 
 public:
-	Material* m_pMaterial;
+	Material* material;
 };

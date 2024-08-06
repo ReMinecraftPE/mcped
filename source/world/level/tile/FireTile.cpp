@@ -19,16 +19,16 @@ FireTile::FireTile(int ID, int texture) : Tile(ID, texture, Material::fire)
 	memset(m_burnOdds, 0, sizeof m_burnOdds);
 #endif
 
-	m_igniteOdds[Tile::wood->m_ID]      = 5;
-	m_burnOdds  [Tile::wood->m_ID]      = 20;
-	m_igniteOdds[Tile::treeTrunk->m_ID] = 5;
-	m_burnOdds  [Tile::treeTrunk->m_ID] = 5;
-	m_igniteOdds[Tile::leaves->m_ID]    = 30;
-	m_burnOdds  [Tile::leaves->m_ID]    = 60;
-	m_igniteOdds[Tile::tnt->m_ID]       = 15;
-	m_burnOdds  [Tile::tnt->m_ID]       = 100;
-	m_igniteOdds[Tile::cloth->m_ID]     = 30;
-	m_burnOdds  [Tile::cloth->m_ID]     = 60;
+	m_igniteOdds[Tile::wood->id]      = 5;
+	m_burnOdds  [Tile::wood->id]      = 20;
+	m_igniteOdds[Tile::treeTrunk->id] = 5;
+	m_burnOdds  [Tile::treeTrunk->id] = 5;
+	m_igniteOdds[Tile::leaves->id]    = 30;
+	m_burnOdds  [Tile::leaves->id]    = 60;
+	m_igniteOdds[Tile::tnt->id]       = 15;
+	m_burnOdds  [Tile::tnt->id]       = 100;
+	m_igniteOdds[Tile::cloth->id]     = 30;
+	m_burnOdds  [Tile::cloth->id]     = 60;
 	// @NOTE: Not setting the other cloths' properties
 
 	setTicking(true);
@@ -98,12 +98,12 @@ void FireTile::checkBurn(Level* level, int x, int y, int z, int thing, Random* r
 	{
 		TileID tid = level->getTile(x, y, z);
 
-		TileID newTile = m_ID;
+		TileID newTile = id;
 		if (random->nextInt(2))
 			newTile = TILE_AIR;
 
 		level->setTile(x, y, z, newTile);
-		if (tid == Tile::tnt->m_ID)
+		if (tid == Tile::tnt->id)
 			Tile::tnt->destroy(level, x, y, z, 0);
 	}
 }
@@ -173,7 +173,7 @@ void FireTile::onPlace(Level* level, int x, int y, int z)
 		return;
 	}
 
-	level->addToTickNextTick(x, y, z, m_ID, getTickDelay());
+	level->addToTickNextTick(x, y, z, id, getTickDelay());
 }
 
 void FireTile::tick(Level* level, int x, int y, int z, Random* random)
@@ -182,7 +182,7 @@ void FireTile::tick(Level* level, int x, int y, int z, Random* random)
 	if (data <= 14)
 	{
 		level->setData(x, y, z, data + 1);
-		level->addToTickNextTick(x, y, z, m_ID, getTickDelay());
+		level->addToTickNextTick(x, y, z, id, getTickDelay());
 	}
 
 	if (isValidFireLocation(level, x, y, z))
@@ -215,7 +215,7 @@ void FireTile::tick(Level* level, int x, int y, int z, Random* random)
 						int thing2 = y + 1 >= yi ? 100 : thing;
 						int odds = getFireOdds(level, xi, yi, zi);
 						if (odds > 0 && odds >= int(random->nextInt(thing2)))
-							level->setTile(xi, yi, zi, m_ID);
+							level->setTile(xi, yi, zi, id);
 					}
 				}
 			}

@@ -85,16 +85,16 @@ void RedStoneOreTile::animateTick(Level* level, int x, int y, int z, Random* ran
 
 void RedStoneOreTile::tick(Level* level, int x, int y, int z, Random* random)
 {
-	if (m_ID == Tile::redStoneOre_lit->m_ID)
-		level->setTile(x, y, z, Tile::redStoneOre->m_ID);
+	if (id == Tile::redStoneOre_lit->id)
+		level->setTile(x, y, z, Tile::redStoneOre->id);
 }
 
 void RedStoneOreTile::interact(Level* level, int x, int y, int z)
 {
 	poofParticles(level, x, y, z);
 
-	if (m_ID == Tile::redStoneOre->m_ID)
-		level->setTile(x, y, z, Tile::redStoneOre_lit->m_ID);
+	if (id == Tile::redStoneOre->id)
+		level->setTile(x, y, z, Tile::redStoneOre_lit->id);
 }
 
 void RedStoneOreTile::attack(Level* level, int x, int y, int z, Player* player)

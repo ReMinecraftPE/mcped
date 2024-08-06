@@ -70,7 +70,7 @@ bool TopSnowTile::shouldRenderFace(LevelSource* level, int x, int y, int z, int 
 	if (dir == DIR_YPOS)
 		return true;
 
-	if (level->getMaterial(x,y,z) == m_pMaterial)
+	if (level->getMaterial(x,y,z) == material)
 		return false;
 
 	return Tile::shouldRenderFace(level, x, y, z, dir);
