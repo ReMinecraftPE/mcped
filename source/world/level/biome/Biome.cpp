@@ -97,15 +97,15 @@ void Biome::recalc()
 		}
 	}
 
-	desert->field_20 = desert->field_21 = Tile::sand->m_ID;
-	iceDesert->field_20 = iceDesert->field_21 = Tile::sand->m_ID;
+	desert->topMaterial = desert->material = Tile::sand->m_ID;
+	iceDesert->topMaterial = iceDesert->material = Tile::sand->m_ID;
 }
 
 Biome::Biome()
 {
-	m_name = "";
-	field_20 = Tile::grass->m_ID;
-	field_21 = Tile::dirt->m_ID;
+	name = "";
+	topMaterial = Tile::grass->m_ID;
+	material = Tile::dirt->m_ID;
 }
 
 Biome::~Biome()
@@ -126,19 +126,19 @@ Biome* Biome::setSnowCovered()
 
 Biome* Biome::setColor(int color)
 {
-	m_Color = color;
+	color = color;
 	return this;
 }
 
 Biome* Biome::setLeafColor(int color)
 {
-	m_LeafColor = color;
+	leafColor = color;
 	return this;
 }
 
 Biome* Biome::setName(const std::string & name)
 {
-	m_name = name;
+	this->name = name;
 	return this;
 }
 

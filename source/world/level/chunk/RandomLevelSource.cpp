@@ -254,8 +254,8 @@ void RandomLevelSource::buildSurfaces(int x, int z, TileID* tiles, Biome** biome
 			int i1 = (int)(field_7A84[k + l * 16] / 3.0f + 3.0f + m_random.nextFloat() * 0.25f);
 			int j1 = -1;
 
-			TileID byte1 = pBiome->field_20;
-			TileID byte2 = pBiome->field_21;
+			TileID topMaterial = pBiome->topMaterial;
+			TileID material = pBiome->material;
 
 			for (int k1 = 127; k1 >= 0; k1--)
 			{
@@ -280,32 +280,32 @@ void RandomLevelSource::buildSurfaces(int x, int z, TileID* tiles, Biome** biome
 				{
 					if (i1 <= 0)
 					{
-						byte1 = 0;
-						byte2 = Tile::rock->m_ID;
+						topMaterial = 0;
+						material = Tile::rock->m_ID;
 					}
 					else if (k1 >= byte0 - 4 && k1 <= byte0 + 1)
 					{
-						byte1 = pBiome->field_20;
-						byte2 = pBiome->field_21;
+						topMaterial = pBiome->topMaterial;
+						material = pBiome->material;
 						if (flag1) {
-							byte1 = 0;
-							byte2 = Tile::gravel->m_ID;
+							topMaterial = 0;
+							material = Tile::gravel->m_ID;
 						}
 						if (flag) {
-							byte1 = Tile::sand->m_ID;
-							byte2 = Tile::sand->m_ID;
+							topMaterial = Tile::sand->m_ID;
+							material = Tile::sand->m_ID;
 						}
 					}
 
-					if (k1 < byte0 && byte1 == 0)
-						byte1 = Tile::calmWater->m_ID;
+					if (k1 < byte0 && topMaterial == 0)
+						topMaterial = Tile::calmWater->m_ID;
 
 					j1 = i1;
 
 					if (k1 >= byte0 - 1)
-						tiles[l1] = byte1;
+						tiles[l1] = topMaterial;
 					else
-						tiles[l1] = byte2;
+						tiles[l1] = material;
 
 					continue;
 				}
@@ -314,12 +314,12 @@ void RandomLevelSource::buildSurfaces(int x, int z, TileID* tiles, Biome** biome
 					continue;
 
 				j1--;
-				tiles[l1] = byte2;
+				tiles[l1] = material;
 
-				if (j1 == 0 && byte2 == Tile::sand->m_ID)
+				if (j1 == 0 && material == Tile::sand->m_ID)
 				{
 					j1 = m_random.nextInt(4);
-					byte2 = Tile::sandStone->m_ID;
+					material = Tile::sandStone->m_ID;
 				}
 			}
 		}
