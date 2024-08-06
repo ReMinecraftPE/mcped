@@ -17,7 +17,7 @@
 #include "world/level/Level.hpp"
 #include "world/entity/LocalPlayer.hpp"
 #include "world/gamemode/SurvivalMode.hpp"
-#include "world/particle/ParticleEngine.hpp"
+#include "client/particle/ParticleEngine.hpp"
 #include "client/renderer/GameRenderer.hpp"
 #include "client/renderer/LevelRenderer.hpp"
 #include "client/renderer/entity/EntityRenderDispatcher.hpp"
