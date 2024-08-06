@@ -91,7 +91,6 @@ float ImprovedNoise::noise(float x, float y, float z)
 		  v = fade(y),
 		  w = fade(z);
 
-	int* p = p;
 	int A = p[X    ] + Y, AA = p[A] + Z, AB = p[A + 1] + Z,
 		B = p[X + 1] + Y, BA = p[B] + Z, BB = p[B + 1] + Z;
 

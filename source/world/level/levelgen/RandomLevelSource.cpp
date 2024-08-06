@@ -54,8 +54,8 @@ inline int GetChunkHash(int x, int z)
 LevelChunk* RandomLevelSource::getChunk(int x, int z)
 {
 	int hashCode = GetChunkHash(x, z);
-	auto iter = m_chunks.find(hashCode);
-	if (iter != m_chunks.end())
+	auto iter = chunks.find(hashCode);
+	if (iter != chunks.end())
 		return iter->second;
 
 	// have to generate the chunk
