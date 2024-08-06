@@ -1035,15 +1035,6 @@
     <ClCompile Include="..\source\world\level\chunk\LevelChunk.cpp">
       <Filter>Source Files\world\level\chunk</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\world\level\chunk\PerformanceTestChunkSource.cpp">
-      <Filter>Source Files\world\level\chunk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\level\chunk\RandomLevelSource.cpp">
-      <Filter>Source Files\world\level\chunk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\world\level\chunk\TestChunkSource.cpp">
-      <Filter>Source Files\world\level\chunk</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\world\level\chunk\ChunkCache.cpp">
       <Filter>Source Files\world\level\chunk</Filter>
     </ClCompile>
@@ -1052,6 +1043,12 @@
     </ClCompile>
     <ClCompile Include="..\source\world\level\material\Material.cpp">
       <Filter>Source Files\world\level\material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\RandomLevelSource.cpp">
+      <Filter>Source Files\world\level\levelgen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\levelgen\PerformanceTestChunkSource.cpp">
+      <Filter>Source Files\world\level\levelgen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2051,15 +2048,6 @@
     <ClInclude Include="..\source\world\level\chunk\LevelChunk.hpp">
       <Filter>Source Files\world\level\chunk</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\level\chunk\PerformanceTestChunkSource.hpp">
-      <Filter>Source Files\world\level\chunk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\world\level\chunk\RandomLevelSource.hpp">
-      <Filter>Source Files\world\level\chunk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\world\level\chunk\TestChunkSource.hpp">
-      <Filter>Source Files\world\level\chunk</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\world\level\chunk\ChunkCache.hpp">
       <Filter>Source Files\world\level\chunk</Filter>
     </ClInclude>
@@ -2068,6 +2056,12 @@
     </ClInclude>
     <ClInclude Include="..\source\world\level\material\Material.hpp">
       <Filter>Source Files\world\level\material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\levelgen\RandomLevelSource.hpp">
+      <Filter>Source Files\world\level\levelgen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\levelgen\PerformanceTestChunkSource.hpp">
+      <Filter>Source Files\world\level\levelgen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

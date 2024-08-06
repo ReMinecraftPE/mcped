@@ -143,15 +143,14 @@
     <ClInclude Include="..\source\world\level\chunk\ChunkCache.hpp" />
     <ClInclude Include="..\source\world\level\chunk\ChunkSource.hpp" />
     <ClInclude Include="..\source\world\level\chunk\LevelChunk.hpp" />
-    <ClInclude Include="..\source\world\level\chunk\PerformanceTestChunkSource.hpp" />
-    <ClInclude Include="..\source\world\level\chunk\RandomLevelSource.hpp" />
-    <ClInclude Include="..\source\world\level\chunk\TestChunkSource.hpp" />
     <ClInclude Include="..\source\world\level\Dimension.hpp" />
     <ClInclude Include="..\source\world\level\Explosion.hpp" />
     <ClInclude Include="..\source\world\level\Level.hpp" />
     <ClInclude Include="..\source\world\level\levelgen\feature\Feature.hpp" />
     <ClInclude Include="..\source\world\level\levelgen\feature\LargeCaveFeature.hpp" />
     <ClInclude Include="..\source\world\level\levelgen\feature\LargeFeature.hpp" />
+    <ClInclude Include="..\source\world\level\levelgen\PerformanceTestChunkSource.hpp" />
+    <ClInclude Include="..\source\world\level\levelgen\RandomLevelSource.hpp" />
     <ClInclude Include="..\source\world\level\levelgen\synth\ImprovedNoise.hpp" />
     <ClInclude Include="..\source\world\level\levelgen\synth\PerlinNoise.hpp" />
     <ClInclude Include="..\source\world\level\levelgen\synth\Synth.hpp" />
@@ -486,9 +485,6 @@
     <ClCompile Include="..\source\world\level\chunk\ChunkCache.cpp" />
     <ClCompile Include="..\source\world\level\chunk\ChunkSource.cpp" />
     <ClCompile Include="..\source\world\level\chunk\LevelChunk.cpp" />
-    <ClCompile Include="..\source\world\level\chunk\PerformanceTestChunkSource.cpp" />
-    <ClCompile Include="..\source\world\level\chunk\RandomLevelSource.cpp" />
-    <ClCompile Include="..\source\world\level\chunk\TestChunkSource.cpp" />
     <ClCompile Include="..\source\world\level\Dimension.cpp" />
     <ClCompile Include="..\source\world\level\Explosion.cpp" />
     <ClCompile Include="..\source\world\level\Level.cpp" />
@@ -504,6 +500,8 @@
     <ClCompile Include="..\source\world\level\levelgen\feature\SpringFeature.cpp" />
     <ClCompile Include="..\source\world\level\levelgen\feature\SpruceFeature.cpp" />
     <ClCompile Include="..\source\world\level\levelgen\feature\TreeFeature.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\PerformanceTestChunkSource.cpp" />
+    <ClCompile Include="..\source\world\level\levelgen\RandomLevelSource.cpp" />
     <ClCompile Include="..\source\world\level\levelgen\synth\ImprovedNoise.cpp" />
     <ClCompile Include="..\source\world\level\levelgen\synth\PerlinNoise.cpp" />
     <ClCompile Include="..\source\world\level\levelgen\synth\Synth.cpp" />

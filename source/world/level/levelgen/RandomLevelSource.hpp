@@ -13,7 +13,7 @@
 // We'll use std::unordered_map instead.
 
 #include <unordered_map>
-#include "ChunkSource.hpp"
+#include "world/level/chunk/ChunkSource.hpp"
 #include "client/common/Utils.hpp"
 #include "world/level/levelgen/synth/PerlinNoise.hpp"
 #include "world/level/biome/BiomeSource.hpp"

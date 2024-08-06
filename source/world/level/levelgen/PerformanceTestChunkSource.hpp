@@ -9,18 +9,13 @@
 #pragma once
 
 #include <cstring>
-#include "client/common/Utils.hpp"
-#include "ChunkSource.hpp"
+#include "world/level/chunk/ChunkSource.hpp"
 
 class Level;
 
-class TestChunkSource : public ChunkSource
+class PerformanceTestChunkSource : public ChunkSource
 {
 public:
-	TestChunkSource(Level*);
-	virtual ~TestChunkSource();
-
-	LevelChunk* generateChunk(int x, int z);
 	LevelChunk* create(int x, int z) override;
 	LevelChunk* getChunk(int x, int z) override;
 	bool hasChunk(int x, int z) override;
@@ -31,9 +26,4 @@ public:
 
 public:
 	Level* m_pLevel = nullptr;
-
-	LevelChunk* m_chunkMap[C_MAX_CHUNKS_Z][C_MAX_CHUNKS_X];
-	LevelChunk* m_pEmptyChunk;
-	LevelChunk* m_pLastChunk;
-	int m_lastChunkX, m_lastChunkZ;
 };
