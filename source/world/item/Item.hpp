@@ -11,7 +11,7 @@
 #include <string>
 #include "ItemInstance.hpp"
 #include "client/common/Utils.hpp"
-#include "world/level/Material.hpp"
+#include "world/level/material/Material.hpp"
 
 #define C_MAX_ITEMS (C_MAX_TILES * 2)
 

@@ -106,6 +106,9 @@
     <Filter Include="Source Files\world\level\chunk">
       <UniqueIdentifier>{78e81f8f-57e8-4d1c-91c7-7ec5be5c319a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\world\level\material">
+      <UniqueIdentifier>{e99a158d-97e7-4e88-8f7d-20135500ddd2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\compat\GLExt.cpp">
@@ -615,9 +618,6 @@
     <ClCompile Include="..\source\world\entity\TripodCamera.cpp">
       <Filter>Source Files\world\entity</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\world\level\Material.cpp">
-      <Filter>Source Files\world\level</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\world\level\Explosion.cpp">
       <Filter>Source Files\world\level</Filter>
     </ClCompile>
@@ -1049,6 +1049,9 @@
     </ClCompile>
     <ClCompile Include="..\source\world\level\chunk\ChunkSource.cpp">
       <Filter>Source Files\world\level\chunk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\world\level\material\Material.cpp">
+      <Filter>Source Files\world\level\material</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1667,9 +1670,6 @@
     <ClInclude Include="..\source\world\item\ItemInstance.hpp">
       <Filter>Source Files\world\item</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\world\level\Material.hpp">
-      <Filter>Source Files\world\level</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\world\level\Explosion.hpp">
       <Filter>Source Files\world\level</Filter>
     </ClInclude>
@@ -2065,6 +2065,9 @@
     </ClInclude>
     <ClInclude Include="..\source\world\level\chunk\ChunkSource.hpp">
       <Filter>Source Files\world\level\chunk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\world\level\material\Material.hpp">
+      <Filter>Source Files\world\level\material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

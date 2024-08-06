@@ -10,7 +10,7 @@
 
 #include "world/phys/AABB.hpp"
 #include "world/phys/Vec3.hpp"
-#include "world/level/Material.hpp"
+#include "world/level/material/Material.hpp"
 #include "world/level/tile/Tile.hpp"
 #include "world/item/ItemInstance.hpp"
 

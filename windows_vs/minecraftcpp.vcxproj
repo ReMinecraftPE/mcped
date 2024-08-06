@@ -158,7 +158,7 @@
     <ClInclude Include="..\source\world\level\LevelListener.hpp" />
     <ClInclude Include="..\source\world\level\LightLayer.hpp" />
     <ClInclude Include="..\source\world\level\LightUpdate.hpp" />
-    <ClInclude Include="..\source\world\level\Material.hpp" />
+    <ClInclude Include="..\source\world\level\material\Material.hpp" />
     <ClInclude Include="..\source\world\level\Region.hpp" />
     <ClInclude Include="..\source\world\level\RegionFile.hpp" />
     <ClInclude Include="..\source\world\level\storage\ChunkStorage.hpp" />
@@ -510,7 +510,7 @@
     <ClCompile Include="..\source\world\level\LevelListener.cpp" />
     <ClCompile Include="..\source\world\level\LightLayer.cpp" />
     <ClCompile Include="..\source\world\level\LightUpdate.cpp" />
-    <ClCompile Include="..\source\world\level\Material.cpp" />
+    <ClCompile Include="..\source\world\level\material\Material.cpp" />
     <ClCompile Include="..\source\world\level\Region.cpp" />
     <ClCompile Include="..\source\world\level\RegionFile.cpp" />
     <ClCompile Include="..\source\world\level\storage\ChunkStorage.cpp" />
