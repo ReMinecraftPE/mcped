@@ -17,10 +17,10 @@ Mob::Mob(Level* pLevel) : Entity(pLevel)
 	field_34 = 1;
 
 	field_E4 = (Mth::random() + 1.0f) * 0.01f;
-	setPos(m_pos.x, m_pos.y, m_pos.z);
+	setPos(pos.x, pos.y, pos.z);
 	field_E0 = Mth::random() * 12398.0f;
-	m_yaw = float(Mth::random() * M_PI);
-	field_A8 = 0.5f;
+	yRot = float(Mth::random() * M_PI);
+	footSize = 0.5f;
 }
 
 Mob::~Mob()
@@ -30,7 +30,7 @@ Mob::~Mob()
 void Mob::lerpTo(float x, float y, float z, float yaw, float pitch, int i)
 {
 	field_B70 = x;
-	field_B74 = y + field_84;
+	field_B74 = y + heightOffset;
 	field_B78 = z;
 	field_B7C = yaw;
 	field_B80 = pitch;
@@ -43,19 +43,19 @@ void Mob::tick()
 
 	if (field_B6C > 0)
 	{
-		float xPos = m_pos.x + (field_B70 - m_pos.x) / field_B6C;
-		float yPos = m_pos.y + (field_B74 - m_pos.y) / field_B6C;
-		float zPos = m_pos.z + (field_B78 - m_pos.z) / field_B6C;
+		float xPos = pos.x + (field_B70 - pos.x) / field_B6C;
+		float yPos = pos.y + (field_B74 - pos.y) / field_B6C;
+		float zPos = pos.z + (field_B78 - pos.z) / field_B6C;
 
-		float ang = field_B7C - m_yaw;
+		float ang = field_B7C - yRot;
 		while (ang < -180.0f) ang += 360.0f;
 		while (ang >= 180.0f) ang -= 360.0f;
 
-		m_yaw += ang / float(field_B6C);
-		m_pitch += (field_B80 - m_pitch) / float(field_B6C);
+		yRot += ang / float(field_B6C);
+		xRot += (field_B80 - xRot) / float(field_B6C);
 
 		setPos(xPos, yPos, zPos);
-		setRot(m_yaw, m_pitch);
+		setRot(yRot, xRot);
 
 		field_B6C--;
 	}
@@ -67,8 +67,8 @@ void Mob::tick()
 	float deltaX, deltaZ, dist, x1, x2, x3, x4, x5, x6, x7, field_E8_2, field_E8_new, v36;
 	bool angleOOB = false;
 
-	deltaX = m_pos.x - field_3C.x;
-	deltaZ = m_pos.z - field_3C.z;
+	deltaX = pos.x - posO.x;
+	deltaZ = pos.z - posO.z;
 	dist = Mth::sqrt(deltaZ * deltaZ + deltaX * deltaX);
 	field_E8_2 = field_E8;
 	x1 = field_E8_2;
@@ -91,11 +91,11 @@ void Mob::tick()
 
 	x4 = field_F8;
 	if (x4 <= 0.0f)
-		x4 = m_yaw;
+		x4 = yRot;
 	else
-		x4 = x1 = m_yaw;
+		x4 = x1 = yRot;
 
-	if (!field_7C)
+	if (!onGround)
 		x3 = 0.0f;
 
 	field_B50 += (x3 - field_B50) * 0.3f;
@@ -145,11 +145,11 @@ LABEL_31:
 	if (angleOOB)
 		x2 = -x2;
 	
-	while (x4 - field_5C < -180.0f)
-		field_5C -= 360.0f;
+	while (x4 - yRotO < -180.0f)
+		yRotO -= 360.0f;
 
-	while (x4 - field_5C >= 180.0f)
-		field_5C += 360.0f;
+	while (x4 - yRotO >= 180.0f)
+		yRotO += 360.0f;
 
 	while (field_E8 - field_EC < -180.0f)
 		field_EC -= 360.0f;
@@ -157,11 +157,11 @@ LABEL_31:
 	while (field_E8 - field_EC >= 180.0f)
 		field_EC += 360.0f;
 	
-	while (m_pitch - field_60 < -180.0f)
-		field_60 -= 360.0f;
+	while (xRot - xRotO < -180.0f)
+		xRotO -= 360.0f;
 
-	while (m_pitch - field_60 >= 180.0f)
-		field_60 += 360.0f;
+	while (xRot - xRotO >= 180.0f)
+		xRotO += 360.0f;
 
 	field_B54 += x2;
 }
@@ -176,18 +176,18 @@ void Mob::baseTick()
 
 	if (isAlive() && isUnderLiquid(Material::water) && !isWaterMob())
 	{
-		field_BC--;
-		if (field_BC == -20)
+		airSupply--;
+		if (airSupply == -20)
 		{
-			field_BC = 0;
+			airSupply = 0;
 
 			for (int i = 0; i < 8; i++)
 			{
-				m_pLevel->addParticle("bubble",
-					m_pos.x + m_random.nextFloat() - m_random.nextFloat(),
-					m_pos.y + m_random.nextFloat() - m_random.nextFloat(),
-					m_pos.z + m_random.nextFloat() - m_random.nextFloat(),
-					m_vel.x, m_vel.y, m_vel.z
+				level->addParticle("bubble",
+					pos.x + m_random.nextFloat() - m_random.nextFloat(),
+					pos.y + m_random.nextFloat() - m_random.nextFloat(),
+					pos.z + m_random.nextFloat() - m_random.nextFloat(),
+					vel.x, vel.y, vel.z
 				);
 			}
 
@@ -196,7 +196,7 @@ void Mob::baseTick()
 	}
 	else
 	{
-		field_BC = field_D0;
+		airSupply = airCapacity;
 	}
 
 	field_118 = field_11C;
@@ -214,10 +214,10 @@ void Mob::baseTick()
 			remove();
 			for (int i = 0; i < 20; i++)
 			{
-				m_pLevel->addParticle("explode",
-					m_pos.x + 2 * field_88 * m_random.nextFloat() - field_88,
-					m_pos.y + field_8C * m_random.nextFloat(),
-					m_pos.z + 2 * field_88 * m_random.nextFloat() - field_88,
+				level->addParticle("explode",
+					pos.x + 2 * bbWidth * m_random.nextFloat() - bbWidth,
+					pos.y + bbHeight * m_random.nextFloat(),
+					pos.z + 2 * bbWidth * m_random.nextFloat() - bbWidth,
 					0.02f * (m_random.nextFloat() * 2 - 1) * (m_random.nextFloat() * 2 - 1),
 					0.02f * (m_random.nextFloat() * 2 - 1) * (m_random.nextFloat() * 2 - 1),
 					0.02f * (m_random.nextFloat() * 2 - 1) * (m_random.nextFloat() * 2 - 1)
@@ -228,23 +228,23 @@ void Mob::baseTick()
 
 	field_B58 = field_B54;
 	field_EC = field_E8;
-	field_5C = m_yaw;
-	field_60 = m_pitch;
+	yRotO = yRot;
+	xRotO = xRot;
 }
 
 float Mob::getHeadHeight()
 {
-	return 0.85f * field_8C;
+	return 0.85f * bbHeight;
 }
 
 bool Mob::isPickable()
 {
-	return !m_bRemoved;
+	return !removed;
 }
 
 bool Mob::isPushable()
 {
-	return !m_bRemoved;
+	return !removed;
 }
 
 bool Mob::isShootable()
@@ -254,7 +254,7 @@ bool Mob::isShootable()
 
 bool Mob::isAlive()
 {
-	if (m_bRemoved)
+	if (removed)
 		return false;
 
 	return m_health >= 0;
@@ -262,10 +262,10 @@ bool Mob::isAlive()
 
 bool Mob::hurt(Entity *pAttacker, int damage)
 {
-	if (m_pLevel->field_11)
+	if (level->field_11)
 		return false;
 
-	field_AFC = m_pLevel->field_11;
+	field_AFC = level->field_11;
 
 	if (m_health <= 0)
 		return false;
@@ -313,16 +313,16 @@ void Mob::outOfWorld()
 	hurt(nullptr, 4);
 }
 
-void Mob::causeFallDamage(float level)
+void Mob::causeFallDamage(float flevel)
 {
-	int x = int(ceilf(level - 3));
+	int x = int(ceilf(flevel - 3));
 	if (x > 0)
 	{
 		hurt(nullptr, 3);
 
 		//@HUH: useless call to getTile? or could this be a return value of some sort
 		//Entity::causeFallDamage returns nothing though, so....
-		m_pLevel->getTile(Mth::floor(m_pos.x), Mth::floor(m_pos.y - 0.2f - field_84), Mth::floor(m_pos.z));
+		level->getTile(Mth::floor(pos.x), Mth::floor(pos.y - 0.2f - heightOffset), Mth::floor(pos.z));
 	}
 }
 
@@ -330,26 +330,26 @@ void Mob::knockback(Entity* pEnt, int a, float x, float z)
 {
 	float power = Mth::invSqrt(x * x + z * z);
 
-	m_vel.x = m_vel.x * 0.5f - x * power * 0.4f;
-	m_vel.y = m_vel.y * 0.5f + 0.4f;
-	m_vel.z = m_vel.z * 0.5f - z * power * 0.4f;
+	vel.x = vel.x * 0.5f - x * power * 0.4f;
+	vel.y = vel.y * 0.5f + 0.4f;
+	vel.z = vel.z * 0.5f - z * power * 0.4f;
 
 	//@BUG: maybe this is meant to behave differently.
 	// Unless the player is falling, the Y vel will always be 0.4.
-	if (m_vel.y > 0.4f)
-		m_vel.y = 0.4f;
+	if (vel.y > 0.4f)
+		vel.y = 0.4f;
 }
 
 bool Mob::onLadder()
 {
-	int tileX = Mth::floor(m_pos.x);
-	int tileZ = Mth::floor(m_pos.z);
-	int tileY = Mth::floor(m_hitbox.min.y);
+	int tileX = Mth::floor(pos.x);
+	int tileZ = Mth::floor(pos.z);
+	int tileY = Mth::floor(bb.min.y);
 
 	//@INFO: Pre Beta 1.5 stair behaviour
 	return
-		m_pLevel->getTile(tileX, tileY + 0, tileZ) == Tile::ladder->id || 
-		m_pLevel->getTile(tileX, tileY + 1, tileZ) == Tile::ladder->id;
+		level->getTile(tileX, tileY + 0, tileZ) == Tile::ladder->id || 
+		level->getTile(tileX, tileY + 1, tileZ) == Tile::ladder->id;
 }
 
 void Mob::spawnAnim()
@@ -390,50 +390,50 @@ HitResult Mob::pick(float f1, float f2)
 	Vec3 view = getViewVector(f2);
 
 	Vec3 limit = pos + view * f1;
-	return m_pLevel->clip(pos, limit);
+	return level->clip(pos, limit);
 }
 
 void Mob::travel(float a2, float a3)
 {
-	float x1, x2, dragFactor, oldYPos = m_pos.y;
+	float x1, x2, dragFactor, oldYPos = pos.y;
 	if (isInWater())
 	{
 		moveRelative(a2, a3, 0.02f);
-		move(m_vel.x, m_vel.y, m_vel.z);
+		move(vel.x, vel.y, vel.z);
 		x1 = 0.8f;
 		goto label_3;
 	}
 	if (isInLava())
 	{
 		moveRelative(a2, a3, 0.02f);
-		move(m_vel.x, m_vel.y, m_vel.z);
+		move(vel.x, vel.y, vel.z);
 		x1 = 0.5f;
 	label_3:
 
-		m_vel.y = m_vel.y * x1 - 0.02f;
-		m_vel.x *= x1;
-		m_vel.z *= x1;
+		vel.y = vel.y * x1 - 0.02f;
+		vel.x *= x1;
+		vel.z *= x1;
 
-		if (field_7D)
+		if (horizontalCollision)
 		{
-			if (isFree(m_vel.x, m_vel.y + 0.6f - m_pos.y + oldYPos, m_vel.z))
-				m_vel.y = 0.3f;
+			if (isFree(vel.x, vel.y + 0.6f - pos.y + oldYPos, vel.z))
+				vel.y = 0.3f;
 		}
 
 		return;
 	}
 
-	if (!field_7C)
+	if (!onGround)
 	{
 		x2 = 0.02f;
 	}
 	else
 	{
 		float _x1;
-		int tileX = Mth::floor(m_pos.x);
-		int tileY = Mth::floor(m_hitbox.min.y);
-		int tileZ = Mth::floor(m_pos.z);
-		TileID tile = m_pLevel->getTile(tileX, tileY - 1, tileZ);
+		int tileX = Mth::floor(pos.x);
+		int tileY = Mth::floor(bb.min.y);
+		int tileZ = Mth::floor(pos.z);
+		TileID tile = level->getTile(tileX, tileY - 1, tileZ);
 		if (tile <= 0)
 			_x1 = 0.546f;
 		else
@@ -446,17 +446,17 @@ void Mob::travel(float a2, float a3)
 
 	moveRelative(a2, a3, x2);
 
-	if (!field_7C)
+	if (!onGround)
 	{
 		dragFactor = 0.91f;
 	}
 	else
 	{
 		//@HUH: repeated code. Could be an inlined function?
-		int tileX = Mth::floor(m_pos.x);
-		int tileY = Mth::floor(m_hitbox.min.y);
-		int tileZ = Mth::floor(m_pos.z);
-		TileID tile = m_pLevel->getTile(tileX, tileY - 1, tileZ);
+		int tileX = Mth::floor(pos.x);
+		int tileY = Mth::floor(bb.min.y);
+		int tileZ = Mth::floor(pos.z);
+		TileID tile = level->getTile(tileX, tileY - 1, tileZ);
 		if (tile <= 0)
 			dragFactor = 0.546f;
 		else
@@ -465,26 +465,25 @@ void Mob::travel(float a2, float a3)
 
 	if (onLadder())
 	{
+		fallDistance = 0.0f;
 
-		m_distanceFallen = 0.0f;
+		if (vel.y < -0.15f)
+			vel.y = -0.15f;
 
-		if (m_vel.y < -0.15f)
-			m_vel.y = -0.15f;
-
-		if (isSneaking() && m_vel.y < 0)
-			m_vel.y = 0;
+		if (isSneaking() && vel.y < 0)
+			vel.y = 0;
 	}
 
-	move(m_vel.x, m_vel.y, m_vel.z);
+	move(vel.x, vel.y, vel.z);
 
-	if (field_7D && onLadder())
-		m_vel.y = 0.2f;
+	if (horizontalCollision && onLadder())
+		vel.y = 0.2f;
 
-	m_vel.y = (m_vel.y - 0.08f) * 0.98f; // gravity?
+	vel.y = (vel.y - 0.08f) * 0.98f; // gravity?
 
 	// drag
-	m_vel.x *= dragFactor;
-	m_vel.z *= dragFactor;
+	vel.x *= dragFactor;
+	vel.z *= dragFactor;
 }
 
 void Mob::die(Entity* pCulprit)
@@ -494,26 +493,26 @@ void Mob::die(Entity* pCulprit)
 
 	field_B69 = true;
 
-	if (!m_pLevel->field_11)
+	if (!level->field_11)
 		dropDeathLoot();
 }
 
 bool Mob::canSee(Entity* pEnt)
 {
-	Vec3 v1 = m_pos;
+	Vec3 v1 = pos;
 	v1.y += getHeadHeight();
-	Vec3 v2 = pEnt->m_pos;
+	Vec3 v2 = pEnt->pos;
 	v2.y += pEnt->getHeadHeight();
 
-	return m_pLevel->clip(v1, v2).m_hitType == HitResult::NONE;
+	return level->clip(v1, v2).m_hitType == HitResult::NONE;
 }
 
 void Mob::updateWalkAnim()
 {
 	field_128 = field_12C;
 
-	float diffX = m_pos.x - field_3C.x;
-	float diffZ = m_pos.z - field_3C.z;
+	float diffX = pos.x - posO.x;
+	float diffZ = pos.z - posO.z;
 
 	float spd = 4.0f * Mth::sqrt(diffX * diffX + diffZ * diffZ);
 	if (spd > 1.0f)
@@ -541,8 +540,8 @@ void Mob::aiStep()
 	if (field_B0C)
 	{
 		if (bIsInWater || bIsInLava)
-			m_vel.y += 0.04f;
-		else if (field_7C)
+			vel.y += 0.04f;
+		else if (onGround)
 			jumpFromGround();
 	}
 
@@ -552,10 +551,10 @@ void Mob::aiStep()
 
 	travel(field_B00, field_B04);
 
-	AABB aabb = m_hitbox;
+	AABB aabb = bb;
 	aabb.grow(0.2f, 0.2f, 0.2f);
 
-	auto pEnts = m_pLevel->getEntities(this, aabb);
+	auto pEnts = level->getEntities(this, aabb);
 	for (auto pEnt : *pEnts)
 	{
 		if (pEnt->isPushable())
@@ -575,14 +574,14 @@ void Mob::superTick()
 
 void Mob::lookAt(Entity* pEnt, float a3, float a4)
 {
-	float diffX = pEnt->m_pos.x - m_pos.x;
-	float diffZ = pEnt->m_pos.z - m_pos.z;
+	float diffX = pEnt->pos.x - pos.x;
+	float diffZ = pEnt->pos.z - pos.z;
 
 	float x1 = atan2f(diffZ, diffX);
-	float x2 = atan2f((pEnt->m_hitbox.min.y + pEnt->m_hitbox.max.y) / 2 - m_pos.y - getHeadHeight(), Mth::sqrt(diffX * diffX + diffZ * diffZ));
+	float x2 = atan2f((pEnt->bb.min.y + pEnt->bb.max.y) / 2 - pos.y - getHeadHeight(), Mth::sqrt(diffX * diffX + diffZ * diffZ));
 
-	m_pitch = -rotlerp(m_pitch, x2 * 180.0f / float(M_PI), a4);
-	m_yaw = rotlerp(m_yaw, x1 * 180.0f / float(M_PI) - 90.0f, a3);
+	xRot = -rotlerp(xRot, x2 * 180.0f / float(M_PI), a4);
+	yRot = rotlerp(yRot, x1 * 180.0f / float(M_PI) - 90.0f, a3);
 }
 
 bool Mob::isLookingAtAnEntity()
@@ -602,7 +601,7 @@ void Mob::beforeRemove()
 
 bool Mob::canSpawn()
 {
-	return m_pLevel->getCubes(this, m_hitbox)->empty();
+	return level->getCubes(this, bb)->empty();
 }
 
 float Mob::getAttackAnim(float f)
@@ -618,12 +617,12 @@ float Mob::getAttackAnim(float f)
 Vec3 Mob::getPos(float f)
 {
 	if (f == 1.0f)
-		return m_pos;
+		return pos;
 
 	return Vec3(
-		Lerp(field_3C.x, m_pos.x, f),
-		Lerp(field_3C.y, m_pos.y, f),
-		Lerp(field_3C.z, m_pos.z, f)
+		Lerp(posO.x, pos.x, f),
+		Lerp(posO.y, pos.y, f),
+		Lerp(posO.z, pos.z, f)
 	);
 }
 
@@ -639,15 +638,15 @@ Vec3 Mob::getViewVector(float f)
 	
 	if (f == 1.0)
 	{
-		float x1 = Mth::cos(-(m_yaw * C_180_OVER_PI) - C_PI);
-		float x2 = Mth::sin(-(m_yaw * C_180_OVER_PI) - C_PI);
-		float x3 = -Mth::cos(-(m_pitch * C_180_OVER_PI));
+		float x1 = Mth::cos(-(yRot * C_180_OVER_PI) - C_PI);
+		float x2 = Mth::sin(-(yRot * C_180_OVER_PI) - C_PI);
+		float x3 = -Mth::cos(-(xRot * C_180_OVER_PI));
 
-		return Vec3(x1 * x3, Mth::sin(-(m_pitch * C_180_OVER_PI)), x2 * x3);
+		return Vec3(x1 * x3, Mth::sin(-(xRot * C_180_OVER_PI)), x2 * x3);
 	}
 
-	float x1 = field_60 + (m_pitch - field_60) * f;
-	float x2 = -((field_5C + (m_yaw - field_5C) * f) * C_180_OVER_PI) - C_PI;
+	float x1 = xRotO + (xRot - xRotO) * f;
+	float x2 = -((yRotO + (yRot - yRotO) * f) * C_180_OVER_PI) - C_PI;
 	float x3 = Mth::cos(x2);
 	float x4 = Mth::sin(x2);
 	float x5 = -(x1 * C_180_OVER_PI);
@@ -688,7 +687,7 @@ bool Mob::isImmobile()
 
 void Mob::jumpFromGround()
 {
-	m_vel.y = 0.42f;
+	vel.y = 0.42f;
 }
 
 void Mob::updateAi()

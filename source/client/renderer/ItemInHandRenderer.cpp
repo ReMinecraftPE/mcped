@@ -157,11 +157,11 @@ void ItemInHandRenderer::render(float f)
 
 	float f1 = field_20 + (field_1C - field_20) * f;
 	glPushMatrix();
-	glRotatef(pLP->field_60 + (pLP->m_pitch - pLP->field_60) * f, 1.0f, 0.0f, 0.0f);
-	glRotatef(pLP->field_5C + (pLP->m_yaw   - pLP->field_5C) * f, 0.0f, 1.0f, 0.0f);
+	glRotatef(pLP->xRotO + (pLP->xRot - pLP->xRotO) * f, 1.0f, 0.0f, 0.0f);
+	glRotatef(pLP->yRotO + (pLP->yRot - pLP->yRotO) * f, 0.0f, 1.0f, 0.0f);
 	glPopMatrix();//huh?
 
-	float fBright = m_pMinecraft->m_pLevel->getBrightness(Mth::floor(pLP->m_pos.x), Mth::floor(pLP->m_pos.y), Mth::floor(pLP->m_pos.z));
+	float fBright = m_pMinecraft->m_pLevel->getBrightness(Mth::floor(pLP->pos.x), Mth::floor(pLP->pos.y), Mth::floor(pLP->pos.z));
 	glColor4f(fBright, fBright, fBright, 1.0f);
 
 	if (m_ItemInstance.m_itemID <= 0)
@@ -318,9 +318,9 @@ void ItemInHandRenderer::renderScreenEffect(float f)
 
 	if (m_pMinecraft->m_pLocalPlayer->isInWall())
 	{
-		int fx = Mth::floor(m_pMinecraft->m_pLocalPlayer->m_pos.x);
-		int fy = Mth::floor(m_pMinecraft->m_pLocalPlayer->m_pos.y);
-		int fz = Mth::floor(m_pMinecraft->m_pLocalPlayer->m_pos.z);
+		int fx = Mth::floor(m_pMinecraft->m_pLocalPlayer->pos.x);
+		int fy = Mth::floor(m_pMinecraft->m_pLocalPlayer->pos.y);
+		int fz = Mth::floor(m_pMinecraft->m_pLocalPlayer->pos.z);
 		m_pMinecraft->m_pTextures->loadAndBindTexture(C_TERRAIN_NAME);
 		
 		Tile* pTile = Tile::tiles[m_pMinecraft->m_pLevel->getTile(fx, fy, fz)];

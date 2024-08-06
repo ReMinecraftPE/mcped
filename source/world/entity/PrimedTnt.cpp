@@ -15,7 +15,7 @@ PrimedTnt::PrimedTnt(Level* level) : Entity(level)
 	field_C8 = RENDER_TNT;
 	field_34 = 1;
 	setSize(0.98f, 0.98f);
-	field_84 = field_8C * 0.5f;
+	heightOffset = bbHeight * 0.5f;
 }
 
 PrimedTnt::PrimedTnt(Level* level, float x, float y, float z) : PrimedTnt(level)
@@ -24,11 +24,11 @@ PrimedTnt::PrimedTnt(Level* level, float x, float y, float z) : PrimedTnt(level)
 
 	float fAng = 0.017453f * 2.0f * float(M_PI) * Mth::random();
 
-	m_vel.x = -0.02f * Mth::sin(fAng);
-	m_vel.z = -0.02f * Mth::cos(fAng);
-	m_vel.y = 0.2f;
+	vel.x = -0.02f * Mth::sin(fAng);
+	vel.z = -0.02f * Mth::cos(fAng);
+	vel.y = 0.2f;
 
-	field_3C = m_pos;
+	posO = pos;
 
 	m_fuseTimer = 80; // 4 secs
 }
@@ -36,7 +36,7 @@ PrimedTnt::PrimedTnt(Level* level, float x, float y, float z) : PrimedTnt(level)
 void PrimedTnt::explode()
 {
 	// @NOTE: Not passing `this` as pointer to entity
-	m_pLevel->explode(nullptr, m_pos.x, m_pos.y, m_pos.z, 2.5f);
+	level->explode(nullptr, pos.x, pos.y, pos.z, 2.5f);
 }
 
 float PrimedTnt::getShadowHeightOffs()
@@ -46,22 +46,22 @@ float PrimedTnt::getShadowHeightOffs()
 
 bool PrimedTnt::isPickable()
 {
-	return !m_bRemoved;
+	return !removed;
 }
 
 void PrimedTnt::tick()
 {
-	field_3C = m_pos;
+	posO = pos;
 
-	m_vel.y -= 0.04f;
-	move(m_vel.x, m_vel.y, m_vel.z);
+	vel.y -= 0.04f;
+	move(vel.x, vel.y, vel.z);
 
-	m_vel *= 0.98f;
-	if (field_7C)
+	vel *= 0.98f;
+	if (onGround)
 	{
-		m_vel.x *= 0.7f;
-		m_vel.z *= 0.7f;
-		m_vel.y *= -0.5f;
+		vel.x *= 0.7f;
+		vel.z *= 0.7f;
+		vel.y *= -0.5f;
 	}
 
 	m_fuseTimer--;
@@ -72,6 +72,6 @@ void PrimedTnt::tick()
 	}
 	else
 	{
-		m_pLevel->addParticle("smoke", m_pos.x, m_pos.y + 0.5f, m_pos.z, 0.0f, 0.0f, 0.0f);
+		level->addParticle("smoke", pos.x, pos.y + 0.5f, pos.z, 0.0f, 0.0f, 0.0f);
 	}
 }

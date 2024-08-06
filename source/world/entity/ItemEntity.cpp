@@ -17,7 +17,7 @@ ItemEntity::ItemEntity(Level* level) : Entity(level)
 	// @NOTE: not setting render type
 	field_E8 = 2 * float(M_PI) * Mth::random();
 	setSize(0.25f, 0.25f);
-	field_84 = field_8C * 0.5f;
+	heightOffset = bbHeight * 0.5f;
 }
 
 ItemEntity::ItemEntity(Level* level, float x, float y, float z, ItemInstance* itemInstance) :
@@ -29,7 +29,7 @@ ItemEntity::ItemEntity(Level* level, float x, float y, float z, ItemInstance* it
 	field_C8 = RENDER_ITEM;
 	field_E8 = 2 * float(M_PI) * Mth::random();
 	setSize(0.25f, 0.25f);
-	field_84 = field_8C * 0.5f;
+	heightOffset = bbHeight * 0.5f;
 	setPos(x, y, z);
 
 	// @BUG: Keeping a pointer to the original ItemInstance may end up storing an invalid one
@@ -40,11 +40,11 @@ ItemEntity::ItemEntity(Level* level, float x, float y, float z, ItemInstance* it
 	m__itemInstance = *itemInstance;
 #endif
 
-	m_yaw = 360.0f * Mth::random();
+	yRot = 360.0f * Mth::random();
 
-	m_vel.y = 0.2f;
-	m_vel.x = Mth::random() * 0.2f - 0.1f;
-	m_vel.z = Mth::random() * 0.2f - 0.1f;
+	vel.y = 0.2f;
+	vel.x = Mth::random() * 0.2f - 0.1f;
+	vel.z = Mth::random() * 0.2f - 0.1f;
 }
 
 void ItemEntity::burn(int damage)
@@ -64,7 +64,7 @@ bool ItemEntity::hurt(Entity* pCulprit, int damage)
 
 bool ItemEntity::isInWater()
 {
-	return m_pLevel->checkAndHandleWater(m_hitbox, Material::water, this);
+	return level->checkAndHandleWater(bb, Material::water, this);
 }
 
 void ItemEntity::playerTouch(Player* player)
@@ -91,37 +91,37 @@ void ItemEntity::tick()
 	if (field_E4 > 0)
 		field_E4--;
 
-	field_3C = m_pos;
-	m_vel.y -= 0.04f;
+	posO = pos;
+	vel.y -= 0.04f;
 
-	if (m_pLevel->getMaterial(Mth::floor(m_pos.x), Mth::floor(m_pos.y), Mth::floor(m_pos.z)) == Material::lava)
+	if (level->getMaterial(Mth::floor(pos.x), Mth::floor(pos.y), Mth::floor(pos.z)) == Material::lava)
 	{
 		// give it a small bounce upwards
-		m_vel.y = 0.2f;
-		m_vel.x = 0.2f * (sharedRandom.nextFloat() - sharedRandom.nextFloat());
-		m_vel.z = 0.2f * (sharedRandom.nextFloat() - sharedRandom.nextFloat());
+		vel.y = 0.2f;
+		vel.x = 0.2f * (sharedRandom.nextFloat() - sharedRandom.nextFloat());
+		vel.z = 0.2f * (sharedRandom.nextFloat() - sharedRandom.nextFloat());
 	}
 
-	checkInTile(m_pos.x, m_pos.y, m_pos.z);
+	checkInTile(pos.x, pos.y, pos.z);
 
-	move(m_vel.x, m_vel.y, m_vel.z);
+	move(vel.x, vel.y, vel.z);
 
 	float dragFactor = 0.98f;
 
-	if (field_7C)
+	if (onGround)
 	{
 		dragFactor = 0.588f;
-		TileID tile = m_pLevel->getTile(Mth::floor(m_pos.x), Mth::floor(m_hitbox.min.y) - 1, Mth::floor(m_pos.z));
+		TileID tile = level->getTile(Mth::floor(pos.x), Mth::floor(bb.min.y) - 1, Mth::floor(pos.z));
 		if (tile > 0)
 			dragFactor = Tile::tiles[tile]->friction * 0.98f;
 	}
 
-	m_vel.x *= dragFactor;
-	m_vel.z *= dragFactor;
-	m_vel.y *= 0.98f;
+	vel.x *= dragFactor;
+	vel.z *= dragFactor;
+	vel.y *= 0.98f;
 
-	if (field_7C)
-		m_vel.y *= -0.5f;
+	if (onGround)
+		vel.y *= -0.5f;
 
 	field_EC++;
 	field_E0++;
@@ -137,15 +137,15 @@ void ItemEntity::checkInTile(float x, float y, float z)
 	int yfl = Mth::floor(y);
 	int zfl = Mth::floor(z);
 
-	if (!Tile::solid[m_pLevel->getTile(xfl, yfl, zfl)])
+	if (!Tile::solid[level->getTile(xfl, yfl, zfl)])
 		return;
 	
-	bool solidXN = Tile::solid[m_pLevel->getTile(xfl - 1, yfl, zfl)];
-	bool solidXP = Tile::solid[m_pLevel->getTile(xfl + 1, yfl, zfl)];
-	bool solidYN = Tile::solid[m_pLevel->getTile(xfl, yfl - 1, zfl)];
-	bool solidYP = Tile::solid[m_pLevel->getTile(xfl, yfl + 1, zfl)];
-	bool solidZN = Tile::solid[m_pLevel->getTile(xfl, yfl, zfl - 1)];
-	bool solidZP = Tile::solid[m_pLevel->getTile(xfl, yfl, zfl + 1)];
+	bool solidXN = Tile::solid[level->getTile(xfl - 1, yfl, zfl)];
+	bool solidXP = Tile::solid[level->getTile(xfl + 1, yfl, zfl)];
+	bool solidYN = Tile::solid[level->getTile(xfl, yfl - 1, zfl)];
+	bool solidYP = Tile::solid[level->getTile(xfl, yfl + 1, zfl)];
+	bool solidZN = Tile::solid[level->getTile(xfl, yfl, zfl - 1)];
+	bool solidZP = Tile::solid[level->getTile(xfl, yfl, zfl + 1)];
 
 	float mindist = 9999.0f;
 	int mindir = -1;
@@ -164,11 +164,11 @@ void ItemEntity::checkInTile(float x, float y, float z)
 	float force = 0.1f + 0.2f * sharedRandom.nextFloat();
 	switch (mindir)
 	{
-		case 0: m_vel.x = -force; break;
-		case 1: m_vel.x =  force; break;
-		case 2: m_vel.y = -force; break;
-		case 3: m_vel.y =  force; break;
-		case 4: m_vel.z = -force; break;
-		case 5: m_vel.z =  force; break;
+		case 0: vel.x = -force; break;
+		case 1: vel.x =  force; break;
+		case 2: vel.y = -force; break;
+		case 3: vel.y =  force; break;
+		case 4: vel.z = -force; break;
+		case 5: vel.z =  force; break;
 	}
 }

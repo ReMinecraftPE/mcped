@@ -32,7 +32,7 @@ enum eEntityRenderType
 
 struct EntityPos
 {
-	Vec3 m_pos;
+	Vec3 pos;
 	float m_yaw = 0, m_pitch = 0;
 	bool m_bHasRot = false, m_bHasPos = false;
 
@@ -40,7 +40,7 @@ struct EntityPos
 
 	EntityPos(const Vec3& pos)
 	{
-		m_pos = pos;
+		this->pos = pos;
 		m_bHasPos = true;
 	}
 
@@ -53,7 +53,7 @@ struct EntityPos
 
 	EntityPos(const Vec3& pos, float yaw, float pitch)
 	{
-		m_pos = pos;
+		this->pos = pos;
 		m_yaw = yaw;
 		m_pitch = pitch;
 		m_bHasPos = true;
@@ -67,9 +67,9 @@ public:
 	Entity(Level*);
 	virtual ~Entity();
 	virtual void setLevel(Level*);
-	virtual void removed();
-	virtual void setPos(float x, float y, float z);
+
 	virtual void remove();
+	virtual void setPos(float x, float y, float z);
 	virtual int move(float x, float y, float z);
 	virtual void moveTo(float x, float y, float z, float yaw, float pitch);
 	virtual void absMoveTo(float x, float y, float z, float yaw, float pitch);
@@ -135,63 +135,63 @@ public:
 	float distanceToSqr_inline(float x, float y, float z) const
 	{
 		return
-			(m_pos.x - x) * (m_pos.x - x) +
-			(m_pos.y - y) * (m_pos.y - y) +
-			(m_pos.z - z) * (m_pos.z - z);
+			(pos.x - x) * (pos.x - x) +
+			(pos.y - y) * (pos.y - y) +
+			(pos.z - z) * (pos.z - z);
 	}
 
 public:
 	static int entityCounter;
 	static Random sharedRandom;
 
-	Vec3 m_pos;
-	bool m_bInAChunk = false;
-	int m_chunkX = 0;
-	int m_chunkY = 0;
-	int m_chunkZ = 0;
-	int field_20 = 0;
-	int field_24 = 0;
-	int field_28 = 0;
-	int m_EntityID;
-	float field_30 = 1.0f;
+	Vec3 pos;
+	bool inChunk = false;
+	int xChunk = 0;
+	int yChunk = 0;
+	int zChunk = 0;
+	int xp = 0;
+	int yp = 0;
+	int zp = 0;
+	int entityId;
+	float viewScale = 1.0f;
 	uint8_t field_34 = 0;
-	Level* m_pLevel = nullptr;
-	Vec3 field_3C;
-	Vec3 m_vel;
-	float m_yaw   = 0.0f;
-	float m_pitch = 0.0f;
+	Level* level = nullptr;
+	Vec3 posO;
+	Vec3 vel;
+	float yRot = 0.0f;
+	float xRot = 0.0f;
 	//maybe these are the actual m_yaw and m_pitch, and
 	//the one I annotated are the destination yaw and pitch.
 	//interpolateTurn doesn't modify them, so I highly suspect
 	//this to be the case.
-	float field_5C = 0.0f;
-	float field_60 = 0.0f;
-	AABB m_hitbox;
-	bool field_7C = false;
-	bool field_7D = false;
-	bool field_7E = false;
-	bool field_7F = false;
-	bool m_bHurt = false;
-	uint8_t field_81 = 1;
-	bool m_bRemoved = false;
-	float field_84 = 0.0f;
-	float field_88 = 0.6f;
-	float field_8C = 1.8f;
-	float field_90 = 0.0f;
-	float field_94 = 0.0f;
-	Vec3 field_98;
-	float field_A4 = 0.0f;
-	float field_A8 = 0.0f;
-	bool m_bNoCollision = false;
-	float field_B0 = 0.0f;
-	int field_B4 = 0;
+	float yRotO = 0.0f;
+	float xRotO = 0.0f;
+	AABB bb;
+	bool onGround = false;
+	bool horizontalCollision = false;
+	bool verticalCollision = false;
+	bool collision = false;
+	bool hurtMarked = false;
+	bool slide = true;
+	bool removed = false;
+	float heightOffset = 0.0f;
+	float bbWidth = 0.6f;
+	float bbHeight = 1.8f;
+	float walkDistO = 0.0f;
+	float walkDist = 0.0f;
+	Vec3 posOld;
+	float ySlideOffset = 0.0f;
+	float footSize = 0.0f;
+	bool noPhysics = false;
+	float pushthrough = 0.0f;
+	int tickCount = 0;
 	int field_B8 = 0;
-	int field_BC = 300;
-	int field_C0 = 0;
-	int field_C4;
+	int airSupply = 300;
+	int onFire = 0;
+	int flameTime;
 	int field_C8 = 0;  // @NOTE: Render type? (eEntityRenderType)
-	float m_distanceFallen = 0.0f;
-	int field_D0 = 300;
+	float fallDistance = 0.0f;
+	int airCapacity = 300;
 	uint8_t field_D4 = 0;
 	bool field_D5 = false;
 	bool field_D6 = true;

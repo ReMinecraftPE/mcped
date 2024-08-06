@@ -15,16 +15,16 @@ int Chunk::updates;
 
 float Chunk::distanceToSqr(const Entity* pEnt) const
 {
-	float dX = pEnt->m_pos.x - float(m_pos2.x);
-	float dY = pEnt->m_pos.y - float(m_pos2.y);
-	float dZ = pEnt->m_pos.z - float(m_pos2.z);
+	float dX = pEnt->pos.x - float(m_pos2.x);
+	float dY = pEnt->pos.y - float(m_pos2.y);
+	float dZ = pEnt->pos.z - float(m_pos2.z);
 	return dX * dX + dY * dY + dZ * dZ;
 }
 float Chunk::squishedDistanceToSqr(const Entity* pEnt) const
 {
-	float dX = pEnt->m_pos.x - float(m_pos2.x);
-	float dY = pEnt->m_pos.y - float(m_pos2.y);
-	float dZ = pEnt->m_pos.z - float(m_pos2.z);
+	float dX = pEnt->pos.x - float(m_pos2.x);
+	float dY = pEnt->pos.y - float(m_pos2.y);
+	float dZ = pEnt->pos.z - float(m_pos2.z);
 
 	dY *= 2;
 

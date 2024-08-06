@@ -11,9 +11,9 @@
 FlameParticle::FlameParticle(Level* level, float x, float y, float z, float vx, float vy, float vz) :
 	Particle(level, x, y, z, vx, vy, vz)
 {
-	m_vel.x = m_vel.x * 0.01f + vx;
-	m_vel.y = m_vel.y * 0.01f + vy;
-	m_vel.z = m_vel.z * 0.01f + vz;
+	vel.x = vel.x * 0.01f + vx;
+	vel.y = vel.y * 0.01f + vy;
+	vel.z = vel.z * 0.01f + vz;
 
 	// @NOTE: Useless genrand_int32 calls. Will keep them in to keep consistent
 	sharedRandom.genrand_int32();
@@ -36,20 +36,20 @@ float FlameParticle::getBrightness(float unused)
 
 void FlameParticle::tick()
 {
-	field_3C = m_pos;
+	posO = pos;
 
 	field_E8++;
 	if (field_E8 > field_EC)
 		remove();
 
-	move(m_vel.x, m_vel.y, m_vel.z);
+	move(vel.x, vel.y, vel.z);
 
-	m_vel *= 0.96f;
+	vel *= 0.96f;
 
-	if (field_7C)
+	if (onGround)
 	{
-		m_vel.x *= 0.7f;
-		m_vel.z *= 0.7f;
+		vel.x *= 0.7f;
+		vel.z *= 0.7f;
 	}
 }
 

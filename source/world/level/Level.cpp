@@ -276,7 +276,7 @@ Entity* Level::getEntity(int id)
 {
 	for (auto pEnt : m_entities)
 	{
-		if (pEnt->m_EntityID == id)
+		if (pEnt->entityId == id)
 			return pEnt;
 	}
 
@@ -716,7 +716,7 @@ std::vector<LightUpdate>* Level::getLightsToUpdate()
 
 Entity* Level::getNearestPlayer(Entity* entity, float f)
 {
-	return getNearestPlayer(entity->m_pos.x, entity->m_pos.y, entity->m_pos.z, f);
+	return getNearestPlayer(entity->pos.x, entity->pos.y, entity->pos.z, f);
 }
 
 Entity* Level::getNearestPlayer(float x, float y, float z, float maxDist)
@@ -870,9 +870,9 @@ bool Level::checkAndHandleWater(const AABB& aabb, const Material* pMtl, Entity* 
 
 	if (sqrtf(v.x * v.x + v.y * v.y + v.z * v.z) > 0.0f)
 	{
-		pEnt->m_vel.x += v.x * 0.004f;
-		pEnt->m_vel.y += v.y * 0.004f;
-		pEnt->m_vel.z += v.z * 0.004f;
+		pEnt->vel.x += v.x * 0.004f;
+		pEnt->vel.y += v.y * 0.004f;
+		pEnt->vel.z += v.z * 0.004f;
 	}
 
 	return bInWater;
@@ -1007,10 +1007,10 @@ void Level::removeAllPendingEntityRemovals()
 
 	for (auto ent : m_pendingEntityRemovals)
 	{
-		ent->removed();
+		ent->remove();
 
-		if (hasChunk(ent->m_chunkX, ent->m_chunkZ))
-			getChunk(ent->m_chunkX, ent->m_chunkZ)->removeEntity(ent);
+		if (hasChunk(ent->xChunk, ent->zChunk))
+			getChunk(ent->xChunk, ent->zChunk)->removeEntity(ent);
 
 		entityRemoved(ent);
 
@@ -1042,8 +1042,8 @@ bool Level::addEntity(Entity* pEnt)
 		removeEntity(pOldEnt);
 
 	//@NOTE: useless Mth::floor() calls
-	Mth::floor(pEnt->m_pos.x / 16);
-	Mth::floor(pEnt->m_pos.z / 16);
+	Mth::floor(pEnt->pos.x / 16);
+	Mth::floor(pEnt->pos.z / 16);
 
 	//@NOTE: double check. Looks like someone just hacked it in
 	//@BUG: Camera doesn't work. This might be a side effect of having a demo mode?
@@ -1194,8 +1194,8 @@ Vec3 Level::getSkyColor(Entity* pEnt, float f)
 		result.z = 1.0f;
 
 	// @NOTE: Unused result. In JE, it tries to get the biome that the player is standing in.
-	Mth::floor(pEnt->m_pos.x);
-	Mth::floor(pEnt->m_pos.z);
+	Mth::floor(pEnt->pos.x);
+	Mth::floor(pEnt->pos.z);
 
 	result.x = result.z * 0.6f;
 	result.y = result.x;
@@ -1216,7 +1216,7 @@ bool Level::isUnobstructed(AABB* aabb)
 
 	for (auto pEnt : *entities)
 	{
-		if (pEnt->m_bRemoved)
+		if (pEnt->removed)
 			continue;
 
 		if (!pEnt->field_34)
@@ -1299,8 +1299,8 @@ void Level::tickTiles()
 
 	for (auto player : m_players)
 	{
-		int chkX = Mth::floor(player->m_pos.x / 16.0f);
-		int chkZ = Mth::floor(player->m_pos.z / 16.0f);
+		int chkX = Mth::floor(player->pos.x / 16.0f);
+		int chkZ = Mth::floor(player->pos.z / 16.0f);
 
 		for (int x = -C_TICK_DISTANCE_CHKS; x <= C_TICK_DISTANCE_CHKS; x++)
 		{
@@ -1334,52 +1334,52 @@ void Level::tickTiles()
 
 void Level::tick(Entity* pEnt, bool b)
 {
-	int tileX = Mth::floor(pEnt->m_pos.x), tileZ = Mth::floor(pEnt->m_pos.z);
+	int tileX = Mth::floor(pEnt->pos.x), tileZ = Mth::floor(pEnt->pos.z);
 
 	if (b)
 	{
 		if (!hasChunksAt(tileX - 32, 0, tileZ - 32, tileX + 32, 128, tileZ + 32))
 		{
 #ifndef ORIGINAL_CODE
-			LogMsg("Not updating entity %d because we don't have chunks around it loaded", pEnt->m_EntityID);
+			LogMsg("Not updating entity %d because we don't have chunks around it loaded", pEnt->entityId);
 #endif
 			return;
 		}
 
-		pEnt->field_98 = pEnt->m_pos;
-		pEnt->field_5C = pEnt->m_yaw;
-		pEnt->field_60 = pEnt->m_pitch;
+		pEnt->posOld = pEnt->pos;
+		pEnt->yRotO = pEnt->yRot;
+		pEnt->xRotO = pEnt->xRot;
 
-		if (pEnt->m_bInAChunk)
+		if (pEnt->inChunk)
 			pEnt->tick();
 	}
 	else
 	{
-		pEnt->field_98 = pEnt->m_pos;
-		pEnt->field_5C = pEnt->m_yaw;
-		pEnt->field_60 = pEnt->m_pitch;
+		pEnt->posOld = pEnt->pos;
+		pEnt->yRotO = pEnt->yRot;
+		pEnt->xRotO = pEnt->xRot;
 	}
 
-	int chunkX = Mth::floor(pEnt->m_pos.x / 16);
-	int chunkY = Mth::floor(pEnt->m_pos.y / 16);
-	int chunkZ = Mth::floor(pEnt->m_pos.z / 16);
+	int chunkX = Mth::floor(pEnt->pos.x / 16);
+	int chunkY = Mth::floor(pEnt->pos.y / 16);
+	int chunkZ = Mth::floor(pEnt->pos.z / 16);
 
-	if (!pEnt->m_bInAChunk || chunkX != pEnt->m_chunkX || chunkY != pEnt->m_chunkY || chunkZ != pEnt->m_chunkZ)
+	if (!pEnt->inChunk || chunkX != pEnt->xChunk || chunkY != pEnt->yChunk || chunkZ != pEnt->zChunk)
 	{
 		// move the entity to the new chunk
-		if (pEnt->m_bInAChunk && hasChunk(pEnt->m_chunkX, pEnt->m_chunkZ))
+		if (pEnt->inChunk && hasChunk(pEnt->xChunk, pEnt->zChunk))
 		{
-			getChunk(pEnt->m_chunkX, pEnt->m_chunkZ)->removeEntity(pEnt);
+			getChunk(pEnt->xChunk, pEnt->zChunk)->removeEntity(pEnt);
 		}
 
 		if (hasChunk(chunkX, chunkZ))
 		{
-			pEnt->m_bInAChunk = true;
+			pEnt->inChunk = true;
 			getChunk(chunkX, chunkZ)->addEntity(pEnt);
 		}
 		else
 		{
-			pEnt->m_bInAChunk = false;
+			pEnt->inChunk = false;
 		}
 	}
 
@@ -1424,11 +1424,11 @@ void Level::tickEntities()
 		Entity* pEnt = m_entities[i];
 		tick(pEnt);
 
-		if (!pEnt->m_bRemoved)
+		if (!pEnt->removed)
 			continue;
 
-		if (pEnt->m_bInAChunk && hasChunk(pEnt->m_chunkX, pEnt->m_chunkZ))
-			getChunk(pEnt->m_chunkX, pEnt->m_chunkZ)->removeEntity(pEnt);
+		if (pEnt->inChunk && hasChunk(pEnt->xChunk, pEnt->zChunk))
+			getChunk(pEnt->xChunk, pEnt->zChunk)->removeEntity(pEnt);
 		
 		m_entities.erase(m_entities.begin() + i);
 		i--;
@@ -1838,7 +1838,7 @@ void Level::addParticle(const std::string& name, float a, float b, float c, floa
 void Level::playSound(Entity* entity, const std::string& name, float a, float b)
 {
 	for (auto pListener : m_levelListeners)
-		pListener->playSound(name, entity->m_pos.x, entity->m_pos.y - entity->field_84, entity->m_pos.z, a, b);
+		pListener->playSound(name, entity->pos.x, entity->pos.y - entity->heightOffset, entity->pos.z, a, b);
 }
 
 void Level::playSound(float x, float y, float z, const std::string& name, float a, float b)
@@ -1919,8 +1919,8 @@ void Level::addEntities(const std::vector<Entity*>& entities)
 // @UNUSED
 void Level::ensureAdded(Entity* entity)
 {
-	int chunkX = Mth::floor(entity->m_pos.x / 16.0f);
-	int chunkZ = Mth::floor(entity->m_pos.z / 16.0f);
+	int chunkX = Mth::floor(entity->pos.x / 16.0f);
+	int chunkZ = Mth::floor(entity->pos.z / 16.0f);
 
 	// force the chunk to be resolved
 	for (int x = chunkX - 2; x <= chunkX + 2; x++)
@@ -1950,9 +1950,9 @@ void Level::extinguishFire(int x, int y, int z, int dir)
 
 int Level::findPath(Entity* ent1, Entity* ent2, float f)
 {
-	int fx = Mth::floor(ent1->m_pos.x);
-	int fy = Mth::floor(ent1->m_pos.y);
-	int fz = Mth::floor(ent1->m_pos.z);
+	int fx = Mth::floor(ent1->pos.x);
+	int fy = Mth::floor(ent1->pos.y);
+	int fz = Mth::floor(ent1->pos.z);
 	Region reg(this, fx - int(f + 16), fy - int(f + 16), fz - int(f + 16), fx + int(f + 16), fy + int(f + 16), fz + int(f + 16));
 	// nothing more.
 	return 0;
@@ -1960,9 +1960,9 @@ int Level::findPath(Entity* ent1, Entity* ent2, float f)
 
 int Level::findPath(Entity* ent1, int dx, int dy, int dz, float f)
 {
-	int fx = Mth::floor(ent1->m_pos.x);
-	int fy = Mth::floor(ent1->m_pos.y);
-	int fz = Mth::floor(ent1->m_pos.z);
+	int fx = Mth::floor(ent1->pos.x);
+	int fy = Mth::floor(ent1->pos.y);
+	int fz = Mth::floor(ent1->pos.z);
 	Region reg(this, fx - int(f + 16), fy - int(f + 16), fz - int(f + 16), fx + int(f + 16), fy + int(f + 16), fz + int(f + 16));
 	// nothing more.
 	return 0;

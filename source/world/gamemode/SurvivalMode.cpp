@@ -16,7 +16,7 @@ SurvivalMode::SurvivalMode(Minecraft* pMC) : GameMode(pMC)
 
 void SurvivalMode::initPlayer(Player* p)
 {
-	p->m_yaw = -180.0;
+	p->yRot = -180.0f;
 }
 
 void SurvivalMode::startDestroyBlock(int x, int y, int z, int i)
@@ -61,7 +61,7 @@ bool SurvivalMode::destroyBlock(int x, int y, int z, int i)
 		
 		if (m_pMinecraft->isOnline())
 		{
-			m_pMinecraft->m_pRakNetInstance->send(new RemoveBlockPacket(m_pMinecraft->m_pLocalPlayer->m_EntityID, x, y, z));
+			m_pMinecraft->m_pRakNetInstance->send(new RemoveBlockPacket(m_pMinecraft->m_pLocalPlayer->entityId, x, y, z));
 		}
 	}
 

@@ -15,18 +15,18 @@ TripodCamera::TripodCamera(Level* level, Player* player, float x, float y, float
 	m_owner = player;
 	field_C8 = RENDER_CAMERA;
 
-	field_60 = m_pitch = player->m_pitch;
-	field_5C = m_yaw   = player->m_yaw;
+	xRotO = xRot = player->xRot;
+	yRotO = yRot = player->yRot;
 
 	field_34 = 1;
 
 	setSize(1.0f, 1.5f);
-	field_84 = field_8C * 0.5f - 0.25f;
+	heightOffset = bbHeight * 0.5f - 0.25f;
 	
 	setPos(x, y, z);
-	field_3C.x = x;
-	field_3C.y = y;
-	field_3C.z = z;
+	posO.x = x;
+	posO.y = y;
+	posO.z = z;
 }
 
 void TripodCamera::defineSynchedData()
@@ -53,7 +53,7 @@ int TripodCamera::interactPreventDefault()
 
 bool TripodCamera::isPickable()
 {
-	return !m_bRemoved;
+	return !removed;
 }
 
 bool TripodCamera::isPushable()
@@ -63,17 +63,17 @@ bool TripodCamera::isPushable()
 
 void TripodCamera::tick()
 {
-	field_3C = m_pos;
+	posO = pos;
 
-	m_vel.y -= 0.04f;
-	move(m_vel.x, m_vel.y, m_vel.z);
+	vel.y -= 0.04f;
+	move(vel.x, vel.y, vel.z);
 
-	m_vel *= 0.98f;
-	if (field_7C)
+	vel *= 0.98f;
+	if (onGround)
 	{
-		m_vel.x *= 0.7f;
-		m_vel.z *= 0.7f;
-		m_vel.y *= -0.5f;
+		vel.x *= 0.7f;
+		vel.z *= 0.7f;
+		vel.y *= -0.5f;
 	}
 
 	if (!m_bActive)
@@ -88,15 +88,15 @@ void TripodCamera::tick()
 
 	if (field_B90 == 8)
 	{
-		m_pLevel->takePicture(this, m_owner);
-		m_pLevel->addParticle("explode", m_pos.x, m_pos.y + 0.6f, m_pos.z, 0.0f, 0.0f, 0.0f);
-		m_pLevel->addParticle("explode", m_pos.x, m_pos.y + 0.8f, m_pos.z, 0.0f, 0.0f, 0.0f);
-		m_pLevel->addParticle("explode", m_pos.x, m_pos.y + 1.0f, m_pos.z, 0.0f, 0.0f, 0.0f);
+		level->takePicture(this, m_owner);
+		level->addParticle("explode", pos.x, pos.y + 0.6f, pos.z, 0.0f, 0.0f, 0.0f);
+		level->addParticle("explode", pos.x, pos.y + 0.8f, pos.z, 0.0f, 0.0f, 0.0f);
+		level->addParticle("explode", pos.x, pos.y + 1.0f, pos.z, 0.0f, 0.0f, 0.0f);
 		return;
 	}
 
 	if (field_B90 > 8)
 	{
-		m_pLevel->addParticle("smoke", m_pos.x, m_pos.y + 1.0f, m_pos.z, 0.0f, 0.0f, 0.0f);
+		level->addParticle("smoke", pos.x, pos.y + 1.0f, pos.z, 0.0f, 0.0f, 0.0f);
 	}
 }

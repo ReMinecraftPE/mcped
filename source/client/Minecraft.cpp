@@ -261,7 +261,7 @@ label_3:
 					}
 				}
 
-				m_pRakNetInstance->send(new PlaceBlockPacket(m_pLocalPlayer->m_EntityID, dx, dy, dz, uint8_t(item.m_itemID), uint8_t(hr.m_hitSide)));
+				m_pRakNetInstance->send(new PlaceBlockPacket(m_pLocalPlayer->entityId, dx, dy, dz, uint8_t(item.m_itemID), uint8_t(hr.m_hitSide)));
 				return;
 			}
 		}
@@ -519,9 +519,9 @@ void Minecraft::tick()
 			if (m_pLocalPlayer)
 			{
 				m_pLevel->animateTick(
-					Mth::floor(m_pLocalPlayer->m_pos.x),
-					Mth::floor(m_pLocalPlayer->m_pos.y),
-					Mth::floor(m_pLocalPlayer->m_pos.z));
+					Mth::floor(m_pLocalPlayer->pos.x),
+					Mth::floor(m_pLocalPlayer->pos.y),
+					Mth::floor(m_pLocalPlayer->pos.z));
 			}
 		}
 
@@ -535,8 +535,8 @@ void Minecraft::tick()
 #ifndef ORIGINAL_CODE
 			if (m_pMobPersp)
 			{
-				m_pSoundEngine->m_soundSystem.setListenerPos(m_pMobPersp->m_pos.x, m_pMobPersp->m_pos.y, m_pMobPersp->m_pos.z);
-				m_pSoundEngine->m_soundSystem.setListenerAngle(m_pMobPersp->m_yaw, m_pMobPersp->m_pitch);
+				m_pSoundEngine->m_soundSystem.setListenerPos(m_pMobPersp->pos.x, m_pMobPersp->pos.y, m_pMobPersp->pos.z);
+				m_pSoundEngine->m_soundSystem.setListenerAngle(m_pMobPersp->yRot, m_pMobPersp->xRot);
 			}
 #endif
 

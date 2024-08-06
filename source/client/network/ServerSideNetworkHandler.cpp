@@ -63,7 +63,7 @@ void ServerSideNetworkHandler::onDisconnect(const RakNet::RakNetGUID& guid)
 
 		displayGameMessage(pPlayer->m_name + " disconnected from the game");
 
-		m_pRakNetInstance->send(new RemoveEntityPacket(pPlayer->m_EntityID));
+		m_pRakNetInstance->send(new RemoveEntityPacket(pPlayer->entityId));
 
 		m_pLevel->removeEntity(pPlayer);
 	}
@@ -83,10 +83,10 @@ void ServerSideNetworkHandler::handle(const RakNet::RakNetGUID& guid, LoginPacke
 	StartGamePacket sgp;
 	sgp.field_4 = m_pLevel->getSeed();
 	sgp.field_8 = m_pLevel->getLevelData()->field_20;
-	sgp.field_C = pPlayer->m_EntityID;
-	sgp.field_10 = pPlayer->m_pos.x;
-	sgp.field_14 = pPlayer->m_pos.y - pPlayer->field_84;
-	sgp.field_18 = pPlayer->m_pos.z;
+	sgp.field_C = pPlayer->entityId;
+	sgp.field_10 = pPlayer->pos.x;
+	sgp.field_14 = pPlayer->pos.y - pPlayer->heightOffset;
+	sgp.field_18 = pPlayer->pos.z;
 	
 	RakNet::BitStream sgpbs;
 	sgp.write(&sgpbs);
@@ -95,7 +95,7 @@ void ServerSideNetworkHandler::handle(const RakNet::RakNetGUID& guid, LoginPacke
 	// send the connecting player info about all other players in the world
 	for (Player* player : m_pLevel->m_players)
 	{
-		AddPlayerPacket app(player->m_guid, RakNet::RakString(player->m_name.c_str()), player->m_EntityID, player->m_pos.x, player->m_pos.y - player->field_84, player->m_pos.z);
+		AddPlayerPacket app(player->m_guid, RakNet::RakString(player->m_name.c_str()), player->entityId, player->pos.x, player->pos.y - player->heightOffset, player->pos.z);
 		RakNet::BitStream appbs;
 		app.write(&appbs);
 		m_pRakNetPeer->Send(&appbs, HIGH_PRIORITY, RELIABLE_ORDERED, 0, guid, false);
@@ -105,7 +105,7 @@ void ServerSideNetworkHandler::handle(const RakNet::RakNetGUID& guid, LoginPacke
 
 	m_pMinecraft->m_gui.addMessage(pPlayer->m_name + " joined the game");
 
-	AddPlayerPacket app(guid, RakNet::RakString(pPlayer->m_name.c_str()), pPlayer->m_EntityID, pPlayer->m_pos.x, pPlayer->m_pos.y - pPlayer->field_84, pPlayer->m_pos.z);
+	AddPlayerPacket app(guid, RakNet::RakString(pPlayer->m_name.c_str()), pPlayer->entityId, pPlayer->pos.x, pPlayer->pos.y - pPlayer->heightOffset, pPlayer->pos.z);
 	RakNet::BitStream appbs;
 	app.write(&appbs);
 	m_pRakNetPeer->Send(&appbs, HIGH_PRIORITY, RELIABLE_ORDERED, 0, guid, true);

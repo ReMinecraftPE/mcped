@@ -84,14 +84,14 @@ void ClientSideNetworkHandler::handle(const RakNet::RakNetGUID& rakGuid, StartGa
 
 	auto pLocalPlayer = new LocalPlayer(m_pMinecraft, m_pLevel, m_pMinecraft->m_pUser, m_pLevel->m_pDimension->field_50);
 	pLocalPlayer->m_guid = ((RakNet::RakPeer*)m_pServerPeer)->GetMyGUID();
-	pLocalPlayer->m_EntityID = pStartGamePkt->field_C;
+	pLocalPlayer->entityId = pStartGamePkt->field_C;
 	
 	pLocalPlayer->moveTo(
 		pStartGamePkt->field_10,
 		pStartGamePkt->field_14,
 		pStartGamePkt->field_18,
-		pLocalPlayer->m_yaw,
-		pLocalPlayer->m_pitch);
+		pLocalPlayer->yRot,
+		pLocalPlayer->xRot);
 
 	m_pMinecraft->setLevel(m_pLevel, "ClientSideNetworkHandler -> setLevel", pLocalPlayer);
 }
@@ -103,15 +103,15 @@ void ClientSideNetworkHandler::handle(const RakNet::RakNetGUID& rakGuid, AddPlay
 	if (!m_pLevel) return;
 
 	Player* pPlayer = new Player(m_pLevel);
-	pPlayer->m_EntityID = pAddPlayerPkt->m_id;
+	pPlayer->entityId = pAddPlayerPkt->m_id;
 	m_pLevel->addEntity(pPlayer);
 
 	pPlayer->moveTo(
 		pAddPlayerPkt->m_x,
 		pAddPlayerPkt->m_y,
 		pAddPlayerPkt->m_z,
-		pPlayer->m_yaw,
-		pPlayer->m_pitch);
+		pPlayer->yRot,
+		pPlayer->xRot);
 
 	pPlayer->m_name = pAddPlayerPkt->m_name;
 	pPlayer->m_guid = pAddPlayerPkt->m_guid;

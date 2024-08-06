@@ -29,9 +29,9 @@ LocalPlayer::~LocalPlayer()
 void LocalPlayer::aiStep()
 {
 	m_pKeyboardInput->tick(/* this */);
-	if (m_pKeyboardInput->m_bSneakButton && field_A4 < 0.2f)
+	if (m_pKeyboardInput->m_bSneakButton && ySlideOffset < 0.2f)
 	{
-		field_A4 = 0.2f;
+		ySlideOffset = 0.2f;
 	}
 
 	Mob::aiStep();
@@ -103,26 +103,26 @@ int LocalPlayer::move(float x, float y, float z)
 	if (Minecraft::DEADMAU5_CAMERA_CHEATS && pLP == this && m_pMinecraft->m_options.m_bFlyCheat)
 	{
 		//@HUH: Using m_pMinecraft->m_pLocalPlayer instead of this, even though they're the same
-		pLP->m_bNoCollision = true;
+		pLP->noPhysics = true;
 
-		float field_94_old = field_94;
+		float field_94_old = walkDist;
 
 		pLP->calculateFlight(x, y, z);
-		pLP->m_distanceFallen = 0.0f;
-		pLP->m_vel.y = 0.0f;
+		pLP->fallDistance = 0.0f;
+		pLP->vel.y = 0.0f;
 
 		// This looks very funny.
 		result = pLP->Entity::move(field_BF0, field_BF4, field_BF8);
 
-		pLP->field_7C = true;
+		pLP->onGround = true;
 
-		field_94 = field_94_old;
+		walkDist = field_94_old;
 	}
 	else
 	{
 #ifndef ORIGINAL_CODE
 		// @BUG: In the original Minecraft, you can't stop flying! If you do, you'll just fall through to the bottom of the world. :(
-		pLP->m_bNoCollision = false;
+		pLP->noPhysics = false;
 #endif
 
 		// autojump stuff
@@ -132,37 +132,37 @@ int LocalPlayer::move(float x, float y, float z)
 			m_pKeyboardInput->m_bJumpButton = true;
 		}
 
-		float posX = m_pos.x;
-		float posY = m_pos.y;
+		float posX = pos.x;
+		float posY = pos.y;
 
 		result = Entity::move(x, y, z);
 
 		//@BUG: backing up posZ too late
-		float posZ = m_pos.z;
+		float posZ = pos.z;
 
 		if (m_nAutoJumpFrames <= 0)
 		{
-			if (Mth::floor(posX * 2) == Mth::floor(m_pos.x * 2) &&
-				Mth::floor(posY * 2) == Mth::floor(m_pos.y * 2) &&
-				Mth::floor(posZ * 2) == Mth::floor(m_pos.z * 2))
+			if (Mth::floor(posX * 2) == Mth::floor(pos.x * 2) &&
+				Mth::floor(posY * 2) == Mth::floor(pos.y * 2) &&
+				Mth::floor(posZ * 2) == Mth::floor(pos.z * 2))
 				return result;
 
 			float dist = Mth::sqrt(x * x + z * z);
-			int x1 = Mth::floor(x / dist + m_pos.x);
-			int z1 = Mth::floor(z / dist + m_pos.z);
+			int x1 = Mth::floor(x / dist + pos.x);
+			int z1 = Mth::floor(z / dist + pos.z);
 
-			TileID tileOnTop = m_pLevel->getTile(x1, int(m_pos.y - 1.0f), z1);
+			TileID tileOnTop = level->getTile(x1, int(pos.y - 1.0f), z1);
 
 			// not standing on top of a tile?
-			if (!m_pLevel->isSolidTile(x1, int(m_pos.y - 1.0f), z1))
+			if (!level->isSolidTile(x1, int(pos.y - 1.0f), z1))
 				return 0;
 
 			// aren't inside of a tile right now
-			if (m_pLevel->isSolidTile(x1, int(m_pos.y), z1))
+			if (level->isSolidTile(x1, int(pos.y), z1))
 				return 0;
 
 			// don't have anything on top of us
-			if (m_pLevel->isSolidTile(x1, int(m_pos.y + 1.0f), z1))
+			if (level->isSolidTile(x1, int(pos.y + 1.0f), z1))
 				return 1;
 
 			// are we trying to walk into stairs or a slab?
@@ -181,24 +181,24 @@ void LocalPlayer::tick()
 
 	if (m_pMinecraft->isOnline())
 	{
-		if (fabsf(m_pos.x - field_C24) > 0.1f  ||
-			fabsf(m_pos.y - field_C28) > 0.01f ||
-			fabsf(m_pos.z - field_C2C) > 0.1f  ||
-			fabsf(field_C30 - m_pitch) > 1.0f  ||
-			fabsf(field_C34 - m_yaw) > 1.0f)
+		if (fabsf(pos.x - field_C24) > 0.1f  ||
+			fabsf(pos.y - field_C28) > 0.01f ||
+			fabsf(pos.z - field_C2C) > 0.1f  ||
+			fabsf(field_C30 - xRot) > 1.0f  ||
+			fabsf(field_C34 - yRot) > 1.0f)
 		{
-			m_pMinecraft->m_pRakNetInstance->send(new MovePlayerPacket(m_EntityID, m_pos.x, m_pos.y - field_84, m_pos.z, m_pitch, m_yaw));
-			field_C24 = m_pos.x;
-			field_C28 = m_pos.y;
-			field_C2C = m_pos.z;
-			field_C30 = m_pitch;
-			field_C34 = m_yaw;
+			m_pMinecraft->m_pRakNetInstance->send(new MovePlayerPacket(entityId, pos.x, pos.y - heightOffset, pos.z, xRot, yRot));
+			field_C24 = pos.x;
+			field_C28 = pos.y;
+			field_C2C = pos.z;
+			field_C30 = xRot;
+			field_C34 = yRot;
 		}
 
 		if (field_C38 != m_pInventory->getSelectedItemId())
 		{
 			field_C38 = m_pInventory->getSelectedItemId();
-			m_pMinecraft->m_pRakNetInstance->send(new PlayerEquipmentPacket(m_EntityID, field_C38));
+			m_pMinecraft->m_pRakNetInstance->send(new PlayerEquipmentPacket(entityId, field_C38));
 		}
 	}
 }

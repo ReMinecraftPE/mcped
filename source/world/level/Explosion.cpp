@@ -95,19 +95,19 @@ void Explosion::explode()
 		if (distPowerRatio > 1.0f)
 			continue;
 
-		float deltaX = pEnt->m_pos.x - m_pos.x;
-		float deltaY = pEnt->m_pos.y - m_pos.y;
-		float deltaZ = pEnt->m_pos.z - m_pos.z;
+		float deltaX = pEnt->pos.x - m_pos.x;
+		float deltaY = pEnt->pos.y - m_pos.y;
+		float deltaZ = pEnt->pos.z - m_pos.z;
 
 		// @NOTE: They used it here, but not when normalizing the 16*16*16=4096 rays shot before...
 		float normInv = Mth::invSqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
-		float hurtPercent = m_pLevel->getSeenPercent(m_pos, pEnt->m_hitbox) * (1.0f - distPowerRatio);
+		float hurtPercent = m_pLevel->getSeenPercent(m_pos, pEnt->bb) * (1.0f - distPowerRatio);
 
 		pEnt->hurt(m_pEntity, int((hurtPercent * hurtPercent + hurtPercent) / 2.0f * 8.0f * this->m_power + 1.0f));
 
-		pEnt->m_vel.x += deltaX * normInv * hurtPercent;
-		pEnt->m_vel.y += deltaY * normInv * hurtPercent;
-		pEnt->m_vel.z += deltaZ * normInv * hurtPercent;
+		pEnt->vel.x += deltaX * normInv * hurtPercent;
+		pEnt->vel.y += deltaY * normInv * hurtPercent;
+		pEnt->vel.z += deltaZ * normInv * hurtPercent;
 	}
 
 	std::vector<TilePos> vec;

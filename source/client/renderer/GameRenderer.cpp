@@ -82,11 +82,11 @@ void GameRenderer::moveCameraToPlayer(float f)
 {
 	Mob* pMob = m_pMinecraft->m_pMobPersp;
 
-	float headHeightDiff = pMob->field_84 - 1.62f;
+	float headHeightDiff = pMob->heightOffset - 1.62f;
 
-	float posX = Lerp(pMob->field_3C.x, pMob->m_pos.x, f);
-	float posY = Lerp(pMob->field_3C.y, pMob->m_pos.y, f);
-	float posZ = Lerp(pMob->field_3C.z, pMob->m_pos.z, f);
+	float posX = Lerp(pMob->posO.x, pMob->pos.x, f);
+	float posY = Lerp(pMob->posO.y, pMob->pos.y, f);
+	float posZ = Lerp(pMob->posO.z, pMob->pos.z, f);
 
 	glRotatef(field_5C + f * (field_58 - field_5C), 0.0f, 0.0f, 1.0f);
 
@@ -101,8 +101,8 @@ void GameRenderer::moveCameraToPlayer(float f)
 		}
 		else
 		{
-			float mob_yaw = pMob->m_yaw;
-			float mob_pitch = pMob->m_pitch;
+			float mob_yaw = pMob->yRot;
+			float mob_pitch = pMob->xRot;
 
 			float pitchRad = mob_pitch / 180.0f * float(M_PI);
 
@@ -133,11 +133,11 @@ void GameRenderer::moveCameraToPlayer(float f)
 			}
 
 			// @HUH: Why the hell is it rotating by 0
-			glRotatef(pMob->m_pitch - mob_pitch, 1.0f, 0.0f, 0.0f);
-			glRotatef(pMob->m_yaw - mob_yaw, 0.0f, 1.0f, 0.0f);
+			glRotatef(pMob->xRot - mob_pitch, 1.0f, 0.0f, 0.0f);
+			glRotatef(pMob->yRot - mob_yaw, 0.0f, 1.0f, 0.0f);
 			glTranslatef(0.0, 0.0, -v11);
-			glRotatef(mob_yaw - pMob->m_yaw, 0.0f, 1.0f, 0.0f);
-			glRotatef(mob_pitch - pMob->m_pitch, 1.0f, 0.0f, 0.0f);
+			glRotatef(mob_yaw - pMob->yRot, 0.0f, 1.0f, 0.0f);
+			glRotatef(mob_pitch - pMob->xRot, 1.0f, 0.0f, 0.0f);
 		}
 	}
 	else
@@ -147,8 +147,8 @@ void GameRenderer::moveCameraToPlayer(float f)
 
 	if (!m_pMinecraft->m_options.field_241)
 	{
-		glRotatef(pMob->field_60 + f * (pMob->m_pitch - pMob->field_60), 1.0f, 0.0f, 0.0f);
-		glRotatef(pMob->field_5C + f * (pMob->m_yaw   - pMob->field_5C) + 180.0f, 0.0f, 1.0f, 0.0f);
+		glRotatef(pMob->xRotO + f * (pMob->xRot - pMob->xRotO), 1.0f, 0.0f, 0.0f);
+		glRotatef(pMob->yRotO + f * (pMob->yRot - pMob->yRotO) + 180.0f, 0.0f, 1.0f, 0.0f);
 	}
 
 	glTranslatef(0.0f, headHeightDiff, 0.0f);
@@ -199,7 +199,8 @@ void GameRenderer::bobView(float f)
 	float f1 = Lerp(player->field_B9C, player->field_BA0, f);
 	float f2 = Lerp(player->field_118, player->field_11C, f);
 	// @NOTE: Multiplying by M_PI inside of the paren makes it stuttery for some reason? Anyways it works now :)
-	float f3 = -(player->field_94 + (player->field_94 - player->field_90) * f) * float(M_PI);
+	// @HUH:  Using new walkDist in a weird way
+	float f3 = -(player->walkDist + (player->walkDist - player->walkDistO) * f) * float(M_PI);
 	float f4 = Mth::sin(f3);
 	float f5 = Mth::cos(f3);
 	glTranslatef((f4 * f1) * 0.5f, -fabsf(f5 * f1), 0.0f);
@@ -363,9 +364,9 @@ void GameRenderer::renderLevel(float f)
 	Mob* pMob = m_pMinecraft->m_pMobPersp;
 	Vec3 fCamPos;
 
-	fCamPos.x = pMob->field_98.x + (pMob->m_pos.x - pMob->field_98.x) * f;
-	fCamPos.y = pMob->field_98.y + (pMob->m_pos.y - pMob->field_98.y) * f;
-	fCamPos.z = pMob->field_98.z + (pMob->m_pos.z - pMob->field_98.z) * f;
+	fCamPos.x = pMob->posOld.x + (pMob->pos.x - pMob->posOld.x) * f;
+	fCamPos.y = pMob->posOld.y + (pMob->pos.y - pMob->posOld.y) * f;
+	fCamPos.z = pMob->posOld.z + (pMob->pos.z - pMob->posOld.z) * f;
 
 	bool bAnaglyph = m_pMinecraft->m_options.m_bAnaglyphs;
 
@@ -617,7 +618,7 @@ void GameRenderer::tick()
 			pMob = m_pMinecraft->m_pMobPersp = m_pMinecraft->m_pLocalPlayer;
 		}
 
-		float bright = m_pMinecraft->m_pLevel->getBrightness(Mth::floor(pMob->m_pos.x), Mth::floor(pMob->m_pos.y), Mth::floor(pMob->m_pos.z));
+		float bright = m_pMinecraft->m_pLevel->getBrightness(Mth::floor(pMob->pos.x), Mth::floor(pMob->pos.y), Mth::floor(pMob->pos.z));
 		float x3 = float(3 - m_pMinecraft->m_options.field_10);
 
 		field_C++;
@@ -700,7 +701,7 @@ void GameRenderer::pick(float f)
 
 	field_10 = nullptr;
 
-	AABB scanAABB = pMob->m_hitbox;
+	AABB scanAABB = pMob->bb;
 
 	if (exp.x < 0) scanAABB.min.x += exp.x;
 	if (exp.x > 0) scanAABB.max.x += exp.x;
@@ -719,7 +720,7 @@ void GameRenderer::pick(float f)
 		if (!pEnt->isPickable())
 			continue;
 
-		AABB checkAABB = pEnt->m_hitbox;
+		AABB checkAABB = pEnt->bb;
 		checkAABB.grow(pEnt->getPickRadius());
 
 		HitResult hrMobChk = checkAABB.clip(mobPos, limit);

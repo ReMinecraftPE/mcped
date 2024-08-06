@@ -18,14 +18,14 @@ FallingTile::FallingTile(Level* level, float x, float y, float z, int id) : Enti
 	m_id = id;
 	field_34 = 1;
 	setSize(0.98f, 0.98f);
-	field_84 = field_8C * 0.5f;
+	heightOffset = bbHeight * 0.5f;
 	setPos(x, y, z);
-	field_3C.x = x;
-	field_3C.y = y;
-	field_3C.z = z;
-	m_vel.x = 0.0f;
-	m_vel.y = 0.0f;
-	m_vel.z = 0.0f;
+	posO.x = x;
+	posO.y = y;
+	posO.z = z;
+	vel.x = 0.0f;
+	vel.y = 0.0f;
+	vel.z = 0.0f;
 
 #if defined(ENH_ALLOW_SAND_GRAVITY)
 	field_C8 = RENDER_FALLING_TILE;
@@ -39,7 +39,7 @@ float FallingTile::getShadowHeightOffs()
 
 bool FallingTile::isPickable()
 {
-	return !m_bRemoved;
+	return !removed;
 }
 
 void FallingTile::tick()
@@ -47,46 +47,43 @@ void FallingTile::tick()
 	if (!m_id)
 		remove();
 
-	field_3C = m_pos;
+	posO = pos;
 	field_E0++;
 
-	m_vel.y -= 0.04f;
-	move(m_vel.x, m_vel.y, m_vel.z);
+	vel.y -= 0.04f;
+	move(vel.x, vel.y, vel.z);
 
-	m_vel *= 0.98f;
+	vel *= 0.98f;
 
-	int tileX = Mth::floor(m_pos.x);
-	int tileY = Mth::floor(m_pos.y);
-	int tileZ = Mth::floor(m_pos.z);
+	int tileX = Mth::floor(pos.x);
+	int tileY = Mth::floor(pos.y);
+	int tileZ = Mth::floor(pos.z);
 
 	// if we're inside one of our own tiles, clear it.
 	// Assumes we started there
-	if (m_pLevel->getTile(tileX, tileY, tileZ) == m_id)
-		m_pLevel->setTile(tileX, tileY, tileZ, TILE_AIR);
+	if (level->getTile(tileX, tileY, tileZ) == m_id)
+		level->setTile(tileX, tileY, tileZ, TILE_AIR);
 
-	if (!field_7C)
+	if (!onGround)
 	{
-		if (field_E0 > 100 && !m_pLevel->field_11)
+		if (field_E0 > 100 && !level->field_11)
 			remove();
 
 		return;
 	}
 
-	m_vel.x *= 0.7f;
-	m_vel.z *= 0.7f;
-	m_vel.y *= -0.5f;
+	vel.x *= 0.7f;
+	vel.z *= 0.7f;
+	vel.y *= -0.5f;
 	remove();
-	if (m_pLevel->mayPlace(m_id, tileX, tileY, tileZ, true))
-	{
-		m_pLevel->setTile(tileX, tileY, tileZ, m_id);
-	}
-	else
-	{
-		// @TODO: spawn resources?
-	}
+
+	if (level->mayPlace(m_id, tileX, tileY, tileZ, true) && level->setTile(tileX, tileY, tileZ, m_id))
+		return;
+
+	// @TODO: spawn resources?
 }
 
 Level* FallingTile::getLevel()
 {
-	return m_pLevel;
+	return level;
 }

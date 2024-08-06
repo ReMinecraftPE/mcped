@@ -11,15 +11,15 @@
 SmokeParticle::SmokeParticle(Level* level, float x, float y, float z, float vx, float vy, float vz, float a9) :
 	Particle(level, x, y, z, 0.0f, 0.0f, 0.0f)
 {
-	m_vel.x = vx + m_vel.x * 0.1f;
-	m_vel.y = vy + m_vel.y * 0.1f;
-	m_vel.z = vz + m_vel.z * 0.1f;
+	vel.x = vx + vel.x * 0.1f;
+	vel.y = vy + vel.y * 0.1f;
+	vel.z = vz + vel.z * 0.1f;
 
 	field_100 = field_FC = field_F8 = Mth::random() * 0.5f;
 
 	field_104 = field_F0 = field_F0 * 0.75f * a9;
 
-	m_bNoCollision = false;
+	noPhysics = false;
 	field_EC = int((a9 * 8.0f) / (0.2f + 0.8f * Mth::random()));
 }
 
@@ -37,28 +37,28 @@ void SmokeParticle::render(Tesselator& t, float f, float a, float b, float c, fl
 
 void SmokeParticle::tick()
 {
-	field_3C = m_pos;
+	posO = pos;
 	
 	field_E8++;
 	if (field_E8 > field_EC)
 		remove();
 
-	m_vel.y += 0.004f;
+	vel.y += 0.004f;
 	field_DC = -8 * field_E8 / field_EC + 7;
 
-	move(m_vel.x, m_vel.y, m_vel.z);
+	move(vel.x, vel.y, vel.z);
 
-	if (m_pos.y == field_3C.y)
+	if (pos.y == posO.y)
 	{
-		m_vel.x *= 1.1f;
-		m_vel.z *= 1.1f;
+		vel.x *= 1.1f;
+		vel.z *= 1.1f;
 	}
 
-	m_vel *= 0.96f;
+	vel *= 0.96f;
 
-	if (field_7C)
+	if (onGround)
 	{
-		m_vel.x *= 0.7f;
-		m_vel.z *= 0.7f;
+		vel.x *= 0.7f;
+		vel.z *= 0.7f;
 	}
 }

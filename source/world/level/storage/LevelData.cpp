@@ -53,19 +53,19 @@ void PlayerData::loadPlayer(Player* player)
 {
 	player->setPos(0.0f, 0.0f, 0.0f);
 
-	player->m_pos    = m_pos;
-	player->field_3C = m_pos;
-	player->field_98 = m_pos;
-	player->m_vel.x = Mth::abs(m_vel.x) > 10.0f ? 0.0f : m_vel.x;
-	player->m_vel.y = Mth::abs(m_vel.y) > 10.0f ? 0.0f : m_vel.y;
-	player->m_vel.z = Mth::abs(m_vel.z) > 10.0f ? 0.0f : m_vel.z;
+	player->pos    = m_pos;
+	player->posO   = m_pos;
+	player->posOld = m_pos;
+	player->vel.x = Mth::abs(m_vel.x) > 10.0f ? 0.0f : m_vel.x;
+	player->vel.y = Mth::abs(m_vel.y) > 10.0f ? 0.0f : m_vel.y;
+	player->vel.z = Mth::abs(m_vel.z) > 10.0f ? 0.0f : m_vel.z;
 
-	player->m_pitch = player->field_60 = m_pitch;
-	player->m_yaw   = player->field_5C = m_yaw;
-	player->m_distanceFallen = m_distanceFallen;
-	player->field_C0 = field_24;
-	player->field_BC = field_26;
-	player->field_7C = field_28;
+	player->xRot = player->xRotO = m_pitch;
+	player->yRot = player->yRotO = m_yaw;
+	player->fallDistance = m_distanceFallen;
+	player->onFire    = field_24;
+	player->airSupply = field_26;
+	player->onGround  = field_28;
 
 	// @NOTE: Why are we updating m_pos, field_3C and field_98 above if we do this?
 	player->setPos(m_pos.x, m_pos.y, m_pos.z);
@@ -76,14 +76,14 @@ void PlayerData::loadPlayer(Player* player)
 
 void PlayerData::savePlayer(Player* player)
 {
-	m_pos = player->m_pos;
-	m_vel = player->m_vel;
-	m_pitch = player->m_pitch;
-	m_yaw   = player->m_yaw;
-	m_distanceFallen = player->m_distanceFallen;
-	field_24 = player->field_C0;
-	field_26 = player->field_BC;
-	field_28 = player->field_7C;
+	m_pos = player->pos;
+	m_vel = player->vel;
+	m_pitch = player->xRot;
+	m_yaw   = player->yRot;
+	m_distanceFallen = player->fallDistance;
+	field_24 = player->onFire;
+	field_26 = player->airSupply;
+	field_28 = player->onGround;
 
 	for (int i = 0; i < C_MAX_HOTBAR_ITEMS; i++)
 		m_hotbar[i] = player->m_pInventory->getSelectionSlotItemId(i);

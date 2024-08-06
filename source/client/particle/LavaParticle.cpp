@@ -12,8 +12,8 @@
 LavaParticle::LavaParticle(Level* level, float x, float y, float z) :
 	Particle(level, x, y, z, 0.0f, 0.0f, 0.0f)
 {
-	m_vel *= 0.8f;
-	m_vel.y = sharedRandom.nextFloat() * 0.4f + 0.05f;
+	vel *= 0.8f;
+	vel.y = sharedRandom.nextFloat() * 0.4f + 0.05f;
 	field_F8 = field_FC = field_100 = 1.0f;
 	field_104 = field_F0 = field_F0 * (0.2f + 2 * sharedRandom.nextFloat());
 	field_DC = PTI_LAVA;
@@ -27,7 +27,7 @@ float LavaParticle::getBrightness(float unused)
 
 void LavaParticle::tick()
 {
-	field_3C = m_pos;
+	posO = pos;
 
 	field_E8++;
 	if (field_E8 > field_EC)
@@ -37,17 +37,17 @@ void LavaParticle::tick()
 	float b = sharedRandom.nextFloat();
 	if (a < b)
 	{
-		m_pLevel->addParticle("smoke", m_pos.x, m_pos.y, m_pos.z, m_vel.x, m_vel.y, m_vel.z);
+		level->addParticle("smoke", pos.x, pos.y, pos.z, vel.x, vel.y, vel.z);
 	}
 
-	m_vel.y -= 0.03f;
-	move(m_vel.x, m_vel.y, m_vel.z);
+	vel.y -= 0.03f;
+	move(vel.x, vel.y, vel.z);
 
-	m_vel *= 0.999f;
-	if (field_7C)
+	vel *= 0.999f;
+	if (onGround)
 	{
-		m_vel.x *= 0.7f;
-		m_vel.z *= 0.7f;
+		vel.x *= 0.7f;
+		vel.z *= 0.7f;
 	}
 }
 

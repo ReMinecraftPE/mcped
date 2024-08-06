@@ -206,7 +206,7 @@ void Gui::render(float f, bool bHaveScreen, int mouseX, int mouseY)
 
 		if (m->m_pLocalPlayer->isUnderLiquid(Material::water))
 		{
-			int breathRaw = m->m_pLocalPlayer->field_BC;
+			int breathRaw = m->m_pLocalPlayer->airSupply;
 			int breathFull  = int(ceilf((float(breathRaw - 2) * 10.0f) / 300.0f));
 			int breathMeter = int(ceilf((float(breathRaw)     * 10.0f) / 300.0f)) - breathFull;
 

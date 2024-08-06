@@ -17,22 +17,22 @@ BubbleParticle::BubbleParticle(Level* level, float x, float y, float z, float vx
 	setSize(0.02f, 0.02f);
 
 	field_F0 *= 0.2f + 0.6f * sharedRandom.nextFloat();
-	m_vel.x = vx * 0.2f + 0.02f * (2.0f * Mth::random() - 1.0f);
-	m_vel.y = vy * 0.2f + 0.02f * (2.0f * Mth::random() - 1.0f);
-	m_vel.z = vz * 0.2f + 0.02f * (2.0f * Mth::random() - 1.0f);
+	vel.x = vx * 0.2f + 0.02f * (2.0f * Mth::random() - 1.0f);
+	vel.y = vy * 0.2f + 0.02f * (2.0f * Mth::random() - 1.0f);
+	vel.z = vz * 0.2f + 0.02f * (2.0f * Mth::random() - 1.0f);
 	field_EC = int(8.0f / (Mth::random() * 0.8f + 0.2f));
 }
 
 void BubbleParticle::tick()
 {
-	field_3C = m_pos;
+	posO = pos;
 
-	m_vel.y += 0.002f;
-	move(m_vel.x, m_vel.y, m_vel.z);
+	vel.y += 0.002f;
+	move(vel.x, vel.y, vel.z);
 
-	m_vel *= 0.85f;
+	vel *= 0.85f;
 
-	if (m_pLevel->getMaterial(Mth::floor(m_pos.x), Mth::floor(m_pos.y), Mth::floor(m_pos.z)) != Material::water)
+	if (level->getMaterial(Mth::floor(pos.x), Mth::floor(pos.y), Mth::floor(pos.z)) != Material::water)
 		remove();
 
 	field_EC--;

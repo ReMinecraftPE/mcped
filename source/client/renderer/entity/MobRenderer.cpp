@@ -36,7 +36,7 @@ float MobRenderer::getAttackAnim(Mob* mob, float f)
 
 float MobRenderer::getBob(Mob* mob, float f)
 {
-	return float(mob->field_B4) + f;
+	return float(mob->tickCount) + f;
 }
 
 float MobRenderer::getFlipDegrees(Mob* mob)
@@ -75,12 +75,12 @@ void MobRenderer::render(Entity* entity, float x, float y, float z, float unused
 	if (m_pArmorModel)
 		m_pArmorModel->field_8 = m_pModel->field_8;
 
-	float aYaw   = pMob->field_5C + (pMob->m_yaw   - pMob->field_5C) * f;
-	float aPitch = pMob->field_60 + (pMob->m_pitch - pMob->field_60) * f;
+	float aYaw   = pMob->yRotO + (pMob->yRot - pMob->yRotO) * f;
+	float aPitch = pMob->xRotO + (pMob->xRot - pMob->xRotO) * f;
 	float fBob   = getBob(pMob, f);
 	float fSmth  = pMob->field_EC + (pMob->field_E8 - pMob->field_EC) * f;
 
-	setupPosition(pMob, x, y - pMob->field_84, z);
+	setupPosition(pMob, x, y - pMob->heightOffset, z);
 	setupRotations(pMob, fBob, fSmth, f);
 
 	glScalef(-1.0f, -1.0f, 1.0f);

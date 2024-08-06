@@ -307,13 +307,13 @@ void LevelChunk::addEntity(Entity* pEnt)
 {
 	field_238 = 1;
 
-	int yCoord = int(floorf(pEnt->m_pos.y / 16));
+	int yCoord = int(floorf(pEnt->pos.y / 16));
 	if (yCoord < 0) yCoord = 0;
 	if (yCoord > 7) yCoord = 7;
-	pEnt->m_bInAChunk = true;
-	pEnt->m_chunkX = m_chunkX;
-	pEnt->m_chunkY = yCoord;
-	pEnt->m_chunkZ = m_chunkZ;
+	pEnt->inChunk = true;
+	pEnt->xChunk = m_chunkX;
+	pEnt->yChunk = yCoord;
+	pEnt->zChunk = m_chunkZ;
 
 	m_entities[yCoord].push_back(pEnt);
 }
@@ -334,7 +334,7 @@ void LevelChunk::deleteBlockData()
 
 void LevelChunk::removeEntity(Entity* pEnt)
 {
-	removeEntity(pEnt, pEnt->m_chunkY);
+	removeEntity(pEnt, pEnt->yChunk);
 }
 
 void LevelChunk::removeEntity(Entity* pEnt, int vec)
@@ -555,7 +555,7 @@ void LevelChunk::getEntities(Entity* pEntExclude, const AABB& aabb, std::vector<
 		{
 			if (ent == pEntExclude) continue;
 			
-			if (!aabb.intersect(ent->m_hitbox)) continue;
+			if (!aabb.intersect(ent->bb)) continue;
 
 			out.push_back(ent);
 		}

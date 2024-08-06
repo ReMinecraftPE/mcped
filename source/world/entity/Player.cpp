@@ -15,9 +15,9 @@ Player::Player(Level* pLevel) : Mob(pLevel)
 
 	m_pInventory = new Inventory(this);
 
-	field_84 = 1.62f;
+	heightOffset = 1.62f;
 
-	Pos pos = m_pLevel->getSharedSpawnPos();
+	Pos pos = level->getSharedSpawnPos();
 
 	moveTo(float(pos.x) + 0.5f, float(pos.y) + 1.0f, float(pos.z) + 0.5f, 0.0f, 0.0f);
 
@@ -26,7 +26,7 @@ Player::Player(Level* pLevel) : Mob(pLevel)
 	m_class = "humanoid";
 	m_texture = "mob/char.png";
 
-	field_C4 = 20;
+	flameTime = 20;
 	field_B5C = 180.0f;
 }
 
@@ -83,7 +83,7 @@ void Player::awardKillScore(Entity* pKilled, int score)
 
 void Player::resetPos()
 {
-	field_84 = 1.62f;
+	heightOffset = 1.62f;
 	setSize(0.6f, 1.8f);
 
 	Entity::resetPos();
@@ -96,31 +96,31 @@ void Player::die(Entity* pCulprit)
 {
 	Mob::die(pCulprit);
 	setSize(0.2f, 0.2f);
-	setPos(m_pos.x, m_pos.y, m_pos.z); // update hitbox
-	m_vel.y = 0.1f;
+	setPos(pos.x, pos.y, pos.z); // update hitbox
+	vel.y = 0.1f;
 
 	if (pCulprit)
 	{
-		m_vel.x = -0.1f * Mth::cos(float((field_10C + m_yaw) * M_PI / 180.0));
-		m_vel.z = -0.1f * Mth::cos(float((field_10C + m_yaw) * M_PI / 180.0));
+		vel.x = -0.1f * Mth::cos(float((field_10C + yRot) * M_PI / 180.0));
+		vel.z = -0.1f * Mth::cos(float((field_10C + yRot) * M_PI / 180.0));
 	}
 	else
 	{
-		m_vel.x = 0;
-		m_vel.z = 0;
+		vel.x = 0;
+		vel.z = 0;
 	}
 }
 
 void Player::aiStep()
 {
 	field_B9C = field_BA0;
-	float velLen = Mth::sqrt(m_vel.x * m_vel.x + m_vel.z * m_vel.z);
-	float velYAtan = Mth::atan(m_vel.y * -0.2f), x1 = 0.0f;
+	float velLen = Mth::sqrt(vel.x * vel.x + vel.z * vel.z);
+	float velYAtan = Mth::atan(vel.y * -0.2f), x1 = 0.0f;
 
 	if (velLen > 0.1f)
 		velLen = 0.1f;
 
-	if (!field_7C)
+	if (!onGround)
 	{
 		if (m_health > 0)
 		{
@@ -142,14 +142,14 @@ void Player::aiStep()
 	if (m_health <= 0)
 		return;
 
-	AABB scanAABB = m_hitbox;
+	AABB scanAABB = bb;
 	scanAABB.grow(1, 1, 1);
 
-	auto pEnts = m_pLevel->getEntities(this, scanAABB);
+	auto pEnts = level->getEntities(this, scanAABB);
 
 	for (auto pEnt : *pEnts)
 	{
-		if (pEnt->m_bRemoved)
+		if (pEnt->removed)
 			continue;
 
 		touch(pEnt);
@@ -230,7 +230,7 @@ void Player::drop(ItemInstance* pItemInstance, bool b)
 	if (!pItemInstance)
 		return;
 
-	ItemEntity* pItemEntity = new ItemEntity(m_pLevel, m_pos.x, m_pos.y - 0.3f + getHeadHeight(), m_pos.z, pItemInstance);
+	ItemEntity* pItemEntity = new ItemEntity(level, pos.x, pos.y - 0.3f + getHeadHeight(), pos.z, pItemInstance);
 	pItemEntity->field_E4 = 40;
 
 	if (b)
@@ -238,22 +238,22 @@ void Player::drop(ItemInstance* pItemInstance, bool b)
 		float throwPower = 0.5f * m_random.nextFloat();
 		float throwAngle = m_random.nextFloat();
 
-		pItemEntity->m_vel.x = -(throwPower * Mth::sin(2 * float(M_PI) * throwAngle));
-		pItemEntity->m_vel.z =  (throwPower * Mth::cos(2 * float(M_PI) * throwAngle));
-		pItemEntity->m_vel.y = 0.2f;
+		pItemEntity->vel.x = -(throwPower * Mth::sin(2 * float(M_PI) * throwAngle));
+		pItemEntity->vel.z =  (throwPower * Mth::cos(2 * float(M_PI) * throwAngle));
+		pItemEntity->vel.y = 0.2f;
 	}
 	else
 	{
-		pItemEntity->m_vel.x = -(Mth::sin(m_yaw / 180.0f * float(M_PI)) * Mth::cos(m_pitch / 180.0f * float(M_PI))) * 0.3f;
-		pItemEntity->m_vel.z =  (Mth::cos(m_yaw / 180.0f * float(M_PI)) * Mth::cos(m_pitch / 180.0f * float(M_PI))) * 0.3f;
-		pItemEntity->m_vel.y = 0.1f - Mth::sin(m_pitch / 180.0f * float(M_PI)) * 0.3f;
+		pItemEntity->vel.x = -(Mth::sin(yRot / 180.0f * float(M_PI)) * Mth::cos(xRot / 180.0f * float(M_PI))) * 0.3f;
+		pItemEntity->vel.z =  (Mth::cos(yRot / 180.0f * float(M_PI)) * Mth::cos(xRot / 180.0f * float(M_PI))) * 0.3f;
+		pItemEntity->vel.y = 0.1f - Mth::sin(xRot / 180.0f * float(M_PI)) * 0.3f;
 
 		float f1 = m_random.nextFloat();
 		float f2 = m_random.nextFloat();
 
-		pItemEntity->m_vel.x += 0.02f * f2 * Mth::cos(2 * float(M_PI) * f1);
-		pItemEntity->m_vel.y += 0.1f * (m_random.nextFloat() - m_random.nextFloat());
-		pItemEntity->m_vel.z += 0.02f * f2 * Mth::sin(2 * float(M_PI) * f1);
+		pItemEntity->vel.x += 0.02f * f2 * Mth::cos(2 * float(M_PI) * f1);
+		pItemEntity->vel.y += 0.1f * (m_random.nextFloat() - m_random.nextFloat());
+		pItemEntity->vel.z += 0.02f * f2 * Mth::sin(2 * float(M_PI) * f1);
 	}
 
 	reallyDrop(pItemEntity);
@@ -291,7 +291,7 @@ void Player::prepareCustomTextures()
 
 void Player::reallyDrop(ItemEntity* pEnt)
 {
-	m_pLevel->addEntity(pEnt);
+	level->addEntity(pEnt);
 }
 
 void Player::respawn()
@@ -306,7 +306,7 @@ void Player::rideTick()
 
 void Player::setDefaultHeadHeight()
 {
-	field_84 = 1.62f;
+	heightOffset = 1.62f;
 }
 
 void Player::setRespawnPos(Pos* pos)

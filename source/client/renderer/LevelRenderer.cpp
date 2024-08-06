@@ -162,7 +162,7 @@ void LevelRenderer::allChanged()
 		Mob* pMob = m_pMinecraft->m_pMobPersp;
 		if (pMob)
 		{
-			resortChunks(Mth::floor(pMob->m_pos.x), Mth::floor(pMob->m_pos.y), Mth::floor(pMob->m_pos.z));
+			resortChunks(Mth::floor(pMob->pos.x), Mth::floor(pMob->pos.y), Mth::floor(pMob->pos.z));
 
 			std::sort(&field_98[0], &field_98[m_chunksLength], DistanceChunkSorter(pMob));
 		}
@@ -421,9 +421,9 @@ int LevelRenderer::renderChunks(int start, int end, int a, float b)
 
 	Mob* pMob = m_pMinecraft->m_pMobPersp;
 
-	float fPosX = pMob->field_98.x + (pMob->m_pos.x - pMob->field_98.x) * b;
-	float fPosY = pMob->field_98.y + (pMob->m_pos.y - pMob->field_98.y) * b;
-	float fPosZ = pMob->field_98.z + (pMob->m_pos.z - pMob->field_98.z) * b;
+	float fPosX = pMob->posOld.x + (pMob->pos.x - pMob->posOld.x) * b;
+	float fPosY = pMob->posOld.y + (pMob->pos.y - pMob->posOld.y) * b;
+	float fPosZ = pMob->posOld.z + (pMob->pos.z - pMob->posOld.z) * b;
 
 	m_renderList.clear();
 	m_renderList.init(fPosX, fPosY, fPosZ);
@@ -461,22 +461,22 @@ void LevelRenderer::render(Mob* pMob, int a, float b)
 	if (!a)
 		field_54 = field_58 = field_5C = field_60 = field_64 = 0;
 	
-	float mobX1 = pMob->m_pos.x;
-	float mobX2 = pMob->field_98.x + (pMob->m_pos.x - pMob->field_98.x) * b;
-	float mobY1 = pMob->m_pos.y;
-	float mobY2 = pMob->field_98.y + (pMob->m_pos.y - pMob->field_98.y) * b;
-	float mobZ1 = pMob->m_pos.z;
-	float mobZ2 = pMob->field_98.z + (pMob->m_pos.z - pMob->field_98.z) * b;
+	float mobX1 = pMob->pos.x;
+	float mobX2 = pMob->posOld.x + (pMob->pos.x - pMob->posOld.x) * b;
+	float mobY1 = pMob->pos.y;
+	float mobY2 = pMob->posOld.y + (pMob->pos.y - pMob->posOld.y) * b;
+	float mobZ1 = pMob->pos.z;
+	float mobZ2 = pMob->posOld.z + (pMob->pos.z - pMob->posOld.z) * b;
 	
-	float dX = pMob->m_pos.x - field_4, dY = pMob->m_pos.y - field_8, dZ = pMob->m_pos.z - field_C;
+	float dX = pMob->pos.x - field_4, dY = pMob->pos.y - field_8, dZ = pMob->pos.z - field_C;
 
 	if (dX * dX + dY * dY + dZ * dZ > 16.0f)
 	{
-		field_4 = pMob->m_pos.x;
-		field_8 = pMob->m_pos.y;
-		field_C = pMob->m_pos.z;
+		field_4 = pMob->pos.x;
+		field_8 = pMob->pos.y;
+		field_C = pMob->pos.z;
 
-		resortChunks(Mth::floor(pMob->m_pos.x), Mth::floor(pMob->m_pos.y), Mth::floor(pMob->m_pos.z));
+		resortChunks(Mth::floor(pMob->pos.x), Mth::floor(pMob->pos.y), Mth::floor(pMob->pos.z));
 		std::sort(&field_98[0], &field_98[m_chunksLength], DistanceChunkSorter(pMob));
 	}
 
@@ -924,9 +924,9 @@ void LevelRenderer::renderHitSelect(Player* pPlayer, const HitResult& hr, int i,
 	glPolygonOffset(-0.3f, -0.3f);
 	glEnable(GL_POLYGON_OFFSET_FILL);
 
-	float px = pPlayer->field_98.x + (pPlayer->m_pos.x - pPlayer->field_98.x) * f;
-	float py = pPlayer->field_98.y + (pPlayer->m_pos.y - pPlayer->field_98.y) * f;
-	float pz = pPlayer->field_98.z + (pPlayer->m_pos.z - pPlayer->field_98.z) * f;
+	float px = pPlayer->posOld.x + (pPlayer->pos.x - pPlayer->posOld.x) * f;
+	float py = pPlayer->posOld.y + (pPlayer->pos.y - pPlayer->posOld.y) * f;
+	float pz = pPlayer->posOld.z + (pPlayer->pos.z - pPlayer->posOld.z) * f;
 
 	Tesselator& t = Tesselator::instance;
 	t.begin();
@@ -970,9 +970,9 @@ void LevelRenderer::renderEntities(Vec3 pos, Culler* culler, float f)
 	field_1C = 0;
 	field_20 = 0;
 
-	EntityRenderDispatcher::xOff = mob->field_98.x + (mob->m_pos.x - mob->field_98.x) * f;
-	EntityRenderDispatcher::yOff = mob->field_98.y + (mob->m_pos.y - mob->field_98.y) * f;
-	EntityRenderDispatcher::zOff = mob->field_98.z + (mob->m_pos.z - mob->field_98.z) * f;
+	EntityRenderDispatcher::xOff = mob->posOld.x + (mob->pos.x - mob->posOld.x) * f;
+	EntityRenderDispatcher::yOff = mob->posOld.y + (mob->pos.y - mob->posOld.y) * f;
+	EntityRenderDispatcher::zOff = mob->posOld.z + (mob->pos.z - mob->posOld.z) * f;
 
 	EntityVector* pVec = m_pLevel->getAllEntities();
 	field_18 = int(pVec->size());
@@ -983,13 +983,13 @@ void LevelRenderer::renderEntities(Vec3 pos, Culler* culler, float f)
 		if (!pEnt->shouldRender(pos))
 			continue;
 
-		if (!culler->isVisible(pEnt->m_hitbox))
+		if (!culler->isVisible(pEnt->bb))
 			continue;
 
 		if (m_pMinecraft->m_pMobPersp == pEnt && !m_pMinecraft->m_options.field_23D) // @NOTE: third person ?
 			continue;
 
-		if (m_pLevel->hasChunkAt(Mth::floor(pEnt->m_pos.x), Mth::floor(pEnt->m_pos.y), Mth::floor(pEnt->m_pos.z)))
+		if (m_pLevel->hasChunkAt(Mth::floor(pEnt->pos.x), Mth::floor(pEnt->pos.y), Mth::floor(pEnt->pos.z)))
 		{
 			field_1C++;
 			EntityRenderDispatcher::getInstance()->render(pEnt, f);
